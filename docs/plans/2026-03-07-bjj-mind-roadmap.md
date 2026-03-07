@@ -49,7 +49,37 @@
 
 ---
 
-### Task 1.4: Missing states
+### Task 1.4: New gameplay format screens (10 screens)
+
+**New files (all in `figma-screens/`):**
+- `round-4choice.html` — 4-option MCQ, tighter timer
+- `round-sequence.html` — tap to reorder steps
+- `round-tap-zone.html` — tap body part on the BJJ diagram
+- `round-truefalse.html` — swipe left/right or tap yes/no
+- `round-spot-mistake.html` — identify the error in the position
+- `round-fill-rule.html` — word bank fill-in-the-blank
+- `coach-moment.html` — mid-session character coaching card (Marco / Old Chen)
+- `match-vs-kat.html` — turn-based match UI vs Kat character
+- `belt-test-active.html` — belt test in progress (strict 5s timer, no hints)
+- `tournament-match.html` — tournament bracket + current match view
+
+**Done when:** All 10 screens visible in index.html.
+
+---
+
+### Task 1.5: Clickable prototype navigation
+
+Add `<a href>` links between screens so the full user journey is walkable:
+- Welcome → Belt Select → Problem Select → Aha Moment → Micro Round → Feedback → Summary
+- Home → Train → Belt Test Gate → Belt Test Active → Summary
+- Home → Compete → vs Kat Match → Summary
+- Home → Compete → Tournament → Tournament Match → Summary
+
+**Done when:** Full flow can be clicked through in a browser without dead ends.
+
+---
+
+### Task 1.6: Missing states
 For each main screen, add a "empty state" or "first time" variant if needed:
 
 - `train.html` — locked state (belt not unlocked yet) visual

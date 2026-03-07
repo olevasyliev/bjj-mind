@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=390, initial-scale=1.0" />
+  <title>BJJ Mind — Fill the Rule</title>
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 390px;
+      height: 844px;
+      background: #ffffff;
+      font-family: 'Nunito', sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topbar {
+      display: flex; align-items: center;
+      padding: 52px 24px 0; gap: 14px; flex-shrink: 0;
+    }
+
+    .close-btn {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: #f9f8ff; border: 1.5px solid #ede9fe;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; color: #9ca3af;
+    }
+
+    .progress-bar-wrap {
+      flex: 1; height: 10px;
+      background: #f3f0ff; border-radius: 100px; overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      width: 80%; height: 100%;
+      background: #7c3aed; border-radius: 100px;
+    }
+
+    .hearts { display: flex; gap: 2px; flex-shrink: 0; }
+    .heart { font-size: 17px; }
+    .heart.lost { opacity: 0.25; }
+
+    .meta-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 24px 0;
+    }
+
+    .format-badge {
+      background: #fdf4ff;
+      border: 1.5px solid #e9d5ff;
+      border-radius: 100px;
+      padding: 5px 14px;
+      font-size: 12px;
+      font-weight: 800;
+      color: #7e22ce;
+    }
+
+    .timer-ring { position: relative; width: 52px; height: 52px; }
+    .timer-ring svg { transform: rotate(-90deg); }
+    .timer-number {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 900; color: #f59e0b;
+    }
+
+    /* Main area */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 28px 24px 0;
+    }
+
+    .question-label {
+      font-size: 12px;
+      font-weight: 800;
+      color: #a78bfa;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    /* The rule with blanks */
+    .rule-card {
+      background: #f9f8ff;
+      border: 2px solid #ede9fe;
+      border-radius: 24px;
+      padding: 24px 22px;
+      margin-bottom: 28px;
+    }
+
+    .rule-icon { font-size: 36px; margin-bottom: 12px; }
+
+    .rule-text {
+      font-size: 22px;
+      font-weight: 900;
+      color: #1a1a2e;
+      line-height: 1.5;
+      letter-spacing: -0.3px;
+    }
+
+    /* Blank — inline element */
+    .blank {
+      display: inline-block;
+      min-width: 110px;
+      border-bottom: 3px solid #7c3aed;
+      margin: 0 4px;
+      vertical-align: bottom;
+      text-align: center;
+      padding: 0 8px 2px;
+    }
+
+    .blank.filled {
+      background: #f5f0ff;
+      border-radius: 8px;
+      border-bottom-color: #7c3aed;
+      color: #7c3aed;
+      font-weight: 900;
+    }
+
+    .blank.empty {
+      color: transparent;
+    }
+
+    .rule-context {
+      font-size: 13px;
+      font-weight: 600;
+      color: #9ca3af;
+      margin-top: 10px;
+      line-height: 1.4;
+    }
+
+    /* Word bank */
+    .bank-label {
+      font-size: 11px;
+      font-weight: 800;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .word-bank {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .word-chip {
+      background: white;
+      border: 2.5px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 10px 18px;
+      font-size: 15px;
+      font-weight: 800;
+      color: #374151;
+      cursor: pointer;
+    }
+
+    .word-chip.selected {
+      background: #7c3aed;
+      border-color: #7c3aed;
+      color: white;
+    }
+
+    .word-chip.used {
+      opacity: 0.3;
+      border-style: dashed;
+    }
+
+    .btn-check {
+      width: 100%;
+      height: 58px;
+      border-radius: 100px;
+      background: #7c3aed;
+      border: none;
+      color: white;
+      font-family: 'Nunito', sans-serif;
+      font-size: 17px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0px 4px 0px #5b21b6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="close-btn">✕</div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill"></div></div>
+    <div class="hearts">
+      <span class="heart">❤️</span><span class="heart">❤️</span>
+      <span class="heart">❤️</span><span class="heart lost">❤️</span>
+      <span class="heart lost">❤️</span>
+    </div>
+  </div>
+
+  <div class="meta-row">
+    <div class="format-badge">✏️ Fill the rule</div>
+    <div class="timer-ring">
+      <svg width="52" height="52" viewBox="0 0 52 52">
+        <circle cx="26" cy="26" r="21" fill="none" stroke="#fef3c7" stroke-width="5"/>
+        <circle cx="26" cy="26" r="21" fill="none" stroke="#f59e0b" stroke-width="5"
+          stroke-linecap="round" stroke-dasharray="131.9" stroke-dashoffset="66"/>
+      </svg>
+      <div class="timer-number">5</div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="question-label">Complete the rule</div>
+
+    <div class="rule-card">
+      <div class="rule-icon">🛡️</div>
+      <div class="rule-text">
+        Always frame on the
+        <span class="blank filled">hip</span>
+        before you try to
+        <span class="blank empty">___</span>
+      </div>
+      <div class="rule-context">Side control escape — the order of operations matters.</div>
+    </div>
+
+    <div class="bank-label">Pick the missing word</div>
+
+    <div class="word-bank">
+      <div class="word-chip used">hip</div>
+      <div class="word-chip">shrimp</div>
+      <div class="word-chip">push</div>
+      <div class="word-chip">roll</div>
+      <div class="word-chip">sit up</div>
+      <div class="word-chip">bridge</div>
+    </div>
+
+    <div class="btn-check">Check answer</div>
+  </div>
+
+</body>
+</html>

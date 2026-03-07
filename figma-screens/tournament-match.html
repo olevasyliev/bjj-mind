@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=390, initial-scale=1.0" />
+  <title>BJJ Mind — Tournament Match</title>
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 390px;
+      height: 844px;
+      background: #0f0f1a;
+      font-family: 'Nunito', sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Tournament header */
+    .t-header {
+      padding: 52px 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .t-badge {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 900;
+      color: white;
+      box-shadow: 0 2px 0 #92400e;
+    }
+
+    .t-lives {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 100px;
+      padding: 6px 14px;
+    }
+
+    .t-life { font-size: 16px; }
+    .t-life.lost { opacity: 0.2; }
+
+    /* Bracket strip */
+    .bracket-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 18px 24px 0;
+    }
+
+    .bracket-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .b-match {
+      width: 44px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .b-match.win { background: #1a3a1a; border: 2px solid #22c55e; color: #22c55e; }
+    .b-match.current { background: #7c3aed; border: 2px solid #a78bfa; color: white; animation: pulse 2s infinite; }
+    .b-match.locked { background: rgba(255,255,255,0.04); border: 2px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.2); }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(124,58,237,0.5); }
+      50% { box-shadow: 0 0 0 6px rgba(124,58,237,0); }
+    }
+
+    .b-label {
+      font-size: 9px;
+      font-weight: 800;
+      color: rgba(255,255,255,0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .b-label.current { color: #a78bfa; }
+
+    .bracket-arrow {
+      font-size: 14px;
+      color: rgba(255,255,255,0.15);
+      margin-bottom: 14px;
+    }
+
+    /* Resources bar */
+    .resources {
+      display: flex;
+      gap: 8px;
+      padding: 16px 20px 0;
+    }
+
+    .resource-chip {
+      flex: 1;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .res-icon { font-size: 16px; }
+
+    .res-info { flex: 1; }
+    .res-label { font-size: 9px; font-weight: 800; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.5px; }
+    .res-value { font-size: 14px; font-weight: 900; color: white; }
+
+    /* Opponent card */
+    .opponent-card {
+      margin: 14px 20px 0;
+      background: rgba(255,255,255,0.04);
+      border: 1.5px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-shrink: 0;
+    }
+
+    .opp-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      background: #7f1d1d;
+      border: 2px solid #ef4444;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .opp-art-label {
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #7c3aed;
+      color: white;
+      font-size: 6px;
+      font-weight: 900;
+      padding: 1px 4px;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+
+    .opp-info { flex: 1; }
+    .opp-name { font-size: 16px; font-weight: 900; color: white; }
+    .opp-rank { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.4); margin-top: 2px; }
+
+    .opp-score-area { text-align: center; }
+    .opp-score-label { font-size: 9px; font-weight: 800; color: rgba(255,255,255,0.3); text-transform: uppercase; }
+    .opp-score { font-size: 28px; font-weight: 900; color: #ef4444; }
+
+    /* Divider */
+    .vs-divider {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 900;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 2px;
+      padding: 4px 0 0;
+    }
+
+    /* Question card — white on dark bg */
+    .question-card {
+      margin: 12px 20px 0;
+      background: white;
+      border-radius: 22px;
+      padding: 18px;
+      flex-shrink: 0;
+    }
+
+    .q-label {
+      font-size: 11px; font-weight: 800; color: #a78bfa;
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;
+    }
+
+    .q-text {
+      font-size: 17px; font-weight: 900; color: #1a1a2e;
+      line-height: 1.3; margin-bottom: 12px;
+    }
+
+    .options { display: flex; flex-direction: column; gap: 8px; }
+
+    .opt {
+      display: flex; align-items: center; gap: 12px;
+      padding: 11px 14px; border-radius: 14px;
+      border: 2px solid #ede9fe; background: white; cursor: pointer;
+    }
+
+    .opt-letter {
+      width: 30px; height: 30px; border-radius: 9px;
+      background: #f5f0ff; display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 900; color: #7c3aed; flex-shrink: 0;
+    }
+
+    .opt-text { font-size: 14px; font-weight: 700; color: #1a1a2e; }
+
+    /* Timer row */
+    .timer-row {
+      display: flex; align-items: center; justify-content: center;
+      gap: 10px; padding: 12px 24px 0; flex-shrink: 0;
+    }
+
+    .timer-ring { position: relative; width: 42px; height: 42px; }
+    .timer-ring svg { transform: rotate(-90deg); }
+    .timer-number {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 900; color: #f59e0b;
+    }
+
+    .timer-label { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.3); }
+  </style>
+</head>
+<body>
+
+  <div class="t-header">
+    <div class="t-badge">⚔️ Match 3 of 5</div>
+    <div class="t-lives">
+      <span class="t-life">❤️</span>
+      <span class="t-life">❤️</span>
+      <span class="t-life lost">❤️</span>
+    </div>
+  </div>
+
+  <!-- Bracket -->
+  <div class="bracket-strip">
+    <div class="bracket-node">
+      <div class="b-match win">W</div>
+      <div class="b-label">Match 1</div>
+    </div>
+    <div class="bracket-arrow">›</div>
+    <div class="bracket-node">
+      <div class="b-match win">W</div>
+      <div class="b-label">Match 2</div>
+    </div>
+    <div class="bracket-arrow">›</div>
+    <div class="bracket-node">
+      <div class="b-match current">3</div>
+      <div class="b-label current">Now</div>
+    </div>
+    <div class="bracket-arrow">›</div>
+    <div class="bracket-node">
+      <div class="b-match locked">4</div>
+      <div class="b-label">Match 4</div>
+    </div>
+    <div class="bracket-arrow">›</div>
+    <div class="bracket-node">
+      <div class="b-match locked">🏆</div>
+      <div class="b-label">Final</div>
+    </div>
+  </div>
+
+  <!-- Resources carried from prev match -->
+  <div class="resources">
+    <div class="resource-chip">
+      <div class="res-icon">❤️</div>
+      <div class="res-info">
+        <div class="res-label">Carried lives</div>
+        <div class="res-value">2 / 3</div>
+      </div>
+    </div>
+    <div class="resource-chip">
+      <div class="res-icon">⚡</div>
+      <div class="res-info">
+        <div class="res-label">Match XP</div>
+        <div class="res-value">+180</div>
+      </div>
+    </div>
+    <div class="resource-chip">
+      <div class="res-icon">🎯</div>
+      <div class="res-info">
+        <div class="res-label">Accuracy</div>
+        <div class="res-value">80%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Current opponent -->
+  <div class="opponent-card">
+    <div class="opp-avatar">🥷<div class="opp-art-label">Rex art</div></div>
+    <div class="opp-info">
+      <div class="opp-name">Rex</div>
+      <div class="opp-rank">Rank #2 · Bronze League</div>
+    </div>
+    <div class="opp-score-area">
+      <div class="opp-score-label">their score</div>
+      <div class="opp-score">60%</div>
+    </div>
+  </div>
+  <div class="vs-divider">YOUR TURN</div>
+
+  <!-- Question -->
+  <div class="question-card">
+    <div class="q-label">Question 2 of 5</div>
+    <div class="q-text">From mount bottom — what is the most reliable escape for a white belt?</div>
+    <div class="options">
+      <div class="opt">
+        <div class="opt-letter">A</div>
+        <div class="opt-text">Upa bridge and roll (bridge escape)</div>
+      </div>
+      <div class="opt">
+        <div class="opt-letter">B</div>
+        <div class="opt-text">Elbow-knee (shrimp to guard)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Timer -->
+  <div class="timer-row">
+    <div class="timer-ring">
+      <svg width="42" height="42" viewBox="0 0 42 42">
+        <circle cx="21" cy="21" r="16" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="4"/>
+        <circle cx="21" cy="21" r="16" fill="none" stroke="#f59e0b" stroke-width="4"
+          stroke-linecap="round" stroke-dasharray="100.5" stroke-dashoffset="50.3"/>
+      </svg>
+      <div class="timer-number">5</div>
+    </div>
+    <div class="timer-label">Resources carry if you win this match</div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=390, initial-scale=1.0" />
+  <title>BJJ Mind — Tap the Zone</title>
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 390px;
+      height: 844px;
+      background: #ffffff;
+      font-family: 'Nunito', sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topbar {
+      display: flex; align-items: center;
+      padding: 52px 24px 0; gap: 14px; flex-shrink: 0;
+    }
+
+    .close-btn {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: #f9f8ff; border: 1.5px solid #ede9fe;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; color: #9ca3af;
+    }
+
+    .progress-bar-wrap {
+      flex: 1; height: 10px;
+      background: #f3f0ff; border-radius: 100px; overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      width: 35%; height: 100%;
+      background: #7c3aed; border-radius: 100px;
+    }
+
+    .hearts { display: flex; gap: 2px; flex-shrink: 0; }
+    .heart { font-size: 17px; }
+    .heart.lost { opacity: 0.25; }
+
+    .meta-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 24px 0;
+    }
+
+    .format-badge {
+      background: #fff7ed; border: 1.5px solid #fed7aa;
+      border-radius: 100px; padding: 5px 14px;
+      font-size: 12px; font-weight: 800; color: #92400e;
+    }
+
+    .timer-ring { position: relative; width: 52px; height: 52px; }
+    .timer-ring svg { transform: rotate(-90deg); }
+    .timer-number {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 900; color: #f59e0b;
+    }
+
+    /* Question */
+    .question-area {
+      padding: 20px 24px 14px; flex-shrink: 0;
+    }
+
+    .question-text {
+      font-size: 19px; font-weight: 900; color: #1a1a2e;
+      line-height: 1.3; letter-spacing: -0.3px;
+    }
+
+    .question-sub {
+      font-size: 13px; font-weight: 600; color: #9ca3af; margin-top: 4px;
+    }
+
+    /* Large interactive scene */
+    .scene-wrap {
+      margin: 0 20px;
+      flex: 1;
+      background: #f8f6ff;
+      border-radius: 24px;
+      border: 1.5px solid #ede9fe;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Tap zones — labeled hotspots */
+    .tap-zone {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .tap-zone-label {
+      position: absolute;
+      white-space: nowrap;
+      font-size: 11px;
+      font-weight: 800;
+      background: white;
+      border-radius: 8px;
+      padding: 3px 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+
+    /* Bottom hint */
+    .hint-bar {
+      margin: 10px 20px;
+      background: #f5f0ff;
+      border-radius: 14px;
+      padding: 11px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .hint-icon { font-size: 18px; flex-shrink: 0; }
+
+    .hint-text {
+      font-size: 13px;
+      font-weight: 700;
+      color: #5b21b6;
+      line-height: 1.3;
+    }
+
+    .bottom-pad { height: 28px; flex-shrink: 0; }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="close-btn">✕</div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill"></div></div>
+    <div class="hearts">
+      <span class="heart">❤️</span><span class="heart">❤️</span>
+      <span class="heart">❤️</span><span class="heart lost">❤️</span>
+      <span class="heart lost">❤️</span>
+    </div>
+  </div>
+
+  <div class="meta-row">
+    <div class="format-badge">👆 Tap the zone</div>
+    <div class="timer-ring">
+      <svg width="52" height="52" viewBox="0 0 52 52">
+        <circle cx="26" cy="26" r="21" fill="none" stroke="#fef3c7" stroke-width="5"/>
+        <circle cx="26" cy="26" r="21" fill="none" stroke="#f59e0b" stroke-width="5"
+          stroke-linecap="round" stroke-dasharray="131.9" stroke-dashoffset="16.5"/>
+      </svg>
+      <div class="timer-number">8</div>
+    </div>
+  </div>
+
+  <div class="question-area">
+    <div class="question-text">Tap where you should place your frame to stop the mount.</div>
+    <div class="question-sub">Tap directly on the diagram</div>
+  </div>
+
+  <!-- Large interactive scene -->
+  <div class="scene-wrap">
+    <svg width="100%" height="100%" viewBox="0 0 350 360" fill="none" preserveAspectRatio="xMidYMid meet">
+      <rect width="350" height="360" fill="#f8f6ff"/>
+
+      <!-- Grid -->
+      <line x1="0" y1="90" x2="350" y2="90" stroke="#ede9fe" stroke-width="1"/>
+      <line x1="0" y1="180" x2="350" y2="180" stroke="#ede9fe" stroke-width="1"/>
+      <line x1="0" y1="270" x2="350" y2="270" stroke="#ede9fe" stroke-width="1"/>
+      <line x1="116" y1="0" x2="116" y2="360" stroke="#ede9fe" stroke-width="1"/>
+      <line x1="232" y1="0" x2="232" y2="360" stroke="#ede9fe" stroke-width="1"/>
+
+      <!-- YOU — lying down (blue) -->
+      <rect x="55" y="148" width="220" height="52" rx="26" fill="#3b82f6"/>
+      <circle cx="288" cy="174" r="28" fill="#3b82f6"/>
+      <!-- YOU arms -->
+      <rect x="30" y="150" width="44" height="18" rx="9" fill="#60a5fa" transform="rotate(-10 52 159)"/>
+      <rect x="280" y="195" width="50" height="16" rx="8" fill="#60a5fa" transform="rotate(15 305 203)"/>
+      <text x="170" y="179" font-family="Nunito" font-size="14" font-weight="900" fill="white" text-anchor="middle">YOU</text>
+
+      <!-- OPP — side control (red) -->
+      <rect x="140" y="60" width="50" height="148" rx="25" fill="#ef4444"/>
+      <circle cx="165" cy="46" r="26" fill="#ef4444"/>
+      <!-- OPP arm across -->
+      <rect x="58" y="145" width="92" height="18" rx="9" fill="#dc2626" transform="rotate(6 104 154)"/>
+      <text x="165" y="148" font-family="Nunito" font-size="12" font-weight="900" fill="white" text-anchor="middle">OPP</text>
+
+      <!-- TAP ZONES (labeled circles) -->
+      <!-- Zone A: OPP hip (correct) -->
+      <circle cx="165" cy="215" r="32" fill="#f59e0b" opacity="0.15"/>
+      <circle cx="165" cy="215" r="32" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="5 3"/>
+      <text x="165" y="262" font-family="Nunito" font-size="11" font-weight="900" fill="#92400e" text-anchor="middle">A — Hip</text>
+
+      <!-- Zone B: OPP chest -->
+      <circle cx="165" cy="116" r="28" fill="#e5e7eb" opacity="0.4"/>
+      <circle cx="165" cy="116" r="28" fill="none" stroke="#9ca3af" stroke-width="2" stroke-dasharray="5 3"/>
+      <text x="165" y="157" font-family="Nunito" font-size="11" font-weight="900" fill="#9ca3af" text-anchor="middle">B — Chest</text>
+
+      <!-- Zone C: YOUR shoulder -->
+      <circle cx="80" cy="174" r="24" fill="#e5e7eb" opacity="0.4"/>
+      <circle cx="80" cy="174" r="24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-dasharray="5 3"/>
+      <text x="80" y="210" font-family="Nunito" font-size="11" font-weight="900" fill="#9ca3af" text-anchor="middle">C — Shoulder</text>
+
+      <!-- Zone D: YOUR head -->
+      <circle cx="290" cy="174" r="24" fill="#e5e7eb" opacity="0.4"/>
+      <circle cx="290" cy="174" r="24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-dasharray="5 3"/>
+      <text x="290" y="210" font-family="Nunito" font-size="11" font-weight="900" fill="#9ca3af" text-anchor="middle">D — Head</text>
+
+      <!-- Top view label -->
+      <text x="14" y="22" font-family="Nunito" font-size="9" font-weight="800" fill="#c4b5fd">TOP VIEW · SIDE CONTROL</text>
+    </svg>
+  </div>
+
+  <!-- Hint -->
+  <div class="hint-bar">
+    <div class="hint-icon">💡</div>
+    <div class="hint-text">Think about what stops their weight from shifting to mount.</div>
+  </div>
+
+  <div class="bottom-pad"></div>
+
+</body>
+</html>

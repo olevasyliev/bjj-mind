@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=390, initial-scale=1.0" />
+  <title>BJJ Mind — 4 Choice</title>
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 390px;
+      height: 844px;
+      background: #ffffff;
+      font-family: 'Nunito', sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topbar {
+      display: flex; align-items: center;
+      padding: 52px 24px 0; gap: 14px; flex-shrink: 0;
+    }
+
+    .close-btn {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: #f9f8ff; border: 1.5px solid #ede9fe;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; color: #9ca3af;
+    }
+
+    .progress-bar-wrap {
+      flex: 1; height: 10px;
+      background: #f3f0ff; border-radius: 100px; overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      width: 70%; height: 100%;
+      background: #7c3aed; border-radius: 100px;
+    }
+
+    .hearts { display: flex; gap: 2px; flex-shrink: 0; }
+    .heart { font-size: 17px; }
+    .heart.lost { opacity: 0.25; }
+
+    .meta-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 24px 0;
+    }
+
+    .position-tag {
+      background: #f5f0ff; border-radius: 100px;
+      padding: 7px 16px; font-size: 13px; font-weight: 800; color: #7c3aed;
+    }
+
+    .timer-ring { position: relative; width: 52px; height: 52px; }
+    .timer-ring svg { transform: rotate(-90deg); }
+    .timer-number {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 900; color: #ef4444;
+    }
+
+    /* Scene */
+    .scene {
+      margin: 14px 20px 0;
+      background: #f8f6ff; border-radius: 22px;
+      height: 160px; border: 1.5px solid #ede9fe; overflow: hidden; flex-shrink: 0;
+    }
+
+    .question-area {
+      padding: 16px 24px 12px; flex-shrink: 0;
+    }
+
+    .question-text {
+      font-size: 18px; font-weight: 900; color: #1a1a2e;
+      line-height: 1.3; letter-spacing: -0.3px;
+    }
+
+    .question-sub {
+      font-size: 12px; font-weight: 600; color: #9ca3af; margin-top: 4px;
+    }
+
+    /* 4 options in 2×2 grid */
+    .options-grid {
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .option-btn {
+      border-radius: 18px;
+      border: 2.5px solid #ede9fe;
+      background: #ffffff;
+      padding: 14px 14px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-height: 90px;
+    }
+
+    .option-letter {
+      width: 30px; height: 30px;
+      border-radius: 10px; background: #f5f0ff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 900; color: #7c3aed;
+    }
+
+    .option-text {
+      font-size: 13px; font-weight: 700; color: #1a1a2e; line-height: 1.3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="close-btn">✕</div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill"></div></div>
+    <div class="hearts">
+      <span class="heart">❤️</span><span class="heart">❤️</span>
+      <span class="heart lost">❤️</span><span class="heart lost">❤️</span>
+      <span class="heart lost">❤️</span>
+    </div>
+  </div>
+
+  <div class="meta-row">
+    <div class="position-tag">Mount Bottom</div>
+    <div class="timer-ring">
+      <svg width="52" height="52" viewBox="0 0 52 52">
+        <circle cx="26" cy="26" r="21" fill="none" stroke="#fee2e2" stroke-width="5"/>
+        <circle cx="26" cy="26" r="21" fill="none" stroke="#ef4444" stroke-width="5"
+          stroke-linecap="round" stroke-dasharray="131.9" stroke-dashoffset="99"/>
+      </svg>
+      <div class="timer-number">3</div>
+    </div>
+  </div>
+
+  <!-- Scene -->
+  <div class="scene">
+    <svg width="100%" height="100%" viewBox="0 0 350 160" fill="none">
+      <rect width="350" height="160" fill="#f8f6ff"/>
+      <line x1="0" y1="53" x2="350" y2="53" stroke="#ede9fe" stroke-width="1"/>
+      <line x1="0" y1="106" x2="350" y2="106" stroke="#ede9fe" stroke-width="1"/>
+      <line x1="116" y1="0" x2="116" y2="160" stroke="#ede9fe" stroke-width="1"/>
+      <line x1="232" y1="0" x2="232" y2="160" stroke="#ede9fe" stroke-width="1"/>
+      <!-- YOU on bottom -->
+      <rect x="68" y="66" width="196" height="38" rx="19" fill="#3b82f6"/>
+      <circle cx="276" cy="85" r="20" fill="#3b82f6"/>
+      <text x="160" y="90" font-family="Nunito" font-size="12" font-weight="900" fill="white" text-anchor="middle">YOU</text>
+      <!-- OPP mounted on top — centered, perpendicular short (mount position) -->
+      <rect x="130" y="20" width="36" height="90" rx="18" fill="#ef4444"/>
+      <circle cx="148" cy="12" r="16" fill="#ef4444"/>
+      <!-- OPP legs straddling -->
+      <rect x="90" y="64" width="48" height="16" rx="8" fill="#dc2626" transform="rotate(20 114 72)"/>
+      <rect x="196" y="64" width="48" height="16" rx="8" fill="#dc2626" transform="rotate(-20 220 72)"/>
+      <text x="148" y="72" font-family="Nunito" font-size="10" font-weight="900" fill="white" text-anchor="middle">OPP</text>
+      <!-- Scene label -->
+      <text x="14" y="22" font-family="Nunito" font-size="9" font-weight="800" fill="#c4b5fd">TOP VIEW · MOUNT</text>
+    </svg>
+  </div>
+
+  <div class="question-area">
+    <div class="question-text">Opponent has full mount. What is your primary escape option?</div>
+    <div class="question-sub">4 options · choose the best one</div>
+  </div>
+
+  <div class="options-grid">
+    <div class="option-btn">
+      <div class="option-letter">A</div>
+      <div class="option-text">Upa bridge and roll</div>
+    </div>
+    <div class="option-btn">
+      <div class="option-letter">B</div>
+      <div class="option-text">Push their chest up with both hands</div>
+    </div>
+    <div class="option-btn">
+      <div class="option-letter">C</div>
+      <div class="option-text">Elbow-knee escape to guard</div>
+    </div>
+    <div class="option-btn">
+      <div class="option-letter">D</div>
+      <div class="option-text">Turn to your side immediately</div>
+    </div>
+  </div>
+
+</body>
+</html>
