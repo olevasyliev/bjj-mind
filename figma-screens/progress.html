@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=390, initial-scale=1.0" />
+  <title>BJJ Mind — Progress</title>
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 390px;
+      height: 844px;
+      background: #f9f8ff;
+      font-family: 'Nunito', sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topbar {
+      padding: 52px 24px 16px;
+    }
+
+    .screen-title {
+      font-size: 28px;
+      font-weight: 900;
+      color: #1a1a2e;
+      letter-spacing: -0.5px;
+    }
+
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0 20px;
+    }
+
+    .content::-webkit-scrollbar { display: none; }
+
+    /* Belt visual card */
+    .belt-card {
+      background: white;
+      border: 1.5px solid #ede9fe;
+      border-radius: 24px;
+      padding: 20px;
+      margin-bottom: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .belt-visual {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .belt-bar {
+      width: 200px;
+      height: 24px;
+      background: #f3f4f6;
+      border-radius: 100px;
+      border: 2px solid #e5e7eb;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    .belt-fill {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 35%;
+      background: #7c3aed;
+      border-radius: 100px;
+      opacity: 0.2;
+    }
+
+    .belt-stripes {
+      position: absolute;
+      right: 16px;
+      display: flex;
+      gap: 4px;
+    }
+
+    .belt-stripe {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #e5e7eb;
+    }
+
+    .belt-stripe.done {
+      background: #7c3aed;
+    }
+
+    .belt-label {
+      font-size: 16px;
+      font-weight: 900;
+      color: #1a1a2e;
+    }
+
+    .belt-sub {
+      font-size: 13px;
+      font-weight: 600;
+      color: #9ca3af;
+    }
+
+    /* Radar chart card */
+    .radar-card {
+      background: white;
+      border: 1.5px solid #ede9fe;
+      border-radius: 24px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+
+    .card-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: #a78bfa;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    .radar-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Tag bars */
+    .tags-card {
+      background: white;
+      border: 1.5px solid #ede9fe;
+      border-radius: 24px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+
+    .tag-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .tag-row:last-child { margin-bottom: 0; }
+
+    .tag-name {
+      font-size: 14px;
+      font-weight: 800;
+      color: #374151;
+      width: 110px;
+      flex-shrink: 0;
+    }
+
+    .tag-bar {
+      flex: 1;
+      height: 10px;
+      background: #f3f0ff;
+      border-radius: 100px;
+      overflow: hidden;
+    }
+
+    .tag-fill {
+      height: 100%;
+      border-radius: 100px;
+      background: #7c3aed;
+    }
+
+    .tag-fill.weak { background: #ef4444; }
+    .tag-fill.mid { background: #f59e0b; }
+    .tag-fill.good { background: #22c55e; }
+
+    .tag-pct {
+      font-size: 13px;
+      font-weight: 800;
+      color: #7c3aed;
+      width: 38px;
+      text-align: right;
+    }
+
+    /* Stats */
+    .stats-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .stat-card {
+      flex: 1;
+      background: white;
+      border: 1.5px solid #ede9fe;
+      border-radius: 18px;
+      padding: 14px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .stat-icon { font-size: 20px; }
+    .stat-value { font-size: 20px; font-weight: 900; color: #1a1a2e; line-height: 1; }
+    .stat-label { font-size: 11px; font-weight: 700; color: #9ca3af; text-align: center; }
+
+    /* Tabbar */
+    .tabbar {
+      height: 82px;
+      background: #ffffff;
+      border-top: 1.5px solid #f3f4f6;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 0 8px 16px;
+      flex-shrink: 0;
+    }
+
+    .tab { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 1; }
+    .tab-icon { font-size: 22px; }
+    .tab-label { font-size: 10px; font-weight: 700; color: #d1d5db; }
+    .tab.active .tab-label { color: #7c3aed; }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="screen-title">Progress</div>
+  </div>
+
+  <div class="content">
+
+    <!-- Belt visual -->
+    <div class="belt-card">
+      <div class="belt-label">White Belt · Stripe 1 of 4</div>
+      <div class="belt-bar">
+        <div class="belt-fill"></div>
+        <div class="belt-stripes">
+          <div class="belt-stripe done"></div>
+          <div class="belt-stripe"></div>
+          <div class="belt-stripe"></div>
+          <div class="belt-stripe"></div>
+        </div>
+      </div>
+      <div class="belt-sub">240 / 680 XP · Stripe 2 unlocked after Frames & Escapes</div>
+    </div>
+
+    <!-- Tag mastery bars -->
+    <div class="tags-card">
+      <div class="card-title">Mastery by tag</div>
+
+      <div class="tag-row">
+        <div class="tag-name">🛡️ Frames</div>
+        <div class="tag-bar"><div class="tag-fill weak" style="width:38%"></div></div>
+        <div class="tag-pct" style="color:#ef4444">38%</div>
+      </div>
+      <div class="tag-row">
+        <div class="tag-name">🌀 Escapes</div>
+        <div class="tag-bar"><div class="tag-fill mid" style="width:55%"></div></div>
+        <div class="tag-pct" style="color:#f59e0b">55%</div>
+      </div>
+      <div class="tag-row">
+        <div class="tag-name">✋ Grip Control</div>
+        <div class="tag-bar"><div class="tag-fill good" style="width:72%"></div></div>
+        <div class="tag-pct" style="color:#22c55e">72%</div>
+      </div>
+      <div class="tag-row">
+        <div class="tag-name">⏱️ Timing</div>
+        <div class="tag-bar"><div class="tag-fill mid" style="width:60%"></div></div>
+        <div class="tag-pct" style="color:#f59e0b">60%</div>
+      </div>
+      <div class="tag-row">
+        <div class="tag-name">🧠 Decisions</div>
+        <div class="tag-bar"><div class="tag-fill good" style="width:80%"></div></div>
+        <div class="tag-pct" style="color:#22c55e">80%</div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <span class="stat-icon">🎯</span>
+        <span class="stat-value">147</span>
+        <span class="stat-label">Questions answered</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon">📅</span>
+        <span class="stat-value">6</span>
+        <span class="stat-label">Day streak</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon">⚔️</span>
+        <span class="stat-value">12</span>
+        <span class="stat-label">Matches vs Kat</span>
+      </div>
+    </div>
+
+    <!-- Personal Best -->
+    <div class="tags-card">
+      <div class="card-title">Personal bests</div>
+      <div class="tag-row" style="margin-bottom:10px;">
+        <div style="font-size:20px;flex-shrink:0;">🔥</div>
+        <div style="flex:1;padding-left:4px;">
+          <div style="font-size:14px;font-weight:800;color:#1a1a2e;">Longest streak</div>
+          <div style="font-size:13px;font-weight:600;color:#9ca3af;">8 days in a row</div>
+        </div>
+      </div>
+      <div class="tag-row">
+        <div style="font-size:20px;flex-shrink:0;">⚡</div>
+        <div style="flex:1;padding-left:4px;">
+          <div style="font-size:14px;font-weight:800;color:#1a1a2e;">Best session score</div>
+          <div style="font-size:13px;font-weight:600;color:#9ca3af;">10/10 correct · 3m 42s</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="tabbar">
+    <div class="tab"><span class="tab-icon">🏠</span><span class="tab-label">Home</span></div>
+    <div class="tab"><span class="tab-icon">🥋</span><span class="tab-label">Train</span></div>
+    <div class="tab"><span class="tab-icon">⚔️</span><span class="tab-label">Compete</span></div>
+    <div class="tab active"><span class="tab-icon">📈</span><span class="tab-label">Progress</span></div>
+    <div class="tab"><span class="tab-icon">👤</span><span class="tab-label">Profile</span></div>
+  </div>
+
+</body>
+</html>

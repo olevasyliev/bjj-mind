@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=390, initial-scale=1.0" />
+  <title>BJJ Mind — Profile</title>
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 390px;
+      height: 844px;
+      background: #f9f8ff;
+      font-family: 'Nunito', sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topbar {
+      padding: 52px 24px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .screen-title {
+      font-size: 28px;
+      font-weight: 900;
+      color: #1a1a2e;
+      letter-spacing: -0.5px;
+    }
+
+    .settings-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: white;
+      border: 1.5px solid #ede9fe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0 20px;
+    }
+
+    .content::-webkit-scrollbar { display: none; }
+
+    /* Gi Ghost hero card */
+    .hero-card {
+      background: white;
+      border: 1.5px solid #ede9fe;
+      border-radius: 24px;
+      padding: 20px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .ghost-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 24px;
+      background: #f5f0ff;
+      border: 2px solid #ddd6fe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .ghost-avatar img {
+      width: 68px;
+      height: 68px;
+      object-fit: contain;
+    }
+
+    .hero-info { flex: 1; }
+
+    .hero-name {
+      font-size: 20px;
+      font-weight: 900;
+      color: #1a1a2e;
+      letter-spacing: -0.3px;
+    }
+
+    .hero-belt {
+      font-size: 14px;
+      font-weight: 700;
+      color: #9ca3af;
+      margin-top: 2px;
+    }
+
+    .hero-streak {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+      background: #fff7ed;
+      border: 1.5px solid #fed7aa;
+      border-radius: 100px;
+      padding: 4px 12px;
+      width: fit-content;
+      font-size: 13px;
+      font-weight: 800;
+      color: #ea580c;
+    }
+
+    /* Titles */
+    .titles-card {
+      background: white;
+      border: 1.5px solid #ede9fe;
+      border-radius: 24px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+
+    .card-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: #a78bfa;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .titles-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .title-badge {
+      background: #f5f0ff;
+      border: 1.5px solid #ddd6fe;
+      border-radius: 100px;
+      padding: 7px 14px;
+      font-size: 13px;
+      font-weight: 800;
+      color: #7c3aed;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .title-badge.locked {
+      background: #f9fafb;
+      border-color: #e5e7eb;
+      color: #d1d5db;
+    }
+
+    /* Gym stats */
+    .stats-card {
+      background: white;
+      border: 1.5px solid #ede9fe;
+      border-radius: 24px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+
+    .stat-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 0;
+      border-bottom: 1px solid #f9f8ff;
+    }
+
+    .stat-row:last-child { border-bottom: none; }
+
+    .stat-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #374151;
+    }
+
+    .stat-right {
+      font-size: 15px;
+      font-weight: 900;
+      color: #7c3aed;
+    }
+
+    /* Tabbar */
+    .tabbar {
+      height: 82px;
+      background: #ffffff;
+      border-top: 1.5px solid #f3f4f6;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 0 8px 16px;
+      flex-shrink: 0;
+    }
+
+    .tab { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 1; }
+    .tab-icon { font-size: 22px; }
+    .tab-label { font-size: 10px; font-weight: 700; color: #d1d5db; }
+    .tab.active .tab-label { color: #7c3aed; }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="screen-title">Profile</div>
+    <div class="settings-btn">⚙️</div>
+  </div>
+
+  <div class="content">
+
+    <!-- Gi Ghost hero -->
+    <div class="hero-card">
+      <div class="ghost-avatar">
+        <img src="image 1.png" alt="Gi Ghost" />
+      </div>
+      <div class="hero-info">
+        <div class="hero-name">Alex</div>
+        <div class="hero-belt">🥋 White Belt · Stripe 1</div>
+        <div class="hero-streak">🔥 6 day streak</div>
+      </div>
+    </div>
+
+    <!-- Titles earned -->
+    <div class="titles-card">
+      <div class="card-title">Titles</div>
+      <div class="titles-row">
+        <div class="title-badge">🛡️ Frame Builder</div>
+        <div class="title-badge">🎯 Focused Mind</div>
+        <div class="title-badge locked">🌀 Escape Artist</div>
+        <div class="title-badge locked">⚡ Quick Reactor</div>
+        <div class="title-badge locked">🏆 Tournament Vet</div>
+      </div>
+    </div>
+
+    <!-- Gym stats -->
+    <div class="stats-card">
+      <div class="card-title">The Garage stats</div>
+      <div class="stat-row">
+        <div class="stat-left">⚡ Total XP earned</div>
+        <div class="stat-right">1,240 XP</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-left">🎯 Sessions completed</div>
+        <div class="stat-right">24</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-left">⚔️ Matches vs Kat</div>
+        <div class="stat-right">12</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-left">✅ Questions answered</div>
+        <div class="stat-right">147</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-left">🔥 Longest streak</div>
+        <div class="stat-right">8 days</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="tabbar">
+    <div class="tab"><span class="tab-icon">🏠</span><span class="tab-label">Home</span></div>
+    <div class="tab"><span class="tab-icon">🥋</span><span class="tab-label">Train</span></div>
+    <div class="tab"><span class="tab-icon">⚔️</span><span class="tab-label">Compete</span></div>
+    <div class="tab"><span class="tab-icon">📈</span><span class="tab-label">Progress</span></div>
+    <div class="tab active"><span class="tab-icon">👤</span><span class="tab-label">Profile</span></div>
+  </div>
+
+</body>
+</html>

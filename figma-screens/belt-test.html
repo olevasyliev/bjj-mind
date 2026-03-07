@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=390, initial-scale=1.0" />
+  <title>BJJ Mind — Belt Test</title>
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 390px;
+      height: 844px;
+      background: #fffbeb;
+      font-family: 'Nunito', sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .status-bar { height: 52px; flex-shrink: 0; }
+
+    /* Hero */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 12px 32px 0;
+      text-align: center;
+    }
+
+    .test-badge {
+      background: #f59e0b;
+      border-radius: 100px;
+      padding: 6px 18px;
+      font-size: 13px;
+      font-weight: 800;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      box-shadow: 0 3px 0 #d97706;
+    }
+
+    .test-icon { font-size: 72px; margin-bottom: 12px; line-height: 1; }
+
+    .test-title {
+      font-size: 28px;
+      font-weight: 900;
+      color: #1a1a2e;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
+
+    .test-sub {
+      font-size: 15px;
+      font-weight: 600;
+      color: #92400e;
+      margin-top: 8px;
+      line-height: 1.4;
+    }
+
+    /* Rules */
+    .rules {
+      width: 100%;
+      padding: 20px 20px 0;
+    }
+
+    .rules-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: #d97706;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      padding: 0 4px;
+    }
+
+    .rule-item {
+      background: #ffffff;
+      border: 1.5px solid #fde68a;
+      border-radius: 16px;
+      padding: 13px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .rule-icon { font-size: 20px; flex-shrink: 0; }
+
+    .rule-text {
+      font-size: 14px;
+      font-weight: 700;
+      color: #374151;
+      line-height: 1.3;
+    }
+
+    .rule-text span { color: #d97706; }
+
+    /* Tags to pass */
+    .tags-section {
+      width: 100%;
+      padding: 16px 20px 0;
+    }
+
+    .tags-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: #d97706;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      padding: 0 4px;
+    }
+
+    .tags-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background: #ffffff;
+      border: 2px solid #fde68a;
+      border-radius: 100px;
+      padding: 7px 14px;
+      font-size: 13px;
+      font-weight: 800;
+      color: #92400e;
+    }
+
+    /* Buttons */
+    .buttons {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 20px 48px;
+      width: 100%;
+      gap: 10px;
+    }
+
+    .btn-primary {
+      width: 100%;
+      height: 62px;
+      border-radius: 100px;
+      background: #f59e0b;
+      border: none;
+      color: white;
+      font-family: 'Nunito', sans-serif;
+      font-size: 19px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 5px 0 #d97706;
+      letter-spacing: -0.3px;
+    }
+
+    .btn-secondary {
+      width: 100%;
+      height: 52px;
+      border-radius: 100px;
+      background: transparent;
+      border: 2.5px solid #fde68a;
+      color: #92400e;
+      font-family: 'Nunito', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="status-bar"></div>
+
+  <div class="hero">
+    <div class="test-badge">🎯 Stripe 2 Test</div>
+    <div class="test-icon">🏆</div>
+    <div class="test-title">Ready for your test?</div>
+    <div class="test-sub">Pass all 4 mastery tags to earn your next stripe. No second chances — but you can re-train weak tags and retry.</div>
+  </div>
+
+  <!-- Rules -->
+  <div class="rules">
+    <div class="rules-title">Test rules</div>
+
+    <div class="rule-item">
+      <span class="rule-icon">⏱️</span>
+      <div class="rule-text"><span>5 second timer</span> per question. Minimal hints.</div>
+    </div>
+    <div class="rule-item">
+      <span class="rule-icon">📋</span>
+      <div class="rule-text"><span>16 situations</span> across all 4 tags.</div>
+    </div>
+    <div class="rule-item">
+      <span class="rule-icon">🎯</span>
+      <div class="rule-text">Fail a tag → train that tag only. <span>No full retake.</span></div>
+    </div>
+  </div>
+
+  <!-- Tags to pass -->
+  <div class="tags-section">
+    <div class="tags-title">You need to pass</div>
+    <div class="tags-row">
+      <div class="tag">🛡️ Frames</div>
+      <div class="tag">🌀 Escapes</div>
+      <div class="tag">✋ Grip Control</div>
+      <div class="tag">⏱️ Timing</div>
+    </div>
+  </div>
+
+  <!-- Buttons -->
+  <div class="buttons">
+    <button class="btn-primary">🥋 Start Test</button>
+    <button class="btn-secondary">Not ready — keep training</button>
+  </div>
+
+</body>
+</html>

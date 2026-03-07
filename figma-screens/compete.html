@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=390, initial-scale=1.0" />
+  <title>BJJ Mind — Compete</title>
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 390px;
+      height: 844px;
+      background: #f9f8ff;
+      font-family: 'Nunito', sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topbar {
+      padding: 52px 24px 16px;
+    }
+
+    .screen-title {
+      font-size: 28px;
+      font-weight: 900;
+      color: #1a1a2e;
+      letter-spacing: -0.5px;
+    }
+
+    .screen-sub {
+      font-size: 14px;
+      font-weight: 600;
+      color: #9ca3af;
+      margin-top: 2px;
+    }
+
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0 20px;
+    }
+
+    .content::-webkit-scrollbar { display: none; }
+
+    /* Tournament Run card */
+    .tournament-card {
+      background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
+      border-radius: 24px;
+      padding: 20px;
+      margin-bottom: 14px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 6px 0 #5b21b6;
+    }
+
+    .tournament-card::before {
+      content: '🏆';
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 64px;
+      opacity: 0.15;
+    }
+
+    .card-badge {
+      background: rgba(255,255,255,0.2);
+      border-radius: 100px;
+      padding: 4px 12px;
+      font-size: 11px;
+      font-weight: 800;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-size: 22px;
+      font-weight: 900;
+      color: white;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+
+    .card-timer {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 14px;
+    }
+
+    .btn-card-primary {
+      height: 50px;
+      border-radius: 100px;
+      background: white;
+      border: none;
+      color: #7c3aed;
+      font-family: 'Nunito', sans-serif;
+      font-size: 16px;
+      font-weight: 900;
+      cursor: pointer;
+      padding: 0 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Quick Match card */
+    .match-card {
+      background: #ffffff;
+      border: 1.5px solid #ede9fe;
+      border-radius: 22px;
+      padding: 18px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .vs-section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .player-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      flex-shrink: 0;
+    }
+
+    .vs-label {
+      font-size: 14px;
+      font-weight: 900;
+      color: #d1d5db;
+    }
+
+    .match-info { flex: 1; }
+
+    .match-title {
+      font-size: 17px;
+      font-weight: 900;
+      color: #1a1a2e;
+    }
+
+    .match-desc {
+      font-size: 13px;
+      font-weight: 600;
+      color: #9ca3af;
+      margin-top: 2px;
+    }
+
+    .btn-match {
+      height: 44px;
+      border-radius: 100px;
+      background: #7c3aed;
+      border: none;
+      color: white;
+      font-family: 'Nunito', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      padding: 0 16px;
+      box-shadow: 0 3px 0 #5b21b6;
+      flex-shrink: 0;
+    }
+
+    /* League ladder */
+    .league-card {
+      background: #ffffff;
+      border: 1.5px solid #ede9fe;
+      border-radius: 22px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+
+    .league-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .league-title {
+      font-size: 17px;
+      font-weight: 900;
+      color: #1a1a2e;
+    }
+
+    .league-badge {
+      background: #fef3c7;
+      border: 1.5px solid #fde68a;
+      border-radius: 100px;
+      padding: 4px 12px;
+      font-size: 12px;
+      font-weight: 800;
+      color: #92400e;
+    }
+
+    .ladder-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 9px 0;
+      border-bottom: 1px solid #f9f8ff;
+    }
+
+    .ladder-row:last-child { border-bottom: none; }
+
+    .ladder-row.you {
+      background: #f5f0ff;
+      border-radius: 12px;
+      padding: 9px 10px;
+      border-bottom: none;
+      margin: 4px -4px;
+    }
+
+    .rank {
+      font-size: 14px;
+      font-weight: 900;
+      color: #9ca3af;
+      width: 24px;
+      text-align: center;
+    }
+
+    .rank.top { color: #f59e0b; }
+
+    .ladder-name {
+      flex: 1;
+      font-size: 15px;
+      font-weight: 700;
+      color: #1a1a2e;
+    }
+
+    .ladder-xp {
+      font-size: 13px;
+      font-weight: 800;
+      color: #7c3aed;
+    }
+
+    /* Tabbar */
+    .tabbar {
+      height: 82px;
+      background: #ffffff;
+      border-top: 1.5px solid #f3f4f6;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 0 8px 16px;
+      flex-shrink: 0;
+    }
+
+    .tab { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 1; }
+    .tab-icon { font-size: 22px; }
+    .tab-label { font-size: 10px; font-weight: 700; color: #d1d5db; }
+    .tab.active .tab-label { color: #7c3aed; }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="screen-title">Compete</div>
+    <div class="screen-sub">Bronze League · White Belt</div>
+  </div>
+
+  <div class="content">
+
+    <!-- Weekly Tournament -->
+    <div class="tournament-card">
+      <div class="card-badge">⚔️ Weekly Tournament</div>
+      <div class="card-title">Tournament Run</div>
+      <div class="card-desc">5 matches in a row. Resources carry between matches. How far can you go?</div>
+      <div class="card-timer">⏳ Resets in 4 days 12 hours</div>
+      <button class="btn-card-primary">🥊 Start Run</button>
+    </div>
+
+    <!-- Quick Match vs Kat -->
+    <div class="match-card">
+      <div class="vs-section">
+        <div class="player-avatar" style="background:#eff6ff;">🥋</div>
+        <div class="vs-label">VS</div>
+        <div class="player-avatar" style="background:#fef2f2;">🥷</div>
+      </div>
+      <div class="match-info">
+        <div class="match-title">vs Kat</div>
+        <div class="match-desc">Full match · 2-3 min · Turn-based</div>
+      </div>
+      <button class="btn-match">Fight</button>
+    </div>
+
+    <!-- League Ladder -->
+    <div class="league-card">
+      <div class="league-header">
+        <div class="league-title">🥉 Bronze League</div>
+        <div class="league-badge">+120 XP to Silver</div>
+      </div>
+
+      <div class="ladder-row">
+        <span class="rank top">1</span>
+        <span class="ladder-name">Kat</span>
+        <span class="ladder-xp">860 XP</span>
+      </div>
+      <div class="ladder-row">
+        <span class="rank top">2</span>
+        <span class="ladder-name">Rex</span>
+        <span class="ladder-xp">740 XP</span>
+      </div>
+      <div class="ladder-row">
+        <span class="rank top">3</span>
+        <span class="ladder-name">Coach_Al</span>
+        <span class="ladder-xp">620 XP</span>
+      </div>
+      <div class="ladder-row you">
+        <span class="rank" style="color:#7c3aed;">4</span>
+        <span class="ladder-name" style="color:#7c3aed;font-weight:900;">You</span>
+        <span class="ladder-xp">480 XP</span>
+      </div>
+      <div class="ladder-row">
+        <span class="rank">5</span>
+        <span class="ladder-name">WhiteBeltWarrior</span>
+        <span class="ladder-xp">360 XP</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="tabbar">
+    <div class="tab"><span class="tab-icon">🏠</span><span class="tab-label">Home</span></div>
+    <div class="tab"><span class="tab-icon">🥋</span><span class="tab-label">Train</span></div>
+    <div class="tab active"><span class="tab-icon">⚔️</span><span class="tab-label">Compete</span></div>
+    <div class="tab"><span class="tab-icon">📈</span><span class="tab-label">Progress</span></div>
+    <div class="tab"><span class="tab-icon">👤</span><span class="tab-label">Profile</span></div>
+  </div>
+
+</body>
+</html>

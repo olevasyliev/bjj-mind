@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=390, initial-scale=1.0" />
+  <title>BJJ Mind — Train</title>
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 390px;
+      height: 844px;
+      background: #f9f8ff;
+      font-family: 'Nunito', sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topbar {
+      padding: 52px 24px 16px;
+    }
+
+    .screen-title {
+      font-size: 28px;
+      font-weight: 900;
+      color: #1a1a2e;
+      letter-spacing: -0.5px;
+    }
+
+    .screen-sub {
+      font-size: 14px;
+      font-weight: 600;
+      color: #9ca3af;
+      margin-top: 2px;
+    }
+
+    /* Belt header */
+    .belt-header {
+      margin: 0 20px 16px;
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 14px 16px;
+      border: 1.5px solid #ede9fe;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .belt-visual {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: #f9fafb;
+      border: 2px solid #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .belt-info { flex: 1; }
+
+    .belt-name {
+      font-size: 16px;
+      font-weight: 900;
+      color: #1a1a2e;
+    }
+
+    .belt-progress-wrap {
+      height: 8px;
+      background: #f3f0ff;
+      border-radius: 100px;
+      margin-top: 6px;
+      overflow: hidden;
+    }
+
+    .belt-progress-fill {
+      width: 35%;
+      height: 100%;
+      background: #7c3aed;
+      border-radius: 100px;
+    }
+
+    .belt-xp {
+      font-size: 12px;
+      font-weight: 700;
+      color: #7c3aed;
+      margin-top: 4px;
+    }
+
+    /* Stripe indicators */
+    .stripes {
+      display: flex;
+      gap: 4px;
+    }
+
+    .stripe {
+      width: 18px;
+      height: 6px;
+      border-radius: 3px;
+      background: #e5e7eb;
+    }
+
+    .stripe.done {
+      background: #7c3aed;
+    }
+
+    /* Scrollable path */
+    .path-scroll {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0 20px 16px;
+    }
+
+    .path-scroll::-webkit-scrollbar { display: none; }
+
+    /* Unit node */
+    .unit {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 6px;
+      position: relative;
+    }
+
+    /* Vertical line connector */
+    .unit::before {
+      content: '';
+      position: absolute;
+      left: 36px;
+      top: 72px;
+      width: 3px;
+      height: 22px;
+      background: #ede9fe;
+      border-radius: 2px;
+    }
+
+    .unit:last-child::before { display: none; }
+
+    .unit-node {
+      width: 72px;
+      height: 72px;
+      border-radius: 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 26px;
+      position: relative;
+      border: 3px solid transparent;
+    }
+
+    .unit-node.done {
+      background: #7c3aed;
+      box-shadow: 0 4px 0 #5b21b6;
+    }
+
+    .unit-node.active {
+      background: #ffffff;
+      border-color: #7c3aed;
+      box-shadow: 0 4px 0 #ddd6fe;
+    }
+
+    .unit-node.locked {
+      background: #f3f4f6;
+      border-color: #e5e7eb;
+      opacity: 0.6;
+    }
+
+    .unit-node.exam {
+      background: #fef3c7;
+      border-color: #f59e0b;
+      box-shadow: 0 4px 0 #d97706;
+    }
+
+    .done-check {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #22c55e;
+      border: 2.5px solid white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: white;
+      font-weight: 900;
+    }
+
+    .unit-info { flex: 1; }
+
+    .unit-name {
+      font-size: 16px;
+      font-weight: 800;
+      color: #1a1a2e;
+    }
+
+    .unit-name.locked { color: #9ca3af; }
+
+    .unit-desc {
+      font-size: 13px;
+      font-weight: 600;
+      color: #9ca3af;
+      margin-top: 2px;
+    }
+
+    .unit-mastery {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .mastery-bar {
+      flex: 1;
+      height: 6px;
+      background: #f3f0ff;
+      border-radius: 100px;
+      overflow: hidden;
+    }
+
+    .mastery-fill {
+      height: 100%;
+      border-radius: 100px;
+      background: #7c3aed;
+    }
+
+    .mastery-pct {
+      font-size: 11px;
+      font-weight: 800;
+      color: #7c3aed;
+    }
+
+    /* Tabbar */
+    .tabbar {
+      height: 82px;
+      background: #ffffff;
+      border-top: 1.5px solid #f3f4f6;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 0 8px 16px;
+      flex-shrink: 0;
+    }
+
+    .tab {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .tab-icon { font-size: 22px; }
+
+    .tab-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: #d1d5db;
+    }
+
+    .tab.active .tab-label { color: #7c3aed; }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="screen-title">Train</div>
+    <div class="screen-sub">White Belt — Survival</div>
+  </div>
+
+  <!-- Belt progress header -->
+  <div class="belt-header">
+    <div class="belt-visual">🥋</div>
+    <div class="belt-info">
+      <div class="belt-name">White Belt</div>
+      <div class="belt-progress-wrap">
+        <div class="belt-progress-fill"></div>
+      </div>
+      <div class="belt-xp">240 / 680 XP to Stripe 2</div>
+    </div>
+    <div class="stripes">
+      <div class="stripe done"></div>
+      <div class="stripe"></div>
+      <div class="stripe"></div>
+      <div class="stripe"></div>
+    </div>
+  </div>
+
+  <!-- Vertical unit path -->
+  <div class="path-scroll">
+
+    <!-- Stripe 1: Done -->
+    <div style="font-size:11px;font-weight:800;color:#a78bfa;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Stripe 1 · Bottom Positions ✓</div>
+
+    <div class="unit">
+      <div class="unit-node done">
+        🛡️
+        <div class="done-check">✓</div>
+      </div>
+      <div class="unit-info">
+        <div class="unit-name">Side Control</div>
+        <div class="unit-desc">Recognize & survive</div>
+        <div class="unit-mastery">
+          <div class="mastery-bar"><div class="mastery-fill" style="width:90%"></div></div>
+          <span class="mastery-pct">90%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="unit">
+      <div class="unit-node done">
+        🏔️
+        <div class="done-check">✓</div>
+      </div>
+      <div class="unit-info">
+        <div class="unit-name">Mount</div>
+        <div class="unit-desc">Don't give up your arms</div>
+        <div class="unit-mastery">
+          <div class="mastery-bar"><div class="mastery-fill" style="width:82%"></div></div>
+          <span class="mastery-pct">82%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stripe 2: Active -->
+    <div style="font-size:11px;font-weight:800;color:#a78bfa;text-transform:uppercase;letter-spacing:1px;margin:12px 0 10px;">Stripe 2 · Frames & Escapes</div>
+
+    <div class="unit">
+      <div class="unit-node active">💪</div>
+      <div class="unit-info">
+        <div class="unit-name">Elbow-Knee Frame</div>
+        <div class="unit-desc">Create distance, recover guard</div>
+        <div class="unit-mastery">
+          <div class="mastery-bar"><div class="mastery-fill" style="width:55%"></div></div>
+          <span class="mastery-pct">55%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="unit">
+      <div class="unit-node locked">🌀</div>
+      <div class="unit-info">
+        <div class="unit-name locked">Bridge & Roll</div>
+        <div class="unit-desc">Use hip explosion</div>
+        <div class="unit-mastery">
+          <div class="mastery-bar"><div class="mastery-fill" style="width:0%"></div></div>
+          <span class="mastery-pct" style="color:#d1d5db">0%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="unit">
+      <div class="unit-node locked">🦵</div>
+      <div class="unit-info">
+        <div class="unit-name locked">Shrimp Escape</div>
+        <div class="unit-desc">Hip movement fundamentals</div>
+        <div class="unit-mastery">
+          <div class="mastery-bar"><div class="mastery-fill" style="width:0%"></div></div>
+          <span class="mastery-pct" style="color:#d1d5db">0%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Exam gate -->
+    <div class="unit" style="margin-top:8px;">
+      <div class="unit-node exam">🎯</div>
+      <div class="unit-info">
+        <div class="unit-name" style="color:#92400e;">Stripe 2 Test</div>
+        <div class="unit-desc">12 situations · No hints · 5 sec timer</div>
+        <div style="font-size:12px;font-weight:700;color:#d97706;margin-top:4px;">🔒 Complete units first</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Tab bar -->
+  <div class="tabbar">
+    <div class="tab">
+      <span class="tab-icon">🏠</span>
+      <span class="tab-label">Home</span>
+    </div>
+    <div class="tab active">
+      <span class="tab-icon">🥋</span>
+      <span class="tab-label">Train</span>
+    </div>
+    <div class="tab">
+      <span class="tab-icon">⚔️</span>
+      <span class="tab-label">Compete</span>
+    </div>
+    <div class="tab">
+      <span class="tab-icon">📈</span>
+      <span class="tab-label">Progress</span>
+    </div>
+    <div class="tab">
+      <span class="tab-icon">👤</span>
+      <span class="tab-label">Profile</span>
+    </div>
+  </div>
+
+</body>
+</html>
