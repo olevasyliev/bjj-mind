@@ -1,45 +1,76 @@
-# BJJ Mind — Figma Screens Backlog
+# BJJ Mind — Prototype Progress
 
-## Done ✅
-- `welcome.html` — Welcome screen (Gi Ghost + CTA)
-- `belt-select.html` — Belt selection (onboarding step 1)
-- `problem-select.html` — Problem selection (onboarding step 2)
-- `home.html` — Home screen (3 rings, streak, Marco, Start Session)
-- `train.html` — Belt Path (vertical unit track, Duolingo-style)
-- `summary.html` — Session summary (XP, stats, coach insights)
-- `belt-test.html` — Belt Test Gate (exam before stripe)
-- `compete.html` — Compete tab (Tournament Run, vs Kat, League)
-- `progress.html` — Progress tab (belt + stripes, tag mastery bars)
-- `profile.html` — Profile (Gi Ghost + titles + gym stats)
+## Status: Clickable HTML prototype, 25 screens ✅
 
-## Polish pass needed (Phase 7) 🎨
-- `micro-round.html` — Replace SVG scene with real GrappleMap 3D render
-- `feedback-wrong.html` — Replace placeholder with real Gi Ghost sad art (Nano Banana)
-- `feedback-correct.html` — Replace placeholder with real Gi Ghost happy art (Nano Banana)
+Deployed at GitHub Pages (olevasyliev/bjj-mind).
+
+---
+
+## Screens done ✅
+
+### Onboarding (3 screens)
+- `welcome.html` — Gi Ghost + CTA
+- `belt-select.html` — Belt selection (White / Blue / Purple)
+- `problem-select.html` — Problem tags (takedowns, guard, escapes...)
+- `aha-moment.html` — "Here's how it works" — Onboarding step 3
+
+### Core App (5 screens)
+- `home.html` — **Duolingo-style belt path map** (zigzag track, nodes, active unit, belt test gate, locked future)
+- `train.html` — Belt path (unit list, active/locked, exam gate)
+- `compete.html` — Tournament Run, vs Kat, League
+- `progress.html` — Belt + stripes, tag mastery bars
+- `profile.html` — Gi Ghost, titles, gym stats
+
+### Gameplay Formats (7 screens)
+- `micro-round.html` — Main MCQ format (SVG scene, timer ring, 5 hearts)
+- `round-4choice.html` — 4-option grid MCQ (harder, 3s timer)
+- `round-truefalse.html` — Quick true/false
+- `round-sequence.html` — Order the steps (word bank chips)
+- `round-tap-zone.html` — Tap the correct zone on SVG diagram
+- `round-fill-rule.html` — Fill in the blank
+- `round-spot-mistake.html` — Spot what's wrong in the position
+
+### Feedback (2 screens)
+- `feedback-correct.html` — Gi Ghost happy (green, XP reward)
+- `feedback-wrong.html` — Gi Ghost sad (red, correct answer reveal)
+
+### Special Modes (4 screens)
+- `coach-moment.html` — Marco interrupts with tip/story
+- `match-vs-kat.html` — Turn-based match vs Kat (dark theme)
+- `belt-test.html` — Belt Test Gate (rules, tags to pass, start CTA)
+- `belt-test-active.html` — Belt test in progress (strict timer, no hints)
+- `tournament-match.html` — Bracket strip + in-match question (dark theme)
+
+### End of Session (1 screen)
+- `summary.html` — XP earned, accuracy, coach insight, streak
+
+---
 
 ## Up next 📋
-- Character art from Nano Banana → see `docs/characters/character-prompts.md`
-- Micro-round scene refinement ✅ (timer ring + better SVG done)
-- Feedback screens — Gi Ghost sad/happy placeholder ✅
-- Onboarding screen 3 (aha-moment) ✅
 
-## In progress 🔨
-### New gameplay formats
-- `round-4choice.html` — 4-option MCQ (harder, less time)
-- `round-sequence.html` — drag/tap to order steps (e.g. escape sequence)
-- `round-tap-zone.html` — tap the correct body part on the diagram
-- `round-truefalse.html` — quick true/false fire round
-- `round-spot-mistake.html` — spot what's wrong in the position
-- `round-fill-rule.html` — fill in the blank from word bank
+### Content & Art
+- [ ] Character art from Nano Banana (Gi Ghost: happy/sad/excited expressions)
+- [ ] Marco, Old Chen, Kat character art
+- [ ] Real BJJ position illustrations (replace SVG placeholders)
+- [ ] App name brainstorm (BJJ Mind is placeholder)
 
-### Character & social screens
-- `coach-moment.html` — Marco or Old Chen interrupts session with tip/story
-- `match-vs-kat.html` — actual turn-based match screen vs Kat
-- `belt-test-active.html` — belt test in progress (strict timer, no hints)
-- `tournament-match.html` — tournament bracket + in-match view
+### Missing states
+- [ ] `home.html` — Streak lost state (0 day, broken heart)
+- [ ] `home.html` — All units complete → belt test unlocked
+- [ ] `feedback-wrong.html` — heart lost animation
+- [ ] Tournament: win screen, lose screen
 
-### After all screens done
-- Clickable prototype: add navigation links between all screens
+### Next prototype screens
+- [ ] `league.html` — League standings / weekly leaderboard
+- [ ] `store.html` — Hearts refill, streak freeze, power-ups
 
-## Ideas / backlog 💡
-- Think of a better app name (BJJ Mind is placeholder)
+---
+
+## Locked decisions 🔒
+- 5-heart lives system (like Duolingo)
+- LLM-based async rival for vs-Kat matches
+- GrappleMap for 3D position scenes (Phase 5)
+- Free: White Belt Stripe 1. Subscription from Stripe 2+
+- Promo codes for friends & partners (free subscription)
+- iOS-first (React Native + Expo)
+- Stack: React Native, Babylon.js, Supabase, Claude API
