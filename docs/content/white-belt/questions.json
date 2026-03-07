@@ -1,0 +1,1572 @@
+{
+  "meta": {
+    "version": "1.0",
+    "belt": "white",
+    "total_questions": 90,
+    "generated": "2026-03-07",
+    "source": "docs/curriculum/app-questions.md"
+  },
+  "questions": [
+
+    {
+      "id": "q-1-01",
+      "unit": 1,
+      "stripe": 1,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["escapes", "base"],
+      "difficulty": 1,
+      "situation": "You're on your back. Opponent is pushing into you from the side.",
+      "question": "To move your hips AWAY and create space, you use:",
+      "options": [
+        { "id": "a", "text": "Shrimp", "correct": true },
+        { "id": "b", "text": "Upa (bridge)", "correct": false }
+      ],
+      "explanation": "The shrimp moves your hips away from pressure — your primary tool for creating space from the bottom. Upa reverses position by bridging under the opponent.",
+      "scene_id": "bottom-pressure-01"
+    },
+
+    {
+      "id": "q-1-02",
+      "unit": 1,
+      "stripe": 1,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["base", "escapes"],
+      "difficulty": 1,
+      "situation": "Opponent is mounted on you. You want to reverse them.",
+      "question": "You bridge (Upa). Before you bridge, what do you do with your head?",
+      "options": [
+        { "id": "a", "text": "Tuck chin to chest", "correct": false },
+        { "id": "b", "text": "Slide it back off center and look behind", "correct": true }
+      ],
+      "explanation": "Sliding the head back and off-center takes your spine out of alignment with theirs — this is what makes the bridge effective. Tucking your chin keeps you centered and the bridge goes nowhere.",
+      "scene_id": "mount-bottom-01"
+    },
+
+    {
+      "id": "q-1-03",
+      "unit": 1,
+      "stripe": 1,
+      "belt": "white",
+      "format": "truefalse",
+      "tags": ["base"],
+      "difficulty": 1,
+      "question": "During the Teeter Totter movement, it's okay to let your legs go past 90 degrees from your body.",
+      "correct": false,
+      "explanation": "Legs past 90° means you've lost your base. The Teeter Totter teaches hip rotation while keeping legs in a safe, controlled range.",
+      "scene_id": "bottom-generic-01"
+    },
+
+    {
+      "id": "q-1-04",
+      "unit": 1,
+      "stripe": 1,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["base"],
+      "difficulty": 1,
+      "situation": "You're on the ground. Opponent is standing and backing away. You need to get up safely.",
+      "question": "As you Stand Up in Base, what do you do with your arm?",
+      "options": [
+        { "id": "a", "text": "Keep both arms at sides for balance", "correct": false },
+        { "id": "b", "text": "Block the punch line with one arm", "correct": true }
+      ],
+      "explanation": "Standing up in base without covering the punch line leaves your head exposed. The blocking arm protects you while you get to your feet.",
+      "scene_id": "standing-01"
+    },
+
+    {
+      "id": "q-1-05",
+      "unit": 1,
+      "stripe": 1,
+      "belt": "white",
+      "format": "mcq4",
+      "tags": ["escapes"],
+      "difficulty": 1,
+      "question": "Shrimp has 3 types. Which of these is NOT one of them?",
+      "options": [
+        { "id": "a", "text": "Both feet push", "correct": false },
+        { "id": "b", "text": "Inside foot", "correct": false },
+        { "id": "c", "text": "Outside foot", "correct": false },
+        { "id": "d", "text": "Crossbody shrimp", "correct": true }
+      ],
+      "explanation": "The 3 shrimp types are: both feet, inside foot, and outside foot. There is no 'crossbody' variation in the fundamentals.",
+      "scene_id": "bottom-generic-01"
+    },
+
+    {
+      "id": "q-1-06",
+      "unit": 1,
+      "stripe": 1,
+      "belt": "white",
+      "format": "sequence",
+      "tags": ["base"],
+      "difficulty": 2,
+      "question": "Put the Upa (bridge) escape in the correct order:",
+      "steps": [
+        "Slide head back off center",
+        "Look behind you",
+        "Trap the arm and leg on one side",
+        "Bridge explosively and roll"
+      ],
+      "explanation": "Head position (off-center) creates the angle. Looking behind commits to the direction. Trap pins their arm and leg so they can't post. Bridge is the explosive finish.",
+      "scene_id": "mount-bottom-01"
+    },
+
+    {
+      "id": "q-1-07",
+      "unit": 1,
+      "stripe": 1,
+      "belt": "white",
+      "format": "truefalse",
+      "tags": ["base"],
+      "difficulty": 1,
+      "question": "In Four Points Base, you should try to keep 90-degree angles at each joint as you rotate.",
+      "correct": true,
+      "explanation": "The 90° angles give you a stable, mobile base in all directions. Collapsing those angles means losing the base.",
+      "scene_id": "bottom-generic-01"
+    },
+
+    {
+      "id": "q-2-01",
+      "unit": 2,
+      "stripe": 1,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["frames", "escapes"],
+      "difficulty": 1,
+      "situation": "Opponent is in side control on top of you. You want to regain guard.",
+      "question": "The most important first move is:",
+      "options": [
+        { "id": "a", "text": "Turn into them and push with one arm", "correct": false },
+        { "id": "b", "text": "Get BOTH arms across your body to create the frame", "correct": true }
+      ],
+      "explanation": "One arm doesn't create enough space. Both arms across forces a wedge between you, making it possible to insert the knee and recover guard.",
+      "scene_id": "side-ctrl-bottom-01"
+    },
+
+    {
+      "id": "q-2-02",
+      "unit": 2,
+      "stripe": 1,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["frames", "escapes"],
+      "difficulty": 2,
+      "situation": "You're in side control on the bottom. You've got both arms across. What next?",
+      "question": "After framing with both arms across, you:",
+      "options": [
+        { "id": "a", "text": "Shoot the hip away and insert the knee", "correct": true },
+        { "id": "b", "text": "Roll toward the opponent to escape", "correct": false }
+      ],
+      "explanation": "The knee insert is the guard recovery. Rolling toward them just gives them the space to take mount.",
+      "scene_id": "side-ctrl-bottom-01"
+    },
+
+    {
+      "id": "q-2-03",
+      "unit": 2,
+      "stripe": 1,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["frames"],
+      "difficulty": 1,
+      "situation": "Opponent has a Front Bear Hug — arms are free (under your arms).",
+      "question": "Your first move is:",
+      "options": [
+        { "id": "a", "text": "Frame their face and drop back", "correct": true },
+        { "id": "b", "text": "Bridge and roll", "correct": false }
+      ],
+      "explanation": "When arms are free with a front bear hug, the frame on the face creates distance and disrupts their base. The bridge works when arms are pinned.",
+      "scene_id": "standing-01"
+    },
+
+    {
+      "id": "q-2-04",
+      "unit": 2,
+      "stripe": 1,
+      "belt": "white",
+      "format": "truefalse",
+      "tags": ["frames", "escapes"],
+      "difficulty": 2,
+      "question": "In the Elbow Escape (shrimp to guard), you should try to recover both sides of the guard at the same time.",
+      "correct": false,
+      "explanation": "You recover one side at a time — shrimp one way, get one knee in, then adjust. Trying both sides at once splits your focus and strength.",
+      "scene_id": "mount-bottom-01"
+    },
+
+    {
+      "id": "q-2-05",
+      "unit": 2,
+      "stripe": 1,
+      "belt": "white",
+      "format": "mcq4",
+      "tags": ["frames", "escapes"],
+      "difficulty": 2,
+      "situation": "Opponent is mounted on you. They're not choking, just maintaining position.",
+      "question": "Which escape is the most reliable tool for a white belt?",
+      "options": [
+        { "id": "a", "text": "Upa (bridge and roll)", "correct": true },
+        { "id": "b", "text": "Twisting out to the side", "correct": false },
+        { "id": "c", "text": "Sitting up into them", "correct": false },
+        { "id": "d", "text": "Pulling on their sleeves", "correct": false }
+      ],
+      "explanation": "Upa is the foundational mount escape. It uses your entire body (bridge) against their upper body — leverage wins over strength.",
+      "scene_id": "mount-bottom-01"
+    },
+
+    {
+      "id": "q-2-06",
+      "unit": 2,
+      "stripe": 1,
+      "belt": "white",
+      "format": "fill",
+      "tags": ["frames"],
+      "difficulty": 2,
+      "situation": "You're doing the Elbow Escape from mount.",
+      "question": "In the Elbow Escape from mount, after you shrimp, you insert your knee as a _____ between you and the opponent.",
+      "word_bank": ["frame", "block", "hook", "shield"],
+      "correct": "frame",
+      "explanation": "The knee is a frame — a structural barrier that keeps the opponent from re-closing the space. This is the core concept of framing.",
+      "scene_id": "mount-bottom-01"
+    },
+
+    {
+      "id": "q-2-07",
+      "unit": 2,
+      "stripe": 1,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["escapes", "timing"],
+      "difficulty": 2,
+      "situation": "Opponent is trying to mount you from cross body. You see the knee coming across.",
+      "question": "To prevent the mount, your near hand should:",
+      "options": [
+        { "id": "a", "text": "Push their knee away", "correct": false },
+        { "id": "b", "text": "Grab your own knee and hook their leg as they high-step", "correct": true }
+      ],
+      "explanation": "Grabbing your own knee and hooking their leg (Mount Prevention) is the proper answer. Hooking the leg is more reliable than pushing the knee.",
+      "scene_id": "side-ctrl-bottom-01"
+    },
+
+    {
+      "id": "q-2-08",
+      "unit": 2,
+      "stripe": 1,
+      "belt": "white",
+      "format": "spotmistake",
+      "tags": ["frames"],
+      "difficulty": 2,
+      "question": "Alex is in side control on the bottom. He extends one arm straight out toward the opponent's hip to create space. What's wrong?",
+      "options": [
+        { "id": "a", "text": "He should use both arms across, not one arm extended", "correct": true },
+        { "id": "b", "text": "He should bridge first before framing", "correct": false },
+        { "id": "c", "text": "The hip is the wrong target — frame the head", "correct": false }
+      ],
+      "explanation": "One arm extended toward the hip doesn't create a solid frame — it's easily collapsed. Both arms across the body create the necessary barrier.",
+      "scene_id": "side-ctrl-bottom-01"
+    },
+
+    {
+      "id": "q-3-01",
+      "unit": 3,
+      "stripe": 1,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["grips"],
+      "difficulty": 1,
+      "situation": "Opponent grabs your same-side wrist (their right hand grabs your right hand).",
+      "question": "You escape by pulling:",
+      "options": [
+        { "id": "a", "text": "Straight back toward yourself", "correct": false },
+        { "id": "b", "text": "Between their thumb and fingers", "correct": true }
+      ],
+      "explanation": "The weakest point of any grip is where the thumb meets the fingers. Pulling there breaks the grip with minimum force.",
+      "scene_id": "standing-01"
+    },
+
+    {
+      "id": "q-3-02",
+      "unit": 3,
+      "stripe": 1,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["grips"],
+      "difficulty": 1,
+      "situation": "Opponent grabs both your wrists simultaneously.",
+      "question": "Your escape: grab your OWN wrist with the free hand, then:",
+      "options": [
+        { "id": "a", "text": "Pull both arms back toward you", "correct": true },
+        { "id": "b", "text": "Rotate your wrists outward", "correct": false }
+      ],
+      "explanation": "Grabbing your own wrist connects both arms into one unit. Pulling back doubles your leverage against their grip.",
+      "scene_id": "standing-01"
+    },
+
+    {
+      "id": "q-3-03",
+      "unit": 3,
+      "stripe": 1,
+      "belt": "white",
+      "format": "truefalse",
+      "tags": ["control", "grips"],
+      "difficulty": 1,
+      "question": "In back mount control, keeping your hooks (feet) together is the safest position.",
+      "correct": false,
+      "explanation": "Hooks together means your base is narrow and easy to escape. Feet apart with pressure against the femurs is the correct back control position.",
+      "scene_id": "back-ctrl-top-01"
+    },
+
+    {
+      "id": "q-3-04",
+      "unit": 3,
+      "stripe": 1,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["control", "grips"],
+      "difficulty": 1,
+      "situation": "You have the opponent's back.",
+      "question": "The correct grip for back mount control is:",
+      "options": [
+        { "id": "a", "text": "Both arms under their arms (double underhooks)", "correct": false },
+        { "id": "b", "text": "Seatbelt — one arm over, one arm under (over/under grip)", "correct": true }
+      ],
+      "explanation": "The seatbelt (backpack) grip with one over, one under gives you the best control and is the standard back mount control position.",
+      "scene_id": "back-ctrl-top-01"
+    },
+
+    {
+      "id": "q-3-05",
+      "unit": 3,
+      "stripe": 1,
+      "belt": "white",
+      "format": "mcq4",
+      "tags": ["control"],
+      "difficulty": 2,
+      "situation": "You're in cross body / side control on top.",
+      "question": "To MAINTAIN cross body position effectively, you need:",
+      "options": [
+        { "id": "a", "text": "Crossface pressure + weight on hips + distributed base", "correct": true },
+        { "id": "b", "text": "Head on their chest + arms wide + legs flat", "correct": false },
+        { "id": "c", "text": "Knee on belly + hands on the mat", "correct": false },
+        { "id": "d", "text": "Both hands gripping their collar", "correct": false }
+      ],
+      "explanation": "The cross body position works through crossface (controlling the head), hip pressure, and a stable base that lets you move.",
+      "scene_id": "side-ctrl-top-01"
+    },
+
+    {
+      "id": "q-3-06",
+      "unit": 3,
+      "stripe": 1,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["control"],
+      "difficulty": 1,
+      "situation": "You're in cross body (side control) on top. Opponent is trying to bridge out.",
+      "question": "The WRONG thing to do is:",
+      "options": [
+        { "id": "a", "text": "Counter their movement with your weight", "correct": false },
+        { "id": "b", "text": "Stack all your weight on their chest", "correct": true }
+      ],
+      "explanation": "Stacking all weight loses your mobility. Good cross body control means distributed weight that you can shift — not deadweight that can be rolled.",
+      "scene_id": "side-ctrl-top-01"
+    },
+
+    {
+      "id": "q-3-07",
+      "unit": 3,
+      "stripe": 1,
+      "belt": "white",
+      "format": "truefalse",
+      "tags": ["grips"],
+      "difficulty": 2,
+      "question": "When you defend a choke from the guard by 'combing the hair,' you clear the grip BEFORE ducking under.",
+      "correct": true,
+      "explanation": "Ducking before clearing puts your neck right into the choke. Clear the wrist first (comb the hair motion), then duck under the arm.",
+      "scene_id": "guard-top-01"
+    },
+
+    {
+      "id": "q-3-08",
+      "unit": 3,
+      "stripe": 1,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["grips", "frames"],
+      "difficulty": 2,
+      "situation": "You're in someone's closed guard on top. They reach for your collar.",
+      "question": "Your first defensive move is:",
+      "options": [
+        { "id": "a", "text": "Posture up — sit tall with hips driving toward the ground", "correct": true },
+        { "id": "b", "text": "Grab both their wrists immediately", "correct": false }
+      ],
+      "explanation": "Posture is your primary defense in the guard. Sitting tall with one arm posted prevents most attacks from working. Grip fighting comes after posture.",
+      "scene_id": "guard-top-01"
+    },
+
+    {
+      "id": "q-4-01",
+      "unit": 4,
+      "stripe": 2,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["escapes", "transitions"],
+      "difficulty": 1,
+      "situation": "You're in cross body on the bottom. Opponent's weight is heavy. You want to turn to your knees.",
+      "question": "The technique called 'Thread the Needle' involves:",
+      "options": [
+        { "id": "a", "text": "Inserting your bottom arm under their body and turning into them", "correct": false },
+        { "id": "b", "text": "Bringing your bottom arm under and threading through to turn away to knees", "correct": true }
+      ],
+      "explanation": "'Thread the needle' describes sliding the near arm under to create space for the hip turn. You're turning AWAY from them, not into them.",
+      "scene_id": "side-ctrl-bottom-01"
+    },
+
+    {
+      "id": "q-4-02",
+      "unit": 4,
+      "stripe": 2,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["escapes", "timing"],
+      "difficulty": 2,
+      "situation": "Opponent has side headlock (their head is low). You need to escape.",
+      "question": "This defense works as ONE movement. What is it?",
+      "options": [
+        { "id": "a", "text": "Pull elbow toward ground, get wrist in armpit, then bridge and roll", "correct": true },
+        { "id": "b", "text": "Frame on their neck, walk hips away, then roll", "correct": false }
+      ],
+      "explanation": "The 'Opponent's Head Low' defense MUST be one explosive movement — pull, wrist, bridge, roll. Pausing between steps lets them re-establish.",
+      "scene_id": "side-headlock-bottom-01"
+    },
+
+    {
+      "id": "q-4-03",
+      "unit": 4,
+      "stripe": 2,
+      "belt": "white",
+      "format": "sequence",
+      "tags": ["escapes"],
+      "difficulty": 2,
+      "question": "Put the Side Headlock Defense (Make a Frame) in order:",
+      "steps": [
+        "Turn to side, elbow to ground",
+        "Build frame against opponent's neck",
+        "Move hips away, extend to apply pressure",
+        "Leg over head, pass to S-mount or knees"
+      ],
+      "explanation": "Turning to your side first creates the angle. The frame on the neck disrupts their control. Walking hips away extends the frame. The leg-over finishes the escape.",
+      "scene_id": "side-headlock-bottom-01"
+    },
+
+    {
+      "id": "q-4-04",
+      "unit": 4,
+      "stripe": 2,
+      "belt": "white",
+      "format": "mcq4",
+      "tags": ["escapes", "control"],
+      "difficulty": 2,
+      "situation": "You're in side headlock on the bottom. Opponent's head is UP (not low). You want to go to their back.",
+      "question": "To go to back from side headlock, you first:",
+      "options": [
+        { "id": "a", "text": "Bridge immediately", "correct": false },
+        { "id": "b", "text": "Build a frame against their neck and walk your hips away", "correct": true },
+        { "id": "c", "text": "Grab their wrist and pull toward you", "correct": false },
+        { "id": "d", "text": "Turn to your knees", "correct": false }
+      ],
+      "explanation": "Side Headlock 'Go to Back' starts with framing the neck to create space, then walking hips to get them to follow, then hooking the leg to take back.",
+      "scene_id": "side-headlock-bottom-01"
+    },
+
+    {
+      "id": "q-4-05",
+      "unit": 4,
+      "stripe": 2,
+      "belt": "white",
+      "format": "truefalse",
+      "tags": ["escapes"],
+      "difficulty": 2,
+      "question": "In the Side Headlock Defense 'Hips Under,' you bridge AWAY from the opponent to create space.",
+      "correct": false,
+      "explanation": "You bridge TO get your hips UNDER the opponent — the goal is to pull them over your hips, not push them away.",
+      "scene_id": "side-headlock-bottom-01"
+    },
+
+    {
+      "id": "q-4-06",
+      "unit": 4,
+      "stripe": 2,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["escapes", "transitions"],
+      "difficulty": 3,
+      "situation": "In side headlock 'Go to Knees.' Opponent's feet are close together and head is down.",
+      "question": "Your first action is:",
+      "options": [
+        { "id": "a", "text": "Immediately grab their shoulder and rotate them", "correct": false },
+        { "id": "b", "text": "Turn on your side, go to knees, then grab shoulder over their head", "correct": true }
+      ],
+      "explanation": "Getting to your knees first lowers your base and gives you the angle to grab the shoulder. Going for the shoulder first from flat on your back has no leverage.",
+      "scene_id": "side-headlock-bottom-01"
+    },
+
+    {
+      "id": "q-4-07",
+      "unit": 4,
+      "stripe": 2,
+      "belt": "white",
+      "format": "spotmistake",
+      "tags": ["escapes"],
+      "difficulty": 2,
+      "question": "Alex is on the bottom in cross body. He puts only his near arm across to regain guard. What's wrong?",
+      "options": [
+        { "id": "a", "text": "He should frame the face first before trying to regain guard", "correct": false },
+        { "id": "b", "text": "He needs BOTH arms across — one arm doesn't create enough space", "correct": true },
+        { "id": "c", "text": "He should turn to knees instead of regaining guard", "correct": false }
+      ],
+      "explanation": "Regain Guard From Cross Body requires BOTH arms across to create the necessary wedge to insert the knee.",
+      "scene_id": "side-ctrl-bottom-01"
+    },
+
+    {
+      "id": "q-5-01",
+      "unit": 5,
+      "stripe": 2,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["escapes", "base"],
+      "difficulty": 1,
+      "situation": "Opponent is mounted on you and throwing punches.",
+      "question": "The correct defense is:",
+      "options": [
+        { "id": "a", "text": "Cover your head with both arms", "correct": false },
+        { "id": "b", "text": "Upa — wrap the punching arm and bridge", "correct": true }
+      ],
+      "explanation": "Covering your head only delays damage. The Mounted Punch Defense uses the punching arm against them — wrap it, bridge, and reverse.",
+      "scene_id": "mount-bottom-01"
+    },
+
+    {
+      "id": "q-5-02",
+      "unit": 5,
+      "stripe": 2,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["escapes", "grips"],
+      "difficulty": 2,
+      "situation": "Opponent is mounted and goes for a cross collar choke. You defend.",
+      "question": "Before you bridge (Upa with Choke Defense), you must:",
+      "options": [
+        { "id": "a", "text": "Pull the collar lapel down to break their grip", "correct": true },
+        { "id": "b", "text": "Frame on their hips", "correct": false }
+      ],
+      "explanation": "If you bridge without clearing the choke grip, you either choke yourself or lose the reversal. Pull the lapel down first, then bridge.",
+      "scene_id": "mount-bottom-01"
+    },
+
+    {
+      "id": "q-5-03",
+      "unit": 5,
+      "stripe": 2,
+      "belt": "white",
+      "format": "mcq4",
+      "tags": ["escapes", "frames", "timing"],
+      "difficulty": 2,
+      "situation": "Opponent is mounted on you. No immediate attack — they're just maintaining position.",
+      "question": "The Elbow Escape requires you to:",
+      "options": [
+        { "id": "a", "text": "Shrimp both sides simultaneously", "correct": false },
+        { "id": "b", "text": "Bridge and roll to one side", "correct": false },
+        { "id": "c", "text": "Shrimp hips away, insert knee as a frame, recover guard one side at a time", "correct": true },
+        { "id": "d", "text": "Roll away to turtle position", "correct": false }
+      ],
+      "explanation": "The Elbow Escape is technical: shrimp to create space, insert the knee, recover guard methodically. Trying both sides at once rarely works at white belt.",
+      "scene_id": "mount-bottom-01"
+    },
+
+    {
+      "id": "q-5-04",
+      "unit": 5,
+      "stripe": 2,
+      "belt": "white",
+      "format": "truefalse",
+      "tags": ["escapes"],
+      "difficulty": 1,
+      "question": "In the Elbow Escape, you shrimp TOWARD the opponent to create space.",
+      "correct": false,
+      "explanation": "You shrimp AWAY from the opponent — moving your hips out to create enough space to insert the knee frame.",
+      "scene_id": "mount-bottom-01"
+    },
+
+    {
+      "id": "q-5-05",
+      "unit": 5,
+      "stripe": 2,
+      "belt": "white",
+      "format": "fill",
+      "tags": ["escapes", "timing"],
+      "difficulty": 2,
+      "situation": "You're preventing the mount from cross body.",
+      "question": "To prevent the mount from cross body, your far-side foot goes against your own _____, and you hook opponent's leg as they try to high-step over.",
+      "word_bank": ["knee", "hip", "ankle", "shoulder"],
+      "correct": "knee",
+      "explanation": "Far-side foot against your near-side knee creates the barrier. When they try to mount, you hook their high-stepping leg and deny the position.",
+      "scene_id": "side-ctrl-bottom-01"
+    },
+
+    {
+      "id": "q-5-06",
+      "unit": 5,
+      "stripe": 2,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["escapes", "base"],
+      "difficulty": 2,
+      "question": "The Upa (bridge) is most effective because:",
+      "options": [
+        { "id": "a", "text": "It's a full-body movement — your hips drive up and your whole body rotates", "correct": true },
+        { "id": "b", "text": "It uses your arms to push the opponent off", "correct": false }
+      ],
+      "explanation": "Upa uses the bridge — hips driving up — combined with the trap of the arm and leg. It's whole-body leverage. Pushing with arms alone rarely has enough force.",
+      "scene_id": "mount-bottom-01"
+    },
+
+    {
+      "id": "q-5-07",
+      "unit": 5,
+      "stripe": 2,
+      "belt": "white",
+      "format": "spotmistake",
+      "tags": ["escapes"],
+      "difficulty": 3,
+      "question": "Alex does the Upa with Choke Defense. He bridges hard and rolls the opponent. But halfway through the roll, the opponent re-chokes him. What did Alex miss?",
+      "options": [
+        { "id": "a", "text": "He should have pulled the lapel to clear the grip before bridging", "correct": true },
+        { "id": "b", "text": "He bridged in the wrong direction", "correct": false },
+        { "id": "c", "text": "He should have done Elbow Escape instead", "correct": false }
+      ],
+      "explanation": "Upa With Choke Defense requires pulling the lapel DOWN to break the grip BEFORE the bridge. If you don't clear the choke first, the roll doesn't help.",
+      "scene_id": "mount-bottom-01"
+    },
+
+    {
+      "id": "q-6-01",
+      "unit": 6,
+      "stripe": 2,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["timing"],
+      "difficulty": 2,
+      "situation": "Opponent grabs you from behind in a rear naked choke and walks backwards dragging you.",
+      "question": "You respond by:",
+      "options": [
+        { "id": "a", "text": "Dropping weight, elbow tight to chest, reap their leg and bow", "correct": true },
+        { "id": "b", "text": "Trying to grab their arm and pull forward", "correct": false }
+      ],
+      "explanation": "Elbow to chest stops the drag. Reaping the leg and bowing takes them down. Pulling the arm forward doesn't break their structure.",
+      "scene_id": "standing-rear-01"
+    },
+
+    {
+      "id": "q-6-02",
+      "unit": 6,
+      "stripe": 2,
+      "belt": "white",
+      "format": "truefalse",
+      "tags": ["timing", "escapes"],
+      "difficulty": 2,
+      "question": "In the Guillotine Defense (sitting back), you put both hands on ONE knee before sitting back and bridging.",
+      "correct": true,
+      "explanation": "Both hands on one knee gives you a solid base to sit down and bridge. Splitting hands on two knees is unstable and the defense doesn't work.",
+      "scene_id": "standing-guillotine-01"
+    },
+
+    {
+      "id": "q-6-03",
+      "unit": 6,
+      "stripe": 2,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["timing"],
+      "difficulty": 2,
+      "situation": "Opponent has a standing guillotine on you. You choose defense #2 (with trip takedown).",
+      "question": "After getting arm over their shoulder and weight down, you:",
+      "options": [
+        { "id": "a", "text": "Lift them up and carry them to the mat", "correct": false },
+        { "id": "b", "text": "Buckle their knee", "correct": true }
+      ],
+      "explanation": "Arm over shoulder, weight down, BUCKLE THE KNEE. The takedown comes from destabilizing their base, not from lifting.",
+      "scene_id": "standing-guillotine-01"
+    },
+
+    {
+      "id": "q-6-04",
+      "unit": 6,
+      "stripe": 2,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["timing", "escapes"],
+      "difficulty": 2,
+      "situation": "You're defending a choke from inside someone's guard. They have both hands on your collar.",
+      "question": "'Squeeze the Bread' choke defense means:",
+      "options": [
+        { "id": "a", "text": "Grab their wrists and pull them off", "correct": false },
+        { "id": "b", "text": "Thrust your fist into their neck while pressing the other hand on their solar plexus", "correct": true }
+      ],
+      "explanation": "'Squeeze the Bread' is an active choke counter — thrusting fist to throat + pressure on solar plexus. It creates enough discomfort to break the grip. Grabbing wrists alone rarely works against a committed choke.",
+      "scene_id": "guard-top-01"
+    },
+
+    {
+      "id": "q-6-05",
+      "unit": 6,
+      "stripe": 2,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["timing", "escapes"],
+      "difficulty": 2,
+      "situation": "Opponent is in your guard. They get both hands on your collar — second defense option.",
+      "question": "'Comb the Hair' means:",
+      "options": [
+        { "id": "a", "text": "Clear the grip with a sweeping wrist motion, then duck under", "correct": true },
+        { "id": "b", "text": "Grab their hand and peel fingers off one by one", "correct": false }
+      ],
+      "explanation": "Comb the Hair = sweep your wrist outward (like combing) to clear their grip, then immediately duck under the arm. Peeling fingers is slow and ineffective mid-roll.",
+      "scene_id": "guard-bottom-01"
+    },
+
+    {
+      "id": "q-6-06",
+      "unit": 6,
+      "stripe": 2,
+      "belt": "white",
+      "format": "sequence",
+      "tags": ["timing", "transitions"],
+      "difficulty": 2,
+      "question": "Rear Choke Defense (Throw). Put in order:",
+      "steps": [
+        "Drop your base",
+        "Grab their arm / elbows in",
+        "Walk backwards into them",
+        "Throw them over your shoulder"
+      ],
+      "explanation": "Base first — without it you get thrown. Grab the arm to control the attack. Walk backwards loads the throw. The shoulder throw carries them over.",
+      "scene_id": "standing-rear-01"
+    },
+
+    {
+      "id": "q-6-07",
+      "unit": 6,
+      "stripe": 2,
+      "belt": "white",
+      "format": "truefalse",
+      "tags": ["timing"],
+      "difficulty": 2,
+      "question": "In the Side Headlock Defense 'Opponent's Head Low,' you pull the elbow first, then pause and set up, then bridge and roll.",
+      "correct": false,
+      "explanation": "This defense must be ONE fluid movement — pull elbow, wrist in armpit, bridge and roll. Any pause lets the opponent adjust and the window closes.",
+      "scene_id": "side-headlock-bottom-01"
+    },
+
+    {
+      "id": "q-6-08",
+      "unit": 6,
+      "stripe": 2,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["timing", "base"],
+      "difficulty": 3,
+      "question": "Why is 'dropping your base' the FIRST response in most standing self-defense situations?",
+      "options": [
+        { "id": "a", "text": "It makes you harder to lift or throw", "correct": true },
+        { "id": "b", "text": "It prepares you to sit down to the ground", "correct": false }
+      ],
+      "explanation": "Dropping your base lowers your center of gravity — making you much harder to throw, lift, or destabilize. Most standing defenses start here.",
+      "scene_id": "standing-01"
+    },
+
+    {
+      "id": "q-7-01",
+      "unit": 7,
+      "stripe": 3,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["submissions", "control"],
+      "difficulty": 1,
+      "situation": "You're in cross body. Opponent's near arm is extended. You apply the Americana.",
+      "question": "Before the figure four, you must:",
+      "options": [
+        { "id": "a", "text": "Step over their head with your leg", "correct": false },
+        { "id": "b", "text": "Paintbrush the arm — slide it flat to the mat first", "correct": true }
+      ],
+      "explanation": "The 'paintbrush' is the key cue for the Americana — sweeping the arm flat to the mat BEFORE establishing the figure four grip. Without it, the arm isn't controlled and the lock doesn't work cleanly.",
+      "scene_id": "side-ctrl-top-01"
+    },
+
+    {
+      "id": "q-7-02",
+      "unit": 7,
+      "stripe": 3,
+      "belt": "white",
+      "format": "mcq4",
+      "tags": ["submissions", "grips"],
+      "difficulty": 2,
+      "situation": "You're in cross body. You attempt a Kimura.",
+      "question": "For the Kimura to work from cross body, the arm must be bent:",
+      "options": [
+        { "id": "a", "text": "At any angle that's comfortable", "correct": false },
+        { "id": "b", "text": "Straight — the Kimura is a straight armlock", "correct": false },
+        { "id": "c", "text": "At 90 degrees", "correct": true },
+        { "id": "d", "text": "At 45 degrees", "correct": false }
+      ],
+      "explanation": "The Kimura requires the arm at 90° to apply rotational pressure on the shoulder. Not 45°, not any angle — 90° is the mechanical requirement for the lock.",
+      "scene_id": "side-ctrl-top-01"
+    },
+
+    {
+      "id": "q-7-03",
+      "unit": 7,
+      "stripe": 3,
+      "belt": "white",
+      "format": "truefalse",
+      "tags": ["submissions", "control"],
+      "difficulty": 2,
+      "question": "In the Straight Armlock from Cross Body, you grab the near lapel to create the roll.",
+      "correct": false,
+      "explanation": "You grab the FAR lapel — reaching across their body. This creates the leverage to drive them onto their side so you can establish the armlock. Near lapel doesn't give you the angle.",
+      "scene_id": "side-ctrl-top-01"
+    },
+
+    {
+      "id": "q-7-04",
+      "unit": 7,
+      "stripe": 3,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["submissions", "transitions"],
+      "difficulty": 2,
+      "situation": "You're in cross body and go for a Neck Crank.",
+      "question": "Before sliding your arm around the neck, you must:",
+      "options": [
+        { "id": "a", "text": "Block their hip", "correct": true },
+        { "id": "b", "text": "Get to north-south position first", "correct": false }
+      ],
+      "explanation": "Blocking the hip stops them from going to guard as you move. If you reach for the neck without blocking the hip, they recover guard before you're set.",
+      "scene_id": "side-ctrl-top-01"
+    },
+
+    {
+      "id": "q-7-05",
+      "unit": 7,
+      "stripe": 3,
+      "belt": "white",
+      "format": "fill",
+      "tags": ["submissions", "grips"],
+      "difficulty": 2,
+      "question": "The Kimura uses a _____ grip — the same grip used in the guard Kimura and back mount control.",
+      "word_bank": ["figure four", "two-on-one", "pistol", "seatbelt"],
+      "correct": "figure four",
+      "explanation": "The figure four grip (your wrist on their wrist, their arm bent, your other arm through) is the Kimura grip. Same mechanical grip across all positions.",
+      "scene_id": "side-ctrl-top-01"
+    },
+
+    {
+      "id": "q-7-06",
+      "unit": 7,
+      "stripe": 3,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["submissions"],
+      "difficulty": 2,
+      "situation": "You have the Cross Body Kimura grip. Figur four is established.",
+      "question": "To finish, you:",
+      "options": [
+        { "id": "a", "text": "Pull the arm toward their head and apply", "correct": false },
+        { "id": "b", "text": "Step your leg over their head, rotate hips toward their head", "correct": true }
+      ],
+      "explanation": "The Cross Body Kimura finish requires stepping the leg over and rotating the hips — this brings your bodyweight into the submission and prevents them from rolling out.",
+      "scene_id": "side-ctrl-top-01"
+    },
+
+    {
+      "id": "q-7-07",
+      "unit": 7,
+      "stripe": 3,
+      "belt": "white",
+      "format": "spotmistake",
+      "tags": ["submissions"],
+      "difficulty": 3,
+      "question": "Alex has cross body. He gets the Americana grip (figure four) but the opponent keeps lifting their elbow. What did Alex miss?",
+      "options": [
+        { "id": "a", "text": "He should switch to the Kimura instead", "correct": false },
+        { "id": "b", "text": "He didn't paintbrush the arm flat first — the elbow was never down", "correct": true },
+        { "id": "c", "text": "His figure four grip is wrong", "correct": false }
+      ],
+      "explanation": "The Americana STARTS with the paintbrush — sweeping the arm to the mat. If the elbow isn't flat, the lock has no mechanical advantage and the opponent can bench-press out.",
+      "scene_id": "side-ctrl-top-01"
+    },
+
+    {
+      "id": "q-s-03",
+      "unit": 7,
+      "stripe": 3,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["control", "transitions"],
+      "difficulty": 1,
+      "situation": "You've passed guard and want to establish Knee on Belly.",
+      "question": "Your knee goes on their:",
+      "options": [
+        { "id": "a", "text": "Hip bone", "correct": false },
+        { "id": "b", "text": "Solar plexus / upper abdomen", "correct": true }
+      ],
+      "explanation": "Knee on the solar plexus creates discomfort and forces reaction — they either give you their arm or turn away (giving you the back). Knee on the hip has no pressure.",
+      "scene_id": "side-ctrl-top-01"
+    },
+
+    {
+      "id": "q-s-04",
+      "unit": 7,
+      "stripe": 3,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["control", "base"],
+      "difficulty": 2,
+      "situation": "You have Knee on Belly. Opponent bridges to escape.",
+      "question": "Your posted foot (the one on the floor) should be:",
+      "options": [
+        { "id": "a", "text": "Close to their body for balance", "correct": false },
+        { "id": "b", "text": "Far out to the side as a wide base", "correct": true }
+      ],
+      "explanation": "Wide posted foot = wide base = much harder to topple. Foot close in means your base is narrow and their bridge can sweep you.",
+      "scene_id": "side-ctrl-top-01"
+    },
+
+    {
+      "id": "q-8-01",
+      "unit": 8,
+      "stripe": 3,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["control", "grips"],
+      "difficulty": 1,
+      "situation": "You're mounted. Opponent has hands on your knees trying to push you off.",
+      "question": "You respond by:",
+      "options": [
+        { "id": "a", "text": "Sitting back to maintain distance", "correct": false },
+        { "id": "b", "text": "Peel their grip and post your hand", "correct": true }
+      ],
+      "explanation": "Maintain the Mount: pulling hands off knees. Sitting back would help them escape. Peel the grip, post, and maintain high mount.",
+      "scene_id": "mount-top-01"
+    },
+
+    {
+      "id": "q-8-02",
+      "unit": 8,
+      "stripe": 3,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["control"],
+      "difficulty": 1,
+      "situation": "You're mounted. Opponent swims their arm through for an underhook.",
+      "question": "You respond by:",
+      "options": [
+        { "id": "a", "text": "Swimming your own arm through to counter the underhook", "correct": true },
+        { "id": "b", "text": "Posting both hands on the mat and waiting", "correct": false }
+      ],
+      "explanation": "Maintain the Mount: swimming through arms. When they underhook, you underhook right back to maintain chest-to-chest control.",
+      "scene_id": "mount-top-01"
+    },
+
+    {
+      "id": "q-8-03",
+      "unit": 8,
+      "stripe": 3,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["submissions", "grips"],
+      "difficulty": 2,
+      "situation": "You're mounted. You set up the Cross Choke.",
+      "question": "Your head position should be:",
+      "options": [
+        { "id": "a", "text": "Centered over their face", "correct": false },
+        { "id": "b", "text": "Off to one side", "correct": true }
+      ],
+      "explanation": "Head off-center prevents the Upa. If your head is centered, they can bridge and roll you easily. Head to the side takes away their reversal option.",
+      "scene_id": "mount-top-01"
+    },
+
+    {
+      "id": "q-8-04",
+      "unit": 8,
+      "stripe": 3,
+      "belt": "white",
+      "format": "mcq4",
+      "tags": ["submissions", "control", "timing"],
+      "difficulty": 2,
+      "situation": "You're mounted and go for an armbar.",
+      "question": "The key mistake white belts make on the armbar from mount:",
+      "options": [
+        { "id": "a", "text": "Trying to spin too fast", "correct": false },
+        { "id": "b", "text": "Not grabbing the arm first", "correct": false },
+        { "id": "c", "text": "Toes pointing sideways instead of up", "correct": true },
+        { "id": "d", "text": "Both feet on the same side", "correct": false }
+      ],
+      "explanation": "Toes pointed up tightens the leg clamp and maintains control. Toes sideways creates gaps — the opponent can pull their arm out.",
+      "scene_id": "mount-top-01"
+    },
+
+    {
+      "id": "q-8-05",
+      "unit": 8,
+      "stripe": 3,
+      "belt": "white",
+      "format": "truefalse",
+      "tags": ["submissions"],
+      "difficulty": 2,
+      "question": "The Americana (keylock) from mount uses the exact same 'paintbrush' principle as the Americana from cross body.",
+      "correct": true,
+      "explanation": "Same technique, different position. Paintbrush the arm flat, establish figure four, lift and slide. The mechanical principle is identical.",
+      "scene_id": "mount-top-01"
+    },
+
+    {
+      "id": "q-8-06",
+      "unit": 8,
+      "stripe": 3,
+      "belt": "white",
+      "format": "sequence",
+      "tags": ["submissions", "control"],
+      "difficulty": 2,
+      "question": "Armbar from Mount — put in order:",
+      "steps": [
+        "Establish grip on the arm",
+        "Post your hand, swing leg over the head",
+        "Calf on the back of their neck, toes pointed up",
+        "Raise your hips to apply the lock"
+      ],
+      "explanation": "Grip first — you must own the arm. Post and swing sets the angle. Calf on neck controls the head and prevents escape. Hips up delivers the pressure.",
+      "scene_id": "mount-top-01"
+    },
+
+    {
+      "id": "q-9-01",
+      "unit": 9,
+      "stripe": 3,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["control", "grips"],
+      "difficulty": 1,
+      "situation": "You have your opponent's back.",
+      "question": "Where should your hooks (feet) be?",
+      "options": [
+        { "id": "a", "text": "Feet together between their legs", "correct": false },
+        { "id": "b", "text": "Feet apart, pressing against their femurs (inner thighs)", "correct": true }
+      ],
+      "explanation": "Feet apart creates a wider base and allows counter-pressure. Feet together is the classic white belt mistake — easy for the opponent to trap one hook and escape.",
+      "scene_id": "back-ctrl-top-01"
+    },
+
+    {
+      "id": "q-9-02",
+      "unit": 9,
+      "stripe": 3,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["submissions", "grips"],
+      "difficulty": 2,
+      "situation": "You're attacking from back mount. You choose the Rear Naked Choke.",
+      "question": "Your elbow should be aligned with:",
+      "options": [
+        { "id": "a", "text": "Their shoulder", "correct": false },
+        { "id": "b", "text": "Their chin", "correct": true }
+      ],
+      "explanation": "Elbow aligned with the chin means the forearm is across the windpipe/carotid arteries — the proper choke position. Elbow at shoulder means the arm is too high and misses the target.",
+      "scene_id": "back-ctrl-top-01"
+    },
+
+    {
+      "id": "q-9-03",
+      "unit": 9,
+      "stripe": 3,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["submissions", "grips"],
+      "difficulty": 2,
+      "situation": "You're doing the Rear Naked Choke. You have the arm across the neck.",
+      "question": "Your second hand goes:",
+      "options": [
+        { "id": "a", "text": "On their opposite shoulder", "correct": false },
+        { "id": "b", "text": "Behind their head", "correct": true }
+      ],
+      "explanation": "Wrist to shoulder (first arm), second hand BEHIND the head. This creates the 'figure four' lock on the neck. Shoulder placement is incomplete.",
+      "scene_id": "back-ctrl-top-01"
+    },
+
+    {
+      "id": "q-9-04",
+      "unit": 9,
+      "stripe": 3,
+      "belt": "white",
+      "format": "fill",
+      "tags": ["submissions", "grips"],
+      "difficulty": 2,
+      "situation": "You're applying the Collar Choke from back mount.",
+      "question": "The Collar Choke from back mount uses a sliding lapel. After feeding the collar, you grip with _____ fingers, not the whole hand.",
+      "word_bank": ["two", "three", "one", "four"],
+      "correct": "two",
+      "explanation": "Flip the collar and grab with 2 fingers. Two fingers is enough for the mechanical advantage; whole-hand grip is actually harder to thread under the chin.",
+      "scene_id": "back-ctrl-top-01"
+    },
+
+    {
+      "id": "q-9-05",
+      "unit": 9,
+      "stripe": 3,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["submissions"],
+      "difficulty": 2,
+      "question": "To finish the Rear Naked Choke, you apply pressure by:",
+      "options": [
+        { "id": "a", "text": "Pulling your arms straight back", "correct": false },
+        { "id": "b", "text": "Rowing with your back — elbows toward each other", "correct": true }
+      ],
+      "explanation": "'Row with the back' is the key cue. Bringing elbows toward each other tightens both the carotid pressure (arm across) and the figure four. Pulling straight back just turns their head.",
+      "scene_id": "back-ctrl-top-01"
+    },
+
+    {
+      "id": "q-9-06",
+      "unit": 9,
+      "stripe": 3,
+      "belt": "white",
+      "format": "truefalse",
+      "tags": ["control"],
+      "difficulty": 2,
+      "question": "In the Collar Choke from back mount, one hand grabs the near lapel and the other pulls the opposite lapel to the hip.",
+      "correct": true,
+      "explanation": "One hand slides under the chin grabbing the collar, second hand grabs the opposite lapel. Pull one to hip, push one across neck. The diagonal creates the choke.",
+      "scene_id": "back-ctrl-top-01"
+    },
+
+    {
+      "id": "q-10-01",
+      "unit": 10,
+      "stripe": 4,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["submissions", "grips"],
+      "difficulty": 1,
+      "situation": "You're in closed guard. Opponent is postured up. You go for the Cross Choke.",
+      "question": "Before attacking, you need to:",
+      "options": [
+        { "id": "a", "text": "Break their posture first — pull their head down", "correct": true },
+        { "id": "b", "text": "Grip the collar while they're postured and squeeze", "correct": false }
+      ],
+      "explanation": "Breaking posture is mandatory before any guard attack. Against a postured opponent, their base is too strong. Break posture first, then attack.",
+      "scene_id": "guard-bottom-01"
+    },
+
+    {
+      "id": "q-10-02",
+      "unit": 10,
+      "stripe": 4,
+      "belt": "white",
+      "format": "mcq4",
+      "tags": ["submissions", "control", "timing"],
+      "difficulty": 2,
+      "situation": "You're in closed guard. You set up the Triangle Choke.",
+      "question": "Before locking the triangle, you must:",
+      "options": [
+        { "id": "a", "text": "Pull their head down immediately", "correct": false },
+        { "id": "b", "text": "Push one arm across their body and angle out to the side", "correct": true },
+        { "id": "c", "text": "Open your guard and swing legs up", "correct": false },
+        { "id": "d", "text": "Underhook one arm", "correct": false }
+      ],
+      "explanation": "The angle-out (turning your hips to the side) is what makes the triangle work. Without it, the legs don't lock correctly. Push one arm across AND angle out.",
+      "scene_id": "guard-bottom-01"
+    },
+
+    {
+      "id": "q-10-03",
+      "unit": 10,
+      "stripe": 4,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["submissions", "grips"],
+      "difficulty": 2,
+      "situation": "You're in closed guard. You try the Kimura from guard.",
+      "question": "After getting the figure four grip, you:",
+      "options": [
+        { "id": "a", "text": "Squeeze immediately", "correct": false },
+        { "id": "b", "text": "Elbow to armpit, scoot hips away to isolate the arm, cross feet over their back", "correct": true }
+      ],
+      "explanation": "Elbow to armpit disconnects their arm from their body. Scooting away isolates it. Cross feet over the back keeps them from posturing. Then apply.",
+      "scene_id": "guard-bottom-01"
+    },
+
+    {
+      "id": "q-10-04",
+      "unit": 10,
+      "stripe": 4,
+      "belt": "white",
+      "format": "truefalse",
+      "tags": ["submissions", "timing"],
+      "difficulty": 2,
+      "question": "The Armbar from guard requires raising your hips to apply the lock.",
+      "correct": true,
+      "explanation": "Hips up = lever. The armbar works by hyperextending the elbow — which requires the hips to bridge up against the arm. No hips = no lock.",
+      "scene_id": "guard-bottom-01"
+    },
+
+    {
+      "id": "q-10-05",
+      "unit": 10,
+      "stripe": 4,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["submissions", "grips"],
+      "difficulty": 2,
+      "situation": "You're in closed guard attacking with the Guillotine Choke.",
+      "question": "You maintain distance from the opponent by:",
+      "options": [
+        { "id": "a", "text": "Keeping your feet crossed and pulling them close", "correct": false },
+        { "id": "b", "text": "Keeping knee to their mid-section", "correct": true }
+      ],
+      "explanation": "Knee to mid-section manages distance — it keeps them from smashing in and killing the choke angle. Feet crossed just holds them but doesn't manage the space.",
+      "scene_id": "guard-bottom-01"
+    },
+
+    {
+      "id": "q-10-06",
+      "unit": 10,
+      "stripe": 4,
+      "belt": "white",
+      "format": "fill",
+      "tags": ["submissions", "timing"],
+      "difficulty": 3,
+      "situation": "You're applying the guard armbar.",
+      "question": "In the guard armbar, keeping your toes pointed _____ tightens the leg clamp and prevents the arm from escaping.",
+      "word_bank": ["up", "sideways", "down", "outward"],
+      "correct": "up",
+      "explanation": "Toes pointed up rotates the leg inward, tightening the squeeze on the arm. This is the key cue for both guard and mount armbars.",
+      "scene_id": "guard-bottom-01"
+    },
+
+    {
+      "id": "q-10-07",
+      "unit": 10,
+      "stripe": 4,
+      "belt": "white",
+      "format": "spotmistake",
+      "tags": ["submissions"],
+      "difficulty": 3,
+      "question": "Alex has guard and goes for the Kimura. He gets the figure four but doesn't scoot his hips away. The opponent powers out. What was the problem?",
+      "options": [
+        { "id": "a", "text": "He needed a different grip", "correct": false },
+        { "id": "b", "text": "He didn't isolate the arm — without scooting away, the arm stays connected to the body", "correct": true },
+        { "id": "c", "text": "He should have gone for the armbar instead", "correct": false }
+      ],
+      "explanation": "The guard Kimura requires scooting away to isolate the arm. If you stay close, the opponent's body strength supports the arm and they can bench-press out.",
+      "scene_id": "guard-bottom-01"
+    },
+
+    {
+      "id": "q-11-01",
+      "unit": 11,
+      "stripe": 4,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["sweeps", "grips"],
+      "difficulty": 1,
+      "situation": "You're in closed guard. You set up the Scissor Sweep.",
+      "question": "Before the sweep, you must:",
+      "options": [
+        { "id": "a", "text": "Open your guard and place feet on hips", "correct": false },
+        { "id": "b", "text": "Pull them FORWARD to stretch them out, then connect legs", "correct": true }
+      ],
+      "explanation": "Pull them toward you with the pistol grip sleeve to stretch them out and break their base. Sweeping a postured opponent doesn't work — they drive back.",
+      "scene_id": "guard-bottom-01"
+    },
+
+    {
+      "id": "q-11-02",
+      "unit": 11,
+      "stripe": 4,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["sweeps", "timing"],
+      "difficulty": 2,
+      "situation": "You're in closed guard. Opponent steps one foot up (kneeling into standing).",
+      "question": "This is the moment to attempt:",
+      "options": [
+        { "id": "a", "text": "Scissor Sweep", "correct": false },
+        { "id": "b", "text": "Hook Sweep", "correct": true }
+      ],
+      "explanation": "Hook Sweep is set up when the opponent stands one foot up. You swivel out, hang your weight on the support leg, hook the knee, and sweep. Scissor sweep requires them to be kneeling.",
+      "scene_id": "guard-bottom-01"
+    },
+
+    {
+      "id": "q-11-03",
+      "unit": 11,
+      "stripe": 4,
+      "belt": "white",
+      "format": "mcq4",
+      "tags": ["sweeps", "timing"],
+      "difficulty": 2,
+      "situation": "You're in closed guard. Opponent postures up. You set up the Sit-Up Sweep.",
+      "question": "The key timing element of this sweep is:",
+      "options": [
+        { "id": "a", "text": "Sweeping as they lean forward", "correct": false },
+        { "id": "b", "text": "Sweeping as they try to sit back", "correct": true },
+        { "id": "c", "text": "Sweeping as they stand up", "correct": false },
+        { "id": "d", "text": "Sweeping as they grab your lapels", "correct": false }
+      ],
+      "explanation": "Knee-to-ground, pinch foot (toes pointed), and sweep as they try to sit back. Their backward movement is what carries the sweep through to mount.",
+      "scene_id": "guard-bottom-01"
+    },
+
+    {
+      "id": "q-11-04",
+      "unit": 11,
+      "stripe": 4,
+      "belt": "white",
+      "format": "truefalse",
+      "tags": ["sweeps"],
+      "difficulty": 2,
+      "question": "In the Hook Sweep, you swipe their leg to sweep them — like kicking their leg out.",
+      "correct": false,
+      "explanation": "You hook at the KNEE by rotating your own leg — you're not kicking. The hook hooks and rolls, not swipes. Swiping skims past the leg without taking the base.",
+      "scene_id": "guard-bottom-01"
+    },
+
+    {
+      "id": "q-11-05",
+      "unit": 11,
+      "stripe": 4,
+      "belt": "white",
+      "format": "sequence",
+      "tags": ["sweeps", "grips"],
+      "difficulty": 2,
+      "question": "Scissor Sweep to Mount — put in order:",
+      "steps": [
+        "Pull opponent forward with pistol grip to stretch them out",
+        "Rise on elbow, control one side of body",
+        "Connect feet and legs (scissors position)",
+        "Sweep and come to mount"
+      ],
+      "explanation": "Pull first to break their base. Rise on elbow to control the angle. Connect the scissors to load the sweep. Then sweep into mount.",
+      "scene_id": "guard-bottom-01"
+    },
+
+    {
+      "id": "q-11-06",
+      "unit": 11,
+      "stripe": 4,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["sweeps"],
+      "difficulty": 2,
+      "situation": "You attempt the Hook Sweep but opponent drives forward into you.",
+      "question": "When they drive, you keep your knee on their belly to:",
+      "options": [
+        { "id": "a", "text": "Prevent them from passing", "correct": true },
+        { "id": "b", "text": "Set up a triangle choke", "correct": false }
+      ],
+      "explanation": "Knee on belly stops them from smashing through the sweep. If they drive, you can use the knee on belly pressure to control distance.",
+      "scene_id": "guard-bottom-01"
+    },
+
+    {
+      "id": "q-s-01",
+      "unit": 11,
+      "stripe": 4,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["sweeps", "timing"],
+      "difficulty": 1,
+      "situation": "You're in closed guard. Opponent is postured up with straight arms. No obvious attack.",
+      "question": "The Hip Bump Sweep works because you:",
+      "options": [
+        { "id": "a", "text": "Sit up into them as they posture, use your momentum to knock them over", "correct": true },
+        { "id": "b", "text": "Pull their arms down and roll to the side", "correct": false }
+      ],
+      "explanation": "The Hip Bump Sweep uses your sit-up momentum against their forward lean. As they posture up, you explode up into them — their own base works against them.",
+      "scene_id": "guard-bottom-01"
+    },
+
+    {
+      "id": "q-s-02",
+      "unit": 11,
+      "stripe": 4,
+      "belt": "white",
+      "format": "truefalse",
+      "tags": ["sweeps", "timing"],
+      "difficulty": 2,
+      "question": "The Hip Bump Sweep works best when the opponent is leaning back away from you.",
+      "correct": false,
+      "explanation": "The Hip Bump works when they're postured up and their weight is slightly forward. Leaning back means their base is behind them — you'd be pushing into air.",
+      "scene_id": "guard-bottom-01"
+    },
+
+    {
+      "id": "q-12-01",
+      "unit": 12,
+      "stripe": 4,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["control", "frames"],
+      "difficulty": 1,
+      "situation": "You're in someone's closed guard on top.",
+      "question": "The most important single thing you must establish first:",
+      "options": [
+        { "id": "a", "text": "Break their guard open", "correct": false },
+        { "id": "b", "text": "Posture — sit tall, hips driving toward the ground", "correct": true }
+      ],
+      "explanation": "Posture is everything in the guard. Without it, every attack hits harder, every sweep is easier. Sit tall, one arm post, hips down. Then you can think about passing.",
+      "scene_id": "guard-top-01"
+    },
+
+    {
+      "id": "q-12-02",
+      "unit": 12,
+      "stripe": 4,
+      "belt": "white",
+      "format": "mcq4",
+      "tags": ["control", "transitions"],
+      "difficulty": 2,
+      "situation": "You're passing the guard kneeling.",
+      "question": "A critical error that gives up the pass:",
+      "options": [
+        { "id": "a", "text": "Moving too slowly", "correct": false },
+        { "id": "b", "text": "Elbows outside your body", "correct": true },
+        { "id": "c", "text": "Knee not at centerline", "correct": false },
+        { "id": "d", "text": "Passing to the wrong side", "correct": false }
+      ],
+      "explanation": "Elbows inside = protected. Elbows outside = your arms are exposed for sweeps and armlocks. Keeping elbows inside while passing is a foundational guard passing concept.",
+      "scene_id": "guard-top-01"
+    },
+
+    {
+      "id": "q-12-03",
+      "unit": 12,
+      "stripe": 4,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["transitions", "timing"],
+      "difficulty": 2,
+      "situation": "Passing the guard standing.",
+      "question": "After grabbing both lapels and standing, you:",
+      "options": [
+        { "id": "a", "text": "Jump over their legs", "correct": false },
+        { "id": "b", "text": "Drag them under you, pinch legs, use elbow to open guard", "correct": true }
+      ],
+      "explanation": "Drag under + pinch legs is the key action sequence. 'Jumping over' is an instinct that doesn't work — you need to control their legs by pinching and managing them.",
+      "scene_id": "guard-top-01"
+    },
+
+    {
+      "id": "q-12-04",
+      "unit": 12,
+      "stripe": 4,
+      "belt": "white",
+      "format": "truefalse",
+      "tags": ["frames", "control"],
+      "difficulty": 2,
+      "question": "In the kneeling guard pass, you put the opponent's leg on your shoulder and then drop your weight to complete the pass.",
+      "correct": true,
+      "explanation": "Leg on shoulder, drop weight forward, establish cross body. The weight drop is what pins the leg and completes the transition.",
+      "scene_id": "guard-top-01"
+    },
+
+    {
+      "id": "q-12-05",
+      "unit": 12,
+      "stripe": 4,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["grips", "frames"],
+      "difficulty": 2,
+      "situation": "You're in the guard on top. They try to sweep with the scissor sweep.",
+      "question": "Your defense against sweeps from guard is:",
+      "options": [
+        { "id": "a", "text": "Base out with your arms on the mat", "correct": true },
+        { "id": "b", "text": "Stand up immediately", "correct": false }
+      ],
+      "explanation": "Connecting elbows to knees and posting arms interrupts the sweep. Standing is often the right call but takes setup. Basing out buys time and kills the angle.",
+      "scene_id": "guard-top-01"
+    },
+
+    {
+      "id": "q-12-06",
+      "unit": 12,
+      "stripe": 4,
+      "belt": "white",
+      "format": "fill",
+      "tags": ["control"],
+      "difficulty": 2,
+      "situation": "You're executing the kneeling guard pass.",
+      "question": "In the kneeling guard pass, you bring your _____ to the centerline first, then step the opposite leg back and turn the knee up.",
+      "word_bank": ["knee", "elbow", "shoulder", "hip"],
+      "correct": "knee",
+      "explanation": "Bring knee to centerline first. This starts the hip-to-shoulder pass sequence that ends with the leg on shoulder and weight drop to cross body.",
+      "scene_id": "guard-top-01"
+    },
+
+    {
+      "id": "q-12-07",
+      "unit": 12,
+      "stripe": 4,
+      "belt": "white",
+      "format": "spotmistake",
+      "tags": ["control", "grips"],
+      "difficulty": 3,
+      "question": "Alex is passing the guard standing. He grabs the lapels, stands up, and immediately tries to go around their legs. His opponent sweeps him. What went wrong?",
+      "options": [
+        { "id": "a", "text": "He shouldn't stand — kneeling pass is always safer", "correct": false },
+        { "id": "b", "text": "He didn't drag them under first — he went around without controlling the legs", "correct": true },
+        { "id": "c", "text": "He grabbed the wrong grip", "correct": false }
+      ],
+      "explanation": "The standing guard pass requires dragging them under AND pinching the legs BEFORE going around. Trying to circle around without controlling the legs gives them the base to sweep.",
+      "scene_id": "guard-top-01"
+    },
+
+    {
+      "id": "q-s-05",
+      "unit": 12,
+      "stripe": 4,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["control", "transitions"],
+      "difficulty": 2,
+      "situation": "Opponent has open guard, feet up. You attempt the Toreando Pass.",
+      "question": "You grip their pants/ankles and then:",
+      "options": [
+        { "id": "a", "text": "Drive their legs straight down to the mat", "correct": false },
+        { "id": "b", "text": "Push their legs to one side and step around to side control", "correct": true }
+      ],
+      "explanation": "Toreando = bullfighter. You redirect the legs to the side (like a bullfighter with a cape), not down. Pushing down just stalls — redirecting opens the path to side control.",
+      "scene_id": "guard-top-01"
+    },
+
+    {
+      "id": "q-s-06",
+      "unit": 12,
+      "stripe": 4,
+      "belt": "white",
+      "format": "truefalse",
+      "tags": ["control"],
+      "difficulty": 2,
+      "question": "In the Toreando Pass, you can let go of the legs as soon as you push them to the side.",
+      "correct": false,
+      "explanation": "You must control the legs until you've cleared them and established side control. Releasing too early lets them recover guard with a simple hip movement.",
+      "scene_id": "guard-top-01"
+    }
+
+  ]
+}

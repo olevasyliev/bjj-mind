@@ -1,0 +1,125 @@
+{
+  "belt": "white",
+  "stripes": [
+    {
+      "stripe": 1,
+      "name": "Survival Fundamentals",
+      "units": [
+        {
+          "id": 1,
+          "name": "Intro to Survival",
+          "description": "Core movements: shrimp, bridge, four points base. The building blocks of ground survival.",
+          "primary_tags": ["base", "escapes"],
+          "question_count": 7,
+          "coach_moment_id": "cm-02"
+        },
+        {
+          "id": 2,
+          "name": "Frames",
+          "description": "Creating structure against pressure. Frames from side control, mount, and bear hugs.",
+          "primary_tags": ["frames", "escapes"],
+          "question_count": 8,
+          "coach_moment_id": "cm-01"
+        },
+        {
+          "id": 3,
+          "name": "Grip Basics",
+          "description": "Grip breaks, grip control, back mount seatbelt. The language of contact.",
+          "primary_tags": ["grips", "control"],
+          "question_count": 8,
+          "coach_moment_id": "cm-07"
+        }
+      ]
+    },
+    {
+      "stripe": 2,
+      "name": "Escapes",
+      "units": [
+        {
+          "id": 4,
+          "name": "Escapes from Bottom (Side Control)",
+          "description": "Thread the needle, side headlock defenses, regaining guard from cross body.",
+          "primary_tags": ["escapes", "transitions"],
+          "question_count": 7,
+          "coach_moment_id": null
+        },
+        {
+          "id": 5,
+          "name": "Mount Escapes",
+          "description": "Upa, elbow escape, mounted punch defense, choke defense and bridge.",
+          "primary_tags": ["escapes", "base"],
+          "question_count": 7,
+          "coach_moment_id": "cm-03"
+        },
+        {
+          "id": 6,
+          "name": "Timing & Reactions",
+          "description": "Defense timing in standing situations: guillotines, rear chokes, guard choke defenses.",
+          "primary_tags": ["timing", "escapes"],
+          "question_count": 8,
+          "coach_moment_id": null
+        }
+      ]
+    },
+    {
+      "stripe": 3,
+      "name": "Attacks from Top",
+      "units": [
+        {
+          "id": 7,
+          "name": "Side Control Attacks",
+          "description": "Americana, Kimura, Neck Crank, Straight Armlock from cross body. Plus Knee on Belly.",
+          "primary_tags": ["submissions", "control"],
+          "question_count": 9,
+          "coach_moment_id": "cm-04"
+        },
+        {
+          "id": 8,
+          "name": "Mount Attacks",
+          "description": "Maintaining mount, Cross Choke, Armbar, Americana from top.",
+          "primary_tags": ["submissions", "control"],
+          "question_count": 6,
+          "coach_moment_id": null
+        },
+        {
+          "id": 9,
+          "name": "Back Attacks",
+          "description": "Back control hooks, Rear Naked Choke, Collar Choke from back mount.",
+          "primary_tags": ["submissions", "control"],
+          "question_count": 6,
+          "coach_moment_id": "cm-05"
+        }
+      ]
+    },
+    {
+      "stripe": 4,
+      "name": "Guard Game",
+      "units": [
+        {
+          "id": 10,
+          "name": "Guard Attacks",
+          "description": "Cross Choke, Armbar, Triangle, Kimura, Guillotine from closed guard.",
+          "primary_tags": ["submissions", "grips"],
+          "question_count": 7,
+          "coach_moment_id": "cm-06"
+        },
+        {
+          "id": 11,
+          "name": "Guard Sweeps",
+          "description": "Scissor Sweep, Hook Sweep, Sit-Up Sweep, Hip Bump Sweep from closed guard.",
+          "primary_tags": ["sweeps", "timing"],
+          "question_count": 8,
+          "coach_moment_id": null
+        },
+        {
+          "id": 12,
+          "name": "Guard Passing & Posture",
+          "description": "Posture in guard, kneeling pass, standing pass, Toreando Pass. Sweep defense.",
+          "primary_tags": ["control", "transitions"],
+          "question_count": 9,
+          "coach_moment_id": "cm-08"
+        }
+      ]
+    }
+  ]
+}

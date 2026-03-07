@@ -1,0 +1,119 @@
+{
+  "meta": {
+    "version": "1.0",
+    "belt": "white",
+    "total": 12,
+    "note": "Coach moments are inserted mid-session. One per unit where assigned. Character: marco = calm mentor, old-chen = wise sensei."
+  },
+  "coach_moments": [
+
+    {
+      "id": "cm-01",
+      "unit": 2,
+      "tags": ["frames"],
+      "character": "marco",
+      "title": "A frame is not a push — it's a structure.",
+      "body": "When you push, you give up position the moment they push back. When you frame — elbow locked, bones stacked — you create a wall. Their strength goes into the structure, not into moving you. Frame first, escape second."
+    },
+
+    {
+      "id": "cm-02",
+      "unit": 1,
+      "tags": ["escapes", "base"],
+      "character": "marco",
+      "title": "The shrimp is your most important move on the ground.",
+      "body": "If you only learned one thing in BJJ, it would be the shrimp. Every escape, every guard recovery, every position change — all of them have shrimp inside them. When you don't know what to do on the bottom: shrimp."
+    },
+
+    {
+      "id": "cm-03",
+      "unit": 5,
+      "tags": ["base"],
+      "character": "old-chen",
+      "title": "Bridge with your whole body, not your neck.",
+      "body": "Beginners bridge with their neck and shoulders. The Upa is a FULL BODY movement — hips drive to the ceiling, your body rotates. The hips have the power. The neck is just along for the ride."
+    },
+
+    {
+      "id": "cm-04",
+      "unit": 7,
+      "tags": ["submissions"],
+      "character": "marco",
+      "title": "The paintbrush is a technique inside a technique.",
+      "body": "Before any arm lock from top, you must own the arm. The paintbrush slides it flat — like painting the floor with their forearm. Without this, you're fighting their strength. With it, their arm is already lost."
+    },
+
+    {
+      "id": "cm-05",
+      "unit": 9,
+      "tags": ["submissions", "grips"],
+      "character": "old-chen",
+      "title": "Row with your back — not your arms.",
+      "body": "The Rear Naked Choke fails for most beginners because they squeeze with their arms. The finishing motion is a ROW — elbows toward each other, back muscles engaging. Biceps are weak. Your back is strong."
+    },
+
+    {
+      "id": "cm-06",
+      "unit": 10,
+      "tags": ["submissions"],
+      "character": "marco",
+      "title": "Break posture first. Always.",
+      "body": "Every guard attack has the same prerequisite: their posture is broken. Collar choke, triangle, armbar — none of them work against a man sitting tall. Break posture first. Then your attacks become effortless."
+    },
+
+    {
+      "id": "cm-07",
+      "unit": 3,
+      "tags": ["grips"],
+      "character": "old-chen",
+      "title": "Every grip has a weak side — and it's always the thumb.",
+      "body": "When someone grabs you, their fingers form a ring. The weakest point is where the thumb closes. Pull toward the thumb gap, and any grip breaks. This works on wrists, collars, lapels — everything."
+    },
+
+    {
+      "id": "cm-08",
+      "unit": 12,
+      "tags": ["control"],
+      "character": "marco",
+      "title": "Posture in guard is a position, not just a feeling.",
+      "body": "Posture means: spine straight, hips low and pressing, one arm posted, chin up. Not just 'trying to sit up.' Each of those four things matters. Lose one and the attacks start working."
+    },
+
+    {
+      "id": "cm-09",
+      "unit": null,
+      "tags": ["base", "escapes"],
+      "character": "old-chen",
+      "title": "Strength makes you slower and easier to sweep.",
+      "body": "When a white belt tenses up and uses all their muscle, two things happen: they gas out in minutes, and their body becomes rigid — rigid bodies are easier to move. Relax. Use your technique. A relaxed body feels the movement and responds. A tense body just breaks."
+    },
+
+    {
+      "id": "cm-10",
+      "unit": 1,
+      "tags": ["base"],
+      "character": "old-chen",
+      "title": "Don't be a YouTube warrior.",
+      "body": "There's a temptation to copy what you see online — berimbolos, heel hooks, spinning submissions. Resist it. Those moves are built on top of the fundamentals. Without a solid shrimp, Upa, and proper posture — advanced techniques are a house built on sand. Master the boring stuff first."
+    },
+
+    {
+      "id": "cm-11",
+      "unit": null,
+      "tags": ["frames", "escapes", "grips", "timing", "sweeps", "submissions", "control", "base", "transitions"],
+      "character": "marco",
+      "title": "In BJJ, failing is just learning with extra steps.",
+      "body": "You will tap. You will get swept. You will make every mistake in this app and many more on the mat. That's the deal. Every tap is information — your body is learning what doesn't work. Don't fight the tap. Embrace it."
+    },
+
+    {
+      "id": "cm-12",
+      "unit": null,
+      "tags": ["transitions", "control"],
+      "character": "marco",
+      "title": "Flow rolls: the secret weapon of fast learners.",
+      "body": "A flow roll is when you and your partner explore positions together — no ego, no survival mode. One person takes top, gives a sweep, the other comes to mount, offers an escape. You learn more in 5 minutes of flowing than 30 minutes of grinding. This app simulates that — each question is a position to explore, not a fight."
+    }
+
+  ]
+}

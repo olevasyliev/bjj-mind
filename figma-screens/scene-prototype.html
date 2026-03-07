@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BJJ Mind — 3D Scene Prototype</title>
+  <script src="https://cdn.babylonjs.com/babylon.js"></script>
+  <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #0f0f0f;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 24px 16px;
+      color: #fff;
+    }
+
+    .device-frame {
+      width: 390px;
+      background: #1a1a1a;
+      border-radius: 40px;
+      overflow: hidden;
+      box-shadow: 0 0 0 2px #333, 0 40px 80px rgba(0,0,0,0.8);
+    }
+
+    .status-bar {
+      background: #111;
+      padding: 12px 20px 6px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #aaa;
+    }
+
+    .question-card {
+      background: #1a1a2e;
+      margin: 0;
+    }
+
+    .scene-header {
+      padding: 12px 16px 8px;
+      background: #111827;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .scene-tag {
+      background: #7C3AED22;
+      border: 1px solid #7C3AED44;
+      color: #a78bfa;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .scene-label {
+      color: #9ca3af;
+      font-size: 11px;
+    }
+
+    #bjjCanvas {
+      width: 390px;
+      height: 280px;
+      display: block;
+      background: #1a2010;
+    }
+
+    .scene-controls {
+      background: #111827;
+      padding: 8px 16px;
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid #1f2937;
+    }
+
+    .scene-btn {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid #374151;
+      background: #1f2937;
+      color: #9ca3af;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .scene-btn:hover { background: #374151; color: #f3f4f6; }
+    .scene-btn.active { background: #7C3AED; border-color: #7C3AED; color: white; }
+
+    .question-area {
+      padding: 16px;
+      background: #111827;
+    }
+
+    .scene-id-label {
+      font-size: 10px;
+      color: #4b5563;
+      margin-bottom: 8px;
+      font-family: monospace;
+    }
+
+    .situation-text {
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 8px;
+      font-style: italic;
+    }
+
+    .question-text {
+      font-size: 15px;
+      color: #f3f4f6;
+      font-weight: 500;
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .option-btn {
+      background: #1f2937;
+      border: 1px solid #374151;
+      border-radius: 10px;
+      padding: 12px 14px;
+      color: #e5e7eb;
+      font-size: 13px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .option-btn:hover { border-color: #7C3AED; background: #1e1b4b; }
+    .option-btn.correct { background: #064e3b; border-color: #10b981; color: #d1fae5; }
+    .option-btn.wrong { background: #450a0a; border-color: #ef4444; color: #fecaca; }
+
+    .option-letter {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #374151;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .legend {
+      padding: 12px 16px;
+      background: #0d1117;
+      border-top: 1px solid #1f2937;
+      display: flex;
+      gap: 16px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: #6b7280;
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .legend-dot.blue { background: #2563EB; }
+    .legend-dot.white { background: #E5E7EB; }
+    .legend-dot.amber { background: #F59E0B; }
+
+    .highlight-note {
+      font-size: 10px;
+      color: #4b5563;
+      padding: 6px 16px;
+      background: #0d1117;
+    }
+
+    h1 {
+      font-size: 18px;
+      margin-bottom: 16px;
+      color: #a78bfa;
+      text-align: center;
+    }
+
+    .subtitle {
+      font-size: 12px;
+      color: #6b7280;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .info-panel {
+      width: 390px;
+      margin-top: 16px;
+      background: #111;
+      border: 1px solid #1f2937;
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .info-panel h3 { font-size: 13px; color: #a78bfa; margin-bottom: 8px; }
+    .info-panel p { font-size: 12px; color: #6b7280; line-height: 1.5; margin-bottom: 6px; }
+    .info-panel code { font-family: monospace; color: #34d399; font-size: 11px; }
+  </style>
+</head>
+<body>
+
+<h1>BJJ Mind — 3D Scene Prototype</h1>
+<p class="subtitle">Task 5.3 — Babylon.js position renderer proof of concept</p>
+
+<div class="device-frame">
+  <div class="status-bar">
+    <span>9:41</span>
+    <span>◾◾◾</span>
+  </div>
+
+  <div class="scene-header">
+    <span class="scene-tag">side-ctrl-top-01</span>
+    <span class="scene-label">Side Control — Top</span>
+  </div>
+
+  <div class="scene-controls">
+    <button class="scene-btn active" onclick="loadScene('side-ctrl')">Side Control</button>
+    <button class="scene-btn" onclick="loadScene('mount')">Mount</button>
+    <button class="scene-btn" onclick="loadScene('guard')">Guard</button>
+    <button class="scene-btn" onclick="loadScene('back')">Back Mount</button>
+  </div>
+
+  <canvas id="bjjCanvas"></canvas>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot blue"></div> You (attacking)</div>
+    <div class="legend-item"><div class="legend-dot white"></div> Opponent</div>
+    <div class="legend-item"><div class="legend-dot amber"></div> Key point</div>
+  </div>
+
+  <div class="highlight-note" id="highlightNote">Highlight: crossface arm (control mechanism)</div>
+
+  <div class="question-area">
+    <div class="scene-id-label" id="sceneIdLabel">scene_id: "side-ctrl-top-01"</div>
+    <div class="situation-text">You're in cross body. Opponent's near arm is extended. You apply the Americana.</div>
+    <div class="question-text">Before the figure four, you must:</div>
+    <div class="options">
+      <button class="option-btn" onclick="handleAnswer(this, false)">
+        <span class="option-letter">A</span>
+        Step over their head with your leg
+      </button>
+      <button class="option-btn" onclick="handleAnswer(this, true)">
+        <span class="option-letter">B</span>
+        Paintbrush the arm — slide it flat to the mat first
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="info-panel">
+  <h3>About this prototype</h3>
+  <p>Two simplified humanoid meshes rendered in <code>Babylon.js 6.x</code>. Positions are hardcoded for the 4 scenes. Production will parse GrappleMap joint data to position meshes automatically.</p>
+  <p>Amber glow = <code>GlowLayer</code> on highlight mesh. Camera orbit enabled — drag to rotate.</p>
+  <p>Next: SVG illustrated scenes (Stage A) → GrappleMap parser + dynamic positioning (Stage B).</p>
+</div>
+
+<script>
+const canvas = document.getElementById('bjjCanvas');
+const engine = new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true });
+let scene, glowLayer;
+let playerA, playerB;
+
+// ─── Material helpers ─────────────────────────────────────────────────────
+
+function createMat(scene, r, g, b, name) {
+  const mat = new BABYLON.StandardMaterial(name, scene);
+  mat.diffuseColor = new BABYLON.Color3(r, g, b);
+  mat.specularColor = new BABYLON.Color3(0.1, 0.1, 0.1);
+  return mat;
+}
+
+// ─── Humanoid builder ─────────────────────────────────────────────────────
+
+function createHumanoid(scene, colorR, colorG, colorB, label) {
+  const root = new BABYLON.TransformNode(label + '_root', scene);
+  const mat = createMat(scene, colorR, colorG, colorB, label + '_mat');
+
+  // Torso
+  const torso = BABYLON.MeshBuilder.CreateCylinder(label + '_torso', {
+    height: 0.52, diameter: 0.24, tessellation: 8
+  }, scene);
+  torso.position.y = 0;
+  torso.parent = root;
+  torso.material = mat;
+
+  // Head
+  const head = BABYLON.MeshBuilder.CreateSphere(label + '_head', {
+    diameter: 0.2, segments: 6
+  }, scene);
+  head.position.y = 0.37;
+  head.parent = root;
+  head.material = mat;
+
+  // Left arm
+  const armL = BABYLON.MeshBuilder.CreateCylinder(label + '_armL', {
+    height: 0.32, diameter: 0.08, tessellation: 6
+  }, scene);
+  armL.position.set(-0.22, 0.08, 0);
+  armL.rotation.z = 0.5;
+  armL.parent = root;
+  armL.material = mat;
+
+  // Right arm
+  const armR = BABYLON.MeshBuilder.CreateCylinder(label + '_armR', {
+    height: 0.32, diameter: 0.08, tessellation: 6
+  }, scene);
+  armR.position.set(0.22, 0.08, 0);
+  armR.rotation.z = -0.5;
+  armR.parent = root;
+  armR.material = mat;
+
+  // Left leg
+  const legL = BABYLON.MeshBuilder.CreateCylinder(label + '_legL', {
+    height: 0.38, diameter: 0.11, tessellation: 6
+  }, scene);
+  legL.position.set(-0.09, -0.45, 0);
+  legL.parent = root;
+  legL.material = mat;
+
+  // Right leg
+  const legR = BABYLON.MeshBuilder.CreateCylinder(label + '_legR', {
+    height: 0.38, diameter: 0.11, tessellation: 6
+  }, scene);
+  legR.position.set(0.09, -0.45, 0);
+  legR.parent = root;
+  legR.material = mat;
+
+  return { root, torso, head, armL, armR, legL, legR, mat };
+}
+
+// ─── Scene setup ──────────────────────────────────────────────────────────
+
+function createBaseScene() {
+  if (scene) scene.dispose();
+
+  scene = new BABYLON.Scene(engine);
+  scene.clearColor = new BABYLON.Color4(0.1, 0.12, 0.06, 1);
+
+  // Camera
+  const camera = new BABYLON.ArcRotateCamera('cam',
+    -Math.PI / 2.5, Math.PI / 3.2, 3.2,
+    new BABYLON.Vector3(0, 0.1, 0),
+    scene
+  );
+  camera.attachControl(canvas, true);
+  camera.lowerRadiusLimit = 1.5;
+  camera.upperRadiusLimit = 5;
+  camera.upperBetaLimit = Math.PI / 2.1;
+
+  // Lighting
+  const hemi = new BABYLON.HemisphericLight('hemi', new BABYLON.Vector3(0, 1, 0), scene);
+  hemi.intensity = 0.6;
+  hemi.diffuse = new BABYLON.Color3(1, 0.97, 0.9);
+  hemi.groundColor = new BABYLON.Color3(0.1, 0.15, 0.08);
+
+  const dirLight = new BABYLON.DirectionalLight('dir', new BABYLON.Vector3(-1, -2, -1), scene);
+  dirLight.intensity = 0.7;
+  dirLight.diffuse = new BABYLON.Color3(0.9, 0.95, 1);
+
+  // Mat / Ground
+  const mat = BABYLON.MeshBuilder.CreateBox('mat', { width: 3, height: 0.04, depth: 3 }, scene);
+  mat.position.y = -0.72;
+  const matMaterial = createMat(scene, 0.14, 0.18, 0.1, 'mat_material');
+  mat.material = matMaterial;
+
+  // Mat grid lines
+  for (let i = -1; i <= 1; i++) {
+    const line = BABYLON.MeshBuilder.CreateBox('line_' + i, { width: 0.01, height: 0.041, depth: 3 }, scene);
+    line.position.set(i, -0.72, 0);
+    line.material = createMat(scene, 0.18, 0.22, 0.13, 'line_mat');
+  }
+
+  // Glow layer
+  glowLayer = new BABYLON.GlowLayer('glow', scene);
+  glowLayer.intensity = 1.4;
+
+  return scene;
+}
+
+function highlightMesh(mesh) {
+  if (!mesh || !glowLayer) return;
+  glowLayer.addIncludedOnlyMesh(mesh);
+  mesh.material = createMat(scene, 0.95, 0.62, 0.04, 'highlight_mat');
+  mesh.material.emissiveColor = new BABYLON.Color3(0.6, 0.3, 0);
+}
+
+// ─── Position scenes ──────────────────────────────────────────────────────
+
+function loadScene(type) {
+  // Update button states
+  document.querySelectorAll('.scene-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+
+  createBaseScene();
+  playerA = createHumanoid(scene, 0.15, 0.35, 0.85, 'playerA');  // Blue
+  playerB = createHumanoid(scene, 0.88, 0.88, 0.88, 'playerB');  // White
+
+  switch (type) {
+    case 'side-ctrl': positionSideControl(); break;
+    case 'mount':     positionMount(); break;
+    case 'guard':     positionGuard(); break;
+    case 'back':      positionBackMount(); break;
+  }
+}
+
+// Side Control (top position)
+function positionSideControl() {
+  document.getElementById('sceneIdLabel').textContent = 'scene_id: "side-ctrl-top-01"';
+  document.getElementById('highlightNote').textContent = 'Highlight: crossface arm (control mechanism)';
+
+  // Player A (blue, bottom) — lying flat on back
+  playerA.root.position.set(0, -0.38, 0);
+  playerA.root.rotation.z = Math.PI / 2;  // rotate to lie flat
+
+  // Player B (white, top) — perpendicular on top
+  playerB.root.position.set(0.12, 0, 0.28);
+  playerB.root.rotation.y = Math.PI / 2;   // perpendicular
+  playerB.root.rotation.x = 0.42;           // lean forward onto A
+
+  // Highlight Player B's arm (crossface)
+  highlightMesh(playerB.armL);
+}
+
+// Mount
+function positionMount() {
+  document.getElementById('sceneIdLabel').textContent = 'scene_id: "mount-top-01"';
+  document.getElementById('highlightNote').textContent = 'Highlight: attacker\'s hips (mount control)';
+
+  // Player A (blue, bottom) — flat on back
+  playerA.root.position.set(0, -0.38, 0);
+  playerA.root.rotation.z = Math.PI / 2;
+  // Adjust arms up (defending)
+  playerA.armL.rotation.z = -0.9;
+  playerA.armR.rotation.z = 0.9;
+
+  // Player B (white, top) — mounted, upright
+  playerB.root.position.set(0, 0.15, 0);
+  playerB.root.rotation.z = Math.PI / 2;   // also horizontal
+  playerB.root.rotation.x = -Math.PI / 2;  // upright
+
+  // Highlight torso (mount position center)
+  highlightMesh(playerB.torso);
+}
+
+// Guard (attacking from bottom)
+function positionGuard() {
+  document.getElementById('sceneIdLabel').textContent = 'scene_id: "guard-bottom-01"';
+  document.getElementById('highlightNote').textContent = 'Highlight: defender\'s collar grip (posture control)';
+
+  // Player A (blue, bottom guard player) — on back, legs up
+  playerA.root.position.set(0, -0.38, 0);
+  playerA.root.rotation.z = Math.PI / 2;
+  playerA.legL.rotation.x = -1.0;
+  playerA.legR.rotation.x = -1.0;
+
+  // Player B (white, in guard on top) — upright, postured
+  playerB.root.position.set(0, 0.25, -0.1);
+  playerB.root.rotation.z = Math.PI / 2;
+  playerB.root.rotation.x = -Math.PI / 2 + 0.2;
+
+  // Highlight A's right arm (collar reach)
+  highlightMesh(playerA.armR);
+}
+
+// Back Mount
+function positionBackMount() {
+  document.getElementById('sceneIdLabel').textContent = 'scene_id: "back-ctrl-top-01"';
+  document.getElementById('highlightNote').textContent = 'Highlight: hooks/feet (back mount control)';
+
+  // Player A (blue, being controlled) — seated, slightly forward
+  playerA.root.position.set(0, -0.15, 0);
+  playerA.root.rotation.x = 0.25;
+
+  // Player B (white, back control) — behind A, hooks in
+  playerB.root.position.set(0, -0.05, 0.38);
+  playerB.root.rotation.x = -0.2;
+  playerB.root.rotation.y = Math.PI; // facing forward
+  playerB.legL.position.set(-0.28, -0.35, 0.12);
+  playerB.legR.position.set(0.28, -0.35, 0.12);
+  playerB.legL.rotation.z = 0.7;
+  playerB.legR.rotation.z = -0.7;
+
+  // Highlight feet (hooks)
+  highlightMesh(playerB.legL);
+}
+
+// ─── Answer handling ──────────────────────────────────────────────────────
+
+function handleAnswer(btn, isCorrect) {
+  const buttons = btn.parentElement.querySelectorAll('.option-btn');
+  buttons.forEach(b => {
+    b.onclick = null;
+    b.style.opacity = '0.6';
+  });
+  btn.style.opacity = '1';
+  btn.classList.add(isCorrect ? 'correct' : 'wrong');
+
+  if (isCorrect) {
+    btn.querySelector('.option-letter').textContent = '✓';
+  } else {
+    btn.querySelector('.option-letter').textContent = '✗';
+    buttons.forEach(b => {
+      // find the correct one and highlight it
+      if (b !== btn) {
+        b.classList.add('correct');
+        b.style.opacity = '1';
+        b.querySelector('.option-letter').textContent = '✓';
+      }
+    });
+  }
+}
+
+// ─── Bootstrap ────────────────────────────────────────────────────────────
+
+window.addEventListener('DOMContentLoaded', () => {
+  // Initial scene
+  createBaseScene();
+  playerA = createHumanoid(scene, 0.15, 0.35, 0.85, 'playerA');
+  playerB = createHumanoid(scene, 0.88, 0.88, 0.88, 'playerB');
+  positionSideControl();
+
+  engine.runRenderLoop(() => {
+    if (scene) scene.render();
+  });
+});
+
+window.addEventListener('resize', () => {
+  engine.resize();
+});
+</script>
+
+</body>
+</html>
