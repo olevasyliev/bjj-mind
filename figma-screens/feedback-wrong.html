@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=390, initial-scale=1.0" />
+  <title>BJJ Mind — Feedback Wrong</title>
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 390px;
+      height: 844px;
+      background: #ffffff;
+      font-family: 'Nunito', sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Background — same game screen, dimmed */
+    .bg-screen {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      opacity: 0.35;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      padding: 52px 24px 0;
+      gap: 12px;
+    }
+
+    .progress-bar-wrap {
+      flex: 1;
+      height: 10px;
+      background: #f3f0ff;
+      border-radius: 100px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      width: 30%;
+      height: 100%;
+      background: #7c3aed;
+      border-radius: 100px;
+    }
+
+    .hearts { display: flex; gap: 3px; }
+    .heart { font-size: 16px; }
+
+    .meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px 12px;
+    }
+
+    .position-tag {
+      background: #f5f0ff;
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 800;
+      color: #7c3aed;
+    }
+
+    .timer {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #fff7ed;
+      border: 3px solid #f59e0b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 900;
+      color: #f59e0b;
+    }
+
+    .scene {
+      margin: 0 24px;
+      background: #f8f6ff;
+      border-radius: 20px;
+      height: 200px;
+      border: 1.5px solid #ede9fe;
+      overflow: hidden;
+    }
+
+    .options-bg {
+      padding: 18px 24px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .option-btn-bg {
+      width: 100%;
+      height: 58px;
+      border-radius: 16px;
+      border: 2.5px solid #f3f4f6;
+      background: #fff;
+    }
+
+    /* Wrong answer highlight on A */
+    .option-btn-wrong {
+      border-color: #fca5a5 !important;
+      background: #fef2f2 !important;
+    }
+
+    /* Feedback bottom sheet */
+    .feedback-sheet {
+      background: #fff1f2;
+      border-top: 3px solid #fca5a5;
+      border-radius: 24px 24px 0 0;
+      padding: 24px 24px 48px;
+      flex-shrink: 0;
+    }
+
+    .feedback-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .feedback-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #fee2e2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .feedback-title {
+      font-size: 20px;
+      font-weight: 900;
+      color: #dc2626;
+      letter-spacing: -0.3px;
+    }
+
+    .feedback-rule {
+      font-size: 15px;
+      font-weight: 700;
+      color: #7f1d1d;
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .feedback-explanation {
+      font-size: 14px;
+      font-weight: 600;
+      color: #991b1b;
+      line-height: 1.5;
+      opacity: 0.75;
+      margin-bottom: 20px;
+    }
+
+    .btn-continue {
+      width: 100%;
+      height: 58px;
+      border-radius: 100px;
+      background: #ef4444;
+      border: none;
+      color: #ffffff;
+      font-family: 'Nunito', sans-serif;
+      font-size: 17px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0px 4px 0px #b91c1c;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background game screen (dimmed) -->
+  <div class="bg-screen">
+    <div class="topbar">
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill"></div>
+      </div>
+      <div class="hearts">
+        <span class="heart">❤️</span>
+        <span class="heart">❤️</span>
+        <span class="heart" style="filter:grayscale(1)">❤️</span>
+      </div>
+    </div>
+    <div class="meta-row">
+      <div class="position-tag">Bottom Side Control</div>
+      <div class="timer">0</div>
+    </div>
+    <div class="scene">
+      <svg width="100%" height="100%" viewBox="0 0 342 200" fill="none">
+        <rect width="342" height="200" fill="#f8f6ff"/>
+        <line x1="0" y1="100" x2="342" y2="100" stroke="#ede9fe" stroke-width="1"/>
+        <line x1="171" y1="0" x2="171" y2="200" stroke="#ede9fe" stroke-width="1"/>
+        <rect x="80" y="82" width="170" height="48" rx="24" fill="#3b82f6" opacity="0.85"/>
+        <circle cx="262" cy="106" r="24" fill="#3b82f6" opacity="0.85"/>
+        <rect x="130" y="44" width="44" height="110" rx="22" fill="#ef4444" opacity="0.85"/>
+        <circle cx="152" cy="34" r="20" fill="#ef4444" opacity="0.85"/>
+        <rect x="82" y="80" width="76" height="14" rx="7" fill="#dc2626" opacity="0.7" transform="rotate(10 120 87)"/>
+      </svg>
+    </div>
+    <div class="options-bg">
+      <div class="option-btn-bg option-btn-wrong" style="display:flex;align-items:center;padding:0 16px;gap:12px;opacity:1">
+        <div style="width:34px;height:34px;border-radius:10px;background:#fee2e2;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#ef4444;flex-shrink:0;">A</div>
+        <div style="font-size:15px;font-weight:700;color:#dc2626;">Push against their chest</div>
+      </div>
+      <div class="option-btn-bg"></div>
+    </div>
+  </div>
+
+  <!-- Feedback sheet -->
+  <div class="feedback-sheet">
+    <div class="feedback-header">
+      <div class="feedback-icon">❌</div>
+      <div class="feedback-title">Incorrect</div>
+    </div>
+    <div class="feedback-rule">Never push the chest from bottom — you gift them the arm.</div>
+    <div class="feedback-explanation">Pushing chest lifts your elbows away from your body. Opponent grabs your wrist and has a straight armbar before you react.</div>
+    <button class="btn-continue">Got it</button>
+  </div>
+
+</body>
+</html>

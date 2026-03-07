@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=390, initial-scale=1.0" />
+  <title>BJJ Mind — Welcome</title>
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 390px;
+      height: 844px;
+      background: #ffffff;
+      font-family: 'Nunito', sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Top status bar area */
+    .status-bar {
+      width: 100%;
+      height: 44px;
+      flex-shrink: 0;
+    }
+
+    /* Character area — big, like Duolingo owl */
+    .character-area {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .character-wrap {
+      position: relative;
+      width: 280px;
+      height: 280px;
+    }
+
+    .character-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0px 16px 40px rgba(124, 58, 237, 0.22));
+    }
+
+    /* Text section */
+    .text-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 0 32px 28px;
+      text-align: center;
+    }
+
+    .app-title {
+      font-size: 40px;
+      font-weight: 900;
+      color: #1a1a2e;
+      letter-spacing: -1.5px;
+      line-height: 1;
+    }
+
+    .app-title .accent {
+      color: #7c3aed;
+    }
+
+    .tagline {
+      font-size: 16px;
+      font-weight: 400;
+      color: #6b7280;
+      line-height: 1.4;
+    }
+
+    /* Buttons */
+    .buttons {
+      width: 100%;
+      padding: 0 24px 52px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .btn {
+      width: 100%;
+      height: 58px;
+      border-radius: 100px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: -0.2px;
+    }
+
+    .btn-primary {
+      background: #7c3aed;
+      border: none;
+      color: #ffffff;
+      box-shadow: 0px 4px 0px #5b21b6;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 2.5px solid #e5e7eb;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="status-bar"></div>
+
+  <div class="character-area">
+    <div class="character-wrap">
+      <img src="image 1.png" alt="Gi Ghost" />
+    </div>
+  </div>
+
+  <div class="text-section">
+    <div class="app-title">BJJ <span class="accent">Mind</span></div>
+    <div class="tagline">Train your brain between sessions</div>
+  </div>
+
+  <div class="buttons">
+    <button class="btn btn-primary">Get started</button>
+    <button class="btn btn-secondary">I already have an account</button>
+  </div>
+
+</body>
+</html>

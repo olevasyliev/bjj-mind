@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=390, initial-scale=1.0" />
+  <title>BJJ Mind — Belt Select</title>
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 390px;
+      height: 844px;
+      background: #ffffff;
+      font-family: 'Nunito', sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top bar */
+    .topbar {
+      display: flex;
+      align-items: center;
+      padding: 52px 24px 0;
+      gap: 16px;
+    }
+
+    .progress-bar-wrap {
+      flex: 1;
+      height: 12px;
+      background: #f3f0ff;
+      border-radius: 100px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      width: 20%;
+      height: 100%;
+      background: #7c3aed;
+      border-radius: 100px;
+    }
+
+    .close-btn {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #9ca3af;
+      font-size: 22px;
+      cursor: pointer;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    /* Question */
+    .question-section {
+      padding: 36px 24px 24px;
+    }
+
+    .question-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #7c3aed;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .question-title {
+      font-size: 26px;
+      font-weight: 900;
+      color: #1a1a2e;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+    }
+
+    .question-sub {
+      font-size: 15px;
+      font-weight: 500;
+      color: #9ca3af;
+      margin-top: 6px;
+    }
+
+    /* Belt cards */
+    .belts {
+      flex: 1;
+      padding: 8px 24px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .belt-card {
+      width: 100%;
+      height: 66px;
+      border: 2.5px solid #f3f4f6;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      padding: 0 18px;
+      gap: 16px;
+      cursor: pointer;
+      background: #fff;
+      transition: all 0.15s;
+      position: relative;
+    }
+
+    .belt-card.selected {
+      border-color: #7c3aed;
+      background: #f5f0ff;
+    }
+
+    .belt-swatch {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .belt-info {
+      flex: 1;
+    }
+
+    .belt-name {
+      font-size: 17px;
+      font-weight: 800;
+      color: #1a1a2e;
+      line-height: 1;
+    }
+
+    .belt-desc {
+      font-size: 13px;
+      font-weight: 500;
+      color: #9ca3af;
+      margin-top: 2px;
+    }
+
+    .belt-card.selected .belt-name {
+      color: #7c3aed;
+    }
+
+    .check {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2.5px solid #e5e7eb;
+      flex-shrink: 0;
+    }
+
+    .belt-card.selected .check {
+      background: #7c3aed;
+      border-color: #7c3aed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .belt-card.selected .check::after {
+      content: '';
+      width: 6px;
+      height: 10px;
+      border: 2.5px solid white;
+      border-top: none;
+      border-left: none;
+      transform: rotate(45deg) translateY(-1px);
+      display: block;
+    }
+
+    /* Bottom button */
+    .bottom {
+      padding: 16px 24px 52px;
+    }
+
+    .btn-primary {
+      width: 100%;
+      height: 58px;
+      border-radius: 100px;
+      background: #7c3aed;
+      border: none;
+      color: #ffffff;
+      font-family: 'Nunito', sans-serif;
+      font-size: 17px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0px 4px 0px #5b21b6;
+      letter-spacing: -0.2px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill"></div>
+    </div>
+    <div class="close-btn">✕</div>
+  </div>
+
+  <div class="question-section">
+    <div class="question-label">Step 1 of 3</div>
+    <div class="question-title">What's your belt?</div>
+    <div class="question-sub">We'll tailor your training path</div>
+  </div>
+
+  <div class="belts">
+
+    <div class="belt-card selected">
+      <div class="belt-swatch" style="background:#f3f4f6;">🥋</div>
+      <div class="belt-info">
+        <div class="belt-name">White Belt</div>
+        <div class="belt-desc">Just started, learning survival</div>
+      </div>
+      <div class="check"></div>
+    </div>
+
+    <div class="belt-card">
+      <div class="belt-swatch" style="background:#eff6ff;">💙</div>
+      <div class="belt-info">
+        <div class="belt-name">Blue Belt</div>
+        <div class="belt-desc">Building control & passing</div>
+      </div>
+      <div class="check"></div>
+    </div>
+
+    <div class="belt-card">
+      <div class="belt-swatch" style="background:#f5f0ff;">💜</div>
+      <div class="belt-info">
+        <div class="belt-name">Purple Belt</div>
+        <div class="belt-desc">Attack systems & counters</div>
+      </div>
+      <div class="check"></div>
+    </div>
+
+    <div class="belt-card">
+      <div class="belt-swatch" style="background:#fff7ed;">🟤</div>
+      <div class="belt-info">
+        <div class="belt-name">Brown Belt</div>
+        <div class="belt-desc">Mastery & detail game</div>
+      </div>
+      <div class="check"></div>
+    </div>
+
+    <div class="belt-card">
+      <div class="belt-swatch" style="background:#f9fafb;">🖤</div>
+      <div class="belt-info">
+        <div class="belt-name">Black Belt</div>
+        <div class="belt-desc">Open game & teaching</div>
+      </div>
+      <div class="check"></div>
+    </div>
+
+  </div>
+
+  <div class="bottom">
+    <button class="btn-primary">Continue</button>
+  </div>
+
+</body>
+</html>

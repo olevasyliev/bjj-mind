@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=390, initial-scale=1.0" />
+  <title>BJJ Mind — Feedback Correct</title>
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 390px;
+      height: 844px;
+      background: #ffffff;
+      font-family: 'Nunito', sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .bg-screen {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      opacity: 0.35;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      padding: 52px 24px 0;
+      gap: 12px;
+    }
+
+    .progress-bar-wrap {
+      flex: 1;
+      height: 10px;
+      background: #f3f0ff;
+      border-radius: 100px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      width: 50%;
+      height: 100%;
+      background: #7c3aed;
+      border-radius: 100px;
+    }
+
+    .hearts { display: flex; gap: 3px; }
+    .heart { font-size: 16px; }
+
+    .meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px 12px;
+    }
+
+    .position-tag {
+      background: #f5f0ff;
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 800;
+      color: #7c3aed;
+    }
+
+    .timer {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #f0fdf4;
+      border: 3px solid #22c55e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 900;
+      color: #22c55e;
+    }
+
+    .scene {
+      margin: 0 24px;
+      background: #f8f6ff;
+      border-radius: 20px;
+      height: 200px;
+      border: 1.5px solid #ede9fe;
+      overflow: hidden;
+    }
+
+    .options-bg {
+      padding: 18px 24px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .option-btn-correct {
+      width: 100%;
+      height: 58px;
+      border-radius: 16px;
+      border: 2.5px solid #86efac;
+      background: #f0fdf4;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      gap: 12px;
+    }
+
+    .option-btn-plain {
+      width: 100%;
+      height: 58px;
+      border-radius: 16px;
+      border: 2.5px solid #f3f4f6;
+      background: #fff;
+    }
+
+    /* XP pop */
+    .xp-pop {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #7c3aed;
+      color: white;
+      font-size: 12px;
+      font-weight: 900;
+      padding: 3px 8px;
+      border-radius: 100px;
+    }
+
+    /* Feedback sheet */
+    .feedback-sheet {
+      background: #f0fdf4;
+      border-top: 3px solid #86efac;
+      border-radius: 24px 24px 0 0;
+      padding: 24px 24px 48px;
+      flex-shrink: 0;
+    }
+
+    .feedback-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .feedback-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #dcfce7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .feedback-title-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .feedback-title {
+      font-size: 20px;
+      font-weight: 900;
+      color: #16a34a;
+      letter-spacing: -0.3px;
+      line-height: 1;
+    }
+
+    .xp-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #7c3aed;
+      color: white;
+      font-size: 12px;
+      font-weight: 900;
+      padding: 2px 10px;
+      border-radius: 100px;
+      margin-top: 4px;
+      width: fit-content;
+    }
+
+    .feedback-rule {
+      font-size: 15px;
+      font-weight: 700;
+      color: #14532d;
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .feedback-explanation {
+      font-size: 14px;
+      font-weight: 600;
+      color: #166534;
+      line-height: 1.5;
+      opacity: 0.75;
+      margin-bottom: 20px;
+    }
+
+    .btn-continue {
+      width: 100%;
+      height: 58px;
+      border-radius: 100px;
+      background: #22c55e;
+      border: none;
+      color: #ffffff;
+      font-family: 'Nunito', sans-serif;
+      font-size: 17px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0px 4px 0px #15803d;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background game screen (dimmed) -->
+  <div class="bg-screen">
+    <div class="topbar">
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill"></div>
+      </div>
+      <div class="hearts">
+        <span class="heart">❤️</span>
+        <span class="heart">❤️</span>
+        <span class="heart">❤️</span>
+      </div>
+    </div>
+    <div class="meta-row">
+      <div class="position-tag">Bottom Side Control</div>
+      <div class="timer">✓</div>
+    </div>
+    <div class="scene">
+      <svg width="100%" height="100%" viewBox="0 0 342 200" fill="none">
+        <rect width="342" height="200" fill="#f8f6ff"/>
+        <line x1="0" y1="100" x2="342" y2="100" stroke="#ede9fe" stroke-width="1"/>
+        <line x1="171" y1="0" x2="171" y2="200" stroke="#ede9fe" stroke-width="1"/>
+        <rect x="80" y="82" width="170" height="48" rx="24" fill="#3b82f6" opacity="0.85"/>
+        <circle cx="262" cy="106" r="24" fill="#3b82f6" opacity="0.85"/>
+        <rect x="130" y="44" width="44" height="110" rx="22" fill="#ef4444" opacity="0.85"/>
+        <circle cx="152" cy="34" r="20" fill="#ef4444" opacity="0.85"/>
+      </svg>
+    </div>
+    <div class="options-bg">
+      <div class="option-btn-plain"></div>
+      <div class="option-btn-correct">
+        <div style="width:34px;height:34px;border-radius:10px;background:#dcfce7;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#16a34a;flex-shrink:0;">B</div>
+        <div style="font-size:15px;font-weight:700;color:#15803d;">Frame on their hip to create distance</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Feedback sheet -->
+  <div class="feedback-sheet">
+    <div class="feedback-header">
+      <div class="feedback-icon">✅</div>
+      <div class="feedback-title-wrap">
+        <div class="feedback-title">Correct!</div>
+        <div class="xp-badge">⚡ +10 XP</div>
+      </div>
+    </div>
+    <div class="feedback-rule">Hip frame = distance. Distance = you're safe.</div>
+    <div class="feedback-explanation">Framing on the hip keeps their weight away and gives you space to recover guard. No frame — they complete the mount in seconds.</div>
+    <button class="btn-continue">Continue</button>
+  </div>
+
+</body>
+</html>

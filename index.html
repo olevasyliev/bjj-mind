@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>BJJ Trainer</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0d1117;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: white;
+      padding: 16px;
+    }
+
+    .phone {
+      width: 390px;
+      max-width: 100%;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .badge {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #888;
+    }
+
+    .xp-bar-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: #4afa4a;
+      font-weight: 700;
+    }
+
+    .xp-bar {
+      width: 80px;
+      height: 6px;
+      background: #1e2e1e;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .xp-fill {
+      height: 100%;
+      width: 30%;
+      background: #4afa4a;
+      border-radius: 3px;
+      transition: width 0.6s ease;
+    }
+
+    /* Timer */
+    .timer-wrap {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .timer {
+      font-size: 52px;
+      font-weight: 800;
+      color: #ff4444;
+      font-variant-numeric: tabular-nums;
+      line-height: 1;
+      transition: color 0.3s;
+    }
+
+    .timer.ok { color: #ffaa44; }
+    .timer.safe { color: #aaaaaa; }
+
+    .situation-label {
+      font-size: 12px;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    /* Mat */
+    .mat {
+      background: #121f12;
+      border-radius: 20px;
+      padding: 12px;
+      border: 1px solid #1e2e1e;
+      margin: 12px 0;
+      position: relative;
+    }
+
+    .mat svg {
+      display: block;
+      width: 100%;
+    }
+
+    /* Legend */
+    .legend {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: 8px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      color: #666;
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    /* Prompt */
+    .prompt {
+      text-align: center;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.5;
+      color: #ccc;
+      margin-bottom: 14px;
+    }
+
+    .prompt strong {
+      color: white;
+      font-size: 16px;
+    }
+
+    /* Choices */
+    .choices {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .choice-btn {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 2px solid transparent;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.15s, opacity 0.3s;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: none;
+      color: white;
+    }
+
+    .choice-btn:hover:not(:disabled) { transform: scale(1.01); }
+    .choice-btn:active:not(:disabled) { transform: scale(0.99); }
+
+    .choice-btn.a {
+      background: #111e2e;
+      border-color: #2255aa;
+    }
+
+    .choice-btn.b {
+      background: #1e1118;
+      border-color: #882244;
+    }
+
+    .choice-btn .letter {
+      font-size: 18px;
+      font-weight: 800;
+      opacity: 0.5;
+      min-width: 20px;
+    }
+
+    .choice-btn.a .letter { color: #4488ff; }
+    .choice-btn.b .letter { color: #ff4488; }
+
+    /* Feedback */
+    .feedback {
+      display: none;
+      border-radius: 14px;
+      padding: 16px;
+      margin-top: 12px;
+      font-size: 13px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .feedback.wrong {
+      background: rgba(255, 50, 50, 0.1);
+      border: 1px solid rgba(255, 50, 50, 0.25);
+      color: #ff9999;
+    }
+
+    .feedback.correct {
+      background: rgba(74, 250, 74, 0.08);
+      border: 1px solid rgba(74, 250, 74, 0.2);
+      color: #aaeebb;
+    }
+
+    .feedback-icon { font-size: 36px; margin-bottom: 8px; }
+    .feedback-title { font-size: 16px; font-weight: 700; color: white; margin-bottom: 6px; }
+    .feedback-rule {
+      font-size: 12px;
+      font-style: italic;
+      margin-top: 8px;
+      opacity: 0.6;
+    }
+
+    .xp-gained {
+      font-size: 28px;
+      font-weight: 800;
+      color: #4afa4a;
+      margin-top: 8px;
+    }
+
+    .retry-btn {
+      margin-top: 12px;
+      padding: 10px 24px;
+      background: #1e2e3e;
+      border: 1px solid #334;
+      border-radius: 10px;
+      color: #aaa;
+      font-size: 13px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .retry-btn:hover { background: #2a3a4a; color: white; }
+
+    /* Danger pulse animation */
+    @keyframes danger-pulse {
+      0%, 100% { opacity: 0.25; }
+      50% { opacity: 0.75; }
+    }
+
+    .danger-zone { animation: danger-pulse 1.1s ease-in-out infinite; }
+  </style>
+</head>
+<body>
+<div class="phone">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="badge">White Belt · Lesson 3</div>
+    <div class="xp-bar-wrap">
+      <div class="xp-bar"><div class="xp-fill" id="xp-fill"></div></div>
+      <span id="xp-count">30 XP</span>
+    </div>
+  </div>
+
+  <!-- Timer -->
+  <div class="timer-wrap">
+    <div class="timer safe" id="timer">3</div>
+    <div class="situation-label">Side Control · Decision Point</div>
+  </div>
+
+  <!-- Legend -->
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#4488ff"></div>
+      You
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#ff4444"></div>
+      Opponent
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#ff4444; opacity:0.5"></div>
+      Danger zone
+    </div>
+  </div>
+
+  <!-- Mat / SVG -->
+  <div class="mat">
+    <svg viewBox="0 0 360 260" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- Mat surface -->
+      <rect width="360" height="260" fill="#121f12" rx="10"/>
+      <!-- Mat lines (tatami grid) -->
+      <line x1="0" y1="130" x2="360" y2="130" stroke="#1a2a1a" stroke-width="1"/>
+      <line x1="180" y1="0" x2="180" y2="260" stroke="#1a2a1a" stroke-width="1"/>
+
+      <!-- ============ YOU (blue) — horizontal, on back ============ -->
+
+      <!-- Torso -->
+      <ellipse cx="165" cy="150" rx="62" ry="28" fill="#0d2044" stroke="#4488ff" stroke-width="2"/>
+
+      <!-- Head -->
+      <circle cx="68" cy="145" r="24" fill="#0d2044" stroke="#4488ff" stroke-width="2"/>
+      <circle cx="68" cy="145" r="13" fill="#4488ff" opacity="0.2"/>
+      <text x="68" y="150" text-anchor="middle" font-size="9" fill="#6aacff" font-weight="700">YOU</text>
+
+      <!-- Left leg -->
+      <ellipse cx="268" cy="132" rx="34" ry="13"
+        fill="#0d2044" stroke="#4488ff" stroke-width="1.5"
+        transform="rotate(-12 268 132)"/>
+      <!-- Right leg -->
+      <ellipse cx="272" cy="168" rx="34" ry="13"
+        fill="#0d2044" stroke="#4488ff" stroke-width="1.5"
+        transform="rotate(12 272 168)"/>
+
+      <!-- Arm A (going toward opponent's head — WRONG, armbar bait) -->
+      <ellipse cx="148" cy="100" rx="9" ry="30"
+        fill="#1a3a6a" stroke="#4488ff" stroke-width="1.5"
+        transform="rotate(-10 148 100)"/>
+
+      <!-- Arm B (hip frame — CORRECT) -->
+      <ellipse cx="185" cy="200" rx="9" ry="30"
+        fill="#1a3a6a" stroke="#4488ff" stroke-width="1.5"
+        transform="rotate(5 185 200)"/>
+
+      <!-- Option labels on arms -->
+      <text x="134" y="74" font-size="11" fill="#4488ff" font-weight="700" opacity="0.8">A</text>
+      <text x="182" y="236" font-size="11" fill="#4488ff" font-weight="700" opacity="0.8">B</text>
+
+      <!-- ============ OPPONENT (red) — perpendicular, on top ============ -->
+
+      <!-- Torso -->
+      <ellipse cx="192" cy="142" rx="26" ry="60"
+        fill="#2a0a0a" stroke="#ff4444" stroke-width="2"/>
+
+      <!-- Head -->
+      <circle cx="192" cy="58" r="22" fill="#2a0a0a" stroke="#ff4444" stroke-width="2"/>
+      <circle cx="192" cy="58" r="12" fill="#ff4444" opacity="0.15"/>
+      <text x="192" y="63" text-anchor="middle" font-size="8" fill="#ff8888" font-weight="700">OPP</text>
+
+      <!-- Controlling arm (near head) -->
+      <ellipse cx="148" cy="95" rx="14" ry="9"
+        fill="#2a0a0a" stroke="#ff6666" stroke-width="1.5"
+        transform="rotate(35 148 95)"/>
+      <!-- Controlling arm (hip side) -->
+      <ellipse cx="236" cy="148" rx="14" ry="9"
+        fill="#2a0a0a" stroke="#ff6666" stroke-width="1.5"
+        transform="rotate(-20 236 148)"/>
+
+      <!-- Legs -->
+      <ellipse cx="178" cy="222" rx="12" ry="26"
+        fill="#2a0a0a" stroke="#ff4444" stroke-width="1.5"/>
+      <ellipse cx="206" cy="226" rx="12" ry="26"
+        fill="#2a0a0a" stroke="#ff4444" stroke-width="1.5"/>
+
+      <!-- ============ DANGER ZONE — armbar threat ============ -->
+      <ellipse class="danger-zone" cx="148" cy="97" rx="20" ry="38"
+        fill="#ff2222" stroke="#ff4444" stroke-width="1"
+        stroke-dasharray="5 3"
+        transform="rotate(-10 148 97)"/>
+
+      <!-- Danger label -->
+      <text x="58" y="68" font-size="9" fill="#ff6655" font-weight="600" class="danger-zone">⚠ Armbar</text>
+      <text x="62" y="80" font-size="9" fill="#ff6655" class="danger-zone">if A</text>
+
+      <!-- Arrow hint for B -->
+      <text x="196" y="210" font-size="13" fill="#4488ff" opacity="0.6">↓ hip</text>
+
+    </svg>
+  </div>
+
+  <!-- Prompt -->
+  <div class="prompt">
+    Opponent is passing to Mount.<br>
+    <strong>Where do you put your hands?</strong>
+  </div>
+
+  <!-- Choices -->
+  <div class="choices" id="choices">
+    <button class="choice-btn a" onclick="choose('wrong')">
+      <span class="letter">A</span>
+      Push his chest
+    </button>
+    <button class="choice-btn b" onclick="choose('correct')">
+      <span class="letter">B</span>
+      Frame on his hip
+    </button>
+  </div>
+
+  <!-- Feedback: Wrong -->
+  <div class="feedback wrong" id="feedback-wrong">
+    <div class="feedback-icon">❌</div>
+    <div class="feedback-title">You gave him the Armbar.</div>
+    Extending your arm toward his chest puts it directly in his control zone.
+    <div class="feedback-rule">"No frame = no defense. Straight arm = free submission."</div>
+    <button class="retry-btn" onclick="reset()">Try again</button>
+  </div>
+
+  <!-- Feedback: Correct -->
+  <div class="feedback correct" id="feedback-correct">
+    <div class="feedback-icon">✅</div>
+    <div class="feedback-title">Mount blocked.</div>
+    Hip frame creates distance and stops his base from shifting.
+    You bought time to recover guard.
+    <div class="xp-gained">+10 XP</div>
+  </div>
+
+</div>
+
+<script>
+  let timeLeft = 3;
+  let interval;
+  const timerEl = document.getElementById('timer');
+
+  function startTimer() {
+    interval = setInterval(() => {
+      timeLeft--;
+      timerEl.textContent = timeLeft;
+      if (timeLeft === 2) { timerEl.className = 'timer ok'; }
+      if (timeLeft === 1) { timerEl.className = 'timer'; }
+      if (timeLeft <= 0) {
+        clearInterval(interval);
+        timerEl.textContent = '⏰';
+        choose('wrong');
+      }
+    }, 1000);
+  }
+
+  function choose(result) {
+    clearInterval(interval);
+    document.querySelectorAll('.choice-btn').forEach(b => {
+      b.disabled = true;
+      b.style.opacity = '0.4';
+    });
+    document.getElementById('feedback-' + result).style.display = 'block';
+
+    if (result === 'correct') {
+      const fill = document.getElementById('xp-fill');
+      const count = document.getElementById('xp-count');
+      fill.style.width = '40%';
+      count.textContent = '40 XP';
+    }
+  }
+
+  function reset() {
+    timeLeft = 3;
+    timerEl.textContent = '3';
+    timerEl.className = 'timer safe';
+    document.querySelectorAll('.choice-btn').forEach(b => {
+      b.disabled = false;
+      b.style.opacity = '1';
+    });
+    document.getElementById('feedback-wrong').style.display = 'none';
+    document.getElementById('feedback-correct').style.display = 'none';
+    startTimer();
+  }
+
+  startTimer();
+</script>
+</body>
+</html>
