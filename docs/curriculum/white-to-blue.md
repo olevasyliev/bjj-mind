@@ -289,6 +289,50 @@ Based on difficulty and concept grouping, suggested unit structure:
 
 ---
 
+## SUPPLEMENTARY TECHNIQUES
+> Source: BJJFanatics.com — general White→Blue curriculum (non-PSBJJA)
+> These are standard across most academies. Add to app where marked.
+
+| Technique | Position | Key Cue | Tags | Add to App |
+|-----------|----------|---------|------|------------|
+| Hip Bump Sweep | Guard bottom | Sit up into them as they posture, use momentum to sweep to mount | `sweeps` `timing` | ✅ Unit 11 |
+| Knee on Belly | Top control | Knee on the solar plexus, opposite foot posted far out, hand on collar/hip | `control` `transitions` | ✅ Unit 3 or 7 |
+| Toreando Pass | Guard pass | Grab both ankles/pants, push legs to one side, step around to side control | `control` `transitions` | ✅ Unit 12 |
+| Bow and Arrow Choke | Back mount | Collar grip + pants grip, extend hips and lean back | `submissions` `grips` | later |
+| Bull Pass | Guard pass | Drive through guard with shoulder pressure, bull through | `control` `transitions` | later |
+| Kimura Sweep | Guard bottom | Kimura grip → if they resist, use grip to sweep | `sweeps` `grips` | later |
+
+### Stripe criteria (BJJFanatics reference)
+Useful for app unit gating logic:
+
+**Stripe 1:** Upa, Elbow Escape, basic positions, Americana, Hip Bump Sweep, basic guard break
+**Stripe 2:** Guard passing (knee cut), Knee on Belly, Scissor Sweep, Guillotine + defense, Back control + RNC, Technical stand-up
+**Stripe 3:** Tight control, Open/Closed Guard, Toreando Pass, Cross Collar Choke, Armbar from guard + mount, Armbar defense
+**Stripe 4:** Stand-up + single/double leg, Bull Pass, Bow & Arrow Choke, Kimura + Kimura Sweep, Transitions, Triangle
+
+### Blue Belt requirements summary (general)
+- At least 1 mastered submission + 1 mastered sweep
+- Escape from ALL major positions (mount, side control, guard, back)
+- Good control: crossface, underhook, overhook, necktie
+- Decent guard pass + posture in guard
+- Some stand-up competence
+
+---
+
+## MINDSET PRINCIPLES (for Coach Moments)
+> Source: BJJFanatics.com
+
+| Principle | Quote/Concept | Coach Moment use |
+|-----------|---------------|-----------------|
+| Forget the strength | "Calmness and body positioning far outweighs tensing strength. A rigid student is easier to sweep." | After any escape/sweep question |
+| Don't be a YouTube warrior | "White belts who focus on berimbolos miss guard passing, escaping, and transitioning fundamentals." | After first session / unit intro |
+| Master one at a time | "Mastering one move at a time is more conceivable than biting off more than you can chew." | After completing a unit |
+| Flow rolls | "Explore multiple positions without fighting for survival — you understand positions better when not fighting for your life." | After belt test intro |
+| Fail = learn | "In Jiu Jitsu to fail is not to fail — it is simply an opportunity to learn." | After wrong answer feedback |
+| Embrace the belt | "When promoted, whether you feel you deserve it or not — step up to that level." | After belt test pass screen |
+
+---
+
 ## BELT RANKING (PSBJJA System)
 | Rank | Required Credits |
 |------|-----------------|

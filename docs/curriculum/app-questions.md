@@ -1213,6 +1213,118 @@ Format: `spotmistake` | Tags: `control` `grips` | Difficulty: 3
 
 ---
 
+---
+
+## SUPPLEMENTARY QUESTIONS
+> Source: BJJFanatics.com — techniques common across all academies, not in PSBJJA list
+
+---
+
+### Hip Bump Sweep (add to Unit 11)
+
+**Q-S-01**
+Format: `mcq2` | Tags: `sweeps` `timing` | Difficulty: 1
+
+Position: You're in closed guard. Opponent is postured up with straight arms. No obvious attack.
+> **The Hip Bump Sweep works because you:**
+- A) Sit up into them as they posture, use your momentum to knock them over ✅
+- B) Pull their arms down and roll to the side
+
+**Correct:** A
+**Explanation:** The Hip Bump Sweep uses your sit-up momentum against their forward lean. As they posture up, you explode up into them — their own base works against them and they fall to mount.
+
+---
+
+**Q-S-02**
+Format: `truefalse` | Tags: `sweeps` `timing` | Difficulty: 2
+
+> **True or False: The Hip Bump Sweep works best when the opponent is leaning back away from you.**
+
+**Correct:** FALSE
+**Explanation:** The Hip Bump works when they're postured up and their weight is slightly forward. Leaning back means their base is behind them — you'd be pushing into air.
+
+---
+
+### Knee on Belly (add to Unit 7)
+
+**Q-S-03**
+Format: `mcq2` | Tags: `control` `transitions` | Difficulty: 1
+
+Position: You've passed guard and want to establish Knee on Belly.
+> **Your knee goes on their:**
+- A) Hip bone
+- B) Solar plexus / upper abdomen ✅
+
+**Correct:** B
+**Explanation:** Knee on the solar plexus creates discomfort and forces reaction — they either give you their arm (for submissions) or turn away (giving you the back). Knee on the hip has no pressure.
+
+---
+
+**Q-S-04**
+Format: `mcq2` | Tags: `control` `base` | Difficulty: 2
+
+Position: You have Knee on Belly. Opponent bridges to escape.
+> **Your posted foot (the one on the floor) should be:**
+- A) Close to their body for balance
+- B) Far out to the side as a wide base ✅
+
+**Correct:** B
+**Explanation:** Wide posted foot = wide base = much harder to topple. Foot close in means your base is narrow and their bridge can sweep you.
+
+---
+
+### Toreando Pass (add to Unit 12)
+
+**Q-S-05**
+Format: `mcq2` | Tags: `control` `transitions` | Difficulty: 2
+
+Position: Opponent has open guard, feet up. You attempt the Toreando Pass.
+> **You grip their pants/ankles and then:**
+- A) Drive their legs straight down to the mat
+- B) Push their legs to one side and step around to side control ✅
+
+**Correct:** B
+**Explanation:** Toreando = bullfighter. You redirect the legs to the side (like a bullfighter with a cape), not down. Pushing down just stalls — redirecting opens the path to side control.
+
+---
+
+**Q-S-06**
+Format: `truefalse` | Tags: `control` | Difficulty: 2
+
+> **True or False: In the Toreando Pass, you can let go of the legs as soon as you push them to the side.**
+
+**Correct:** FALSE
+**Explanation:** You must control the legs until you've cleared them and established side control. Releasing too early lets them recover guard with a simple hip movement.
+
+---
+
+## ADDITIONAL COACH MOMENTS
+> Source: BJJFanatics mindset principles
+
+**CM-09** | All units | Tag: `base` `escapes`
+> **"Strength makes you slower and easier to sweep."**
+> When a white belt tenses up and uses all their muscle, two things happen: they gas out in minutes, and their body becomes rigid — rigid bodies are easier to move. Relax. Use your technique. A relaxed body feels the movement and responds. A tense body just breaks.
+
+---
+
+**CM-10** | Unit 1 | Tag: `base`
+> **"Don't be a YouTube warrior."**
+> There's a temptation to copy what you see online — berimbolos, heel hooks, spinning submissions. Resist it. Those moves are built on top of the fundamentals. Without a solid shrimp, Upa, and proper posture — advanced techniques are a house built on sand. Master the boring stuff first.
+
+---
+
+**CM-11** | Between units | Tag: all
+> **"In BJJ, failing is just learning with extra steps."**
+> You will tap. You will get swept. You will make every mistake in this app and many more on the mat. That's the deal. Every tap is information — your body is learning what doesn't work. Don't fight the tap. Embrace it.
+
+---
+
+**CM-12** | Flow Roll concept | Tag: `transitions` `control`
+> **"Flow rolls: the secret weapon of fast learners."**
+> A flow roll is when you and your partner explore positions together — no ego, no survival mode. One person takes top, gives a sweep, the other comes to mount, offers an escape. You learn more in 5 minutes of flowing than 30 minutes of grinding. This app simulates that — each question is a position to explore, not a fight.
+
+---
+
 ## QUESTION COUNT SUMMARY
 
 | Unit | Questions | Formats |
@@ -1229,4 +1341,5 @@ Format: `spotmistake` | Tags: `control` `grips` | Difficulty: 3
 | 10 — Guard Attacks | 7 | mcq2, mcq4, truefalse, fill, spotmistake |
 | 11 — Guard Sweeps | 6 | mcq2, mcq4, truefalse, sequence |
 | 12 — Guard Passing | 7 | mcq2, mcq4, truefalse, fill, spotmistake |
-| **Total** | **84 questions + 8 coach moments** | **6 formats** |
+| Supplementary (Hip Bump, KoB, Toreando) | 6 | mcq2, truefalse |
+| **Total** | **90 questions + 12 coach moments** | **6 formats** |
