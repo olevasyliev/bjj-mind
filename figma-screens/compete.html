@@ -292,7 +292,7 @@
       <div class="card-title">Tournament Run</div>
       <div class="card-desc">5 matches in a row. Resources carry between matches. How far can you go?</div>
       <div class="card-timer">⏳ Resets in 4 days 12 hours</div>
-      <button class="btn-card-primary">🥊 Start Run</button>
+      <button class="btn-card-primary" onclick="location.href='tournament-match.html'">🥊 Start Run</button>
     </div>
 
     <!-- Quick Match vs Kat -->
@@ -306,7 +306,7 @@
         <div class="match-title">vs Kat</div>
         <div class="match-desc">Full match · 2-3 min · Turn-based</div>
       </div>
-      <button class="btn-match">Fight</button>
+      <button class="btn-match" onclick="location.href='match-vs-kat.html'">Fight</button>
     </div>
 
     <!-- League Ladder -->
@@ -346,11 +346,11 @@
   </div>
 
   <div class="tabbar">
-    <div class="tab"><span class="tab-icon">🏠</span><span class="tab-label">Home</span></div>
-    <div class="tab"><span class="tab-icon">🥋</span><span class="tab-label">Train</span></div>
-    <div class="tab active"><span class="tab-icon">⚔️</span><span class="tab-label">Compete</span></div>
-    <div class="tab"><span class="tab-icon">📈</span><span class="tab-label">Progress</span></div>
-    <div class="tab"><span class="tab-icon">👤</span><span class="tab-label">Profile</span></div>
+    <div class="tab" onclick="location.href='home.html'" style="cursor:pointer"><span class="tab-icon">🏠</span><span class="tab-label">Home</span></div>
+    <div class="tab" onclick="location.href='train.html'" style="cursor:pointer"><span class="tab-icon">🥋</span><span class="tab-label">Train</span></div>
+    <div class="tab active" onclick="location.href='compete.html'" style="cursor:pointer"><span class="tab-icon">⚔️</span><span class="tab-label">Compete</span></div>
+    <div class="tab" onclick="location.href='progress.html'" style="cursor:pointer"><span class="tab-icon">📈</span><span class="tab-label">Progress</span></div>
+    <div class="tab" onclick="location.href='profile.html'" style="cursor:pointer"><span class="tab-icon">👤</span><span class="tab-label">Profile</span></div>
   </div>
 
 </body>

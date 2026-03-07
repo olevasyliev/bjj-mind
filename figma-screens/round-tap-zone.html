@@ -193,24 +193,32 @@
 
       <!-- TAP ZONES (labeled circles) -->
       <!-- Zone A: OPP hip (correct) -->
-      <circle cx="165" cy="215" r="32" fill="#f59e0b" opacity="0.15"/>
-      <circle cx="165" cy="215" r="32" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="5 3"/>
-      <text x="165" y="262" font-family="Nunito" font-size="11" font-weight="900" fill="#92400e" text-anchor="middle">A — Hip</text>
+      <g onclick="location.href='feedback-correct.html'" style="cursor:pointer">
+        <circle cx="165" cy="215" r="32" fill="#f59e0b" opacity="0.15"/>
+        <circle cx="165" cy="215" r="32" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="5 3"/>
+        <text x="165" y="262" font-family="Nunito" font-size="11" font-weight="900" fill="#92400e" text-anchor="middle">A — Hip</text>
+      </g>
 
       <!-- Zone B: OPP chest -->
-      <circle cx="165" cy="116" r="28" fill="#e5e7eb" opacity="0.4"/>
-      <circle cx="165" cy="116" r="28" fill="none" stroke="#9ca3af" stroke-width="2" stroke-dasharray="5 3"/>
-      <text x="165" y="157" font-family="Nunito" font-size="11" font-weight="900" fill="#9ca3af" text-anchor="middle">B — Chest</text>
+      <g onclick="location.href='feedback-wrong.html'" style="cursor:pointer">
+        <circle cx="165" cy="116" r="28" fill="#e5e7eb" opacity="0.4"/>
+        <circle cx="165" cy="116" r="28" fill="none" stroke="#9ca3af" stroke-width="2" stroke-dasharray="5 3"/>
+        <text x="165" y="157" font-family="Nunito" font-size="11" font-weight="900" fill="#9ca3af" text-anchor="middle">B — Chest</text>
+      </g>
 
       <!-- Zone C: YOUR shoulder -->
-      <circle cx="80" cy="174" r="24" fill="#e5e7eb" opacity="0.4"/>
-      <circle cx="80" cy="174" r="24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-dasharray="5 3"/>
-      <text x="80" y="210" font-family="Nunito" font-size="11" font-weight="900" fill="#9ca3af" text-anchor="middle">C — Shoulder</text>
+      <g onclick="location.href='feedback-wrong.html'" style="cursor:pointer">
+        <circle cx="80" cy="174" r="24" fill="#e5e7eb" opacity="0.4"/>
+        <circle cx="80" cy="174" r="24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-dasharray="5 3"/>
+        <text x="80" y="210" font-family="Nunito" font-size="11" font-weight="900" fill="#9ca3af" text-anchor="middle">C — Shoulder</text>
+      </g>
 
       <!-- Zone D: YOUR head -->
-      <circle cx="290" cy="174" r="24" fill="#e5e7eb" opacity="0.4"/>
-      <circle cx="290" cy="174" r="24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-dasharray="5 3"/>
-      <text x="290" y="210" font-family="Nunito" font-size="11" font-weight="900" fill="#9ca3af" text-anchor="middle">D — Head</text>
+      <g onclick="location.href='feedback-wrong.html'" style="cursor:pointer">
+        <circle cx="290" cy="174" r="24" fill="#e5e7eb" opacity="0.4"/>
+        <circle cx="290" cy="174" r="24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-dasharray="5 3"/>
+        <text x="290" y="210" font-family="Nunito" font-size="11" font-weight="900" fill="#9ca3af" text-anchor="middle">D — Head</text>
+      </g>
 
       <!-- Top view label -->
       <text x="14" y="22" font-family="Nunito" font-size="9" font-weight="800" fill="#c4b5fd">TOP VIEW · SIDE CONTROL</text>
