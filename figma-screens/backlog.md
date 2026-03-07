@@ -23,6 +23,9 @@
 
 ## Up next 📋
 - Character art from Nano Banana → see `docs/characters/character-prompts.md`
-- Push all screens to Figma (MCP)
-- Micro-round scene refinement
+- Micro-round scene refinement ✅ (timer ring + better SVG done)
+- Feedback screens — Gi Ghost sad/happy reaction placeholder
 - Onboarding screen 3 (aha-moment intro frame before first question)
+
+## Ideas / backlog 💡
+- Think of a better app name (BJJ Mind is placeholder)

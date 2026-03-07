@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BJJ Mind — Screens</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #f9f8ff;
+      font-family: 'Nunito', sans-serif;
+      padding: 48px 32px;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 900;
+      color: #1a1a2e;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      font-weight: 700;
+      color: #9ca3af;
+      margin-bottom: 36px;
+    }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 800;
+      color: #a78bfa;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+      margin-top: 28px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    a {
+      display: block;
+      background: white;
+      border: 1.5px solid #ede9fe;
+      border-radius: 16px;
+      padding: 16px 18px;
+      text-decoration: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    a:hover {
+      border-color: #7c3aed;
+      box-shadow: 0 4px 0 #ede9fe;
+    }
+
+    .screen-name {
+      font-size: 15px;
+      font-weight: 800;
+      color: #1a1a2e;
+    }
+
+    .screen-desc {
+      font-size: 12px;
+      font-weight: 600;
+      color: #9ca3af;
+      margin-top: 3px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 100px;
+      margin-top: 8px;
+    }
+
+    .badge.done { background: #f0fdf4; color: #16a34a; }
+    .badge.refine { background: #fff7ed; color: #ea580c; }
+  </style>
+</head>
+<body>
+
+  <h1>BJJ Mind</h1>
+  <div class="subtitle">13 screens &nbsp;·&nbsp; Figma prototype</div>
+
+  <div class="section-title">Onboarding</div>
+  <div class="grid">
+    <a href="welcome.html">
+      <div class="screen-name">Welcome</div>
+      <div class="screen-desc">Gi Ghost + CTA</div>
+      <span class="badge done">Done</span>
+    </a>
+    <a href="belt-select.html">
+      <div class="screen-name">Belt Select</div>
+      <div class="screen-desc">Onboarding step 1</div>
+      <span class="badge done">Done</span>
+    </a>
+    <a href="problem-select.html">
+      <div class="screen-name">Problem Select</div>
+      <div class="screen-desc">Onboarding step 2</div>
+      <span class="badge done">Done</span>
+    </a>
+  </div>
+
+  <div class="section-title">Gameplay</div>
+  <div class="grid">
+    <a href="micro-round.html">
+      <div class="screen-name">Micro Round</div>
+      <div class="screen-desc">BJJ scene + A/B choice</div>
+      <span class="badge refine">Needs refinement</span>
+    </a>
+    <a href="feedback-correct.html">
+      <div class="screen-name">Feedback Correct</div>
+      <div class="screen-desc">Right answer sheet</div>
+      <span class="badge refine">Needs refinement</span>
+    </a>
+    <a href="feedback-wrong.html">
+      <div class="screen-name">Feedback Wrong</div>
+      <div class="screen-desc">Wrong answer sheet</div>
+      <span class="badge refine">Needs refinement</span>
+    </a>
+    <a href="summary.html">
+      <div class="screen-name">Session Summary</div>
+      <div class="screen-desc">XP + stats + coach</div>
+      <span class="badge done">Done</span>
+    </a>
+    <a href="belt-test.html">
+      <div class="screen-name">Belt Test</div>
+      <div class="screen-desc">Stripe exam gate</div>
+      <span class="badge done">Done</span>
+    </a>
+  </div>
+
+  <div class="section-title">Main App</div>
+  <div class="grid">
+    <a href="home.html">
+      <div class="screen-name">Home</div>
+      <div class="screen-desc">3 rings + streak + CTA</div>
+      <span class="badge done">Done</span>
+    </a>
+    <a href="train.html">
+      <div class="screen-name">Train</div>
+      <div class="screen-desc">Belt path track</div>
+      <span class="badge done">Done</span>
+    </a>
+    <a href="compete.html">
+      <div class="screen-name">Compete</div>
+      <div class="screen-desc">Tournament + league</div>
+      <span class="badge done">Done</span>
+    </a>
+    <a href="progress.html">
+      <div class="screen-name">Progress</div>
+      <div class="screen-desc">Mastery bars + stats</div>
+      <span class="badge done">Done</span>
+    </a>
+    <a href="profile.html">
+      <div class="screen-name">Profile</div>
+      <div class="screen-desc">Ghost + titles + gym</div>
+      <span class="badge done">Done</span>
+    </a>
+  </div>
+
+</body>
+</html>

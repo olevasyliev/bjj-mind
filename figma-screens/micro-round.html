@@ -24,8 +24,23 @@
       display: flex;
       align-items: center;
       padding: 52px 24px 0;
-      gap: 12px;
+      gap: 14px;
       flex-shrink: 0;
+    }
+
+    .close-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #f9f8ff;
+      border: 1.5px solid #ede9fe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: #9ca3af;
+      flex-shrink: 0;
+      cursor: pointer;
     }
 
     .progress-bar-wrap {
@@ -45,12 +60,14 @@
 
     .hearts {
       display: flex;
-      gap: 3px;
+      gap: 2px;
+      flex-shrink: 0;
     }
 
-    .heart { font-size: 16px; }
+    .heart { font-size: 17px; line-height: 1; }
+    .heart.lost { opacity: 0.25; }
 
-    /* Position + timer row */
+    /* Meta row: position + timer */
     .meta-row {
       display: flex;
       align-items: center;
@@ -62,32 +79,41 @@
     .position-tag {
       background: #f5f0ff;
       border-radius: 100px;
-      padding: 6px 14px;
+      padding: 7px 16px;
       font-size: 13px;
       font-weight: 800;
       color: #7c3aed;
     }
 
-    .timer {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: #fff7ed;
-      border: 3px solid #f59e0b;
+    /* Timer ring */
+    .timer-ring {
+      position: relative;
+      width: 52px;
+      height: 52px;
+      flex-shrink: 0;
+    }
+
+    .timer-ring svg {
+      transform: rotate(-90deg);
+    }
+
+    .timer-number {
+      position: absolute;
+      inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 900;
       color: #f59e0b;
     }
 
     /* Scene */
     .scene {
-      margin: 0 24px;
+      margin: 0 20px;
       background: #f8f6ff;
-      border-radius: 20px;
-      height: 200px;
+      border-radius: 22px;
+      height: 216px;
       position: relative;
       overflow: hidden;
       border: 1.5px solid #ede9fe;
@@ -111,32 +137,32 @@
       right: 14px;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 5px;
     }
 
     .legend-item {
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
       font-size: 11px;
       font-weight: 700;
-      color: #9ca3af;
+      color: #6b7280;
     }
 
     .legend-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
     }
 
     /* Question */
     .question-area {
-      padding: 18px 24px 14px;
+      padding: 20px 24px 14px;
       flex-shrink: 0;
     }
 
     .question-text {
-      font-size: 19px;
+      font-size: 20px;
       font-weight: 900;
       color: #1a1a2e;
       line-height: 1.3;
@@ -147,40 +173,40 @@
       font-size: 13px;
       font-weight: 600;
       color: #9ca3af;
-      margin-top: 4px;
+      margin-top: 5px;
     }
 
     /* Options */
     .options {
-      padding: 0 24px 0;
+      padding: 0 20px;
       display: flex;
       flex-direction: column;
       gap: 10px;
-      flex-shrink: 0;
+      flex: 1;
     }
 
     .option-btn {
       width: 100%;
-      min-height: 58px;
-      border-radius: 16px;
-      border: 2.5px solid #f3f4f6;
+      min-height: 62px;
+      border-radius: 18px;
+      border: 2.5px solid #ede9fe;
       background: #ffffff;
       display: flex;
       align-items: center;
-      padding: 10px 16px;
-      gap: 12px;
+      padding: 12px 16px;
+      gap: 14px;
       cursor: pointer;
     }
 
     .option-letter {
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
       background: #f5f0ff;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 900;
       color: #7c3aed;
       flex-shrink: 0;
@@ -196,7 +222,9 @@
 </head>
 <body>
 
+  <!-- Top bar -->
   <div class="topbar">
+    <div class="close-btn">✕</div>
     <div class="progress-bar-wrap">
       <div class="progress-bar-fill"></div>
     </div>
@@ -204,57 +232,92 @@
       <span class="heart">❤️</span>
       <span class="heart">❤️</span>
       <span class="heart">❤️</span>
+      <span class="heart lost">❤️</span>
+      <span class="heart lost">❤️</span>
     </div>
   </div>
 
+  <!-- Meta row -->
   <div class="meta-row">
     <div class="position-tag">Bottom Side Control</div>
-    <div class="timer">5</div>
+
+    <!-- Timer ring SVG -->
+    <div class="timer-ring">
+      <svg width="52" height="52" viewBox="0 0 52 52">
+        <!-- Track -->
+        <circle cx="26" cy="26" r="21" fill="none" stroke="#fef3c7" stroke-width="5"/>
+        <!-- Progress: circumference = 2π×21 ≈ 131.9. At 5/8s = 62.5% → dashoffset = 131.9 × (1−0.625) = 49.5 -->
+        <circle cx="26" cy="26" r="21" fill="none" stroke="#f59e0b" stroke-width="5"
+          stroke-linecap="round"
+          stroke-dasharray="131.9"
+          stroke-dashoffset="49.5"/>
+      </svg>
+      <div class="timer-number">5</div>
+    </div>
   </div>
 
+  <!-- BJJ Scene: Bottom Side Control (top-down view) -->
   <div class="scene">
-    <div class="scene-label">Top view</div>
-    <svg width="100%" height="100%" viewBox="0 0 342 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="342" height="200" fill="#f8f6ff"/>
-      <!-- Grid -->
-      <line x1="0" y1="50" x2="342" y2="50" stroke="#ede9fe" stroke-width="1"/>
-      <line x1="0" y1="100" x2="342" y2="100" stroke="#ede9fe" stroke-width="1"/>
-      <line x1="0" y1="150" x2="342" y2="150" stroke="#ede9fe" stroke-width="1"/>
-      <line x1="85" y1="0" x2="85" y2="200" stroke="#ede9fe" stroke-width="1"/>
-      <line x1="171" y1="0" x2="171" y2="200" stroke="#ede9fe" stroke-width="1"/>
-      <line x1="257" y1="0" x2="257" y2="200" stroke="#ede9fe" stroke-width="1"/>
+    <div class="scene-label">Top view · Side Control</div>
 
-      <!-- YOU (blue) — on bottom, horizontal -->
-      <rect x="80" y="82" width="170" height="48" rx="24" fill="#3b82f6" opacity="0.85"/>
-      <circle cx="262" cy="106" r="24" fill="#3b82f6" opacity="0.85"/>
-      <text x="158" y="111" font-family="Nunito" font-size="11" font-weight="800" fill="white" text-anchor="middle">YOU</text>
+    <svg width="100%" height="100%" viewBox="0 0 350 216" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Mat background -->
+      <rect width="350" height="216" fill="#f8f6ff"/>
+      <!-- Subtle mat lines -->
+      <line x1="0" y1="72" x2="350" y2="72" stroke="#ede9fe" stroke-width="1"/>
+      <line x1="0" y1="144" x2="350" y2="144" stroke="#ede9fe" stroke-width="1"/>
+      <line x1="116" y1="0" x2="116" y2="216" stroke="#ede9fe" stroke-width="1"/>
+      <line x1="232" y1="0" x2="232" y2="216" stroke="#ede9fe" stroke-width="1"/>
 
-      <!-- OPPONENT (red) — side control on top -->
-      <rect x="130" y="44" width="44" height="110" rx="22" fill="#ef4444" opacity="0.85"/>
-      <circle cx="152" cy="34" r="20" fill="#ef4444" opacity="0.85"/>
-      <!-- Arm across chest -->
-      <rect x="82" y="80" width="76" height="14" rx="7" fill="#dc2626" opacity="0.7" transform="rotate(10 120 87)"/>
-      <text x="152" y="108" font-family="Nunito" font-size="10" font-weight="800" fill="white" text-anchor="middle">OPP</text>
+      <!-- YOU (blue gi) — lying on back, horizontal -->
+      <!-- Torso -->
+      <rect x="72" y="88" width="188" height="40" rx="20" fill="#3b82f6"/>
+      <!-- Head -->
+      <circle cx="275" cy="108" r="22" fill="#3b82f6"/>
+      <!-- Left arm out -->
+      <rect x="40" y="90" width="44" height="16" rx="8" fill="#60a5fa" transform="rotate(-15 62 98)"/>
+      <!-- Right arm out -->
+      <rect x="268" y="130" width="44" height="14" rx="7" fill="#60a5fa" transform="rotate(20 290 137)"/>
+      <!-- YOU label -->
+      <text x="155" y="113" font-family="Nunito" font-size="13" font-weight="900" fill="white" text-anchor="middle">YOU</text>
 
-      <!-- Danger highlight -->
-      <circle cx="118" cy="90" r="12" fill="#ef4444" opacity="0.12"/>
+      <!-- OPPONENT (red gi) — in side control, perpendicular -->
+      <!-- Torso -->
+      <rect x="126" y="30" width="40" height="118" rx="20" fill="#ef4444"/>
+      <!-- Head -->
+      <circle cx="146" cy="20" r="20" fill="#ef4444"/>
+      <!-- Arm across your chest (key detail) -->
+      <rect x="72" y="87" width="68" height="14" rx="7" fill="#dc2626" transform="rotate(5 106 94)"/>
+      <!-- Arm on far side -->
+      <rect x="178" y="92" width="52" height="12" rx="6" fill="#dc2626" transform="rotate(-8 204 98)"/>
+      <!-- OPP label -->
+      <text x="146" y="88" font-family="Nunito" font-size="11" font-weight="900" fill="white" text-anchor="middle">OPP</text>
+
+      <!-- Highlight: the arm across chest = the frame zone -->
+      <ellipse cx="108" cy="95" rx="28" ry="14" fill="#f59e0b" opacity="0.18"/>
+      <ellipse cx="108" cy="95" rx="28" ry="14" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 3" opacity="0.6"/>
+
+      <!-- Focus label -->
+      <text x="108" y="122" font-family="Nunito" font-size="9" font-weight="800" fill="#d97706" text-anchor="middle" opacity="0.9">frame here?</text>
     </svg>
 
     <div class="legend">
       <div class="legend-item">
-        <div class="legend-dot" style="background:#3b82f6"></div>You
+        <div class="legend-dot" style="background:#3b82f6; border-radius:3px;"></div>You
       </div>
       <div class="legend-item">
-        <div class="legend-dot" style="background:#ef4444"></div>Opp
+        <div class="legend-dot" style="background:#ef4444; border-radius:3px;"></div>Opp
       </div>
     </div>
   </div>
 
+  <!-- Question -->
   <div class="question-area">
-    <div class="question-text">Opponent is going for Mount.<br/>What do you do with your arms?</div>
-    <div class="question-sub">Tap before the timer runs out</div>
+    <div class="question-text">Opponent is going for Mount.<br/>What do you do first?</div>
+    <div class="question-sub">Choose wisely — tap before the timer runs out</div>
   </div>
 
+  <!-- Options -->
   <div class="options">
     <div class="option-btn">
       <div class="option-letter">A</div>
