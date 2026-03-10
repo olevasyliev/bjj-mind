@@ -19,9 +19,9 @@
 
 ### Legend
 
-Nobody knows exactly what Gi Ghost is. He appeared on the mat one day — friendly, enthusiastic, wearing a pristine white gi — and nobody questioned it. He's been there ever since.
+Nobody knows exactly what Gi Ghost is. He appeared on the mat one day — friendly, enthusiastic, wearing a white gi with a black belt — and nobody questioned it. He's been there ever since.
 
-The working theory is that he was a BJJ practitioner so absorbed in the sport that when his body stopped, his mind stayed on the mat. He doesn't remember his name or belt rank. He just knows techniques and wants to share them.
+The working theory is that he was a BJJ practitioner so absorbed in the sport that when his body stopped, his mind stayed on the mat. He doesn't remember his name. The black belt he remembers — it took him everything he had, and it's the one thing that followed him.
 
 He's the player's constant companion: cheers when they get something right, slumps when they don't, floats alongside them through every session. Not a teacher exactly — more like an enthusiastic training partner who happens to know everything and can't tap out.
 
@@ -42,7 +42,7 @@ He's the player's constant companion: cheers when they get something right, slum
 **Gi details:**
 - Color: Pure white (#FFFFFF) with very light blue-grey shadow (#E8EAF0)
 - Collar: V-neck, slight lapel visible
-- Belt: **No belt visible by default** (nobody knows his rank — this is a running gag)
+- Belt: **Black** (#1a1a1a with subtle #3a3a3a highlight) — his defining visual element. Tied properly with a clean knot.
 - Subtle texture: faint parallel weave lines on chest panel
 
 **Signature color:** Soft lilac glow (#C4B5FD) — subtle aura around the base of the body, like he's slightly hovering
@@ -85,7 +85,7 @@ He's the player's constant companion: cheers when they get something right, slum
 
 ### Nano Banana Prompt
 
-> **Character:** Gi Ghost — floating ghost wearing a white BJJ gi (kimono). Chibi proportions: large round head approximately 55% of total character height, stubby body, no legs. He floats about 15 pixels above ground level. The gi is crisp white (#FFFFFF) with light blue-grey shadows on the fabric folds (#E8EAF0). Faint weave texture lines on the chest. No belt visible (intentional). Large black round eyes with a white shine dot in the upper left of each eye. Small oval nose. Soft lilac aura glow underneath the body (#C4B5FD, subtle). Slight translucency hint in the gi fabric to suggest he's a ghost — not fully opaque, more like very sheer cotton. 3/4 view facing right. Transparent background. Flat cel-shading with one highlight pass and one shadow pass. Clean 3–4px black outline. App theme purple: #7C3AED.
+> **Character:** Gi Ghost — floating ghost wearing a white BJJ gi (kimono) with a black belt. Chibi proportions: large round head approximately 55% of total character height, stubby body, no legs. He floats about 15 pixels above ground level. The gi is crisp white (#FFFFFF) with light blue-grey shadows on the fabric folds (#E8EAF0). Faint weave texture lines on the chest. Black belt (#1a1a1a, subtle #3a3a3a highlight) tied with a clean proper knot — this is his defining visual element. Large black round eyes with a white shine dot in the upper left of each eye. Small oval nose. Soft lilac aura glow underneath the body (#C4B5FD, subtle). Slight translucency hint in the gi fabric to suggest he's a ghost — not fully opaque, more like very sheer cotton. 3/4 view facing right. Transparent background. Flat cel-shading with one highlight pass and one shadow pass. Clean 3–4px black outline. App theme purple: #7C3AED.
 >
 > **Deliver 5 variants:** neutral (reference), celebrating (arms up, crescent eyes, open grin), sad (drooping eyes, limp arms, deflated posture), thinking (one arm raised, finger to side of head, head tilted), determined (fists forward, sharp narrowed eyes, leaning in).
 
