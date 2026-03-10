@@ -2,8 +2,8 @@
   "meta": {
     "version": "1.0",
     "belt": "white",
-    "total_questions": 90,
-    "generated": "2026-03-07",
+    "total_questions": 110,
+    "generated": "2026-03-10",
     "source": "docs/curriculum/app-questions.md"
   },
   "questions": [
@@ -1566,6 +1566,358 @@
       "correct": false,
       "explanation": "You must control the legs until you've cleared them and established side control. Releasing too early lets them recover guard with a simple hip movement.",
       "scene_id": "guard-top-01"
+    },
+
+    {
+      "id": "q-s-07",
+      "unit": 6,
+      "stripe": 2,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["sweeps", "timing"],
+      "difficulty": 1,
+      "situation": "You're in closed guard. Opponent posts their arm on your hip and tries to posture up.",
+      "question": "To set up the scissor sweep, your first move is:",
+      "options": [
+        { "id": "a", "text": "Kick both legs out to break their posture", "correct": false },
+        { "id": "b", "text": "Grab their sleeve and collar, then shift your hips to the side", "correct": true }
+      ],
+      "explanation": "Sleeve + collar grips with a hip shift sets up the blade position. Without controlling the arm and shifting off-centerline, they can simply base out and stop the sweep.",
+      "scene_id": "guard-bottom-01"
+    },
+
+    {
+      "id": "q-s-08",
+      "unit": 6,
+      "stripe": 2,
+      "belt": "white",
+      "format": "mcq4",
+      "tags": ["sweeps"],
+      "difficulty": 2,
+      "situation": "You've set up the scissor sweep: sleeve grip, collar grip, hips shifted. What do the legs do?",
+      "question": "In the scissor sweep, your top leg and bottom leg move in which direction?",
+      "options": [
+        { "id": "a", "text": "Top leg pushes their shoulder, bottom leg pulls their knee — both in the same direction", "correct": false },
+        { "id": "b", "text": "Top leg pushes their shoulder forward, bottom leg kicks back — scissor action", "correct": true },
+        { "id": "c", "text": "Both legs kick out to break their base", "correct": false },
+        { "id": "d", "text": "Bottom leg hooks under their hip, top leg stays down", "correct": false }
+      ],
+      "explanation": "Scissor = opposite forces. Top leg pushes their upper body forward while the bottom leg takes away the knee support. This creates a rotational sweep that drops them sideways.",
+      "scene_id": "guard-bottom-01"
+    },
+
+    {
+      "id": "q-s-09",
+      "unit": 6,
+      "stripe": 2,
+      "belt": "white",
+      "format": "truefalse",
+      "tags": ["sweeps"],
+      "difficulty": 1,
+      "question": "In the hip bump sweep, you initiate the movement by sitting up all the way to your hip before posting your arm.",
+      "correct": false,
+      "explanation": "You sit up to your elbow first, then post on your hand. This staged movement keeps your base solid while your hip loads for the bump. Going straight to sitting loses structure.",
+      "scene_id": "guard-bottom-01"
+    },
+
+    {
+      "id": "q-s-10",
+      "unit": 7,
+      "stripe": 2,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["sweeps", "timing"],
+      "difficulty": 2,
+      "situation": "You're in closed guard. Opponent has good posture and is resisting your sweeps.",
+      "question": "The best moment to attempt the pendulum sweep is when opponent:",
+      "options": [
+        { "id": "a", "text": "Leans back to break your guard open", "correct": false },
+        { "id": "b", "text": "Posts one hand on the mat to defend a different attack", "correct": true }
+      ],
+      "explanation": "When they post a hand on the mat, they've committed that arm to their base — it's no longer available to block the sweep. Attack the posted-arm side immediately.",
+      "scene_id": "guard-bottom-01"
+    },
+
+    {
+      "id": "q-s-11",
+      "unit": 7,
+      "stripe": 2,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["sweeps", "base"],
+      "difficulty": 2,
+      "situation": "You attempt the pendulum sweep but opponent extends their arm to base out on your stomach.",
+      "question": "What should you do with that extended arm?",
+      "options": [
+        { "id": "a", "text": "Let them base — their arm is too far to attack", "correct": false },
+        { "id": "b", "text": "Grab it and transition to armbar — they've given you the arm", "correct": true }
+      ],
+      "explanation": "An arm extended on your stomach is vulnerable to a straight armbar. The failed sweep baited the arm. Attacks chain together — if one fails, the opponent's defense opens another.",
+      "scene_id": "guard-bottom-01"
+    },
+
+    {
+      "id": "q-s-12",
+      "unit": 8,
+      "stripe": 3,
+      "belt": "white",
+      "format": "sequence",
+      "tags": ["sweeps", "transitions"],
+      "difficulty": 2,
+      "question": "Put the half guard sweep (underhook to back take) in the correct order:",
+      "steps": [
+        "Secure a deep underhook on their near arm",
+        "Block their far knee with your top knee",
+        "Come up to your elbow on the underhook side",
+        "Walk your hips out and come to your knees behind them"
+      ],
+      "explanation": "Underhook first (controls them), then block the knee (stops them from posting), then rise to your elbow, then convert to back take. Each step sets up the next.",
+      "scene_id": "side-ctrl-bottom-01"
+    },
+
+    {
+      "id": "q-s-13",
+      "unit": 8,
+      "stripe": 3,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["sweeps", "timing"],
+      "difficulty": 3,
+      "situation": "You're in half guard from the bottom. Opponent has a crossface and is flattening you out.",
+      "question": "Before you can sweep, you must first:",
+      "options": [
+        { "id": "a", "text": "Recover full guard by kicking your leg free", "correct": false },
+        { "id": "b", "text": "Turn onto your side and get the underhook — don't stay flat", "correct": true }
+      ],
+      "explanation": "A flat half guard is a controlled half guard — your opponent wins. Side-turning breaks their control and is a prerequisite for every offensive half guard option.",
+      "scene_id": "side-ctrl-bottom-01"
+    },
+
+    {
+      "id": "q-s-14",
+      "unit": 5,
+      "stripe": 2,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["transitions"],
+      "difficulty": 1,
+      "situation": "You've just passed guard and established side control. Opponent is flat on their back.",
+      "question": "What should you do before attempting to move to mount?",
+      "options": [
+        { "id": "a", "text": "Immediately knee slide to mount while they're surprised", "correct": false },
+        { "id": "b", "text": "Consolidate side control — wait until their movement tells you the path", "correct": true }
+      ],
+      "explanation": "Rushing to mount before consolidating means they escape back to guard during your transition. Wait in solid side control, feel their movement, and transition when they open the right path.",
+      "scene_id": "side-ctrl-top-01"
+    },
+
+    {
+      "id": "q-s-15",
+      "unit": 5,
+      "stripe": 2,
+      "belt": "white",
+      "format": "mcq4",
+      "tags": ["transitions", "control"],
+      "difficulty": 2,
+      "situation": "You're in side control. Opponent turns onto their side away from you to escape.",
+      "question": "Their hip turn away is a signal to transition to:",
+      "options": [
+        { "id": "a", "text": "North-south — follow their head with your body", "correct": false },
+        { "id": "b", "text": "Back mount — they've turned over, take their back", "correct": true },
+        { "id": "c", "text": "Stay in side control — don't let go of your position", "correct": false },
+        { "id": "d", "text": "Rear naked choke immediately from side control", "correct": false }
+      ],
+      "explanation": "When they turn away, they're showing you their back. This is the gift — take it. Transition to back mount before they complete the turn. Staying in side control wastes the opening.",
+      "scene_id": "side-ctrl-top-01"
+    },
+
+    {
+      "id": "q-s-16",
+      "unit": 9,
+      "stripe": 3,
+      "belt": "white",
+      "format": "truefalse",
+      "tags": ["transitions"],
+      "difficulty": 2,
+      "question": "From mount, if opponent bridges and rolls you, the correct response is to fall to guard.",
+      "correct": true,
+      "explanation": "If you can't base out in time, falling to guard is the right answer — you land in guard with control, not in a scramble. Resisting the bridge often results in a worse position.",
+      "scene_id": "mount-top-01"
+    },
+
+    {
+      "id": "q-s-17",
+      "unit": 9,
+      "stripe": 3,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["transitions", "control"],
+      "difficulty": 2,
+      "situation": "You're in mount. You want to transition to back control.",
+      "question": "Opponent turns to their side to escape mount. You should:",
+      "options": [
+        { "id": "a", "text": "Shoot one hook in before they complete the turn", "correct": true },
+        { "id": "b", "text": "Wait until they're fully turned before inserting both hooks", "correct": false }
+      ],
+      "explanation": "Insert the first hook early — as soon as they start the turn. Waiting for them to complete the turn means they'll flatten and block your second hook. Early hook = better back control.",
+      "scene_id": "mount-top-01"
+    },
+
+    {
+      "id": "q-s-18",
+      "unit": 10,
+      "stripe": 3,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["transitions", "escapes"],
+      "difficulty": 3,
+      "situation": "You're in side control from the bottom. You want to recover guard.",
+      "question": "After creating hip space with a shrimp, your next move is:",
+      "options": [
+        { "id": "a", "text": "Push their head away and sit up", "correct": false },
+        { "id": "b", "text": "Insert a knee frame between you and swing your hips to get your leg in", "correct": true }
+      ],
+      "explanation": "Shrimp creates the space; knee frame holds it open. Getting the knee in first protects the space and begins the guard recovery. Sitting up without the knee in just lets them re-flatten you.",
+      "scene_id": "side-ctrl-bottom-01"
+    },
+
+    {
+      "id": "q-s-19",
+      "unit": 10,
+      "stripe": 3,
+      "belt": "white",
+      "format": "spotmistake",
+      "tags": ["transitions"],
+      "difficulty": 3,
+      "question": "Alex passes guard, gets side control, then immediately steps over to mount while his opponent is moving. His opponent escapes back to guard. What went wrong?",
+      "options": [
+        { "id": "a", "text": "He should have gone to north-south first", "correct": false },
+        { "id": "b", "text": "He transitioned while the opponent was active — didn't wait to feel the right moment", "correct": true },
+        { "id": "c", "text": "Mount is the wrong target after a guard pass", "correct": false }
+      ],
+      "explanation": "Transitions work when the opponent is reacting in the direction you want — not when they're still moving in their own direction. Feel first, then transition into their movement, not against it.",
+      "scene_id": "side-ctrl-top-01"
+    },
+
+    {
+      "id": "q-s-20",
+      "unit": 3,
+      "stripe": 1,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["frames"],
+      "difficulty": 1,
+      "situation": "Opponent has side control on you. Their chest is pressing on yours.",
+      "question": "Which frame creates useful space — elbow on their hip or hands pushing their chest?",
+      "options": [
+        { "id": "a", "text": "Elbow on their hip", "correct": true },
+        { "id": "b", "text": "Hands pushing their chest", "correct": false }
+      ],
+      "explanation": "Elbow on hip creates a structural lever that stops their weight transfer while keeping your arm safe. Pushing the chest lifts your elbow, removes structure, and gifts them a straight armbar.",
+      "scene_id": "side-ctrl-bottom-01"
+    },
+
+    {
+      "id": "q-s-21",
+      "unit": 3,
+      "stripe": 1,
+      "belt": "white",
+      "format": "truefalse",
+      "tags": ["frames"],
+      "difficulty": 1,
+      "question": "A strong frame is built on muscle strength — the harder you push, the better the frame.",
+      "correct": false,
+      "explanation": "Frames are structural, not muscular. A proper frame uses bone alignment and leverage to hold position. Relying on strength tires you out and collapses the moment opponent shifts angle.",
+      "scene_id": "side-ctrl-bottom-01"
+    },
+
+    {
+      "id": "q-s-22",
+      "unit": 4,
+      "stripe": 2,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["frames", "escapes"],
+      "difficulty": 2,
+      "situation": "Opponent is mounted on you. They're sitting up straight. You want to start the elbow-knee escape.",
+      "question": "Before shrimping, which frame do you set?",
+      "options": [
+        { "id": "a", "text": "Both hands on their hips, arms straight", "correct": false },
+        { "id": "b", "text": "Forearm on their hip or thigh on the escape side, elbow in tight", "correct": true }
+      ],
+      "explanation": "The frame on the escape side holds open the space as you shrimp. Without it, opponent's weight closes back onto you before your knee can come through. Elbows must stay in — never flare.",
+      "scene_id": "mount-bottom-01"
+    },
+
+    {
+      "id": "q-s-23",
+      "unit": 4,
+      "stripe": 2,
+      "belt": "white",
+      "format": "mcq4",
+      "tags": ["frames", "control"],
+      "difficulty": 2,
+      "situation": "You're in the bottom of north-south. Opponent is lying across your chest pressing down.",
+      "question": "Which frame option lets you turn and recover guard?",
+      "options": [
+        { "id": "a", "text": "Both hands pushing up on their chest", "correct": false },
+        { "id": "b", "text": "One arm under their armpit (underhook), other hand on their hip", "correct": true },
+        { "id": "c", "text": "Grab their belt and pull down", "correct": false },
+        { "id": "d", "text": "Push their head away with both hands", "correct": false }
+      ],
+      "explanation": "Underhook + hip frame creates a lever that lets you turn onto your side and bring a knee through. Pushing up on the chest is pure strength with no structural advantage, and pushing their head just creates distance without position.",
+      "scene_id": "side-ctrl-bottom-01"
+    },
+
+    {
+      "id": "q-s-24",
+      "unit": 2,
+      "stripe": 1,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["frames"],
+      "difficulty": 1,
+      "situation": "Opponent stands up inside your closed guard, trying to break it open.",
+      "question": "To manage their posture and protect yourself, you:",
+      "options": [
+        { "id": "a", "text": "Keep legs tight and pull their head down with both hands", "correct": false },
+        { "id": "b", "text": "Place feet on their hips and extend legs slightly to control distance", "correct": true }
+      ],
+      "explanation": "Feet on hips = push frame. This keeps them from smashing straight down, lets you control the distance, and sets up sweeps. Pulling their head with no hip control lets them break your guard by standing up fully.",
+      "scene_id": "guard-bottom-01"
+    },
+
+    {
+      "id": "q-s-25",
+      "unit": 4,
+      "stripe": 2,
+      "belt": "white",
+      "format": "fill",
+      "tags": ["frames"],
+      "difficulty": 2,
+      "question": "A frame works because it places your _____ between you and the opponent, using bone structure to hold the space.",
+      "word_bank": ["elbow", "hand", "knee", "shoulder"],
+      "correct": "elbow",
+      "explanation": "The elbow is the structural corner of the arm frame. Pointing it at the opponent's hip or neck creates a rigid post that holds position without burning muscle energy.",
+      "scene_id": "side-ctrl-bottom-01"
+    },
+
+    {
+      "id": "q-s-26",
+      "unit": 5,
+      "stripe": 2,
+      "belt": "white",
+      "format": "mcq2",
+      "tags": ["frames", "timing"],
+      "difficulty": 3,
+      "situation": "Opponent has you in side control and is rotating toward mount.",
+      "question": "The moment to insert a knee frame is:",
+      "options": [
+        { "id": "a", "text": "After they've reached mount — then shrimp out", "correct": false },
+        { "id": "b", "text": "As they rotate — the space is briefly open during the transition", "correct": true }
+      ],
+      "explanation": "Transitions create momentary space. The window to insert a knee frame is during their rotation, not after. Once they've settled in mount, the space is gone and escaping is much harder.",
+      "scene_id": "side-ctrl-bottom-01"
     }
 
   ]
