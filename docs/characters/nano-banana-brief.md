@@ -353,4 +353,6 @@
 
 **Формат:** PNG, прозрачный фон, 800×800px, персонаж по центру, отступ 10% со всех сторон. Готово для iOS @3x.
 
+**Важно по экспорту:** The checkered pattern should NOT be painted into the image as actual pixels. Please export with a real alpha channel — the background should have 0% opacity, not be filled with the grey/white checkerboard. If you're working in Procreate: export via Share → PNG (not Save, not Flatten). If you're in Photoshop: delete or hide the background layer before exporting via Export As → PNG.
+
 **Якорь стиля:** Gi Ghost нейтральный (`image 1.png`) — все персонажи должны выглядеть как одна вселенная.
