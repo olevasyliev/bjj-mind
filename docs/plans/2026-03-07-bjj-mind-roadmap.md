@@ -6,7 +6,7 @@
 
 **Architecture:** React Native + Expo frontend, Supabase backend (auth + DB + realtime), Claude API for coach insights, Babylon.js for 3D BJJ scenes.
 
-**Tech Stack:** React Native, Expo, Supabase, Claude API, Babylon.js, ElevenLabs (voice), Lottie (animations), i18next (EN/ES/PT)
+**Tech Stack:** Swift, SwiftUI, Supabase (Swift SDK), Claude API, Babylon.js (WKWebView), Lottie (animations)
 
 ---
 
@@ -455,4 +455,4 @@ Implement in this order (each screen = one PR):
 2. **vs Kat / multiplayer** — Real async match against LLM opponent. User submits answers, LLM "plays" the same session with slight randomness, results compared. Feels like a real rival.
 3. **3D approach** — GrappleMap data. Parse open-source position graph, render in Babylon.js. Custom rigging on top.
 4. **Monetization** — Free tier: White Belt Stripe 1 only (enough to understand the loop and get hooked). Subscription unlocks Stripe 2+ and all belts. Promo codes for friends and gym partners (full access, no expiry). No ads ever.
-5. **Platforms** — iOS native first (React Native). Android after MVP validated.
+5. **Platforms** — iOS only. Swift/SwiftUI. Android не планируется.

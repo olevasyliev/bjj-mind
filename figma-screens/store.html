@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=390, initial-scale=1.0" />
+  <title>BJJ Mind — Store</title>
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { width: 390px; height: 844px; background: #f9f8ff; font-family: 'Nunito', sans-serif; overflow: hidden; display: flex; flex-direction: column; }
+
+    /* Header */
+    .topbar { padding: 52px 24px 0; display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+    .back-btn { width: 36px; height: 36px; border-radius: 12px; background: #f1f0ff; border: 1.5px solid #ede9fe; display: flex; align-items: center; justify-content: center; font-size: 16px; cursor: pointer; flex-shrink: 0; }
+    .topbar-text { flex: 1; }
+    .screen-title { font-size: 22px; font-weight: 900; color: #1a1a2e; letter-spacing: -0.3px; }
+    .screen-sub { font-size: 12px; font-weight: 700; color: #9ca3af; margin-top: 1px; }
+    .gem-pill { background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 100px; padding: 6px 12px; font-size: 14px; font-weight: 900; color: #16a34a; white-space: nowrap; }
+
+    /* Gems banner */
+    .gems-banner {
+      margin: 16px 20px 0;
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+      border-radius: 20px; padding: 16px 20px;
+      display: flex; align-items: center; gap: 16px;
+      box-shadow: 0 5px 0 #065f46; flex-shrink: 0;
+    }
+    .gems-icon { font-size: 40px; }
+    .gems-info { flex: 1; }
+    .gems-label { font-size: 12px; font-weight: 800; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.5px; }
+    .gems-count { font-size: 28px; font-weight: 900; color: white; margin-top: 2px; }
+    .gems-earn { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.6); margin-top: 3px; }
+    .add-gems-btn { background: rgba(255,255,255,0.2); border: 1.5px solid rgba(255,255,255,0.35); border-radius: 100px; padding: 8px 14px; font-family: 'Nunito', sans-serif; font-size: 13px; font-weight: 900; color: white; cursor: pointer; }
+
+    /* Scroll area */
+    .scroll-area { flex: 1; overflow-y: auto; padding: 16px 20px 20px; }
+    .scroll-area::-webkit-scrollbar { display: none; }
+
+    /* Section titles */
+    .section-label { font-size: 11px; font-weight: 900; color: #a78bfa; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; margin-top: 18px; }
+    .section-label:first-child { margin-top: 0; }
+
+    /* Hearts refill card */
+    .hearts-card {
+      background: white; border: 1.5px solid #fecdd3; border-radius: 20px;
+      padding: 16px; margin-bottom: 10px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .hearts-visual { display: flex; flex-direction: column; gap: 6px; align-items: center; }
+    .hearts-row { display: flex; gap: 4px; }
+    .hrt { font-size: 18px; }
+    .hrt.empty { filter: grayscale(1); opacity: 0.3; }
+    .hearts-body { flex: 1; }
+    .card-title { font-size: 16px; font-weight: 900; color: #1a1a2e; }
+    .card-sub { font-size: 12px; font-weight: 700; color: #9ca3af; margin-top: 2px; line-height: 1.4; }
+    .card-timer { font-size: 11px; font-weight: 900; color: #ef4444; margin-top: 4px; }
+    .refill-btn {
+      background: #ef4444; border: none; border-radius: 100px;
+      padding: 10px 16px; font-family: 'Nunito', sans-serif;
+      font-size: 13px; font-weight: 900; color: white;
+      cursor: pointer; box-shadow: 0 4px 0 #b91c1c;
+      white-space: nowrap; flex-shrink: 0;
+    }
+
+    /* Shop item row */
+    .shop-item {
+      background: white; border: 1.5px solid #ede9fe; border-radius: 20px;
+      padding: 14px 16px; margin-bottom: 10px;
+      display: flex; align-items: center; gap: 14px;
+      cursor: pointer; transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .shop-item:hover { border-color: #7c3aed; box-shadow: 0 4px 0 #ede9fe; }
+    .shop-item.featured { border-color: #fcd34d; background: #fffbeb; }
+    .item-icon { width: 52px; height: 52px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
+    .icon-bg-purple  { background: #f5f0ff; }
+    .icon-bg-blue    { background: #eff6ff; }
+    .icon-bg-orange  { background: #fff7ed; }
+    .icon-bg-yellow  { background: #fffbeb; }
+    .icon-bg-red     { background: #fef2f2; }
+    .item-body { flex: 1; }
+    .item-name { font-size: 15px; font-weight: 900; color: #1a1a2e; }
+    .item-desc { font-size: 12px; font-weight: 700; color: #9ca3af; margin-top: 2px; line-height: 1.35; }
+    .item-badge { font-size: 10px; font-weight: 900; background: #fef9c3; color: #854d0e; border-radius: 100px; padding: 2px 8px; display: inline-block; margin-top: 5px; }
+    .item-price {
+      display: flex; flex-direction: column; align-items: center; gap: 2px; flex-shrink: 0;
+    }
+    .price-gems { font-size: 16px; font-weight: 900; color: #059669; }
+    .price-label { font-size: 9px; font-weight: 800; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.5px; }
+    .price-owned { font-size: 14px; font-weight: 900; color: #7c3aed; }
+    .price-free { font-size: 14px; font-weight: 900; color: #22c55e; }
+
+    /* Divider */
+    .divider { height: 1px; background: #f3f4f6; margin: 6px 0 14px; }
+
+    .tabbar { height: 82px; background: white; border-top: 1.5px solid #f3f4f6; display: flex; align-items: center; justify-content: space-around; padding: 0 8px 16px; flex-shrink: 0; }
+    .tab { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 1; cursor: pointer; }
+    .tab-icon  { font-size: 22px; }
+    .tab-label { font-size: 10px; font-weight: 700; color: #d1d5db; }
+    .tab.active .tab-label { color: #7c3aed; }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="back-btn" onclick="history.back()">‹</div>
+    <div class="topbar-text">
+      <div class="screen-title">Store</div>
+      <div class="screen-sub">Power-ups &amp; refills</div>
+    </div>
+    <div class="gem-pill">💎 340</div>
+  </div>
+
+  <div class="gems-banner">
+    <div class="gems-icon">💎</div>
+    <div class="gems-info">
+      <div class="gems-label">Your gems</div>
+      <div class="gems-count">340</div>
+      <div class="gems-earn">Earn by winning tournaments &amp; streaks</div>
+    </div>
+    <button class="add-gems-btn">+ Get more</button>
+  </div>
+
+  <div class="scroll-area">
+
+    <!-- Hearts -->
+    <div class="section-label">Hearts</div>
+
+    <div class="hearts-card">
+      <div class="hearts-visual">
+        <div class="hearts-row">
+          <span class="hrt">❤️</span><span class="hrt">❤️</span>
+        </div>
+        <div class="hearts-row">
+          <span class="hrt empty">❤️</span><span class="hrt empty">❤️</span><span class="hrt empty">❤️</span>
+        </div>
+      </div>
+      <div class="hearts-body">
+        <div class="card-title">Refill Hearts</div>
+        <div class="card-sub">Restore all 5 hearts instantly</div>
+        <div class="card-timer">⏱ Next free refill in 3h 40m</div>
+      </div>
+      <button class="refill-btn">💎 50</button>
+    </div>
+
+    <!-- Streak Protection -->
+    <div class="section-label">Streak Protection</div>
+
+    <div class="shop-item featured">
+      <div class="item-icon icon-bg-orange">🛡️</div>
+      <div class="item-body">
+        <div class="item-name">Streak Freeze</div>
+        <div class="item-desc">Protects your streak for one missed day</div>
+        <span class="item-badge">⚡ Most popular</span>
+      </div>
+      <div class="item-price">
+        <div class="price-gems">💎 100</div>
+        <div class="price-label">gems</div>
+      </div>
+    </div>
+
+    <div class="shop-item">
+      <div class="item-icon icon-bg-orange">🔥</div>
+      <div class="item-body">
+        <div class="item-name">Streak Repair</div>
+        <div class="item-desc">Restore a streak you already lost (within 24h)</div>
+      </div>
+      <div class="item-price">
+        <div class="price-gems">💎 200</div>
+        <div class="price-label">gems</div>
+      </div>
+    </div>
+
+    <!-- Power-ups -->
+    <div class="section-label">Power-ups</div>
+
+    <div class="shop-item">
+      <div class="item-icon icon-bg-purple">⏱️</div>
+      <div class="item-body">
+        <div class="item-name">Time Boost</div>
+        <div class="item-desc">+3s added to every question timer for one session</div>
+      </div>
+      <div class="item-price">
+        <div class="price-gems">💎 40</div>
+        <div class="price-label">gems</div>
+      </div>
+    </div>
+
+    <div class="shop-item">
+      <div class="item-icon icon-bg-blue">💡</div>
+      <div class="item-body">
+        <div class="item-name">50/50 Hint</div>
+        <div class="item-desc">Removes 2 wrong answers. 3 uses per session.</div>
+      </div>
+      <div class="item-price">
+        <div class="price-gems">💎 60</div>
+        <div class="price-label">gems</div>
+      </div>
+    </div>
+
+    <div class="shop-item">
+      <div class="item-icon icon-bg-yellow">⚡</div>
+      <div class="item-body">
+        <div class="item-name">XP Boost</div>
+        <div class="item-desc">2× XP for the next 30 minutes</div>
+      </div>
+      <div class="item-price">
+        <div class="price-gems">💎 80</div>
+        <div class="price-label">gems</div>
+      </div>
+    </div>
+
+    <!-- Cosmetics -->
+    <div class="section-label">Cosmetics</div>
+
+    <div class="shop-item">
+      <div class="item-icon icon-bg-purple">🥋</div>
+      <div class="item-body">
+        <div class="item-name">Gold Gi Skin</div>
+        <div class="item-desc">Show off your Gi Ghost in tournament gold</div>
+      </div>
+      <div class="item-price">
+        <div class="price-gems">💎 300</div>
+        <div class="price-label">gems</div>
+      </div>
+    </div>
+
+    <div class="shop-item">
+      <div class="item-icon icon-bg-blue">🏷️</div>
+      <div class="item-body">
+        <div class="item-name">Title: "The Crusher"</div>
+        <div class="item-desc">Equip as your profile title</div>
+        <span class="item-badge">🏆 Win 5 tournaments to unlock</span>
+      </div>
+      <div class="item-price">
+        <div class="price-owned">🔒</div>
+      </div>
+    </div>
+
+    <div class="shop-item">
+      <div class="item-icon icon-bg-yellow">✨</div>
+      <div class="item-body">
+        <div class="item-name">League Aura</div>
+        <div class="item-desc">Animated glow around your leaderboard row</div>
+      </div>
+      <div class="item-price">
+        <div class="price-gems">💎 150</div>
+        <div class="price-label">gems</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="tabbar">
+    <div class="tab" onclick="location.href='home.html'"><span class="tab-icon">🏠</span><span class="tab-label">Home</span></div>
+    <div class="tab" onclick="location.href='train.html'"><span class="tab-icon">🥋</span><span class="tab-label">Train</span></div>
+    <div class="tab" onclick="location.href='compete.html'"><span class="tab-icon">⚔️</span><span class="tab-label">Compete</span></div>
+    <div class="tab" onclick="location.href='progress.html'"><span class="tab-icon">📈</span><span class="tab-label">Progress</span></div>
+    <div class="tab" onclick="location.href='profile.html'"><span class="tab-icon">👤</span><span class="tab-label">Profile</span></div>
+  </div>
+
+</body>
+</html>

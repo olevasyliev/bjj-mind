@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=390, initial-scale=1.0" />
+  <title>BJJ Mind — Home (Streak Lost)</title>
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { width: 390px; height: 844px; background: #f9f8ff; font-family: 'Nunito', sans-serif; overflow: hidden; display: flex; flex-direction: column; }
+
+    .topbar { display: flex; align-items: center; justify-content: space-between; padding: 52px 20px 12px; flex-shrink: 0; }
+    .stat-pill { display: flex; align-items: center; gap: 5px; border-radius: 100px; padding: 6px 14px; font-size: 14px; font-weight: 900; }
+    .pill-streak-lost { background: #f1f5f9; border: 2px solid #e2e8f0; color: #94a3b8; }
+    .pill-xp          { background: #f5f0ff; border: 2px solid #ddd6fe; color: #7c3aed; }
+    .pill-hearts      { background: #fff1f2; border: 2px solid #fecdd3; color: #e11d48; }
+
+    /* Streak lost banner */
+    .streak-banner {
+      margin: 0 16px 10px;
+      background: linear-gradient(135deg, #fef2f2, #fff7ed);
+      border: 1.5px solid #fca5a5;
+      border-radius: 18px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .banner-icon { font-size: 32px; flex-shrink: 0; }
+    .banner-text { flex: 1; }
+    .banner-title { font-size: 15px; font-weight: 900; color: #dc2626; }
+    .banner-sub   { font-size: 12px; font-weight: 700; color: #ef4444; opacity: 0.8; margin-top: 2px; }
+    .banner-btn {
+      background: #ef4444; border: none; border-radius: 100px;
+      padding: 8px 14px; font-family: 'Nunito', sans-serif;
+      font-size: 12px; font-weight: 900; color: white;
+      cursor: pointer; box-shadow: 0 3px 0 #b91c1c; white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .unit-banner {
+      margin: 0 16px 8px;
+      background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
+      border-radius: 18px; padding: 12px 18px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-shrink: 0; box-shadow: 0 4px 0 #475569;
+    }
+    .unit-eyebrow { font-size: 9px; font-weight: 800; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1.5px; }
+    .unit-title   { font-size: 15px; font-weight: 900; color: white; margin-top: 2px; }
+    .unit-fraction { font-size: 22px; font-weight: 900; color: white; text-align: right; }
+    .unit-fraction-label { font-size: 9px; font-weight: 700; color: rgba(255,255,255,0.6); text-align: right; }
+
+    .path-scroll { flex: 1; overflow-y: auto; overflow-x: hidden; }
+    .path-scroll::-webkit-scrollbar { display: none; }
+    .path-content { position: relative; width: 390px; height: 1020px; }
+
+    .node-wrap { position: absolute; display: flex; flex-direction: column; align-items: center; gap: 6px; transform: translateX(-50%); }
+    .node { border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .node-done   { width: 64px; height: 64px; background: #dcfce7; border: 3.5px solid #22c55e; box-shadow: 0 5px 0 #15803d; font-size: 26px; }
+    .node-active { width: 82px; height: 82px; background: #7c3aed; border: 4px solid #a78bfa; box-shadow: 0 6px 0 #5b21b6; font-size: 36px; cursor: pointer; animation: nodePulse 2.2s ease-in-out infinite; }
+    .node-locked { width: 64px; height: 64px; background: #f1f5f9; border: 3.5px solid #cbd5e1; box-shadow: 0 5px 0 #94a3b8; font-size: 24px; }
+
+    @keyframes nodePulse {
+      0%, 100% { box-shadow: 0 6px 0 #5b21b6, 0 0 0 0 rgba(124,58,237,0.5); }
+      50%       { box-shadow: 0 6px 0 #5b21b6, 0 0 0 14px rgba(124,58,237,0); }
+    }
+
+    .node-label { font-size: 11px; font-weight: 800; color: #94a3b8; text-align: center; white-space: nowrap; }
+    .node-label.done-label   { color: #16a34a; }
+    .node-label.active-label { font-size: 13px; font-weight: 900; color: #7c3aed; }
+
+    .start-btn {
+      position: absolute; left: 50%; transform: translateX(-50%);
+      width: 158px; height: 46px; border-radius: 100px;
+      background: #7c3aed; border: none; color: white;
+      font-family: 'Nunito', sans-serif; font-size: 16px; font-weight: 900;
+      cursor: pointer; box-shadow: 0 5px 0 #5b21b6;
+      display: flex; align-items: center; justify-content: center; gap: 7px;
+    }
+
+    .marco-bubble {
+      position: absolute; background: white; border: 1.5px solid #fee2e2;
+      border-radius: 14px; padding: 9px 13px; max-width: 136px;
+      box-shadow: 0 3px 12px rgba(220,38,38,0.12);
+    }
+    .bubble-who  { font-size: 9px; font-weight: 800; color: #ef4444; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+    .bubble-text { font-size: 11px; font-weight: 700; color: #374151; line-height: 1.4; }
+
+    .test-gate {
+      position: absolute; left: 20px; right: 20px;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      border-radius: 18px; padding: 14px 18px;
+      display: flex; align-items: center; gap: 12px;
+      box-shadow: 0 5px 0 #b45309; opacity: 0.35;
+    }
+    .gate-icon  { font-size: 26px; flex-shrink: 0; }
+    .gate-info  { flex: 1; }
+    .gate-label { font-size: 9px; font-weight: 800; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 1px; }
+    .gate-name  { font-size: 16px; font-weight: 900; color: white; margin-top: 2px; }
+    .gate-lock  { font-size: 22px; }
+
+    .preview-section { position: absolute; left: 20px; right: 20px; background: #f1f5f9; border: 1.5px dashed #cbd5e1; border-radius: 18px; padding: 14px 20px; text-align: center; }
+    .preview-label { font-size: 10px; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; }
+    .preview-name  { font-size: 15px; font-weight: 900; color: #cbd5e1; margin-top: 4px; }
+
+    .tabbar { height: 82px; background: white; border-top: 1.5px solid #f3f4f6; display: flex; align-items: center; justify-content: space-around; padding: 0 8px 16px; flex-shrink: 0; }
+    .tab { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 1; cursor: pointer; }
+    .tab-icon  { font-size: 22px; }
+    .tab-label { font-size: 10px; font-weight: 700; color: #d1d5db; }
+    .tab.active .tab-label { color: #7c3aed; }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="stat-pill pill-streak-lost">💔 0</div>
+    <div class="stat-pill pill-xp">⚡ 240 XP</div>
+    <div class="stat-pill pill-hearts">❤️ 5</div>
+  </div>
+
+  <!-- Streak lost banner -->
+  <div class="streak-banner">
+    <div class="banner-icon">😞</div>
+    <div class="banner-text">
+      <div class="banner-title">Your streak is gone</div>
+      <div class="banner-sub">You missed yesterday. Start fresh today.</div>
+    </div>
+    <button class="banner-btn" onclick="location.href='store.html'">Freeze 🛡️</button>
+  </div>
+
+  <div class="unit-banner">
+    <div>
+      <div class="unit-eyebrow">White Belt · Unit 1</div>
+      <div class="unit-title">🥋 Survival Fundamentals</div>
+    </div>
+    <div>
+      <div class="unit-fraction">3 / 7</div>
+      <div class="unit-fraction-label">lessons done</div>
+    </div>
+  </div>
+
+  <div class="path-scroll" id="pathScroll">
+    <div class="path-content">
+
+      <svg style="position:absolute;top:0;left:0;width:390px;height:1020px;pointer-events:none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 195 62 C 256 96 318 154 318 192 C 318 230 200 274 80 312 C 40 335 138 416 195 437 C 252 458 318 524 318 562 C 318 600 200 646 80 678 C 48 698 148 762 195 778"
+          stroke="#e2e8f0" stroke-width="16" fill="none" stroke-linecap="round"/>
+        <path d="M 195 62 C 256 96 318 154 318 192 C 318 230 200 274 80 312 C 40 335 138 416 195 437"
+          stroke="#c4b5fd" stroke-width="16" fill="none" stroke-linecap="round"/>
+        <path d="M 80 312 C 40 335 138 416 195 437"
+          stroke="#7c3aed" stroke-width="16" fill="none" stroke-linecap="round"/>
+      </svg>
+
+      <div class="node-wrap" style="left:195px; top:30px">
+        <div class="node node-done">✅</div>
+        <div class="node-label done-label">Intro</div>
+      </div>
+      <div class="node-wrap" style="left:318px; top:160px">
+        <div class="node node-done">✅</div>
+        <div class="node-label done-label">Frames</div>
+      </div>
+      <div class="node-wrap" style="left:80px; top:280px">
+        <div class="node node-done">✅</div>
+        <div class="node-label done-label">Grip Basics</div>
+      </div>
+
+      <div class="marco-bubble" style="right:18px; top:336px">
+        <div class="bubble-who">👋 Marco</div>
+        <div class="bubble-text">Missing one day doesn't erase your progress.</div>
+      </div>
+
+      <div class="node-wrap" style="left:195px; top:396px; cursor:pointer" onclick="location.href='micro-round.html'">
+        <div class="node node-active">🥋</div>
+        <div class="node-label active-label">Escapes</div>
+      </div>
+
+      <div class="start-btn" style="top:500px" onclick="location.href='micro-round.html'">
+        ▶ Start
+      </div>
+
+      <div class="node-wrap" style="left:318px; top:558px">
+        <div class="node node-locked">🔒</div>
+        <div class="node-label">Timing</div>
+      </div>
+      <div class="node-wrap" style="left:80px; top:658px">
+        <div class="node node-locked">🔒</div>
+        <div class="node-label">Transitions</div>
+      </div>
+
+      <div class="test-gate" style="top:758px">
+        <div class="gate-icon">🏆</div>
+        <div class="gate-info">
+          <div class="gate-label">Finish all lessons to unlock</div>
+          <div class="gate-name">Stripe 2 Belt Test</div>
+        </div>
+        <div class="gate-lock">🔒</div>
+      </div>
+
+      <div class="preview-section" style="top:868px">
+        <div class="preview-label">🔵 Next journey</div>
+        <div class="preview-name">Blue Belt — Guard & Sweeps</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabbar">
+    <div class="tab active" onclick="location.href='home.html'"><span class="tab-icon">🏠</span><span class="tab-label">Home</span></div>
+    <div class="tab" onclick="location.href='train.html'"><span class="tab-icon">🥋</span><span class="tab-label">Train</span></div>
+    <div class="tab" onclick="location.href='compete.html'"><span class="tab-icon">⚔️</span><span class="tab-label">Compete</span></div>
+    <div class="tab" onclick="location.href='progress.html'"><span class="tab-icon">📈</span><span class="tab-label">Progress</span></div>
+    <div class="tab" onclick="location.href='profile.html'"><span class="tab-icon">👤</span><span class="tab-label">Profile</span></div>
+  </div>
+
+  <script>
+    document.getElementById('pathScroll').scrollTop = 220;
+  </script>
+</body>
+</html>
