@@ -133,3 +133,4 @@
 // MARK: - Coach Marco
 "coach.name" = "Entrenador Marco";
 "coach.tap_to_start" = "Toca para empezar →";
+"session.fill_blank_hint" = "Escoge la palabra que falta";

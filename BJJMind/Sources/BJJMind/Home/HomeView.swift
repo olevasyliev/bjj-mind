@@ -115,10 +115,23 @@ struct BeltPathView: View {
     let units: [Unit]
     let onTap: (Unit) -> Void
 
+    // Section header shown BEFORE the unit with this id
+    private static let sectionHeaders: [String: String] = [
+        "wb-01":  "GUARD GAME",
+        "wb-04":  "TOP GAME",
+        "wb-08":  "BACK & SUBMISSIONS",
+        "wb-bt1": "BELT TEST",
+    ]
+
     var body: some View {
         // Zigzag layout matching HTML prototype
         VStack(spacing: 0) {
             ForEach(Array(units.enumerated()), id: \.element.id) { index, unit in
+                if let header = Self.sectionHeaders[unit.id] {
+                    SectionDividerView(title: header)
+                        .padding(.top, index == 0 ? 8 : 24)
+                        .padding(.bottom, 4)
+                }
                 HStack {
                     if index % 2 == 0 {
                         Spacer().frame(width: 60)
@@ -134,6 +147,31 @@ struct BeltPathView: View {
             }
         }
         .padding(.horizontal, 20)
+    }
+}
+
+// MARK: - Section Divider
+
+private struct SectionDividerView: View {
+    let title: String
+
+    var body: some View {
+        HStack(spacing: 10) {
+            Rectangle()
+                .fill(Color.brandPale)
+                .frame(height: 1.5)
+
+            Text(title)
+                .font(.nunito(10, weight: .black))
+                .foregroundColor(Color(hex: "#a78bfa"))
+                .tracking(1.5)
+                .fixedSize()
+
+            Rectangle()
+                .fill(Color.brandPale)
+                .frame(height: 1.5)
+        }
+        .padding(.horizontal, 8)
     }
 }
 

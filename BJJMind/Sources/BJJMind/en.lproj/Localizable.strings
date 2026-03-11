@@ -134,3 +134,4 @@
 // MARK: - Coach Marco
 "coach.name" = "Coach Marco";
 "coach.tap_to_start" = "Tap to start →";
+"session.fill_blank_hint" = "Pick the missing word";

@@ -191,21 +191,186 @@ private struct QuestionView: View {
             .padding(.horizontal, 24)
             .padding(.vertical, 20)
 
-            // Options
-            VStack(spacing: 10) {
-                ForEach(Array((engine.currentQuestion?.options ?? []).enumerated()), id: \.offset) { index, option in
-                    OptionButton(
-                        letter: String(UnicodeScalar(65 + index)!),
-                        text: option,
-                        state: .normal
-                    ) {
-                        engine.submitAnswer(option)
+            // Options — format-specific rendering
+            optionsView(for: engine.currentQuestion)
+                .padding(.horizontal, 20)
+
+            Spacer()
+        }
+    }
+
+    @ViewBuilder
+    private func optionsView(for question: Question?) -> some View {
+        if let question {
+            let options = question.options ?? []
+            switch question.format {
+            case .trueFalse:
+                TrueFalseOptionsView(onSubmit: { engine.submitAnswer($0) })
+            case .fillBlank:
+                FillBlankChipsView(options: options, onSubmit: { engine.submitAnswer($0) })
+            case .mcq4:
+                MCQ4GridView(options: options, onSubmit: { engine.submitAnswer($0) })
+            default:
+                VStack(spacing: 10) {
+                    ForEach(Array(options.enumerated()), id: \.offset) { index, option in
+                        OptionButton(
+                            letter: String(UnicodeScalar(65 + index)!),
+                            text: option,
+                            state: .normal
+                        ) {
+                            engine.submitAnswer(option)
+                        }
                     }
                 }
             }
-            .padding(.horizontal, 20)
+        }
+    }
+}
 
-            Spacer()
+// MARK: - True/False Options
+
+private struct TrueFalseOptionsView: View {
+    let onSubmit: (String) -> Void
+
+    var body: some View {
+        HStack(spacing: 14) {
+            TrueFalseButton(label: "TRUE", emoji: "✓", isTrue: true, onTap: { onSubmit("True") })
+            TrueFalseButton(label: "FALSE", emoji: "✕", isTrue: false, onTap: { onSubmit("False") })
+        }
+    }
+}
+
+private struct TrueFalseButton: View {
+    let label: String
+    let emoji: String
+    let isTrue: Bool
+    let onTap: () -> Void
+
+    var body: some View {
+        Button(action: onTap) {
+            VStack(spacing: 8) {
+                Text(emoji)
+                    .font(.system(size: 28, weight: .black))
+                    .foregroundColor(isTrue ? Color(hex: "#16a34a") : Color(hex: "#dc2626"))
+                Text(label)
+                    .font(.nunito(16, weight: .black))
+                    .foregroundColor(isTrue ? Color(hex: "#16a34a") : Color(hex: "#dc2626"))
+                    .tracking(1)
+            }
+            .frame(maxWidth: .infinity)
+            .frame(height: 80)
+            .background(isTrue ? Color(hex: "#f0fdf4") : Color(hex: "#fef2f2"))
+            .overlay(
+                RoundedRectangle(cornerRadius: 18)
+                    .strokeBorder(
+                        isTrue ? Color(hex: "#86efac") : Color(hex: "#fca5a5"),
+                        lineWidth: 2.5
+                    )
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 18))
+        }
+        .buttonStyle(.plain)
+    }
+}
+
+// MARK: - Fill Blank Chips
+
+private struct FillBlankChipsView: View {
+    let options: [String]
+    let onSubmit: (String) -> Void
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(L10n.Session.fillBlankHint)
+                .font(.nunito(11, weight: .bold))
+                .foregroundColor(Color(hex: "#a78bfa"))
+                .tracking(0.5)
+
+            FlowLayout(spacing: 10) {
+                ForEach(options, id: \.self) { option in
+                    Button(action: { onSubmit(option) }) {
+                        Text(option)
+                            .font(.nunito(15, weight: .bold))
+                            .foregroundColor(.brand)
+                            .padding(.horizontal, 18)
+                            .padding(.vertical, 10)
+                            .background(Color.brandVeryPale)
+                            .overlay(
+                                Capsule()
+                                    .strokeBorder(Color.brandPale, lineWidth: 2)
+                            )
+                            .clipShape(Capsule())
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
+// MARK: - MCQ4 Grid
+
+private struct MCQ4GridView: View {
+    let options: [String]
+    let onSubmit: (String) -> Void
+
+    private let columns = [GridItem(.flexible(), spacing: 10), GridItem(.flexible(), spacing: 10)]
+
+    var body: some View {
+        LazyVGrid(columns: columns, spacing: 10) {
+            ForEach(Array(options.enumerated()), id: \.offset) { index, option in
+                OptionButton(
+                    letter: String(UnicodeScalar(65 + index)!),
+                    text: option,
+                    state: .normal
+                ) {
+                    onSubmit(option)
+                }
+                .frame(maxHeight: .infinity)
+            }
+        }
+    }
+}
+
+// MARK: - Flow Layout (word-wrap)
+
+private struct FlowLayout: Layout {
+    var spacing: CGFloat = 8
+
+    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
+        let maxWidth = proposal.width ?? UIScreen.main.bounds.width
+        var x: CGFloat = 0
+        var y: CGFloat = 0
+        var rowHeight: CGFloat = 0
+        for subview in subviews {
+            let size = subview.sizeThatFits(ProposedViewSize(width: maxWidth, height: nil))
+            if x + size.width > maxWidth && x > 0 {
+                y += rowHeight + spacing
+                x = 0
+                rowHeight = 0
+            }
+            x += size.width + spacing
+            rowHeight = max(rowHeight, size.height)
+        }
+        y += rowHeight
+        return CGSize(width: maxWidth, height: y)
+    }
+
+    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
+        var x = bounds.minX
+        var y = bounds.minY
+        var rowHeight: CGFloat = 0
+        for subview in subviews {
+            let size = subview.sizeThatFits(ProposedViewSize(width: bounds.width, height: nil))
+            if x + size.width > bounds.maxX && x > bounds.minX {
+                y += rowHeight + spacing
+                x = bounds.minX
+                rowHeight = 0
+            }
+            subview.place(at: CGPoint(x: x, y: y), proposal: ProposedViewSize(size))
+            x += size.width + spacing
+            rowHeight = max(rowHeight, size.height)
         }
     }
 }

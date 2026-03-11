@@ -94,6 +94,7 @@ enum L10n {
         static var notQuite: String      { l("session.not_quite") }
         static func xpEarned(_ n: Int) -> String { lf("session.xp_earned", n) }
         static var continueCta: String   { l("session.continue") }
+        static var fillBlankHint: String { l("session.fill_blank_hint") }
     }
 
     // MARK: Summary
