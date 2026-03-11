@@ -3,7 +3,7 @@ import Foundation
 @MainActor
 final class SessionEngine: ObservableObject {
 
-    enum State: Equatable { case answering, showingFeedback, completed, gameOver }
+    enum State: Equatable { case showingIntro, answering, showingFeedback, completed, gameOver }
 
     // MARK: - Published
 
@@ -19,10 +19,11 @@ final class SessionEngine: ObservableObject {
     private var answeredCount: Int = 0
 
     let isBeltTest: Bool
+    let coachIntro: String?
 
     // MARK: - Init
 
-    init(questions: [Question], isBeltTest: Bool = false) {
+    init(questions: [Question], isBeltTest: Bool = false, coachIntro: String? = nil) {
         let ordered = isBeltTest ? questions.shuffled() : questions
         // Shuffle options so the correct answer isn't always option A
         self.questions = ordered.map { q in
@@ -32,7 +33,9 @@ final class SessionEngine: ObservableObject {
             return mutable
         }
         self.isBeltTest = isBeltTest
+        self.coachIntro = coachIntro
         self.hearts = isBeltTest ? 3 : UserProfile.maxHearts
+        self.state = coachIntro != nil ? .showingIntro : .answering
     }
 
     // MARK: - Computed
@@ -59,6 +62,11 @@ final class SessionEngine: ObservableObject {
     }
 
     // MARK: - Actions
+
+    func dismissIntro() {
+        guard state == .showingIntro else { return }
+        state = .answering
+    }
 
     func submitAnswer(_ answer: String) {
         guard state == .answering, let question = currentQuestion else { return }

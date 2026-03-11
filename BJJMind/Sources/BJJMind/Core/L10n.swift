@@ -148,6 +148,12 @@ enum L10n {
         static var failCta: String                    { l("belt_test.fail_cta") }
     }
 
+    // MARK: Coach Marco
+    enum Coach {
+        static var name: String       { l("coach.name") }
+        static var tapToStart: String { l("coach.tap_to_start") }
+    }
+
     // MARK: Profile
     enum Profile {
         static var title: String      { l("profile.title") }

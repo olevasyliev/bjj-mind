@@ -129,3 +129,8 @@
 // MARK: - Compete
 "compete.title" = "Compete";
 "compete.coming_soon" = "vs Kat, Tournaments and Leagues — coming in Phase 3";
+
+
+// MARK: - Coach Marco
+"coach.name" = "Coach Marco";
+"coach.tap_to_start" = "Tap to start →";

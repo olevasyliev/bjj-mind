@@ -149,17 +149,21 @@ final class AppStateTests: XCTestCase {
     // MARK: - Sequential Unlock Does Not Touch Belt Test
 
     func test_completeLastContentUnit_doesNotUnlockBeltTestSequentially() {
-        // Complete wb-06, then wb-07 — sequential unlock should NOT open belt test
+        // Complete wb-01 through wb-09 — sequential unlock should NOT open belt test
         // (only the allNonTestDone check should)
+        sut.completeUnit(id: "wb-01")
         sut.completeUnit(id: "wb-02")
         sut.completeUnit(id: "wb-03")
         sut.completeUnit(id: "wb-04")
         sut.completeUnit(id: "wb-05")
         sut.completeUnit(id: "wb-06")
-        // wb-07 is now unlocked but not yet completed — belt test must still be locked
-        XCTAssertTrue(sut.units.first(where: { $0.isBeltTest })!.isLocked)
-        // Now complete wb-07 — this triggers allNonTestDone and opens belt test
         sut.completeUnit(id: "wb-07")
+        sut.completeUnit(id: "wb-08")
+        sut.completeUnit(id: "wb-09")
+        // wb-10 is now unlocked but not yet completed — belt test must still be locked
+        XCTAssertTrue(sut.units.first(where: { $0.isBeltTest })!.isLocked)
+        // Now complete wb-10 — this triggers allNonTestDone and opens belt test
+        sut.completeUnit(id: "wb-10")
         XCTAssertFalse(sut.units.first(where: { $0.isBeltTest })!.isLocked)
     }
 }

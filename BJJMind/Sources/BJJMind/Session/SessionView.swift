@@ -13,7 +13,11 @@ struct SessionView: View {
     init(unit: Unit, isBeltTest: Bool = false) {
         self.unit = unit
         self.isBeltTest = isBeltTest
-        _engine = StateObject(wrappedValue: SessionEngine(questions: unit.questions, isBeltTest: isBeltTest))
+        _engine = StateObject(wrappedValue: SessionEngine(
+            questions: unit.questions,
+            isBeltTest: isBeltTest,
+            coachIntro: isBeltTest ? nil : unit.coachIntro
+        ))
     }
 
     var body: some View {
@@ -21,6 +25,9 @@ struct SessionView: View {
             Color.screenBg.ignoresSafeArea()
 
             switch engine.state {
+            case .showingIntro:
+                CoachIntroCard(text: engine.coachIntro ?? "", onTap: { engine.dismissIntro() })
+
             case .answering:
                 QuestionView(engine: engine, unit: unit, isBeltTest: isBeltTest, onClose: { dismiss() })
 
@@ -33,6 +40,7 @@ struct SessionView: View {
                     FeedbackView(
                         isCorrect: engine.lastAnswerWasCorrect,
                         explanation: isBeltTest ? "" : (engine.currentQuestion?.explanation ?? ""),
+                        coachNote: engine.lastAnswerWasCorrect ? nil : engine.currentQuestion?.coachNote,
                         onContinue: { engine.advance() }
                     )
                 }
@@ -276,6 +284,63 @@ struct OptionButton: View {
         case .correct: return Color(hex: "#f0fdf4")
         case .wrong:   return Color(hex: "#fef2f2")
         }
+    }
+}
+
+// MARK: - Coach Intro Card
+
+private struct CoachIntroCard: View {
+    let text: String
+    let onTap: () -> Void
+
+    var body: some View {
+        ZStack {
+            Color.screenBg.ignoresSafeArea()
+
+            VStack(spacing: 32) {
+                Spacer()
+
+                ZStack {
+                    RoundedRectangle(cornerRadius: 32)
+                        .fill(Color.brandVeryPale)
+                        .frame(width: 120, height: 120)
+                        .shadow(color: Color.brand.opacity(0.2), radius: 16, x: 0, y: 8)
+                    Text("👨‍🏫")
+                        .font(.system(size: 60))
+                }
+
+                VStack(spacing: 12) {
+                    Text(L10n.Coach.name.uppercased())
+                        .font(.nunito(12, weight: .black))
+                        .foregroundColor(.brand)
+                        .tracking(1.5)
+
+                    Text(text)
+                        .font(.bodyLg)
+                        .foregroundColor(.textPrimary)
+                        .multilineTextAlignment(.center)
+                        .lineSpacing(4)
+                        .padding(.horizontal, 32)
+                }
+
+                Spacer()
+
+                Button(action: onTap) {
+                    Text(L10n.Coach.tapToStart)
+                        .font(.buttonLg)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 58)
+                        .background(Color.brand)
+                        .clipShape(Capsule())
+                        .shadow(color: Color(hex: "#5b21b6"), radius: 0, x: 0, y: 4)
+                }
+                .buttonStyle(.plain)
+                .padding(.horizontal, 24)
+                .padding(.bottom, 52)
+            }
+        }
+        .onTapGesture { onTap() }
     }
 }
 

@@ -60,6 +60,7 @@ struct Unit: Identifiable, Codable, Hashable {
     var isCompleted: Bool
     var isBeltTest: Bool
     var questions: [Question]
+    var coachIntro: String?
 }
 
 // MARK: - Question
@@ -79,10 +80,12 @@ struct Question: Identifiable, Codable {
     var tags: [String]
     private(set) var difficulty: Int
     var sceneImageName: String?
+    var coachNote: String?
 
     init(id: String, unitId: String, format: QuestionFormat, prompt: String,
          options: [String]?, correctAnswer: String, explanation: String,
-         tags: [String], difficulty: Int, sceneImageName: String?) {
+         tags: [String], difficulty: Int, sceneImageName: String?,
+         coachNote: String? = nil) {
         self.id = id
         self.unitId = unitId
         self.format = format
@@ -93,6 +96,7 @@ struct Question: Identifiable, Codable {
         self.tags = tags
         self.difficulty = min(5, max(1, difficulty))
         self.sceneImageName = sceneImageName
+        self.coachNote = coachNote
     }
 }
 

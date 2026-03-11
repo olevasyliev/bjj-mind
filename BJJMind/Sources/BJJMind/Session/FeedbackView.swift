@@ -3,6 +3,7 @@ import SwiftUI
 struct FeedbackView: View {
     let isCorrect: Bool
     let explanation: String
+    var coachNote: String? = nil
     let onContinue: () -> Void
 
     var body: some View {
@@ -64,11 +65,30 @@ struct FeedbackView: View {
             .padding(.bottom, 16)
 
             // Explanation
-            VStack(alignment: .leading, spacing: 6) {
+            VStack(alignment: .leading, spacing: 12) {
                 Text(explanation)
                     .font(.feedbackRule)
                     .foregroundColor(isCorrect ? Color(hex: "#14532d") : Color(hex: "#7f1d1d"))
                     .lineSpacing(3)
+
+                if let note = coachNote, !isCorrect {
+                    HStack(alignment: .top, spacing: 8) {
+                        Text("👨‍🏫")
+                            .font(.system(size: 16))
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(L10n.Coach.name)
+                                .font(.nunito(11, weight: .black))
+                                .foregroundColor(.brand)
+                            Text(note)
+                                .font(.nunito(13, weight: .semiBold))
+                                .foregroundColor(Color(hex: "#374151"))
+                                .lineSpacing(2)
+                        }
+                    }
+                    .padding(12)
+                    .background(Color.brandVeryPale)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, 24)
