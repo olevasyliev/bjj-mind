@@ -1,0 +1,131 @@
+// MARK: - Belt Names
+"belt.white" = "Blanco";
+"belt.blue" = "Azul";
+"belt.purple" = "Morado";
+"belt.brown" = "Café";
+"belt.black" = "Negro";
+"belt.full_name" = "Cinturón %@";
+
+// MARK: - Welcome
+"welcome.subtitle" = "Entrena tu jiu-jitsu\nentre sesiones en el tatami";
+"welcome.get_started" = "Comenzar";
+"welcome.have_account" = "Ya tengo una cuenta";
+
+// MARK: - Belt Select
+"belt_select.step" = "Paso 1 de 3";
+"belt_select.title" = "¿Cuál es tu cinturón?";
+"belt_select.subtitle" = "Te colocaremos en el nivel correcto";
+"belt.white.desc" = "Recién empezando";
+"belt.blue.desc" = "Conozco los fundamentos";
+"belt.purple.desc" = "Soy intermedio";
+"belt_select.continue" = "Continuar";
+
+// MARK: - Problem Select
+"problem_select.step" = "Paso 2 de 3";
+"problem_select.title" = "¿Con qué\ntienes dificultades?";
+"problem_select.subtitle" = "Elige tus áreas débiles — nos enfocaremos ahí";
+"problem_select.skip" = "Omitir por ahora";
+"problem_select.continue_selected" = "Continuar (%d seleccionados)";
+
+"problem.takedowns.name" = "Derribos";
+"problem.takedowns.desc" = "Llegar al suelo";
+"problem.guard_passing.name" = "Pasar la guardia";
+"problem.guard_passing.desc" = "Superar la guardia del oponente";
+"problem.closed_guard.name" = "Guardia cerrada";
+"problem.closed_guard.desc" = "Atacar desde guardia cerrada";
+"problem.half_guard.name" = "Media guardia";
+"problem.half_guard.desc" = "Barridas y sumisiones";
+"problem.side_control.name" = "Control lateral";
+"problem.side_control.desc" = "Escapar de posiciones difíciles";
+"problem.mount.name" = "Montada";
+"problem.mount.desc" = "Sobrevivir y escapar";
+"problem.back_control.name" = "Control de espalda";
+"problem.back_control.desc" = "Escapar del control de espalda";
+"problem.submissions.name" = "Sumisiones";
+"problem.submissions.desc" = "Defensa y ataque";
+"problem.escapes.name" = "Escapadas";
+"problem.escapes.desc" = "Salir de malas posiciones";
+"problem.leg_locks.name" = "Llaves de pierna";
+"problem.leg_locks.desc" = "Heel hooks y llaves de tobillo";
+
+// MARK: - Aha Moment
+"aha.title" = "Así funciona";
+"aha.subtitle" = "El entrenamiento diario construye tu IQ de jiu-jitsu";
+"aha.insight1" = "Sigue el camino del cinturón — completa unidades para desbloquear tu próxima franja";
+"aha.insight2" = "Tienes 5 corazones por sesión — las respuestas incorrectas cuestan corazones";
+"aha.insight3" = "Entrena todos los días para mantener tu racha viva";
+"aha.insight4" = "Pasa el examen cuando estés listo para tu franja";
+"aha.cta" = "¡A entrenar! 🥋";
+
+// MARK: - Home
+"home.current_unit" = "UNIDAD ACTUAL";
+"home.questions" = "preguntas";
+
+// MARK: - Tab Bar
+"tab.train" = "Entrenar";
+"tab.compete" = "Competir";
+"tab.progress" = "Progreso";
+"tab.profile" = "Perfil";
+
+// MARK: - Session
+"session.position" = "POSICIÓN";
+"session.belt_test_chip" = "🎯 Examen de franja";
+"session.correct" = "¡Correcto!";
+"session.not_quite" = "No del todo";
+"session.xp_earned" = "+%d XP";
+"session.continue" = "Continuar";
+
+// MARK: - Summary
+"summary.title" = "¡Sesión completada!";
+"summary.subtitle" = "¡Buen trabajo — mantén la racha viva!";
+"summary.accuracy" = "Precisión";
+"summary.hearts_left" = "Corazones restantes";
+"summary.streak" = "Racha";
+"summary.keep_it" = "¡Mantenla!";
+"summary.continue" = "Continuar";
+"summary.review_mistakes" = "Revisar errores";
+
+// MARK: - Game Over
+"game_over.title" = "Sin corazones";
+"game_over.message" = "Vuelve más tarde o recarga en la tienda";
+"game_over.exit" = "Salir";
+
+// MARK: - Belt Test Gate
+"belt_test.description" = "Demuestra tus fundamentos del Cinturón Blanco en todas las posiciones básicas.";
+"belt_test.rules_header" = "REGLAS DEL EXAMEN";
+"belt_test.rule1" = "Solo 3 corazones — sin recargas";
+"belt_test.rule2" = "El temporizador es el doble de rápido";
+"belt_test.rule3" = "Sin pistas ni explicaciones";
+"belt_test.rule4" = "¿Fallaste? Reinténtalo en 24 horas";
+"belt_test.rule5" = "70% de precisión para aprobar";
+"belt_test.topics_header" = "TEMAS CUBIERTOS";
+"belt_test.start" = "Comenzar examen";
+"belt_test.retry_message" = "Vuelve en 24 horas";
+
+// MARK: - Belt Test Results
+"belt_test.pass_title" = "¡Franja ganada!";
+"belt_test.pass_subtitle" = "¡Pasaste el examen de Franja 1 del Cinturón Blanco!";
+"belt_test.pass_accuracy" = "%d%% de precisión";
+"belt_test.pass_continue" = "Continuar";
+"belt_test.fail_title" = "Aún no";
+"belt_test.fail_hearts_message" = "Cometiste 3 errores — se acabaron los corazones. Practica esas posiciones y vuelve mañana.";
+"belt_test.fail_accuracy_message" = "Necesitas 70%% para aprobar. Sigue practicando y vuelve mañana.";
+"belt_test.fail_your_score" = "Tu puntuación";
+"belt_test.fail_accuracy_label" = "Precisión";
+"belt_test.fail_mistakes_left" = "Errores restantes";
+"belt_test.fail_required" = "Requerido";
+"belt_test.fail_cta" = "Entendido";
+
+// MARK: - Profile
+"profile.title" = "Perfil";
+"profile.total_xp" = "XP Total";
+"profile.best_streak" = "Mejor racha";
+"profile.gems" = "Gemas";
+
+// MARK: - Progress
+"progress.title" = "Progreso";
+"progress.coming_soon" = "Estadísticas detalladas — próximamente";
+
+// MARK: - Compete
+"compete.title" = "Competir";
+"compete.coming_soon" = "vs Kat, Torneos y Ligas — llegando en la Fase 3";

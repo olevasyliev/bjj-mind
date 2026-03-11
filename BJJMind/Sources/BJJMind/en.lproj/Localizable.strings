@@ -1,0 +1,131 @@
+// MARK: - Belt Names
+"belt.white" = "White";
+"belt.blue" = "Blue";
+"belt.purple" = "Purple";
+"belt.brown" = "Brown";
+"belt.black" = "Black";
+"belt.full_name" = "%@ Belt";
+
+// MARK: - Welcome
+"welcome.subtitle" = "Train your jiu-jitsu\nbetween mat sessions";
+"welcome.get_started" = "Get Started";
+"welcome.have_account" = "I already have an account";
+
+// MARK: - Belt Select
+"belt_select.step" = "Step 1 of 3";
+"belt_select.title" = "What's your belt?";
+"belt_select.subtitle" = "We'll start you at the right place";
+"belt.white.desc" = "Just starting out";
+"belt.blue.desc" = "I know the basics";
+"belt.purple.desc" = "I'm an intermediate";
+"belt_select.continue" = "Continue";
+
+// MARK: - Problem Select
+"problem_select.step" = "Step 2 of 3";
+"problem_select.title" = "What do you\nstruggle with?";
+"problem_select.subtitle" = "Pick your weak areas — we'll focus there";
+"problem_select.skip" = "Skip for now";
+"problem_select.continue_selected" = "Continue (%d selected)";
+
+"problem.takedowns.name" = "Takedowns";
+"problem.takedowns.desc" = "Getting to the ground";
+"problem.guard_passing.name" = "Guard Passing";
+"problem.guard_passing.desc" = "Breaking through the guard";
+"problem.closed_guard.name" = "Closed Guard";
+"problem.closed_guard.desc" = "Attacking from closed guard";
+"problem.half_guard.name" = "Half Guard";
+"problem.half_guard.desc" = "Sweeps and submissions";
+"problem.side_control.name" = "Side Control";
+"problem.side_control.desc" = "Escaping bad positions";
+"problem.mount.name" = "Mount";
+"problem.mount.desc" = "Surviving and escaping";
+"problem.back_control.name" = "Back Control";
+"problem.back_control.desc" = "Escaping the back";
+"problem.submissions.name" = "Submissions";
+"problem.submissions.desc" = "Defence and offense";
+"problem.escapes.name" = "Escapes";
+"problem.escapes.desc" = "Getting out of bad spots";
+"problem.leg_locks.name" = "Leg Locks";
+"problem.leg_locks.desc" = "Heel hooks and ankle locks";
+
+// MARK: - Aha Moment
+"aha.title" = "Here's how it works";
+"aha.subtitle" = "Daily training builds real jiu-jitsu IQ";
+"aha.insight1" = "Follow the belt path — complete units to unlock your next stripe";
+"aha.insight2" = "You have 5 hearts per session — wrong answers cost hearts";
+"aha.insight3" = "Train every day to keep your streak alive";
+"aha.insight4" = "Pass the belt test when you're ready for your stripe";
+"aha.cta" = "Let's Train 🥋";
+
+// MARK: - Home
+"home.current_unit" = "CURRENT UNIT";
+"home.questions" = "questions";
+
+// MARK: - Tab Bar
+"tab.train" = "Train";
+"tab.compete" = "Compete";
+"tab.progress" = "Progress";
+"tab.profile" = "Profile";
+
+// MARK: - Session
+"session.position" = "POSITION";
+"session.belt_test_chip" = "🎯 Belt Test";
+"session.correct" = "Correct!";
+"session.not_quite" = "Not quite";
+"session.xp_earned" = "+%d XP";
+"session.continue" = "Continue";
+
+// MARK: - Summary
+"summary.title" = "Session Complete!";
+"summary.subtitle" = "Great work — keep the streak alive!";
+"summary.accuracy" = "Accuracy";
+"summary.hearts_left" = "Hearts left";
+"summary.streak" = "Streak";
+"summary.keep_it" = "Keep it!";
+"summary.continue" = "Continue";
+"summary.review_mistakes" = "Review mistakes";
+
+// MARK: - Game Over
+"game_over.title" = "Out of hearts";
+"game_over.message" = "Come back later or refill in the store";
+"game_over.exit" = "Exit";
+
+// MARK: - Belt Test Gate
+"belt_test.description" = "Prove your White Belt foundations across all fundamental positions.";
+"belt_test.rules_header" = "TEST RULES";
+"belt_test.rule1" = "3 hearts only — no refills";
+"belt_test.rule2" = "Timer is twice as fast";
+"belt_test.rule3" = "No hints or explanations";
+"belt_test.rule4" = "Failed? Retry after 24 hours";
+"belt_test.rule5" = "70% accuracy to pass";
+"belt_test.topics_header" = "TOPICS COVERED";
+"belt_test.start" = "Start Test";
+"belt_test.retry_message" = "Come back after 24 hours";
+
+// MARK: - Belt Test Results
+"belt_test.pass_title" = "Stripe Earned!";
+"belt_test.pass_subtitle" = "You passed the White Belt Stripe 1 Test!";
+"belt_test.pass_accuracy" = "%d%% accuracy";
+"belt_test.pass_continue" = "Continue";
+"belt_test.fail_title" = "Not Yet";
+"belt_test.fail_hearts_message" = "You made 3 mistakes — hearts ran out. Drill those positions and retry tomorrow.";
+"belt_test.fail_accuracy_message" = "You need 70%% to pass. Keep drilling and come back tomorrow.";
+"belt_test.fail_your_score" = "Your score";
+"belt_test.fail_accuracy_label" = "Accuracy";
+"belt_test.fail_mistakes_left" = "Mistakes left";
+"belt_test.fail_required" = "Required";
+"belt_test.fail_cta" = "Got it";
+
+// MARK: - Profile
+"profile.title" = "Profile";
+"profile.total_xp" = "Total XP";
+"profile.best_streak" = "Best Streak";
+"profile.gems" = "Gems";
+
+// MARK: - Progress
+"progress.title" = "Progress";
+"progress.coming_soon" = "Detailed stats — coming soon";
+
+// MARK: - Compete
+"compete.title" = "Compete";
+"compete.coming_soon" = "vs Kat, Tournaments and Leagues — coming in Phase 3";

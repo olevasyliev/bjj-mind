@@ -1,0 +1,640 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		147FC679CFCB49566F13BDF6 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7188F2AE91E8F93A06FBEE6C /* Nunito-Black.ttf */; };
+		19DFDD282B5F03F16C69D70F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8CD5BDBCAF84642EFF5E963A /* Localizable.strings */; };
+		212D4737D9F7F05BBEA35002 /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37B188946080C6A5CB3856 /* AppFonts.swift */; };
+		248C6ACC9329AFB2A436E0EF /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C64392883F3D08C2964809F3 /* Nunito-Bold.ttf */; };
+		25AD64B0B59D6D0B9114C288 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1480FB75F0887DA479BC0DD /* Nunito-SemiBold.ttf */; };
+		33AE19D2AFFBF2885701E18B /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B8DCE0881078EC425B8C73 /* FeedbackView.swift */; };
+		377166205E99D03D82E86FF5 /* AhaMomentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD6EEDA667AEB0FBE721EA5 /* AhaMomentView.swift */; };
+		4426095B2CF804430A3A6B4A /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0873A43D763EE480C355E72 /* ModelTests.swift */; };
+		4D97A62387F5569A22FEE2D5 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C6B01CF49966F1854B9EEC /* LanguageManager.swift */; };
+		55814374DA587BF0F18E2E04 /* AppStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B71981ACC4153E76E5E9DB /* AppStateTests.swift */; };
+		609E4A34EDC2E69F899C0949 /* BeltSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B25329B8331DF0CF194DEE /* BeltSelectView.swift */; };
+		63637ABFF5B30800253E3EDA /* BeltTestViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2988D1C00962FB4D915903F /* BeltTestViews.swift */; };
+		66083351B6A47F1BCA5F590F /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAF625C9C12C1D0878A2758 /* SampleData.swift */; };
+		768AE4B4070872E54B0C1D14 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2329EF0D26291969A12F81D7 /* ProgressView.swift */; };
+		77237438DF7D22B19B122392 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFE9EDFF53587037D18773C9 /* Nunito-ExtraBold.ttf */; };
+		86B658C26774878E13BD4D08 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167B51AA8D1167A1C0CECDD /* L10n.swift */; };
+		8A2EFC51271D14A28AA33A25 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92C43A31E69789CCFC62648 /* HomeView.swift */; };
+		8D0824680181A6C013BB7D85 /* SessionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE0045FCFE4F1EE41C818B3 /* SessionEngine.swift */; };
+		9360805B16197C110BCAB2FE /* SampleData_ES.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A47F00194B779CBA8A7479 /* SampleData_ES.swift */; };
+		97A733F36C38DA0A9E6F472F /* OnboardingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E3467664C0C66AD2AA6C2 /* OnboardingFlow.swift */; };
+		9A411B345ADC3749CF984F6F /* QuestionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E8F1A6EF3A3CB9DAFEE220 /* QuestionProvider.swift */; };
+		9B5E556F1905A9F93D3F8980 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7108B55FDFE579DB3BD9451B /* Models.swift */; };
+		9C74848C307F20977B41A64C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D813E1EABB947FDA9D5C6923 /* AppState.swift */; };
+		AF0693762093E8FF732DAA25 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4502CFACC767B730CF6D2AE8 /* AppColors.swift */; };
+		B26B4C5476831909FC56FF38 /* ProblemSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892325B688C9F848C85CAD6A /* ProblemSelectView.swift */; };
+		B8A3A82FFE870A177C1898A2 /* SessionEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1022009DE91D79734D44F01D /* SessionEngineTests.swift */; };
+		BE4DBD82E217ED6205B9276A /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C58996C53646A70790D499 /* SummaryView.swift */; };
+		C21C612BCC572A90AEA050D8 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C967BF4D41809272474BED1C /* MainTabView.swift */; };
+		C470BAD75246F5C9A23CE62C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE2C5DA939B10103B268FA25 /* Assets.xcassets */; };
+		C91EDC5C1199BA1685C9AD0C /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50144D844C5C1FCC1291A59 /* WelcomeView.swift */; };
+		CA12C19941208E08F60DAE4F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C37E87887F8522AB2EE1B9 /* ProfileView.swift */; };
+		DA38311EC72F8657B09B4EB5 /* BJJMindApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B7C552BE8EDA878A2C21CD /* BJJMindApp.swift */; };
+		EE5059447BAD6AA0A79962BE /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C199CE1C5893BB3CF48F9B5E /* SessionView.swift */; };
+		F35C2F6BB50AC3919BD2DFE6 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF5CF77D5866F5B5EA08CAF /* Components.swift */; };
+		F97D24BD72265BAAC94D9708 /* CompeteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41BD33438B314F57AC002EB /* CompeteView.swift */; };
+		FEDA6B657EEA65B70E470F4B /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A645FEF1310ECF5FB15750C7 /* Nunito-Regular.ttf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1EB5C916CC9E9B89DB23C1C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 270EAA8F21042AEF2C23ABE3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 06DC92CE5E3E95752E5F6C85;
+			remoteInfo = BJJMind;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1022009DE91D79734D44F01D /* SessionEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionEngineTests.swift; sourceTree = "<group>"; };
+		11B7C552BE8EDA878A2C21CD /* BJJMindApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BJJMindApp.swift; sourceTree = "<group>"; };
+		11C6B01CF49966F1854B9EEC /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
+		12B25329B8331DF0CF194DEE /* BeltSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltSelectView.swift; sourceTree = "<group>"; };
+		16C37E87887F8522AB2EE1B9 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		2329EF0D26291969A12F81D7 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		26A47F00194B779CBA8A7479 /* SampleData_ES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData_ES.swift; sourceTree = "<group>"; };
+		3DAF625C9C12C1D0878A2758 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		44D184A283A3C1227616243C /* BJJMind.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = BJJMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4502CFACC767B730CF6D2AE8 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		52B71981ACC4153E76E5E9DB /* AppStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateTests.swift; sourceTree = "<group>"; };
+		58E8F1A6EF3A3CB9DAFEE220 /* QuestionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionProvider.swift; sourceTree = "<group>"; };
+		617E3467664C0C66AD2AA6C2 /* OnboardingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlow.swift; sourceTree = "<group>"; };
+		6AF5CF77D5866F5B5EA08CAF /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		7108B55FDFE579DB3BD9451B /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		7188F2AE91E8F93A06FBEE6C /* Nunito-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Black.ttf"; sourceTree = "<group>"; };
+		78C7169986E1672733BEFCFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7C29505DEB88F51700E6BBC2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		892325B688C9F848C85CAD6A /* ProblemSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemSelectView.swift; sourceTree = "<group>"; };
+		9A37B188946080C6A5CB3856 /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
+		A167B51AA8D1167A1C0CECDD /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
+		A645FEF1310ECF5FB15750C7 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		A92C43A31E69789CCFC62648 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		B50144D844C5C1FCC1291A59 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		B6B8DCE0881078EC425B8C73 /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
+		BB4DE47B483C309BA64782BF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BBD6EEDA667AEB0FBE721EA5 /* AhaMomentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AhaMomentView.swift; sourceTree = "<group>"; };
+		C199CE1C5893BB3CF48F9B5E /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
+		C41BD33438B314F57AC002EB /* CompeteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompeteView.swift; sourceTree = "<group>"; };
+		C64392883F3D08C2964809F3 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
+		C967BF4D41809272474BED1C /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		D6C58996C53646A70790D499 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
+		D813E1EABB947FDA9D5C6923 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		DDE0045FCFE4F1EE41C818B3 /* SessionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionEngine.swift; sourceTree = "<group>"; };
+		E1480FB75F0887DA479BC0DD /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
+		E157714400C4AF269892BFED /* BJJMindTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = BJJMindTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2988D1C00962FB4D915903F /* BeltTestViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltTestViews.swift; sourceTree = "<group>"; };
+		F0873A43D763EE480C355E72 /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
+		FE2C5DA939B10103B268FA25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FFE9EDFF53587037D18773C9 /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		00A5CCDA578D6256F7301537 /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				E2988D1C00962FB4D915903F /* BeltTestViews.swift */,
+				B6B8DCE0881078EC425B8C73 /* FeedbackView.swift */,
+				DDE0045FCFE4F1EE41C818B3 /* SessionEngine.swift */,
+				C199CE1C5893BB3CF48F9B5E /* SessionView.swift */,
+				D6C58996C53646A70790D499 /* SummaryView.swift */,
+			);
+			path = Session;
+			sourceTree = "<group>";
+		};
+		273F017BF3271995F4F5E824 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E71E37D8D22FCBE9C47F41DF /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		372537675D371C91A7234287 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				4502CFACC767B730CF6D2AE8 /* AppColors.swift */,
+				9A37B188946080C6A5CB3856 /* AppFonts.swift */,
+				6AF5CF77D5866F5B5EA08CAF /* Components.swift */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
+		3B8211C2F43A99AA4C54FECE /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				C59F885C55BE52BD40265757 /* BJJMindTests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		85DA78CC07AA940E62A0E051 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C41BD33438B314F57AC002EB /* CompeteView.swift */,
+				A92C43A31E69789CCFC62648 /* HomeView.swift */,
+				C967BF4D41809272474BED1C /* MainTabView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		86D8354A1A4033AA55300BF2 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				D813E1EABB947FDA9D5C6923 /* AppState.swift */,
+				A167B51AA8D1167A1C0CECDD /* L10n.swift */,
+				11C6B01CF49966F1854B9EEC /* LanguageManager.swift */,
+				7108B55FDFE579DB3BD9451B /* Models.swift */,
+				58E8F1A6EF3A3CB9DAFEE220 /* QuestionProvider.swift */,
+				26A47F00194B779CBA8A7479 /* SampleData_ES.swift */,
+				3DAF625C9C12C1D0878A2758 /* SampleData.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		91949210A29E6B8E3FAC506E = {
+			isa = PBXGroup;
+			children = (
+				F86BD55BEE0A741E9F7E8352 /* Sources */,
+				3B8211C2F43A99AA4C54FECE /* Tests */,
+				9CA4C5B777C4FB37C24C0C13 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9CA4C5B777C4FB37C24C0C13 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				44D184A283A3C1227616243C /* BJJMind.app */,
+				E157714400C4AF269892BFED /* BJJMindTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B91AE70F96468ECE8D8F5656 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				16C37E87887F8522AB2EE1B9 /* ProfileView.swift */,
+				2329EF0D26291969A12F81D7 /* ProgressView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		C59F885C55BE52BD40265757 /* BJJMindTests */ = {
+			isa = PBXGroup;
+			children = (
+				52B71981ACC4153E76E5E9DB /* AppStateTests.swift */,
+				F0873A43D763EE480C355E72 /* ModelTests.swift */,
+				1022009DE91D79734D44F01D /* SessionEngineTests.swift */,
+			);
+			path = BJJMindTests;
+			sourceTree = "<group>";
+		};
+		E245AFA705E4D6BECE7B81C7 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				BBD6EEDA667AEB0FBE721EA5 /* AhaMomentView.swift */,
+				12B25329B8331DF0CF194DEE /* BeltSelectView.swift */,
+				617E3467664C0C66AD2AA6C2 /* OnboardingFlow.swift */,
+				892325B688C9F848C85CAD6A /* ProblemSelectView.swift */,
+				B50144D844C5C1FCC1291A59 /* WelcomeView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		E71E37D8D22FCBE9C47F41DF /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7188F2AE91E8F93A06FBEE6C /* Nunito-Black.ttf */,
+				C64392883F3D08C2964809F3 /* Nunito-Bold.ttf */,
+				FFE9EDFF53587037D18773C9 /* Nunito-ExtraBold.ttf */,
+				A645FEF1310ECF5FB15750C7 /* Nunito-Regular.ttf */,
+				E1480FB75F0887DA479BC0DD /* Nunito-SemiBold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		F86BD55BEE0A741E9F7E8352 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				FBD096B56AEF15383398F42F /* BJJMind */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		FBD096B56AEF15383398F42F /* BJJMind */ = {
+			isa = PBXGroup;
+			children = (
+				FE2C5DA939B10103B268FA25 /* Assets.xcassets */,
+				11B7C552BE8EDA878A2C21CD /* BJJMindApp.swift */,
+				78C7169986E1672733BEFCFA /* Info.plist */,
+				8CD5BDBCAF84642EFF5E963A /* Localizable.strings */,
+				86D8354A1A4033AA55300BF2 /* Core */,
+				372537675D371C91A7234287 /* Design */,
+				85DA78CC07AA940E62A0E051 /* Home */,
+				E245AFA705E4D6BECE7B81C7 /* Onboarding */,
+				B91AE70F96468ECE8D8F5656 /* Profile */,
+				273F017BF3271995F4F5E824 /* Resources */,
+				00A5CCDA578D6256F7301537 /* Session */,
+			);
+			path = BJJMind;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		06DC92CE5E3E95752E5F6C85 /* BJJMind */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5B5082E12E9CA4A866D3EEB /* Build configuration list for PBXNativeTarget "BJJMind" */;
+			buildPhases = (
+				D0985D677C5F02A27385B9BE /* Sources */,
+				7A68FCC49670D02E1FC31AA6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BJJMind;
+			packageProductDependencies = (
+			);
+			productName = BJJMind;
+			productReference = 44D184A283A3C1227616243C /* BJJMind.app */;
+			productType = "com.apple.product-type.application";
+		};
+		702C5A563A3AD3612524B911 /* BJJMindTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 39CABCB8490728634DAD3E08 /* Build configuration list for PBXNativeTarget "BJJMindTests" */;
+			buildPhases = (
+				430A9E2FE0DCCAF45D8FB485 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CB2B5B1F4722A4EF9D434A03 /* PBXTargetDependency */,
+			);
+			name = BJJMindTests;
+			packageProductDependencies = (
+			);
+			productName = BJJMindTests;
+			productReference = E157714400C4AF269892BFED /* BJJMindTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		270EAA8F21042AEF2C23ABE3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					06DC92CE5E3E95752E5F6C85 = {
+						DevelopmentTeam = "";
+					};
+					702C5A563A3AD3612524B911 = {
+						DevelopmentTeam = "";
+					};
+				};
+			};
+			buildConfigurationList = B0B4D0A98C8233674AA19167 /* Build configuration list for PBXProject "BJJMind" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+				es,
+			);
+			mainGroup = 91949210A29E6B8E3FAC506E;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				06DC92CE5E3E95752E5F6C85 /* BJJMind */,
+				702C5A563A3AD3612524B911 /* BJJMindTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7A68FCC49670D02E1FC31AA6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C470BAD75246F5C9A23CE62C /* Assets.xcassets in Resources */,
+				19DFDD282B5F03F16C69D70F /* Localizable.strings in Resources */,
+				147FC679CFCB49566F13BDF6 /* Nunito-Black.ttf in Resources */,
+				248C6ACC9329AFB2A436E0EF /* Nunito-Bold.ttf in Resources */,
+				77237438DF7D22B19B122392 /* Nunito-ExtraBold.ttf in Resources */,
+				FEDA6B657EEA65B70E470F4B /* Nunito-Regular.ttf in Resources */,
+				25AD64B0B59D6D0B9114C288 /* Nunito-SemiBold.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		430A9E2FE0DCCAF45D8FB485 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55814374DA587BF0F18E2E04 /* AppStateTests.swift in Sources */,
+				4426095B2CF804430A3A6B4A /* ModelTests.swift in Sources */,
+				B8A3A82FFE870A177C1898A2 /* SessionEngineTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0985D677C5F02A27385B9BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				377166205E99D03D82E86FF5 /* AhaMomentView.swift in Sources */,
+				AF0693762093E8FF732DAA25 /* AppColors.swift in Sources */,
+				212D4737D9F7F05BBEA35002 /* AppFonts.swift in Sources */,
+				9C74848C307F20977B41A64C /* AppState.swift in Sources */,
+				DA38311EC72F8657B09B4EB5 /* BJJMindApp.swift in Sources */,
+				609E4A34EDC2E69F899C0949 /* BeltSelectView.swift in Sources */,
+				63637ABFF5B30800253E3EDA /* BeltTestViews.swift in Sources */,
+				F97D24BD72265BAAC94D9708 /* CompeteView.swift in Sources */,
+				F35C2F6BB50AC3919BD2DFE6 /* Components.swift in Sources */,
+				33AE19D2AFFBF2885701E18B /* FeedbackView.swift in Sources */,
+				8A2EFC51271D14A28AA33A25 /* HomeView.swift in Sources */,
+				86B658C26774878E13BD4D08 /* L10n.swift in Sources */,
+				4D97A62387F5569A22FEE2D5 /* LanguageManager.swift in Sources */,
+				C21C612BCC572A90AEA050D8 /* MainTabView.swift in Sources */,
+				9B5E556F1905A9F93D3F8980 /* Models.swift in Sources */,
+				97A733F36C38DA0A9E6F472F /* OnboardingFlow.swift in Sources */,
+				B26B4C5476831909FC56FF38 /* ProblemSelectView.swift in Sources */,
+				CA12C19941208E08F60DAE4F /* ProfileView.swift in Sources */,
+				768AE4B4070872E54B0C1D14 /* ProgressView.swift in Sources */,
+				9A411B345ADC3749CF984F6F /* QuestionProvider.swift in Sources */,
+				66083351B6A47F1BCA5F590F /* SampleData.swift in Sources */,
+				9360805B16197C110BCAB2FE /* SampleData_ES.swift in Sources */,
+				8D0824680181A6C013BB7D85 /* SessionEngine.swift in Sources */,
+				EE5059447BAD6AA0A79962BE /* SessionView.swift in Sources */,
+				BE4DBD82E217ED6205B9276A /* SummaryView.swift in Sources */,
+				C91EDC5C1199BA1685C9AD0C /* WelcomeView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CB2B5B1F4722A4EF9D434A03 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 06DC92CE5E3E95752E5F6C85 /* BJJMind */;
+			targetProxy = 1EB5C916CC9E9B89DB23C1C3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8CD5BDBCAF84642EFF5E963A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BB4DE47B483C309BA64782BF /* en */,
+				7C29505DEB88F51700E6BBC2 /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		02DC06F66D17F6F75FE4A297 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Sources/BJJMind/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1528A2AC8CA75FF53963C208 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Sources/BJJMind/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		33E7D859D58C24F4BB949915 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_LANGUAGE = en;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aleksei.BJJMind;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		5FAB9F15D47FEF76540E0898 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_LANGUAGE = en;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aleksei.BJJMind;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		BDC87A4512EABFB5EF0B588B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aleksei.BJJMindTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BJJMind.app/BJJMind";
+			};
+			name = Debug;
+		};
+		DA55451F651189D7809D9078 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aleksei.BJJMindTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BJJMind.app/BJJMind";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		39CABCB8490728634DAD3E08 /* Build configuration list for PBXNativeTarget "BJJMindTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDC87A4512EABFB5EF0B588B /* Debug */,
+				DA55451F651189D7809D9078 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A5B5082E12E9CA4A866D3EEB /* Build configuration list for PBXNativeTarget "BJJMind" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1528A2AC8CA75FF53963C208 /* Debug */,
+				02DC06F66D17F6F75FE4A297 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B0B4D0A98C8233674AA19167 /* Build configuration list for PBXProject "BJJMind" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FAB9F15D47FEF76540E0898 /* Debug */,
+				33E7D859D58C24F4BB949915 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 270EAA8F21042AEF2C23ABE3 /* Project object */;
+}
