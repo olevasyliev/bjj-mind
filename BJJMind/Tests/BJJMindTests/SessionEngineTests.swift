@@ -145,4 +145,38 @@ final class SessionEngineTests: XCTestCase {
         engine.submitAnswer("X"); engine.advance()
         XCTAssertGreaterThan(engine.xpEarned, 0)
     }
+
+    // MARK: - showingIntro state
+
+    func test_init_withCoachIntro_stateIsShowingIntro() {
+        let engine = SessionEngine(questions: questions, coachIntro: "Tip text")
+        XCTAssertEqual(engine.state, .showingIntro)
+    }
+
+    func test_init_withoutCoachIntro_stateIsAnswering() {
+        let engine = SessionEngine(questions: questions, coachIntro: nil)
+        XCTAssertEqual(engine.state, .answering)
+    }
+
+    func test_dismissIntro_transitionsToAnswering() {
+        let engine = SessionEngine(questions: questions, coachIntro: "Tip")
+        XCTAssertEqual(engine.state, .showingIntro)
+        engine.dismissIntro()
+        XCTAssertEqual(engine.state, .answering)
+    }
+
+    func test_dismissIntro_ignoredWhenNotInIntro() {
+        let engine = SessionEngine(questions: questions)
+        // state is .answering, not .showingIntro
+        engine.dismissIntro()
+        XCTAssertEqual(engine.state, .answering)
+    }
+
+    func test_submitAnswer_ignoredWhileShowingIntro() {
+        let engine = SessionEngine(questions: questions, coachIntro: "Tip")
+        let heartsBefore = engine.hearts
+        engine.submitAnswer("A")   // should be ignored — still in intro
+        XCTAssertEqual(engine.state, .showingIntro)
+        XCTAssertEqual(engine.hearts, heartsBefore)
+    }
 }

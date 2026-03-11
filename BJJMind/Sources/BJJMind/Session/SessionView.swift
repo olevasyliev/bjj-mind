@@ -340,7 +340,6 @@ private struct CoachIntroCard: View {
                 .padding(.bottom, 52)
             }
         }
-        .onTapGesture { onTap() }
     }
 }
 
