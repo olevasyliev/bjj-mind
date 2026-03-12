@@ -59,7 +59,7 @@ final class UnitTests: XCTestCase {
         let beltTest = Unit(
             id: "bt-1", belt: .white, orderIndex: 7,
             title: "Stripe 1 Test", description: "",
-            tags: [], isLocked: false, isCompleted: false, isBeltTest: true, questions: []
+            tags: [], isLocked: false, isCompleted: false, kind: .beltTest, questions: []
         )
         XCTAssertTrue(beltTest.isBeltTest)
     }
@@ -68,7 +68,7 @@ final class UnitTests: XCTestCase {
         let unit = Unit(
             id: "u-1", belt: .white, orderIndex: 1,
             title: "Closed Guard", description: "",
-            tags: ["guard"], isLocked: true, isCompleted: false, isBeltTest: false, questions: []
+            tags: ["guard"], isLocked: true, isCompleted: false, kind: .lesson, questions: []
         )
         XCTAssertTrue(unit.isLocked)
         XCTAssertFalse(unit.isCompleted)

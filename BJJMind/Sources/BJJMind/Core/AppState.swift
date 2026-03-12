@@ -87,7 +87,7 @@ final class AppState: ObservableObject {
                 title: b.title, description: b.description, tags: b.tags,
                 isLocked: true,
                 isCompleted: completedIds.contains(b.id),
-                isBeltTest: b.isBeltTest,
+                kind: b.isBeltTest ? .beltTest : .lesson,
                 questions: b.questions,
                 coachIntro: b.coachIntro
             )
