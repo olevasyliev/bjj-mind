@@ -23,6 +23,11 @@ struct HomeView: View {
             ZStack(alignment: .bottom) {
                 Color.appBackground.ignoresSafeArea()
 
+                // Subtle sync indicator — visible only during background Supabase refresh
+                if appState.isLoadingContent {
+                    SyncBar()
+                }
+
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 0) {
                         // Stats bar
@@ -262,6 +267,36 @@ struct BeltNode: View {
 
 private extension Unit {
     var isActive: Bool { !isCompleted && !isLocked }
+}
+
+// MARK: - Sync Bar
+
+/// Thin animated bar shown while Supabase content refresh is in progress.
+private struct SyncBar: View {
+    @State private var phase: CGFloat = -1
+
+    var body: some View {
+        GeometryReader { geo in
+            ZStack(alignment: .leading) {
+                Color.brand.opacity(0.12)
+                    .frame(height: 3)
+
+                Color.brand
+                    .frame(width: geo.size.width * 0.4, height: 3)
+                    .offset(x: phase * geo.size.width)
+                    .animation(
+                        .linear(duration: 1.2).repeatForever(autoreverses: false),
+                        value: phase
+                    )
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .clipShape(Rectangle())
+        }
+        .frame(height: 3)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+        .ignoresSafeArea()
+        .onAppear { phase = 1.6 }
+    }
 }
 
 // MARK: - Language Toggle
