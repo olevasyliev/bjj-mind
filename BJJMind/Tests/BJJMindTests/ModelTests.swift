@@ -75,6 +75,92 @@ final class UnitTests: XCTestCase {
     }
 }
 
+final class UnitKindTests: XCTestCase {
+
+    func test_unitKind_beltTest_isBeltTestTrue() {
+        let unit = Unit(
+            id: "bt-1", belt: .white, orderIndex: 0,
+            title: "Stripe Test", description: "", tags: [],
+            isLocked: false, isCompleted: false,
+            kind: .beltTest, questions: []
+        )
+        XCTAssertTrue(unit.isBeltTest)
+    }
+
+    func test_unitKind_lesson_isBeltTestFalse() {
+        let unit = Unit(
+            id: "l-1", belt: .white, orderIndex: 0,
+            title: "Lesson 1", description: "", tags: [],
+            isLocked: false, isCompleted: false,
+            kind: .lesson, questions: []
+        )
+        XCTAssertFalse(unit.isBeltTest)
+    }
+
+    func test_unitKind_characterMoment_isCharacterMomentTrue() {
+        let unit = Unit(
+            id: "cm-1", belt: .white, orderIndex: 0,
+            title: "", description: "", tags: [],
+            isLocked: false, isCompleted: false,
+            kind: .characterMoment,
+            questions: [],
+            characterMoment: CharacterMomentData(
+                character: .marco,
+                message: "Hip frame first — always."
+            )
+        )
+        XCTAssertTrue(unit.isCharacterMoment)
+        XCTAssertEqual(unit.characterMoment?.character, .marco)
+    }
+
+    func test_unitKind_miniExam_isMiniExamTrue() {
+        let unit = Unit(
+            id: "me-1", belt: .white, orderIndex: 0,
+            title: "Section Exam", description: "", tags: [],
+            isLocked: true, isCompleted: false,
+            kind: .miniExam, questions: []
+        )
+        XCTAssertTrue(unit.isMiniExam)
+    }
+
+    func test_appCharacter_displayNames() {
+        XCTAssertEqual(AppCharacter.marco.displayName, "Marco")
+        XCTAssertEqual(AppCharacter.oldChen.displayName, "Old Chen")
+        XCTAssertEqual(AppCharacter.rex.displayName, "Rex")
+        XCTAssertEqual(AppCharacter.giGhost.displayName, "Gi Ghost")
+    }
+
+    func test_unitKind_mixedReview_isMixedReviewTrue() {
+        let unit = Unit(
+            id: "mr-1", belt: .white, orderIndex: 0,
+            title: "Mixed Review", description: "", tags: [],
+            isLocked: true, isCompleted: false,
+            kind: .mixedReview, questions: []
+        )
+        XCTAssertTrue(unit.isMixedReview)
+    }
+
+    func test_unit_requiresSession_falseForCharacterMoment() {
+        let unit = Unit(
+            id: "cm-2", belt: .white, orderIndex: 0,
+            title: "", description: "", tags: [],
+            isLocked: false, isCompleted: false,
+            kind: .characterMoment, questions: []
+        )
+        XCTAssertFalse(unit.requiresSession)
+    }
+
+    func test_unit_requiresSession_trueForLesson() {
+        let unit = Unit(
+            id: "l-2", belt: .white, orderIndex: 0,
+            title: "Lesson", description: "", tags: [],
+            isLocked: false, isCompleted: false,
+            kind: .lesson, questions: []
+        )
+        XCTAssertTrue(unit.requiresSession)
+    }
+}
+
 final class QuestionTests: XCTestCase {
 
     func test_question_trueFalse_hasTwoOptions() {

@@ -45,11 +45,44 @@ struct UserProfile: Codable {
     }
 }
 
+// MARK: - UnitKind
+
+enum UnitKind: String, Codable {
+    case lesson           // regular lesson (~4-8 questions) within a topic
+    case mixedReview      // cross-topic review lesson
+    case miniExam         // section-level exam (~8 questions)
+    case beltTest         // existing stripe belt test
+    case characterMoment  // character card — no questions, tap to complete
+}
+
+// MARK: - AppCharacter
+
+enum AppCharacter: String, Codable {
+    case marco, oldChen, rex, giGhost
+
+    var displayName: String {
+        switch self {
+        case .marco:    return "Marco"
+        case .oldChen:  return "Old Chen"
+        case .rex:      return "Rex"
+        case .giGhost:  return "Gi Ghost"
+        }
+    }
+}
+
+// MARK: - CharacterMomentData
+
+struct CharacterMomentData: Codable, Equatable {
+    var character: AppCharacter
+    var message: String
+}
+
 // MARK: - Unit
 
 struct Unit: Identifiable, Codable, Hashable {
     static func == (lhs: Unit, rhs: Unit) -> Bool { lhs.id == rhs.id }
     func hash(into hasher: inout Hasher) { hasher.combine(id) }
+
     var id: String
     var belt: Belt
     var orderIndex: Int
@@ -58,9 +91,28 @@ struct Unit: Identifiable, Codable, Hashable {
     var tags: [String]
     var isLocked: Bool
     var isCompleted: Bool
-    var isBeltTest: Bool
+    var kind: UnitKind
     var questions: [Question]
+
+    // Optional metadata
     var coachIntro: String?
+    var sectionTitle: String?
+    var topicTitle: String?
+    var lessonIndex: Int?
+    var lessonTotal: Int?
+    var characterMoment: CharacterMomentData?
+
+    // MARK: - Computed backward-compat
+    var isBeltTest: Bool        { kind == .beltTest }
+    var isCharacterMoment: Bool { kind == .characterMoment }
+    var isMiniExam: Bool        { kind == .miniExam }
+    var isMixedReview: Bool     { kind == .mixedReview }
+    var requiresSession: Bool {
+        switch kind {
+        case .lesson, .mixedReview, .miniExam, .beltTest: return true
+        case .characterMoment: return false
+        }
+    }
 }
 
 // MARK: - Question
