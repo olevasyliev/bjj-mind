@@ -17,6 +17,7 @@
 		4426095B2CF804430A3A6B4A /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0873A43D763EE480C355E72 /* ModelTests.swift */; };
 		4D97A62387F5569A22FEE2D5 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C6B01CF49966F1854B9EEC /* LanguageManager.swift */; };
 		55814374DA587BF0F18E2E04 /* AppStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B71981ACC4153E76E5E9DB /* AppStateTests.swift */; };
+		58B12AD6D706D3761DEEE98F /* SupabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F951EECB1FAF0C66FBB3 /* SupabaseService.swift */; };
 		609E4A34EDC2E69F899C0949 /* BeltSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B25329B8331DF0CF194DEE /* BeltSelectView.swift */; };
 		63637ABFF5B30800253E3EDA /* BeltTestViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2988D1C00962FB4D915903F /* BeltTestViews.swift */; };
 		66083351B6A47F1BCA5F590F /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAF625C9C12C1D0878A2758 /* SampleData.swift */; };
@@ -81,6 +82,7 @@
 		A92C43A31E69789CCFC62648 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		B50144D844C5C1FCC1291A59 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		B6B8DCE0881078EC425B8C73 /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
+		BB23F951EECB1FAF0C66FBB3 /* SupabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseService.swift; sourceTree = "<group>"; };
 		BB4DE47B483C309BA64782BF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BBD6EEDA667AEB0FBE721EA5 /* AhaMomentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AhaMomentView.swift; sourceTree = "<group>"; };
 		C199CE1C5893BB3CF48F9B5E /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				58E8F1A6EF3A3CB9DAFEE220 /* QuestionProvider.swift */,
 				26A47F00194B779CBA8A7479 /* SampleData_ES.swift */,
 				3DAF625C9C12C1D0878A2758 /* SampleData.swift */,
+				BB23F951EECB1FAF0C66FBB3 /* SupabaseService.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				8D0824680181A6C013BB7D85 /* SessionEngine.swift in Sources */,
 				EE5059447BAD6AA0A79962BE /* SessionView.swift in Sources */,
 				BE4DBD82E217ED6205B9276A /* SummaryView.swift in Sources */,
+				58B12AD6D706D3761DEEE98F /* SupabaseService.swift in Sources */,
 				C91EDC5C1199BA1685C9AD0C /* WelcomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

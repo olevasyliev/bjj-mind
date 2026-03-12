@@ -9,6 +9,7 @@ final class AppState: ObservableObject {
     @Published var user: UserProfile = .guest
     @Published var units: [Unit] = QuestionProvider.whitebelt
     @Published var language: String = LanguageManager.shared.code
+    @Published var isLoadingContent: Bool = false
 
     let defaults: UserDefaults
 
@@ -25,6 +26,54 @@ final class AppState: ObservableObject {
         if defaults.bool(forKey: "onboardingComplete") {
             currentScreen = .main
         }
+        // Refresh content from Supabase in background on every launch.
+        // Existing local progress is preserved during the merge.
+        Task { await loadRemoteContent() }
+    }
+
+    // MARK: - Remote Content
+
+    func loadRemoteContent() async {
+        isLoadingContent = true
+        defer { isLoadingContent = false }
+        do {
+            let bundles = try await SupabaseService.shared.fetchCatalog()
+            applyRemoteBundles(bundles)
+            persistUnits()
+        } catch {
+            // Keep cached data; remote fetch is best-effort
+            print("[SupabaseService] fetch failed: \(error)")
+        }
+    }
+
+    /// Merges remote catalog with local progress (completed / locked state).
+    private func applyRemoteBundles(_ bundles: [RemoteUnitBundle]) {
+        let completedIds = Set(units.filter(\.isCompleted).map(\.id))
+
+        var rebuilt: [Unit] = bundles.map { b in
+            Unit(
+                id: b.id, belt: b.belt, orderIndex: b.orderIndex,
+                title: b.title, description: b.description, tags: b.tags,
+                isLocked: true,   // will be set below
+                isCompleted: completedIds.contains(b.id),
+                isBeltTest: b.isBeltTest,
+                questions: b.questions,
+                coachIntro: b.coachIntro
+            )
+        }
+
+        // Recompute lock chain: same rules as completeUnit()
+        if !rebuilt.isEmpty { rebuilt[0].isLocked = false }
+        for i in 1..<rebuilt.count {
+            if rebuilt[i].isBeltTest {
+                let allDone = rebuilt.filter { !$0.isBeltTest }.allSatisfy { $0.isCompleted }
+                rebuilt[i].isLocked = !allDone
+            } else {
+                rebuilt[i].isLocked = !rebuilt[i - 1].isCompleted
+            }
+        }
+
+        units = rebuilt
     }
 
     private func persistUser() {
@@ -87,9 +136,7 @@ final class AppState: ObservableObject {
 
     func setLanguage(_ code: String) {
         LanguageManager.shared.setLanguage(code)
-        units = QuestionProvider.whitebelt   // update data first
-        persistUnits()
-        language = code                       // trigger re-render last
+        language = code  // trigger L10n re-render; content comes from Supabase
     }
 
     func passBeltTest() {
