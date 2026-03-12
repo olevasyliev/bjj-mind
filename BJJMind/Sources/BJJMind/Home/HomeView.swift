@@ -47,7 +47,7 @@ struct HomeView: View {
                         .padding(.bottom, 12)
 
                         // Active unit banner
-                        if let active = units.first(where: { !$0.isCompleted && !$0.isLocked && !$0.isBeltTest }) {
+                        if let active = units.first(where: { !$0.isCompleted && !$0.isLocked && !$0.isBeltTest && !$0.isCharacterMoment }) {
                             ActiveUnitBanner(unit: active)
                                 .padding(.horizontal, 16)
                                 .padding(.bottom, 8)

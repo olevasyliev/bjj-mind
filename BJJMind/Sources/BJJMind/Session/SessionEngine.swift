@@ -15,15 +15,16 @@ final class SessionEngine: ObservableObject {
     // MARK: - Private
 
     private let questions: [Question]
-    private var correctCount: Int = 0
+    private(set) var correctCount: Int = 0
     private var answeredCount: Int = 0
 
     let isBeltTest: Bool
     let coachIntro: String?
+    let streak: Int
 
     // MARK: - Init
 
-    init(questions: [Question], isBeltTest: Bool = false, coachIntro: String? = nil) {
+    init(questions: [Question], isBeltTest: Bool = false, coachIntro: String? = nil, streak: Int = 0) {
         let ordered = isBeltTest ? questions.shuffled() : questions
         // Shuffle options so the correct answer isn't always option A
         self.questions = ordered.map { q in
@@ -34,8 +35,9 @@ final class SessionEngine: ObservableObject {
         }
         self.isBeltTest = isBeltTest
         self.coachIntro = coachIntro
+        self.streak = streak
         self.hearts = isBeltTest ? 3 : UserProfile.maxHearts
-        self.state = coachIntro != nil ? .showingIntro : .answering
+        self.state = questions.isEmpty ? .completed : (coachIntro != nil ? .showingIntro : .answering)
     }
 
     // MARK: - Computed
@@ -56,9 +58,15 @@ final class SessionEngine: ObservableObject {
     }
 
     var xpEarned: Int {
-        let base = correctCount * 10
-        let heartBonus = hearts * 2
-        return base + heartBonus
+        let base = correctCount * 10 + hearts * 2
+        let multiplier: Double
+        switch streak {
+        case 0:      multiplier = 1.0
+        case 1...2:  multiplier = 1.1
+        case 3...6:  multiplier = 1.25
+        default:     multiplier = 1.5
+        }
+        return Int(Double(base) * multiplier)
     }
 
     // MARK: - Actions
