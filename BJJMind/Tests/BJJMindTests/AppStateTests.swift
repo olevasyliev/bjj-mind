@@ -160,3 +160,45 @@ final class AppStateTests: XCTestCase {
         XCTAssertFalse(sut.units.first(where: { $0.isBeltTest })!.isLocked)
     }
 }
+
+@MainActor
+final class CharacterMomentLockTests: XCTestCase {
+
+    func test_completingLesson_unlocksCharacterMoment() {
+        let defaults = UserDefaults(suiteName: "test_cm_unlock")!
+        defaults.removePersistentDomain(forName: "test_cm_unlock")
+        let state = AppState(defaults: defaults)
+
+        state.units = [
+            Unit(id: "l1", belt: .white, orderIndex: 0, title: "Lesson 1", description: "",
+                 tags: [], isLocked: false, isCompleted: false, kind: .lesson, questions: []),
+            Unit(id: "cm1", belt: .white, orderIndex: 1, title: "", description: "",
+                 tags: [], isLocked: true, isCompleted: false, kind: .characterMoment, questions: []),
+            Unit(id: "l2", belt: .white, orderIndex: 2, title: "Lesson 2", description: "",
+                 tags: [], isLocked: true, isCompleted: false, kind: .lesson, questions: []),
+        ]
+
+        state.completeUnit(id: "l1")
+        XCTAssertFalse(state.units[1].isLocked, "CharacterMoment should unlock after lesson completes")
+        XCTAssertTrue(state.units[2].isLocked, "Next lesson stays locked until moment is done")
+    }
+
+    func test_completingCharacterMoment_unlocksNextLesson() {
+        let defaults = UserDefaults(suiteName: "test_cm_complete")!
+        defaults.removePersistentDomain(forName: "test_cm_complete")
+        let state = AppState(defaults: defaults)
+
+        state.units = [
+            Unit(id: "l1", belt: .white, orderIndex: 0, title: "Lesson 1", description: "",
+                 tags: [], isLocked: false, isCompleted: true, kind: .lesson, questions: []),
+            Unit(id: "cm1", belt: .white, orderIndex: 1, title: "", description: "",
+                 tags: [], isLocked: false, isCompleted: false, kind: .characterMoment, questions: []),
+            Unit(id: "l2", belt: .white, orderIndex: 2, title: "Lesson 2", description: "",
+                 tags: [], isLocked: true, isCompleted: false, kind: .lesson, questions: []),
+        ]
+
+        state.completeUnit(id: "cm1")
+        XCTAssertTrue(state.units[1].isCompleted, "CharacterMoment should be marked complete")
+        XCTAssertFalse(state.units[2].isLocked, "Next lesson should unlock after moment completes")
+    }
+}
