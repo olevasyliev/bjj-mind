@@ -95,17 +95,17 @@ final class AppStateTests: XCTestCase {
     // MARK: - Unit Progression Tests
 
     func test_completeUnit_marksUnitCompleted() {
-        // wb-02 is initially not completed
-        XCTAssertFalse(sut.units.first(where: { $0.id == "wb-02" })!.isCompleted)
-        sut.completeUnit(id: "wb-02")
-        XCTAssertTrue(sut.units.first(where: { $0.id == "wb-02" })!.isCompleted)
+        // wb-01-l2 is initially not completed
+        XCTAssertFalse(sut.units.first(where: { $0.id == "wb-01-l2" })!.isCompleted)
+        sut.completeUnit(id: "wb-01-l2")
+        XCTAssertTrue(sut.units.first(where: { $0.id == "wb-01-l2" })!.isCompleted)
     }
 
     func test_completeUnit_unlocksNextUnit() {
-        // wb-03 is initially locked
-        XCTAssertTrue(sut.units.first(where: { $0.id == "wb-03" })!.isLocked)
-        sut.completeUnit(id: "wb-02")
-        XCTAssertFalse(sut.units.first(where: { $0.id == "wb-03" })!.isLocked)
+        // wb-02-l1 is initially locked
+        XCTAssertTrue(sut.units.first(where: { $0.id == "wb-02-l1" })!.isLocked)
+        sut.completeUnit(id: "wb-01-l2")
+        XCTAssertFalse(sut.units.first(where: { $0.id == "wb-02-l1" })!.isLocked)
     }
 
     func test_completeUnit_invalidId_doesNothing() {
@@ -149,21 +149,14 @@ final class AppStateTests: XCTestCase {
     // MARK: - Sequential Unlock Does Not Touch Belt Test
 
     func test_completeLastContentUnit_doesNotUnlockBeltTestSequentially() {
-        // Complete wb-01 through wb-09 — sequential unlock should NOT open belt test
-        // (only the allNonTestDone check should)
-        sut.completeUnit(id: "wb-01")
-        sut.completeUnit(id: "wb-02")
-        sut.completeUnit(id: "wb-03")
-        sut.completeUnit(id: "wb-04")
-        sut.completeUnit(id: "wb-05")
-        sut.completeUnit(id: "wb-06")
-        sut.completeUnit(id: "wb-07")
-        sut.completeUnit(id: "wb-08")
-        sut.completeUnit(id: "wb-09")
-        // wb-10 is now unlocked but not yet completed — belt test must still be locked
+        // Complete all non-belt-test units except the last one — belt test must stay locked
+        let nonTestUnits = sut.units.filter { !$0.isBeltTest }
+        let allButLast = nonTestUnits.dropLast()
+        for unit in allButLast { sut.completeUnit(id: unit.id) }
+        // Belt test must still be locked after all but the last content unit
         XCTAssertTrue(sut.units.first(where: { $0.isBeltTest })!.isLocked)
-        // Now complete wb-10 — this triggers allNonTestDone and opens belt test
-        sut.completeUnit(id: "wb-10")
+        // Now complete the last content unit — this triggers allNonTestDone and opens belt test
+        sut.completeUnit(id: nonTestUnits.last!.id)
         XCTAssertFalse(sut.units.first(where: { $0.isBeltTest })!.isLocked)
     }
 }
