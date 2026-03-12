@@ -42,6 +42,7 @@
 		DA38311EC72F8657B09B4EB5 /* BJJMindApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B7C552BE8EDA878A2C21CD /* BJJMindApp.swift */; };
 		EE5059447BAD6AA0A79962BE /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C199CE1C5893BB3CF48F9B5E /* SessionView.swift */; };
 		F35C2F6BB50AC3919BD2DFE6 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF5CF77D5866F5B5EA08CAF /* Components.swift */; };
+		F3A9776E947E394C340C45C3 /* CharacterMomentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E7548B8EA49DFF2C649F /* CharacterMomentView.swift */; };
 		F97D24BD72265BAAC94D9708 /* CompeteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41BD33438B314F57AC002EB /* CompeteView.swift */; };
 		FEDA6B657EEA65B70E470F4B /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A645FEF1310ECF5FB15750C7 /* Nunito-Regular.ttf */; };
 /* End PBXBuildFile section */
@@ -80,6 +81,7 @@
 		A167B51AA8D1167A1C0CECDD /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
 		A645FEF1310ECF5FB15750C7 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		A92C43A31E69789CCFC62648 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		AA47E7548B8EA49DFF2C649F /* CharacterMomentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMomentView.swift; sourceTree = "<group>"; };
 		B50144D844C5C1FCC1291A59 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		B6B8DCE0881078EC425B8C73 /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
 		BB23F951EECB1FAF0C66FBB3 /* SupabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseService.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				E2988D1C00962FB4D915903F /* BeltTestViews.swift */,
+				AA47E7548B8EA49DFF2C649F /* CharacterMomentView.swift */,
 				B6B8DCE0881078EC425B8C73 /* FeedbackView.swift */,
 				DDE0045FCFE4F1EE41C818B3 /* SessionEngine.swift */,
 				C199CE1C5893BB3CF48F9B5E /* SessionView.swift */,
@@ -367,6 +370,7 @@
 				DA38311EC72F8657B09B4EB5 /* BJJMindApp.swift in Sources */,
 				609E4A34EDC2E69F899C0949 /* BeltSelectView.swift in Sources */,
 				63637ABFF5B30800253E3EDA /* BeltTestViews.swift in Sources */,
+				F3A9776E947E394C340C45C3 /* CharacterMomentView.swift in Sources */,
 				F97D24BD72265BAAC94D9708 /* CompeteView.swift in Sources */,
 				F35C2F6BB50AC3919BD2DFE6 /* Components.swift in Sources */,
 				33AE19D2AFFBF2885701E18B /* FeedbackView.swift in Sources */,

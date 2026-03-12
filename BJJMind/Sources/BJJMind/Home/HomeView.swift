@@ -3,11 +3,13 @@ import SwiftUI
 private enum HomeSheet: Identifiable {
     case session(Unit)
     case beltTest(Unit)
+    case characterMoment(Unit)
 
     var id: String {
         switch self {
-        case .session(let u):  return "session-\(u.id)"
-        case .beltTest(let u): return "belttest-\(u.id)"
+        case .session(let u):         return "session-\(u.id)"
+        case .beltTest(let u):        return "belttest-\(u.id)"
+        case .characterMoment(let u): return "moment-\(u.id)"
         }
     }
 }
@@ -55,7 +57,14 @@ struct HomeView: View {
                         // Belt path
                         BeltPathView(units: units) { unit in
                             guard !unit.isLocked else { return }
-                            activeSheet = unit.isBeltTest ? .beltTest(unit) : .session(unit)
+                            switch unit.kind {
+                            case .beltTest:
+                                activeSheet = .beltTest(unit)
+                            case .characterMoment:
+                                activeSheet = .characterMoment(unit)
+                            default:
+                                activeSheet = .session(unit)
+                            }
                         }
                         .id(appState.language)
                         .padding(.bottom, 32)
@@ -65,9 +74,15 @@ struct HomeView: View {
             .fullScreenCover(item: $activeSheet) { sheet in
                 switch sheet {
                 case .session(let unit):
-                    SessionView(unit: unit, isBeltTest: false).environmentObject(appState)
+                    SessionView(unit: unit, isBeltTest: false, streak: appState.user.streakCurrent)
+                        .environmentObject(appState)
                 case .beltTest(let unit):
                     BeltTestGateView(unit: unit).environmentObject(appState)
+                case .characterMoment(let unit):
+                    CharacterMomentView(unit: unit) {
+                        appState.completeUnit(id: unit.id)
+                        activeSheet = nil
+                    }
                 }
             }
         }
@@ -91,14 +106,27 @@ private struct ActiveUnitBanner: View {
                     .foregroundColor(.white)
             }
             Spacer()
-            VStack(alignment: .trailing, spacing: 2) {
-                Text("\(unit.questions.count)")
-                    .font(.nunito(22, weight: .black))
-                    .foregroundColor(.white)
-                Text(L10n.Home.questions.uppercased())
-                    .font(.nunito(9, weight: .bold))
-                    .foregroundColor(.white.opacity(0.6))
-                    .tracking(1.5)
+            // Right side: lesson progress or question count
+            if let lessonIdx = unit.lessonIndex, let total = unit.lessonTotal {
+                VStack(alignment: .trailing, spacing: 2) {
+                    Text("LESSON \(lessonIdx)/\(total)")
+                        .font(.nunito(13, weight: .black))
+                        .foregroundColor(.white)
+                    Text("PROGRESS")
+                        .font(.nunito(9, weight: .bold))
+                        .foregroundColor(.white.opacity(0.6))
+                        .tracking(1.5)
+                }
+            } else {
+                VStack(alignment: .trailing, spacing: 2) {
+                    Text("\(unit.questions.count)")
+                        .font(.nunito(22, weight: .black))
+                        .foregroundColor(.white)
+                    Text(L10n.Home.questions.uppercased())
+                        .font(.nunito(9, weight: .bold))
+                        .foregroundColor(.white.opacity(0.6))
+                        .tracking(1.5)
+                }
             }
         }
         .padding(.horizontal, 18)
@@ -120,23 +148,26 @@ struct BeltPathView: View {
     let units: [Unit]
     let onTap: (Unit) -> Void
 
-    // Section header shown BEFORE the unit with this id
-    private static let sectionHeaders: [String: String] = [
-        "wb-01":  "GUARD GAME",
-        "wb-04":  "TOP GAME",
-        "wb-08":  "BACK & SUBMISSIONS",
-        "wb-bt1": "BELT TEST",
-    ]
-
     var body: some View {
-        // Zigzag layout matching HTML prototype
         VStack(spacing: 0) {
             ForEach(Array(units.enumerated()), id: \.element.id) { index, unit in
-                if let header = Self.sectionHeaders[unit.id] {
-                    SectionDividerView(title: header)
+
+                // Section header: show when sectionTitle changes
+                let prevSection = index > 0 ? units[index - 1].sectionTitle : nil
+                if let section = unit.sectionTitle, section != prevSection {
+                    SectionDividerView(title: section.uppercased())
                         .padding(.top, index == 0 ? 8 : 24)
                         .padding(.bottom, 4)
                 }
+
+                // Topic header: show when topicTitle changes (and is non-nil)
+                let prevTopic = index > 0 ? units[index - 1].topicTitle : nil
+                if let topic = unit.topicTitle, topic != prevTopic {
+                    TopicHeaderView(title: topic)
+                        .padding(.top, 8)
+                        .padding(.bottom, 2)
+                }
+
                 HStack {
                     if index % 2 == 0 {
                         Spacer().frame(width: 60)
@@ -177,6 +208,20 @@ private struct SectionDividerView: View {
                 .frame(height: 1.5)
         }
         .padding(.horizontal, 8)
+    }
+}
+
+// MARK: - Topic Header
+
+private struct TopicHeaderView: View {
+    let title: String
+
+    var body: some View {
+        Text(title.uppercased())
+            .font(.nunito(9, weight: .black))
+            .foregroundColor(Color(hex: "#94a3b8"))
+            .tracking(1.2)
+            .frame(maxWidth: .infinity, alignment: .center)
     }
 }
 
@@ -231,36 +276,51 @@ struct BeltNode: View {
     private var nodeShadowY: CGFloat { unit.isActive ? 6 : 5 }
 
     private var nodeBg: Color {
-        if unit.isCompleted { return Color(hex: "#dcfce7") }
-        if unit.isLocked    { return Color(hex: "#f1f5f9") }
-        if unit.isBeltTest  { return Color(hex: "#fef3c7") }
+        if unit.isCompleted        { return Color(hex: "#dcfce7") }
+        if unit.isLocked           { return Color(hex: "#f1f5f9") }
+        if unit.isBeltTest         { return Color(hex: "#fef3c7") }
+        if unit.isCharacterMoment  { return Color(hex: "#f3e8ff") }
+        if unit.isMiniExam         { return Color(hex: "#fff7ed") }
+        if unit.isMixedReview      { return Color(hex: "#eff6ff") }
         return .brand
     }
 
     private var nodeBorder: Color {
-        if unit.isCompleted { return Color(hex: "#22c55e") }
-        if unit.isLocked    { return Color(hex: "#cbd5e1") }
-        if unit.isBeltTest  { return Color(hex: "#f59e0b") }
+        if unit.isCompleted        { return Color(hex: "#22c55e") }
+        if unit.isLocked           { return Color(hex: "#cbd5e1") }
+        if unit.isBeltTest         { return Color(hex: "#f59e0b") }
+        if unit.isCharacterMoment  { return Color(hex: "#c084fc") }
+        if unit.isMiniExam         { return Color(hex: "#fb923c") }
+        if unit.isMixedReview      { return Color(hex: "#60a5fa") }
         return Color(hex: "#a78bfa")
     }
 
     private var nodeShadow: Color {
-        if unit.isCompleted { return Color(hex: "#15803d") }
-        if unit.isLocked    { return Color(hex: "#94a3b8") }
-        if unit.isBeltTest  { return Color(hex: "#d97706") }
+        if unit.isCompleted        { return Color(hex: "#15803d") }
+        if unit.isLocked           { return Color(hex: "#94a3b8") }
+        if unit.isBeltTest         { return Color(hex: "#d97706") }
+        if unit.isCharacterMoment  { return Color(hex: "#a855f7") }
+        if unit.isMiniExam         { return Color(hex: "#ea580c") }
+        if unit.isMixedReview      { return Color(hex: "#3b82f6") }
         return Color(hex: "#5b21b6")
     }
 
     private var nodeLabel: Color {
-        if unit.isCompleted { return Color(hex: "#16a34a") }
-        if unit.isLocked    { return Color(hex: "#94a3b8") }
+        if unit.isCompleted        { return Color(hex: "#16a34a") }
+        if unit.isLocked           { return Color(hex: "#94a3b8") }
+        if unit.isCharacterMoment  { return Color(hex: "#9333ea") }
+        if unit.isMiniExam         { return Color(hex: "#ea580c") }
+        if unit.isMixedReview      { return Color(hex: "#2563eb") }
         return .brand
     }
 
     private var nodeEmoji: String {
-        if unit.isCompleted { return "" }
-        if unit.isLocked    { return "🔒" }
-        if unit.isBeltTest  { return "🛡️" }
+        if unit.isCompleted        { return "" }
+        if unit.isLocked           { return "🔒" }
+        if unit.isBeltTest         { return "🛡️" }
+        if unit.isCharacterMoment  { return "💬" }
+        if unit.isMiniExam         { return "📋" }
+        if unit.isMixedReview      { return "🔀" }
         return "🥋"
     }
 }
