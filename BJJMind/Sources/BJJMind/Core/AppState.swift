@@ -11,6 +11,15 @@ final class AppState: ObservableObject {
     @Published var language: String = LanguageManager.shared.code
     @Published var isLoadingContent: Bool = false
 
+    /// Stable Supabase UUID for this device, persisted in UserDefaults.
+    private(set) var remoteUserId: UUID? {
+        get {
+            guard let str = defaults.string(forKey: "remoteUserId") else { return nil }
+            return UUID(uuidString: str)
+        }
+        set { defaults.set(newValue?.uuidString, forKey: "remoteUserId") }
+    }
+
     let defaults: UserDefaults
 
     init(defaults: UserDefaults = .standard) {
@@ -26,35 +35,57 @@ final class AppState: ObservableObject {
         if defaults.bool(forKey: "onboardingComplete") {
             currentScreen = .main
         }
-        // Refresh content from Supabase in background on every launch.
-        // Existing local progress is preserved during the merge.
-        Task { await loadRemoteContent() }
+        Task { await syncWithSupabase() }
     }
 
-    // MARK: - Remote Content
+    // MARK: - Supabase Sync
 
-    func loadRemoteContent() async {
+    /// Full sync: upsert profile → fetch catalog → apply remote progress.
+    func syncWithSupabase() async {
         isLoadingContent = true
         defer { isLoadingContent = false }
         do {
+            // 1. Ensure we have a stable remote user ID
+            let userId = try await ensureRemoteUser()
+
+            // 2. Fetch fresh catalog
             let bundles = try await SupabaseService.shared.fetchCatalog()
-            applyRemoteBundles(bundles)
+
+            // 3. Fetch remote progress (authoritative over local cache)
+            let remoteProgress = try await SupabaseService.shared.fetchUnitProgress(userId: userId)
+            let remoteCompleted = Set(remoteProgress.filter(\.isCompleted).map(\.unitId))
+
+            // 4. Merge: prefer remote completed state, rebuild lock chain
+            applyRemoteBundles(bundles, completedIds: remoteCompleted)
             persistUnits()
         } catch {
-            // Keep cached data; remote fetch is best-effort
-            print("[SupabaseService] fetch failed: \(error)")
+            print("[Supabase] sync failed: \(error)")
         }
     }
 
-    /// Merges remote catalog with local progress (completed / locked state).
-    private func applyRemoteBundles(_ bundles: [RemoteUnitBundle]) {
-        let completedIds = Set(units.filter(\.isCompleted).map(\.id))
+    private func ensureRemoteUser() async throws -> UUID {
+        if let existing = remoteUserId { return existing }
+        let deviceId = deviceIdentifier()
+        let uuid = try await SupabaseService.shared.upsertUserProfile(deviceId: deviceId)
+        remoteUserId = uuid
+        return uuid
+    }
 
+    /// Returns a stable device ID (generated once, stored in UserDefaults).
+    private func deviceIdentifier() -> String {
+        if let stored = defaults.string(forKey: "deviceId") { return stored }
+        let new = UUID().uuidString
+        defaults.set(new, forKey: "deviceId")
+        return new
+    }
+
+    /// Merges remote catalog with completed set, rebuilding lock chain.
+    private func applyRemoteBundles(_ bundles: [RemoteUnitBundle], completedIds: Set<String>) {
         var rebuilt: [Unit] = bundles.map { b in
             Unit(
                 id: b.id, belt: b.belt, orderIndex: b.orderIndex,
                 title: b.title, description: b.description, tags: b.tags,
-                isLocked: true,   // will be set below
+                isLocked: true,
                 isCompleted: completedIds.contains(b.id),
                 isBeltTest: b.isBeltTest,
                 questions: b.questions,
@@ -62,7 +93,6 @@ final class AppState: ObservableObject {
             )
         }
 
-        // Recompute lock chain: same rules as completeUnit()
         if !rebuilt.isEmpty { rebuilt[0].isLocked = false }
         for i in 1..<rebuilt.count {
             if rebuilt[i].isBeltTest {
@@ -76,6 +106,8 @@ final class AppState: ObservableObject {
         units = rebuilt
     }
 
+    // MARK: - Persistence
+
     private func persistUser() {
         if let encoded = try? JSONEncoder().encode(user) {
             defaults.set(encoded, forKey: "userProfile")
@@ -87,6 +119,8 @@ final class AppState: ObservableObject {
             defaults.set(encoded, forKey: "units")
         }
     }
+
+    // MARK: - Actions
 
     func completeOnboarding(belt: Belt, weakTags: [String]) {
         user.belt = belt
@@ -116,27 +150,46 @@ final class AppState: ObservableObject {
         addXP(result.xpEarned)
         user.hearts = min(user.hearts + 1, UserProfile.maxHearts)
         persistUser()
+
+        guard let userId = remoteUserId else { return }
+        Task {
+            try? await SupabaseService.shared.insertSessionResult(
+                userId: userId, unitId: result.unitId,
+                xpEarned: result.xpEarned, accuracy: result.accuracy,
+                heartsUsed: result.heartsUsed
+            )
+        }
     }
 
     func completeUnit(id: String) {
         guard let idx = units.firstIndex(where: { $0.id == id }) else { return }
         units[idx].isCompleted = true
-        // Unlock next content unit in sequence (never unlock belt test this way)
+
         let nextIdx = idx + 1
         if nextIdx < units.count, !units[nextIdx].isBeltTest {
             units[nextIdx].isLocked = false
         }
-        // If all non-belt-test units are done, unlock the belt test
         let allNonTestDone = units.filter { !$0.isBeltTest }.allSatisfy { $0.isCompleted }
         if allNonTestDone, let beltTestIdx = units.firstIndex(where: { $0.isBeltTest }) {
             units[beltTestIdx].isLocked = false
         }
         persistUnits()
+
+        // Sync to Supabase (fire-and-forget)
+        let unit = units[idx]
+        if let userId = remoteUserId {
+            Task {
+                try? await SupabaseService.shared.upsertUnitProgress(
+                    userId: userId, unitId: unit.id,
+                    isCompleted: true, isLocked: false
+                )
+            }
+        }
     }
 
     func setLanguage(_ code: String) {
         LanguageManager.shared.setLanguage(code)
-        language = code  // trigger L10n re-render; content comes from Supabase
+        language = code
     }
 
     func passBeltTest() {
