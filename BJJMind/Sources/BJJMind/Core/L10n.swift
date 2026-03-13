@@ -28,35 +28,59 @@ enum L10n {
         static var haveAccount: String { l("welcome.have_account") }
     }
 
-    // MARK: Belt Select
-    enum BeltSelect {
-        static var step: String     { l("belt_select.step") }
-        static var title: String    { l("belt_select.title") }
-        static var subtitle: String { l("belt_select.subtitle") }
-        static var cta: String      { l("belt_select.continue") }
+    // MARK: Skill Assessment
+    enum Assessment {
+        static var blockATitle: String    { l("assessment.block_a.intro_title") }
+        static var blockASubtitle: String { l("assessment.block_a.intro_subtitle") }
+        static var blockBTitle: String    { l("assessment.block_b.intro_title") }
+        static var blockBSubtitle: String { l("assessment.block_b.intro_subtitle") }
+        static var resultCta: String      { l("assessment.result.cta") }
+        static func progress(_ n: Int) -> String { lf("assessment.progress", n) }
+        static func result(for level: SkillLevel) -> String {
+            switch level {
+            case .beginner:     return l("assessment.result.beginner")
+            case .intermediate: return l("assessment.result.intermediate")
+            case .advanced:     return l("assessment.result.advanced")
+            }
+        }
+        static var q1Prompt: String  { l("assessment.q1.prompt") }
+        static var q1Options: [String] { [
+            l("assessment.q1.opt1"), l("assessment.q1.opt2"),
+            l("assessment.q1.opt3"), l("assessment.q1.opt4")
+        ]}
+        static var q2Prompt: String  { l("assessment.q2.prompt") }
+        static var q2Options: [String] { [
+            l("assessment.q2.opt1"), l("assessment.q2.opt2"),
+            l("assessment.q2.opt3"), l("assessment.q2.opt4")
+        ]}
     }
 
-    // MARK: Problem Select
-    enum ProblemSelect {
-        static var step: String       { l("problem_select.step") }
-        static var title: String      { l("problem_select.title") }
-        static var subtitle: String   { l("problem_select.subtitle") }
-        static var skip: String       { l("problem_select.skip") }
-        static func cta(_ n: Int) -> String { lf("problem_select.continue_selected", n) }
+    // MARK: Club Info
+    enum ClubInfoL10n {
+        static var title: String              { l("club_info.title") }
+        static var subtitle: String           { l("club_info.subtitle") }
+        static var countryPlaceholder: String { l("club_info.country_placeholder") }
+        static var cityPlaceholder: String    { l("club_info.city_placeholder") }
+        static var clubPlaceholder: String    { l("club_info.club_placeholder") }
+        static var detectLocation: String     { l("club_info.detect_location") }
+        static var skip: String               { l("club_info.skip") }
+        static var continueCta: String        { l("club_info.continue") }
+    }
 
-        // Problem items: (nameKey, descKey, emoji, tagKey)
-        static var items: [(name: String, desc: String, emoji: String, tag: String)] { [
-            (l("problem.takedowns.name"),    l("problem.takedowns.desc"),    "🤼", "takedowns"),
-            (l("problem.guard_passing.name"),l("problem.guard_passing.desc"),"🛡️", "guard_passing"),
-            (l("problem.closed_guard.name"), l("problem.closed_guard.desc"), "🔒", "guard"),
-            (l("problem.half_guard.name"),   l("problem.half_guard.desc"),   "🦵", "half_guard"),
-            (l("problem.side_control.name"), l("problem.side_control.desc"), "⛓️", "side_control"),
-            (l("problem.mount.name"),        l("problem.mount.desc"),        "🏔️", "mount"),
-            (l("problem.back_control.name"), l("problem.back_control.desc"), "🎯", "back_control"),
-            (l("problem.submissions.name"),  l("problem.submissions.desc"),  "🔴", "submissions"),
-            (l("problem.escapes.name"),      l("problem.escapes.desc"),      "🚪", "escapes"),
-            (l("problem.leg_locks.name"),    l("problem.leg_locks.desc"),    "🦿", "leg_locks"),
-        ] }
+    // MARK: Kat Intro
+    enum KatIntro {
+        static var eyebrow: String    { l("kat_intro.eyebrow") }
+        static var name: String       { l("kat_intro.name") }
+        static var record: String     { l("kat_intro.record") }
+        static var cta: String        { l("kat_intro.cta") }
+        static var unlockNote: String { l("kat_intro.unlock_note") }
+        static func message(for level: SkillLevel) -> String {
+            switch level {
+            case .beginner:     return l("kat_intro.message.beginner")
+            case .intermediate: return l("kat_intro.message.intermediate")
+            case .advanced:     return l("kat_intro.message.advanced")
+            }
+        }
     }
 
     // MARK: Aha Moment

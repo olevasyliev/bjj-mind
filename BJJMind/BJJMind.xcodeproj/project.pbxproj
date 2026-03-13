@@ -18,7 +18,6 @@
 		4D97A62387F5569A22FEE2D5 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C6B01CF49966F1854B9EEC /* LanguageManager.swift */; };
 		55814374DA587BF0F18E2E04 /* AppStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B71981ACC4153E76E5E9DB /* AppStateTests.swift */; };
 		58B12AD6D706D3761DEEE98F /* SupabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F951EECB1FAF0C66FBB3 /* SupabaseService.swift */; };
-		609E4A34EDC2E69F899C0949 /* BeltSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B25329B8331DF0CF194DEE /* BeltSelectView.swift */; };
 		63637ABFF5B30800253E3EDA /* BeltTestViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2988D1C00962FB4D915903F /* BeltTestViews.swift */; };
 		66083351B6A47F1BCA5F590F /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAF625C9C12C1D0878A2758 /* SampleData.swift */; };
 		768AE4B4070872E54B0C1D14 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2329EF0D26291969A12F81D7 /* ProgressView.swift */; };
@@ -32,7 +31,6 @@
 		9B5E556F1905A9F93D3F8980 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7108B55FDFE579DB3BD9451B /* Models.swift */; };
 		9C74848C307F20977B41A64C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D813E1EABB947FDA9D5C6923 /* AppState.swift */; };
 		AF0693762093E8FF732DAA25 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4502CFACC767B730CF6D2AE8 /* AppColors.swift */; };
-		B26B4C5476831909FC56FF38 /* ProblemSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892325B688C9F848C85CAD6A /* ProblemSelectView.swift */; };
 		B8A3A82FFE870A177C1898A2 /* SessionEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1022009DE91D79734D44F01D /* SessionEngineTests.swift */; };
 		BE4DBD82E217ED6205B9276A /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C58996C53646A70790D499 /* SummaryView.swift */; };
 		C21C612BCC572A90AEA050D8 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C967BF4D41809272474BED1C /* MainTabView.swift */; };
@@ -63,7 +61,6 @@
 		1022009DE91D79734D44F01D /* SessionEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionEngineTests.swift; sourceTree = "<group>"; };
 		11B7C552BE8EDA878A2C21CD /* BJJMindApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BJJMindApp.swift; sourceTree = "<group>"; };
 		11C6B01CF49966F1854B9EEC /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
-		12B25329B8331DF0CF194DEE /* BeltSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltSelectView.swift; sourceTree = "<group>"; };
 		16C37E87887F8522AB2EE1B9 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		2329EF0D26291969A12F81D7 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		26A47F00194B779CBA8A7479 /* SampleData_ES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData_ES.swift; sourceTree = "<group>"; };
@@ -79,7 +76,6 @@
 		78C7169986E1672733BEFCFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7C29505DEB88F51700E6BBC2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7E5837FDB73D7C29BF62D45D /* SkillAssessmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillAssessmentTests.swift; sourceTree = "<group>"; };
-		892325B688C9F848C85CAD6A /* ProblemSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemSelectView.swift; sourceTree = "<group>"; };
 		9A37B188946080C6A5CB3856 /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
 		A167B51AA8D1167A1C0CECDD /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
 		A645FEF1310ECF5FB15750C7 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
@@ -213,9 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				BBD6EEDA667AEB0FBE721EA5 /* AhaMomentView.swift */,
-				12B25329B8331DF0CF194DEE /* BeltSelectView.swift */,
 				617E3467664C0C66AD2AA6C2 /* OnboardingFlow.swift */,
-				892325B688C9F848C85CAD6A /* ProblemSelectView.swift */,
 				E67E7BB8487171ED01983123 /* SkillAssessmentEngine.swift */,
 				B50144D844C5C1FCC1291A59 /* WelcomeView.swift */,
 			);
@@ -375,7 +369,6 @@
 				212D4737D9F7F05BBEA35002 /* AppFonts.swift in Sources */,
 				9C74848C307F20977B41A64C /* AppState.swift in Sources */,
 				DA38311EC72F8657B09B4EB5 /* BJJMindApp.swift in Sources */,
-				609E4A34EDC2E69F899C0949 /* BeltSelectView.swift in Sources */,
 				63637ABFF5B30800253E3EDA /* BeltTestViews.swift in Sources */,
 				F3A9776E947E394C340C45C3 /* CharacterMomentView.swift in Sources */,
 				F97D24BD72265BAAC94D9708 /* CompeteView.swift in Sources */,
@@ -387,7 +380,6 @@
 				C21C612BCC572A90AEA050D8 /* MainTabView.swift in Sources */,
 				9B5E556F1905A9F93D3F8980 /* Models.swift in Sources */,
 				97A733F36C38DA0A9E6F472F /* OnboardingFlow.swift in Sources */,
-				B26B4C5476831909FC56FF38 /* ProblemSelectView.swift in Sources */,
 				CA12C19941208E08F60DAE4F /* ProfileView.swift in Sources */,
 				768AE4B4070872E54B0C1D14 /* ProgressView.swift in Sources */,
 				9A411B345ADC3749CF984F6F /* QuestionProvider.swift in Sources */,

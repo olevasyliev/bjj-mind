@@ -135,3 +135,44 @@
 "coach.name" = "Coach Marco";
 "coach.tap_to_start" = "Tap to start →";
 "session.fill_blank_hint" = "Pick the missing word";
+
+// MARK: - Skill Assessment
+"assessment.block_a.intro_title" = "Tell us about your experience";
+"assessment.block_a.intro_subtitle" = "A couple of quick questions before we dive in.";
+"assessment.block_b.intro_title" = "Now let's see what you've got";
+"assessment.block_b.intro_subtitle" = "A few real BJJ situations.";
+"assessment.q1.prompt" = "How long have you been training BJJ?";
+"assessment.q1.opt1" = "Less than 6 months";
+"assessment.q1.opt2" = "6–18 months";
+"assessment.q1.opt3" = "1–3 years";
+"assessment.q1.opt4" = "3+ years";
+"assessment.q2.prompt" = "How often do you train?";
+"assessment.q2.opt1" = "Just starting out";
+"assessment.q2.opt2" = "Once a week";
+"assessment.q2.opt3" = "2–3 times a week";
+"assessment.q2.opt4" = "4+ times a week";
+"assessment.result.beginner" = "We'll get you rolling in no time.";
+"assessment.result.intermediate" = "Solid foundation. Let's sharpen it.";
+"assessment.result.advanced" = "Nice, you clearly know your way around the mat.";
+"assessment.result.cta" = "Continue";
+"assessment.progress" = "%d of 5";
+
+// MARK: - Club Info
+"club_info.title" = "Where do you train?";
+"club_info.subtitle" = "We'll use this to connect you with your gym community.";
+"club_info.country_placeholder" = "Country";
+"club_info.city_placeholder" = "City";
+"club_info.club_placeholder" = "Club name";
+"club_info.detect_location" = "Detect my location";
+"club_info.skip" = "Skip for now";
+"club_info.continue" = "Continue";
+
+// MARK: - Kat Intro
+"kat_intro.eyebrow" = "Meet your rival";
+"kat_intro.name" = "Kat";
+"kat_intro.record" = "Blue Belt · 847 wins";
+"kat_intro.message.beginner" = "A fresh white belt. Don't worry, we all started somewhere.";
+"kat_intro.message.intermediate" = "Another white belt. Let's see if you actually know anything... or if you just watch YouTube.";
+"kat_intro.message.advanced" = "Okay, you've got some mat time. Let's find out if it shows.";
+"kat_intro.cta" = "I'll prove it";
+"kat_intro.unlock_note" = "vs Kat matches unlock after your first lesson";
