@@ -36,21 +36,23 @@ enum SkillAssessmentEngine {
     }
 
     /// Computes overall skill level from experience + quiz performance.
+    /// Logic mirrors the design doc:
+    ///   advanced    = 1+ year AND 3 correct
+    ///   beginner    = < 6 months OR 0–1 correct
+    ///   intermediate = everything else
+    /// frequency is captured for future personalisation but does not affect level.
     static func computeSkillLevel(
         duration: TrainingDuration,
         frequency: TrainingFrequency,
         correctCount: Int
     ) -> SkillLevel {
-        let baseScore = duration.rawValue
-        let freqBonus = frequency.rawValue >= 2 ? 1 : 0
-        let quizBonus = correctCount >= 3 ? 1 : (correctCount >= 2 ? 0 : -1)
-
-        let total = baseScore + freqBonus + quizBonus
-        switch total {
-        case ..<2: return .beginner
-        case 2...3: return .intermediate
-        default:   return .advanced
+        if duration.rawValue >= TrainingDuration.oneToThreeYears.rawValue && correctCount == 3 {
+            return .advanced
         }
+        if duration == .lessThan6Months || correctCount <= 1 {
+            return .beginner
+        }
+        return .intermediate
     }
 
     /// Returns exactly 3 BJJ questions for the given difficulty level.

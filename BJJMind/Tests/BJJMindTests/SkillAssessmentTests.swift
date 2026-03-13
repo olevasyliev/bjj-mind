@@ -23,11 +23,24 @@ final class SkillAssessmentTests: XCTestCase {
         XCTAssertEqual(level, .advanced)
     }
 
-    func test_beginner_evenWithHighFrequency_ifShortDuration() {
+    func test_beginner_shortDuration_overridesQuizScore() {
+        // < 6 months → beginner even with perfect quiz (design doc: "< 6 months OR 0–1 correct")
         let level = SkillAssessmentEngine.computeSkillLevel(
             duration: .lessThan6Months, frequency: .fourPlusTimes, correctCount: 3)
-        // Short duration caps at intermediate max
-        XCTAssertLessThanOrEqual(level.rawValue, SkillLevel.intermediate.rawValue)
+        XCTAssertEqual(level, .beginner)
+    }
+
+    func test_advanced_threePlusYears_allCorrect() {
+        let level = SkillAssessmentEngine.computeSkillLevel(
+            duration: .threePlusYears, frequency: .fourPlusTimes, correctCount: 3)
+        XCTAssertEqual(level, .advanced)
+    }
+
+    func test_beginner_longTraining_zeroCorrect() {
+        // 0–1 correct always → beginner, even with 3+ years (design doc: "0–1 correct → beginner")
+        let level = SkillAssessmentEngine.computeSkillLevel(
+            duration: .threePlusYears, frequency: .onceAWeek, correctCount: 0)
+        XCTAssertEqual(level, .beginner)
     }
 
     // MARK: - questionDifficulty
