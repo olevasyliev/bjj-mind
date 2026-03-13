@@ -39,7 +39,9 @@
 		C470BAD75246F5C9A23CE62C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE2C5DA939B10103B268FA25 /* Assets.xcassets */; };
 		C91EDC5C1199BA1685C9AD0C /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50144D844C5C1FCC1291A59 /* WelcomeView.swift */; };
 		CA12C19941208E08F60DAE4F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C37E87887F8522AB2EE1B9 /* ProfileView.swift */; };
+		DA1DE14EA102C4E4AB46D19B /* SkillAssessmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5837FDB73D7C29BF62D45D /* SkillAssessmentTests.swift */; };
 		DA38311EC72F8657B09B4EB5 /* BJJMindApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B7C552BE8EDA878A2C21CD /* BJJMindApp.swift */; };
+		E61A4A9BD37AA2807E875C10 /* SkillAssessmentEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67E7BB8487171ED01983123 /* SkillAssessmentEngine.swift */; };
 		EE5059447BAD6AA0A79962BE /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C199CE1C5893BB3CF48F9B5E /* SessionView.swift */; };
 		F35C2F6BB50AC3919BD2DFE6 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF5CF77D5866F5B5EA08CAF /* Components.swift */; };
 		F3A9776E947E394C340C45C3 /* CharacterMomentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E7548B8EA49DFF2C649F /* CharacterMomentView.swift */; };
@@ -76,6 +78,7 @@
 		7188F2AE91E8F93A06FBEE6C /* Nunito-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Black.ttf"; sourceTree = "<group>"; };
 		78C7169986E1672733BEFCFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7C29505DEB88F51700E6BBC2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7E5837FDB73D7C29BF62D45D /* SkillAssessmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillAssessmentTests.swift; sourceTree = "<group>"; };
 		892325B688C9F848C85CAD6A /* ProblemSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemSelectView.swift; sourceTree = "<group>"; };
 		9A37B188946080C6A5CB3856 /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
 		A167B51AA8D1167A1C0CECDD /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
@@ -97,6 +100,7 @@
 		E1480FB75F0887DA479BC0DD /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
 		E157714400C4AF269892BFED /* BJJMindTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = BJJMindTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2988D1C00962FB4D915903F /* BeltTestViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltTestViews.swift; sourceTree = "<group>"; };
+		E67E7BB8487171ED01983123 /* SkillAssessmentEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillAssessmentEngine.swift; sourceTree = "<group>"; };
 		F0873A43D763EE480C355E72 /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
 		FE2C5DA939B10103B268FA25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFE9EDFF53587037D18773C9 /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 				52B71981ACC4153E76E5E9DB /* AppStateTests.swift */,
 				F0873A43D763EE480C355E72 /* ModelTests.swift */,
 				1022009DE91D79734D44F01D /* SessionEngineTests.swift */,
+				7E5837FDB73D7C29BF62D45D /* SkillAssessmentTests.swift */,
 			);
 			path = BJJMindTests;
 			sourceTree = "<group>";
@@ -211,6 +216,7 @@
 				12B25329B8331DF0CF194DEE /* BeltSelectView.swift */,
 				617E3467664C0C66AD2AA6C2 /* OnboardingFlow.swift */,
 				892325B688C9F848C85CAD6A /* ProblemSelectView.swift */,
+				E67E7BB8487171ED01983123 /* SkillAssessmentEngine.swift */,
 				B50144D844C5C1FCC1291A59 /* WelcomeView.swift */,
 			);
 			path = Onboarding;
@@ -356,6 +362,7 @@
 				55814374DA587BF0F18E2E04 /* AppStateTests.swift in Sources */,
 				4426095B2CF804430A3A6B4A /* ModelTests.swift in Sources */,
 				B8A3A82FFE870A177C1898A2 /* SessionEngineTests.swift in Sources */,
+				DA1DE14EA102C4E4AB46D19B /* SkillAssessmentTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +395,7 @@
 				9360805B16197C110BCAB2FE /* SampleData_ES.swift in Sources */,
 				8D0824680181A6C013BB7D85 /* SessionEngine.swift in Sources */,
 				EE5059447BAD6AA0A79962BE /* SessionView.swift in Sources */,
+				E61A4A9BD37AA2807E875C10 /* SkillAssessmentEngine.swift in Sources */,
 				BE4DBD82E217ED6205B9276A /* SummaryView.swift in Sources */,
 				58B12AD6D706D3761DEEE98F /* SupabaseService.swift in Sources */,
 				C91EDC5C1199BA1685C9AD0C /* WelcomeView.swift in Sources */,
