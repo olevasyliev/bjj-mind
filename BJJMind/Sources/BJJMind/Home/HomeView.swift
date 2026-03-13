@@ -359,16 +359,43 @@ private struct SyncBar: View {
     }
 }
 
-// MARK: - Language Toggle
+// MARK: - Language Picker
+
+private struct LanguageOption {
+    let code: String
+    let flag: String
+    let label: String
+    let available: Bool
+}
 
 struct LanguageToggleButton: View {
     @EnvironmentObject var appState: AppState
 
+    private let options: [LanguageOption] = [
+        LanguageOption(code: "en", flag: "🇺🇸", label: "English",    available: true),
+        LanguageOption(code: "es", flag: "🇪🇸", label: "Español",    available: true),
+        LanguageOption(code: "pt", flag: "🇧🇷", label: "Português — Coming soon", available: false),
+        LanguageOption(code: "ua", flag: "🇺🇦", label: "Українська — Coming soon", available: false),
+    ]
+
+    private var currentFlag: String {
+        options.first(where: { $0.code == appState.language })?.flag ?? "🇺🇸"
+    }
+
     var body: some View {
-        Button(action: {
-            appState.setLanguage(appState.language == "en" ? "es" : "en")
-        }) {
-            Text(appState.language == "en" ? "🇪🇸" : "🇺🇸")
+        Menu {
+            ForEach(options, id: \.code) { option in
+                Button(action: {
+                    guard option.available else { return }
+                    appState.setLanguage(option.code)
+                }) {
+                    Label(option.flag + " " + option.label,
+                          systemImage: appState.language == option.code ? "checkmark" : "")
+                }
+                .disabled(!option.available)
+            }
+        } label: {
+            Text(currentFlag)
                 .font(.system(size: 20))
                 .frame(width: 34, height: 34)
                 .background(Color.cardBg)
@@ -378,6 +405,5 @@ struct LanguageToggleButton: View {
                 )
                 .clipShape(RoundedRectangle(cornerRadius: 10))
         }
-        .buttonStyle(.plain)
     }
 }

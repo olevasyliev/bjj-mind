@@ -1,4 +1,76 @@
 import SwiftUI
+import CoreLocation
+
+// MARK: - Location Detector
+
+@MainActor
+final class LocationDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
+    @Published var isDetecting = false
+    @Published var didFail = false
+
+    var onResult: ((String, String) -> Void)?
+
+    private let manager = CLLocationManager()
+    private let geocoder = CLGeocoder()
+
+    override init() {
+        super.init()
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyKilometer
+    }
+
+    func detect() {
+        isDetecting = true
+        didFail = false
+        switch manager.authorizationStatus {
+        case .notDetermined:
+            manager.requestWhenInUseAuthorization()
+        case .authorizedWhenInUse, .authorizedAlways:
+            manager.requestLocation()
+        default:
+            isDetecting = false
+            didFail = true
+        }
+    }
+
+    nonisolated func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        // requestLocation() auto-stops after one update — no need to call stopUpdatingLocation()
+        guard let loc = locations.first else { return }
+        Task { @MainActor in
+            do {
+                let placemarks = try await CLGeocoder().reverseGeocodeLocation(loc)
+                if let pm = placemarks.first {
+                    let country = pm.country ?? ""
+                    let city = pm.locality ?? pm.administrativeArea ?? ""
+                    self.onResult?(country, city)
+                }
+            } catch {}
+            self.isDetecting = false
+        }
+    }
+
+    nonisolated func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        // Capture status before crossing actor boundary — CLLocationManager is not Sendable
+        let status = manager.authorizationStatus
+        Task { @MainActor in
+            if status == .authorizedWhenInUse || status == .authorizedAlways {
+                self.manager.requestLocation()
+            } else if status != .notDetermined {
+                self.isDetecting = false
+                self.didFail = true
+            }
+        }
+    }
+
+    nonisolated func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        Task { @MainActor in
+            self.isDetecting = false
+            self.didFail = true
+        }
+    }
+}
+
+// MARK: - ClubInfoView
 
 struct ClubInfoView: View {
     let onContinue: (ClubInfo?) -> Void
@@ -7,6 +79,7 @@ struct ClubInfoView: View {
     @State private var city: String = ""
     @State private var clubName: String = ""
     @State private var showingCountryPicker = false
+    @StateObject private var locationDetector = LocationDetector()
 
     private static var deviceCountry: String {
         guard let code = Locale.current.region?.identifier else { return "" }
@@ -62,15 +135,29 @@ struct ClubInfoView: View {
                 ClubTextField(placeholder: L10n.ClubInfoL10n.cityPlaceholder, text: $city)
                 ClubTextField(placeholder: L10n.ClubInfoL10n.clubPlaceholder, text: $clubName)
 
-                Button(action: {}) {
+                // Detect location
+                Button(action: {
+                    locationDetector.onResult = { detectedCountry, detectedCity in
+                        country = detectedCountry
+                        if !detectedCity.isEmpty { city = detectedCity }
+                    }
+                    locationDetector.detect()
+                }) {
                     HStack(spacing: 8) {
-                        Image(systemName: "location.fill")
-                            .font(.system(size: 14))
+                        if locationDetector.isDetecting {
+                            ProgressView()
+                                .scaleEffect(0.8)
+                                .tint(.brand)
+                        } else {
+                            Image(systemName: locationDetector.didFail ? "location.slash.fill" : "location.fill")
+                                .font(.system(size: 14))
+                        }
                         Text(L10n.ClubInfoL10n.detectLocation)
                             .font(.labelMd)
                     }
-                    .foregroundColor(.brand)
+                    .foregroundColor(locationDetector.didFail ? .red : .brand)
                 }
+                .disabled(locationDetector.isDetecting)
                 .padding(.top, 4)
             }
             .padding(.horizontal, 24)
