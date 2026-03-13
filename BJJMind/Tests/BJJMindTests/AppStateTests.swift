@@ -92,6 +92,31 @@ final class AppStateTests: XCTestCase {
         XCTAssertEqual(state2.user.xpTotal, 120)
     }
 
+    // MARK: - SkillLevel Tests
+
+    func test_skillLevel_rawValues() {
+        XCTAssertEqual(SkillLevel.beginner.rawValue, 0)
+        XCTAssertEqual(SkillLevel.intermediate.rawValue, 1)
+        XCTAssertEqual(SkillLevel.advanced.rawValue, 2)
+    }
+
+    func test_userProfile_defaultSkillLevel_isBeginner() {
+        XCTAssertEqual(sut.user.skillLevel, .beginner)
+    }
+
+    func test_userProfile_defaultClubInfo_isNil() {
+        XCTAssertNil(sut.user.clubInfo)
+    }
+
+    func test_clubInfo_codable_roundtrip() throws {
+        let club = ClubInfo(country: "Spain", city: "Barcelona", clubName: "Checkmat BCN")
+        let data = try JSONEncoder().encode(club)
+        let decoded = try JSONDecoder().decode(ClubInfo.self, from: data)
+        XCTAssertEqual(decoded.country, "Spain")
+        XCTAssertEqual(decoded.city, "Barcelona")
+        XCTAssertEqual(decoded.clubName, "Checkmat BCN")
+    }
+
     // MARK: - Unit Progression Tests
 
     func test_completeUnit_marksUnitCompleted() {

@@ -22,6 +22,8 @@ struct UserProfile: Codable {
     var hearts: Int
     var gems: Int
     var weakTags: [String]
+    var skillLevel: SkillLevel
+    var clubInfo: ClubInfo?
 
     static let maxHearts = 5
 
@@ -40,9 +42,27 @@ struct UserProfile: Codable {
             streakLongest: 0,
             hearts: maxHearts,
             gems: 100,
-            weakTags: []
+            weakTags: [],
+            skillLevel: .beginner,
+            clubInfo: nil
         )
     }
+}
+
+// MARK: - SkillLevel
+
+enum SkillLevel: Int, Codable {
+    case beginner     = 0
+    case intermediate = 1
+    case advanced     = 2
+}
+
+// MARK: - ClubInfo
+
+struct ClubInfo: Codable, Equatable {
+    var country: String
+    var city: String
+    var clubName: String
 }
 
 // MARK: - UnitKind
