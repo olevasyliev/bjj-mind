@@ -20,6 +20,7 @@
 		58B12AD6D706D3761DEEE98F /* SupabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F951EECB1FAF0C66FBB3 /* SupabaseService.swift */; };
 		63637ABFF5B30800253E3EDA /* BeltTestViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2988D1C00962FB4D915903F /* BeltTestViews.swift */; };
 		66083351B6A47F1BCA5F590F /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAF625C9C12C1D0878A2758 /* SampleData.swift */; };
+		69713C62884492C9820CAFA0 /* ClubInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297E3F50F4F260B6157D0F33 /* ClubInfoView.swift */; };
 		768AE4B4070872E54B0C1D14 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2329EF0D26291969A12F81D7 /* ProgressView.swift */; };
 		77237438DF7D22B19B122392 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFE9EDFF53587037D18773C9 /* Nunito-ExtraBold.ttf */; };
 		86B658C26774878E13BD4D08 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167B51AA8D1167A1C0CECDD /* L10n.swift */; };
@@ -65,6 +66,7 @@
 		16C37E87887F8522AB2EE1B9 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		2329EF0D26291969A12F81D7 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		26A47F00194B779CBA8A7479 /* SampleData_ES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData_ES.swift; sourceTree = "<group>"; };
+		297E3F50F4F260B6157D0F33 /* ClubInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubInfoView.swift; sourceTree = "<group>"; };
 		3DAF625C9C12C1D0878A2758 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		44D184A283A3C1227616243C /* BJJMind.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = BJJMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4502CFACC767B730CF6D2AE8 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				BBD6EEDA667AEB0FBE721EA5 /* AhaMomentView.swift */,
+				297E3F50F4F260B6157D0F33 /* ClubInfoView.swift */,
 				617E3467664C0C66AD2AA6C2 /* OnboardingFlow.swift */,
 				E67E7BB8487171ED01983123 /* SkillAssessmentEngine.swift */,
 				9C1BC2808ADB3A89017CE526 /* SkillAssessmentView.swift */,
@@ -374,6 +377,7 @@
 				DA38311EC72F8657B09B4EB5 /* BJJMindApp.swift in Sources */,
 				63637ABFF5B30800253E3EDA /* BeltTestViews.swift in Sources */,
 				F3A9776E947E394C340C45C3 /* CharacterMomentView.swift in Sources */,
+				69713C62884492C9820CAFA0 /* ClubInfoView.swift in Sources */,
 				F97D24BD72265BAAC94D9708 /* CompeteView.swift in Sources */,
 				F35C2F6BB50AC3919BD2DFE6 /* Components.swift in Sources */,
 				33AE19D2AFFBF2885701E18B /* FeedbackView.swift in Sources */,
