@@ -81,15 +81,25 @@ final class AppState: ObservableObject {
 
     /// Merges remote catalog with completed set, rebuilding lock chain.
     private func applyRemoteBundles(_ bundles: [RemoteUnitBundle], completedIds: Set<String>) {
+        guard !bundles.isEmpty else { return }
+        // If units exist but have no questions yet (migration in progress), keep local SampleData
+        let totalQuestions = bundles.reduce(0) { $0 + $1.questions.count }
+        guard totalQuestions > 0 else { return }
+
         var rebuilt: [Unit] = bundles.map { b in
             Unit(
                 id: b.id, belt: b.belt, orderIndex: b.orderIndex,
                 title: b.title, description: b.description, tags: b.tags,
                 isLocked: true,
                 isCompleted: completedIds.contains(b.id),
-                kind: b.isBeltTest ? .beltTest : .lesson,
+                kind: b.kind,
                 questions: b.questions,
-                coachIntro: b.coachIntro
+                coachIntro: b.coachIntro,
+                sectionTitle: b.sectionTitle,
+                topicTitle: b.topicTitle,
+                lessonIndex: b.lessonIndex,
+                lessonTotal: b.lessonTotal,
+                characterMoment: b.characterMoment
             )
         }
 

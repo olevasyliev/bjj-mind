@@ -11,12 +11,25 @@ private struct RemoteUnit: Decodable {
     let tags: [String]
     let coachIntro: String?
     let isBeltTest: Bool
+    let kind: String?
+    let sectionTitle: String?
+    let topicTitle: String?
+    let lessonIndex: Int?
+    let lessonTotal: Int?
+    let characterName: String?
+    let characterMessage: String?
 
     enum CodingKeys: String, CodingKey {
-        case id, belt, title, description, tags
-        case orderIndex  = "order_index"
-        case coachIntro  = "coach_intro"
-        case isBeltTest  = "is_belt_test"
+        case id, belt, title, description, tags, kind
+        case orderIndex      = "order_index"
+        case coachIntro      = "coach_intro"
+        case isBeltTest      = "is_belt_test"
+        case sectionTitle    = "section_title"
+        case topicTitle      = "topic_title"
+        case lessonIndex     = "lesson_index"
+        case lessonTotal     = "lesson_total"
+        case characterName   = "character_name"
+        case characterMessage = "character_message"
     }
 }
 
@@ -91,6 +104,12 @@ struct RemoteUnitBundle {
     let isBeltTest: Bool
     let coachIntro: String?
     let questions: [Question]
+    let kind: UnitKind
+    let sectionTitle: String?
+    let topicTitle: String?
+    let lessonIndex: Int?
+    let lessonTotal: Int?
+    let characterMoment: CharacterMomentData?
 }
 
 // MARK: - SupabaseService
@@ -110,16 +129,50 @@ actor SupabaseService {
         let byUnit          = Dictionary(grouping: remoteQuestions, by: \.unitId)
 
         return remoteUnits.map { ru in
-            RemoteUnitBundle(
-                id:          ru.id,
-                belt:        Belt(rawValue: ru.belt) ?? .white,
-                orderIndex:  ru.orderIndex,
-                title:       ru.title,
-                description: ru.description,
-                tags:        ru.tags,
-                isBeltTest:  ru.isBeltTest,
-                coachIntro:  ru.coachIntro,
-                questions:   (byUnit[ru.id] ?? []).map { $0.toQuestion() }
+            let resolvedKind: UnitKind
+            if let rawKind = ru.kind {
+                if let k = UnitKind(rawValue: rawKind) {
+                    resolvedKind = k
+                } else {
+                    print("[Supabase] unknown kind '\(rawKind)' for unit \(ru.id), falling back to \(ru.isBeltTest ? "beltTest" : "lesson")")
+                    resolvedKind = ru.isBeltTest ? .beltTest : .lesson
+                }
+            } else if ru.isBeltTest {
+                resolvedKind = .beltTest
+            } else {
+                resolvedKind = .lesson
+            }
+
+            let characterMoment: CharacterMomentData?
+            if resolvedKind == .characterMoment,
+               let charName = ru.characterName,
+               let charMsg  = ru.characterMessage {
+                if let char = AppCharacter(rawValue: charName) {
+                    characterMoment = CharacterMomentData(character: char, message: charMsg)
+                } else {
+                    print("[Supabase] unknown character_name '\(charName)' for unit \(ru.id) — expected one of: marco, oldChen, rex, giGhost")
+                    characterMoment = nil
+                }
+            } else {
+                characterMoment = nil
+            }
+
+            return RemoteUnitBundle(
+                id:              ru.id,
+                belt:            Belt(rawValue: ru.belt) ?? .white,
+                orderIndex:      ru.orderIndex,
+                title:           ru.title,
+                description:     ru.description,
+                tags:            ru.tags,
+                isBeltTest:      ru.isBeltTest,
+                coachIntro:      ru.coachIntro,
+                questions:       (byUnit[ru.id] ?? []).map { $0.toQuestion() },
+                kind:            resolvedKind,
+                sectionTitle:    ru.sectionTitle,
+                topicTitle:      ru.topicTitle,
+                lessonIndex:     ru.lessonIndex,
+                lessonTotal:     ru.lessonTotal,
+                characterMoment: characterMoment
             )
         }
     }

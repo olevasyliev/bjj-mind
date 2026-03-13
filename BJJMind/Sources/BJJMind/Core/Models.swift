@@ -57,6 +57,8 @@ enum UnitKind: String, Codable {
 
 // MARK: - AppCharacter
 
+/// Raw values must match Supabase `character_name` column exactly (case-sensitive).
+/// Valid values: "marco", "oldChen", "rex", "giGhost"
 enum AppCharacter: String, Codable {
     case marco, oldChen, rex, giGhost
 

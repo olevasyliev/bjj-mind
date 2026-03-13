@@ -201,4 +201,32 @@ final class CharacterMomentLockTests: XCTestCase {
         XCTAssertTrue(state.units[1].isCompleted, "CharacterMoment should be marked complete")
         XCTAssertFalse(state.units[2].isLocked, "Next lesson should unlock after moment completes")
     }
+
+    // Belt test gate must require characterMoment completion (not just lessons).
+    // Relevant for Supabase sync: if remote progress has no row for a character moment,
+    // isCompleted=false, and the belt test must stay locked until the user taps through it.
+    func test_beltTestGate_requiresCharacterMomentCompletion() {
+        let defaults = UserDefaults(suiteName: "test_bt_cm_gate")!
+        defaults.removePersistentDomain(forName: "test_bt_cm_gate")
+        let state = AppState(defaults: defaults)
+
+        state.units = [
+            Unit(id: "l1", belt: .white, orderIndex: 0, title: "Lesson", description: "",
+                 tags: [], isLocked: false, isCompleted: false, kind: .lesson, questions: []),
+            Unit(id: "cm1", belt: .white, orderIndex: 1, title: "", description: "",
+                 tags: [], isLocked: true, isCompleted: false, kind: .characterMoment, questions: []),
+            Unit(id: "bt1", belt: .white, orderIndex: 2, title: "Belt Test", description: "",
+                 tags: [], isLocked: true, isCompleted: false, kind: .beltTest, questions: []),
+        ]
+
+        // Complete lesson but NOT the character moment
+        state.completeUnit(id: "l1")
+        XCTAssertTrue(state.units.first(where: { $0.isBeltTest })!.isLocked,
+                      "Belt test must stay locked while character moment is incomplete")
+
+        // Complete the character moment — now belt test should unlock
+        state.completeUnit(id: "cm1")
+        XCTAssertFalse(state.units.first(where: { $0.isBeltTest })!.isLocked,
+                       "Belt test should unlock once character moment is complete")
+    }
 }
