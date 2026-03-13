@@ -30,6 +30,7 @@
 		9A411B345ADC3749CF984F6F /* QuestionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E8F1A6EF3A3CB9DAFEE220 /* QuestionProvider.swift */; };
 		9B5E556F1905A9F93D3F8980 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7108B55FDFE579DB3BD9451B /* Models.swift */; };
 		9C74848C307F20977B41A64C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D813E1EABB947FDA9D5C6923 /* AppState.swift */; };
+		A9D2429D5AABB405BAE16D5A /* SkillAssessmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1BC2808ADB3A89017CE526 /* SkillAssessmentView.swift */; };
 		AF0693762093E8FF732DAA25 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4502CFACC767B730CF6D2AE8 /* AppColors.swift */; };
 		B8A3A82FFE870A177C1898A2 /* SessionEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1022009DE91D79734D44F01D /* SessionEngineTests.swift */; };
 		BE4DBD82E217ED6205B9276A /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C58996C53646A70790D499 /* SummaryView.swift */; };
@@ -77,6 +78,7 @@
 		7C29505DEB88F51700E6BBC2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7E5837FDB73D7C29BF62D45D /* SkillAssessmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillAssessmentTests.swift; sourceTree = "<group>"; };
 		9A37B188946080C6A5CB3856 /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
+		9C1BC2808ADB3A89017CE526 /* SkillAssessmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillAssessmentView.swift; sourceTree = "<group>"; };
 		A167B51AA8D1167A1C0CECDD /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
 		A645FEF1310ECF5FB15750C7 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		A92C43A31E69789CCFC62648 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				BBD6EEDA667AEB0FBE721EA5 /* AhaMomentView.swift */,
 				617E3467664C0C66AD2AA6C2 /* OnboardingFlow.swift */,
 				E67E7BB8487171ED01983123 /* SkillAssessmentEngine.swift */,
+				9C1BC2808ADB3A89017CE526 /* SkillAssessmentView.swift */,
 				B50144D844C5C1FCC1291A59 /* WelcomeView.swift */,
 			);
 			path = Onboarding;
@@ -388,6 +391,7 @@
 				8D0824680181A6C013BB7D85 /* SessionEngine.swift in Sources */,
 				EE5059447BAD6AA0A79962BE /* SessionView.swift in Sources */,
 				E61A4A9BD37AA2807E875C10 /* SkillAssessmentEngine.swift in Sources */,
+				A9D2429D5AABB405BAE16D5A /* SkillAssessmentView.swift in Sources */,
 				BE4DBD82E217ED6205B9276A /* SummaryView.swift in Sources */,
 				58B12AD6D706D3761DEEE98F /* SupabaseService.swift in Sources */,
 				C91EDC5C1199BA1685C9AD0C /* WelcomeView.swift in Sources */,
