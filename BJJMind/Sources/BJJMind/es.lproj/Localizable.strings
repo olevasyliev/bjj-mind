@@ -155,6 +155,7 @@
 "assessment.result.advanced" = "Genial, claramente conoces bien el tatami.";
 "assessment.result.cta" = "Continuar";
 "assessment.progress" = "%d de 5";
+"assessment.block_intro_cta" = "Vamos";
 
 // MARK: - Club Info
 "club_info.title" = "¿Dónde entrenas?";

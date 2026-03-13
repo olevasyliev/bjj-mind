@@ -30,12 +30,10 @@ struct SkillAssessmentView: View {
     var body: some View {
         VStack(spacing: 0) {
             if case .result = phase { } else {
-                HStack(spacing: 16) {
-                    AppProgressBar(progress: Double(progressStep) / 5.0)
-                    CloseButton(action: {})
-                }
-                .padding(.horizontal, 24)
-                .padding(.top, 52)
+                AppProgressBar(progress: Double(progressStep) / 5.0)
+                    .accessibilityLabel(L10n.Assessment.progress(progressStep))
+                    .padding(.horizontal, 24)
+                    .padding(.top, 52)
             }
 
             switch phase {
@@ -123,7 +121,7 @@ private struct AssessmentIntroBlock: View {
             }
             .padding(.horizontal, 32)
             Spacer()
-            PrimaryButton(title: "Let's go", action: onContinue)
+            PrimaryButton(title: L10n.Assessment.blockIntroCta, action: onContinue)
                 .padding(.horizontal, 24)
                 .padding(.bottom, 52)
         }

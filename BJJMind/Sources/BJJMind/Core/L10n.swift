@@ -36,6 +36,7 @@ enum L10n {
         static var blockBSubtitle: String { l("assessment.block_b.intro_subtitle") }
         static var resultCta: String      { l("assessment.result.cta") }
         static func progress(_ n: Int) -> String { lf("assessment.progress", n) }
+        static var blockIntroCta: String { l("assessment.block_intro_cta") }
         static func result(for level: SkillLevel) -> String {
             switch level {
             case .beginner:     return l("assessment.result.beginner")

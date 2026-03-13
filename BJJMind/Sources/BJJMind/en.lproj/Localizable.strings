@@ -156,6 +156,7 @@
 "assessment.result.advanced" = "Nice, you clearly know your way around the mat.";
 "assessment.result.cta" = "Continue";
 "assessment.progress" = "%d of 5";
+"assessment.block_intro_cta" = "Let's go";
 
 // MARK: - Club Info
 "club_info.title" = "Where do you train?";
