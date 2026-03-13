@@ -23,10 +23,7 @@ struct OnboardingFlow: View {
                 ProblemSelectView(selectedTags: $selectedTags) { step = .ahaMoment }
             case .ahaMoment:
                 AhaMomentView {
-                    appState.completeOnboarding(
-                        belt: selectedBelt,
-                        weakTags: Array(selectedTags)
-                    )
+                    appState.completeOnboarding(skillLevel: .beginner, clubInfo: nil)
                 }
             }
         }

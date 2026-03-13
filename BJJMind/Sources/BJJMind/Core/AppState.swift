@@ -132,9 +132,10 @@ final class AppState: ObservableObject {
 
     // MARK: - Actions
 
-    func completeOnboarding(belt: Belt, weakTags: [String]) {
-        user.belt = belt
-        user.weakTags = weakTags
+    func completeOnboarding(skillLevel: SkillLevel, clubInfo: ClubInfo?) {
+        user.belt = .white
+        user.skillLevel = skillLevel
+        user.clubInfo = clubInfo
         defaults.set(true, forKey: "onboardingComplete")
         persistUser()
         withAnimation(.easeInOut(duration: 0.4)) { currentScreen = .main }

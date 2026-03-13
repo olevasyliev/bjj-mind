@@ -30,18 +30,24 @@ final class AppStateTests: XCTestCase {
     }
 
     func test_completeOnboarding_transitionsToMain() {
-        sut.completeOnboarding(belt: .blue, weakTags: ["guard"])
+        sut.completeOnboarding(skillLevel: .beginner, clubInfo: nil)
         XCTAssertEqual(sut.currentScreen, .main)
     }
 
-    func test_completeOnboarding_setsUserBelt() {
-        sut.completeOnboarding(belt: .purple, weakTags: [])
-        XCTAssertEqual(sut.user.belt, .purple)
+    func test_completeOnboarding_withSkillLevel_setsLevel() {
+        sut.completeOnboarding(skillLevel: .advanced, clubInfo: nil)
+        XCTAssertEqual(sut.user.skillLevel, .advanced)
     }
 
-    func test_completeOnboarding_setsWeakTags() {
-        sut.completeOnboarding(belt: .white, weakTags: ["guard", "escapes"])
-        XCTAssertEqual(sut.user.weakTags, ["guard", "escapes"])
+    func test_completeOnboarding_withClubInfo_savesClub() {
+        let club = ClubInfo(country: "Brazil", city: "São Paulo", clubName: "Gracie Barra")
+        sut.completeOnboarding(skillLevel: .beginner, clubInfo: club)
+        XCTAssertEqual(sut.user.clubInfo?.clubName, "Gracie Barra")
+    }
+
+    func test_completeOnboarding_beltAlwaysWhite() {
+        sut.completeOnboarding(skillLevel: .advanced, clubInfo: nil)
+        XCTAssertEqual(sut.user.belt, .white)
     }
 
     func test_loseHeart_decrementsHearts() {
@@ -84,11 +90,11 @@ final class AppStateTests: XCTestCase {
     func test_userProfile_persistsAcrossInstances() {
         let defaults = UserDefaults(suiteName: "test-\(UUID().uuidString)")!
         let state1 = AppState(defaults: defaults)
-        state1.completeOnboarding(belt: .blue, weakTags: ["mount"])
+        state1.completeOnboarding(skillLevel: .intermediate, clubInfo: nil)
         state1.addXP(120)
 
         let state2 = AppState(defaults: defaults)
-        XCTAssertEqual(state2.user.belt, .blue)
+        XCTAssertEqual(state2.user.skillLevel, .intermediate)
         XCTAssertEqual(state2.user.xpTotal, 120)
     }
 
