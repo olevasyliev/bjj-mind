@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		147FC679CFCB49566F13BDF6 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7188F2AE91E8F93A06FBEE6C /* Nunito-Black.ttf */; };
+		15B4CA21CC25B64FC5CC4581 /* KatIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFC2F4B2254AFC6DF95E00B /* KatIntroView.swift */; };
 		19DFDD282B5F03F16C69D70F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8CD5BDBCAF84642EFF5E963A /* Localizable.strings */; };
 		212D4737D9F7F05BBEA35002 /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37B188946080C6A5CB3856 /* AppFonts.swift */; };
 		248C6ACC9329AFB2A436E0EF /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C64392883F3D08C2964809F3 /* Nunito-Bold.ttf */; };
@@ -70,6 +71,7 @@
 		3DAF625C9C12C1D0878A2758 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		44D184A283A3C1227616243C /* BJJMind.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = BJJMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4502CFACC767B730CF6D2AE8 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		4FFC2F4B2254AFC6DF95E00B /* KatIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KatIntroView.swift; sourceTree = "<group>"; };
 		52B71981ACC4153E76E5E9DB /* AppStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateTests.swift; sourceTree = "<group>"; };
 		58E8F1A6EF3A3CB9DAFEE220 /* QuestionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionProvider.swift; sourceTree = "<group>"; };
 		617E3467664C0C66AD2AA6C2 /* OnboardingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlow.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 			children = (
 				BBD6EEDA667AEB0FBE721EA5 /* AhaMomentView.swift */,
 				297E3F50F4F260B6157D0F33 /* ClubInfoView.swift */,
+				4FFC2F4B2254AFC6DF95E00B /* KatIntroView.swift */,
 				617E3467664C0C66AD2AA6C2 /* OnboardingFlow.swift */,
 				E67E7BB8487171ED01983123 /* SkillAssessmentEngine.swift */,
 				9C1BC2808ADB3A89017CE526 /* SkillAssessmentView.swift */,
@@ -382,6 +385,7 @@
 				F35C2F6BB50AC3919BD2DFE6 /* Components.swift in Sources */,
 				33AE19D2AFFBF2885701E18B /* FeedbackView.swift in Sources */,
 				8A2EFC51271D14A28AA33A25 /* HomeView.swift in Sources */,
+				15B4CA21CC25B64FC5CC4581 /* KatIntroView.swift in Sources */,
 				86B658C26774878E13BD4D08 /* L10n.swift in Sources */,
 				4D97A62387F5569A22FEE2D5 /* LanguageManager.swift in Sources */,
 				C21C612BCC572A90AEA050D8 /* MainTabView.swift in Sources */,
