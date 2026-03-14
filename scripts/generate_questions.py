@@ -17,8 +17,9 @@ import urllib.error
 import anthropic
 
 # ── Supabase config ──────────────────────────────────────────────────────────
-ANON_KEY = "sb_publishable_gG_LALbHEJ_Fqsfj3AE39Q_NNdB_n6W"
-BASE = "https://dwzzvxjycdbgzrjtjzsr.supabase.co/rest/v1"
+# Public Supabase anon key — not a secret, mirrors migrate_db.py
+ANON_KEY = os.environ.get("SUPABASE_ANON_KEY", "sb_publishable_gG_LALbHEJ_Fqsfj3AE39Q_NNdB_n6W")
+BASE = os.environ.get("SUPABASE_URL", "https://dwzzvxjycdbgzrjtjzsr.supabase.co/rest/v1")
 
 HEADERS = {
     "apikey": ANON_KEY,
@@ -100,9 +101,6 @@ TOPICS = [
     },
 ]
 
-FORMATS = ["mcq4", "mcq4", "mcq4", "mcq4", "mcq4", "mcq2", "mcq2", "trueFalse", "trueFalse", "fillBlank",
-           "mcq4", "mcq4", "mcq4", "mcq2", "mcq2", "trueFalse", "trueFalse", "fillBlank", "mcq4", "mcq2"]
-
 # ── Supabase helpers ─────────────────────────────────────────────────────────
 
 def rest_upsert(table: str, rows: list):
@@ -130,7 +128,6 @@ def rest_count(table: str) -> int:
 # ── Claude generation ────────────────────────────────────────────────────────
 
 def build_prompt(topic: dict, count: int = 20) -> str:
-    format_list = ", ".join(set(FORMATS))
     return f"""You are a BJJ curriculum designer creating quiz questions for a Duolingo-style BJJ app.
 
 TOPIC: {topic['slug']}
@@ -231,7 +228,7 @@ def generate_for_topic(client: anthropic.Anthropic, topic: dict) -> list:
                     "id": q_id,
                     "topic": topic["slug"],
                     "belt_level": "white",
-                    "unit_id": None,
+                    "unit_id": None,  # Null — questions fetched by topic, not by unit (Task 3 queries by topic)
                     "format": q["format"],
                     "prompt": q["prompt"],
                     "options": q["options"],
@@ -288,7 +285,8 @@ def main():
     client = anthropic.Anthropic(api_key=api_key)
 
     print(f"Starting question generation for {len(TOPICS)} topics...")
-    print(f"Questions before: {rest_count('questions')}")
+    before_count = rest_count("questions")
+    print(f"Questions before: {before_count}")
     print()
 
     all_generated = []
@@ -304,6 +302,12 @@ def main():
             continue
 
         print(f"generated {len(questions)} questions", end=" ")
+
+        if len(questions) < 20:
+            start = topic["start_index"]
+            end = topic["start_index"] + 19
+            print(f"\n  WARNING: topic {topic['slug']} only got {len(questions)}/20 questions "
+                  f"(IDs {topic['id_prefix']}-{start:02d} to {topic['id_prefix']}-{end:02d} missing some)")
 
         # Upload to Supabase
         try:
@@ -324,10 +328,13 @@ def main():
 
     # Final count
     total = rest_count("questions")
+    expected_total = before_count + len(all_generated)
     print(f"\n--- Summary ---")
     print(f"Topics processed: {len(TOPICS) - len(failed_topics)}/{len(TOPICS)}")
     print(f"Questions generated: {len(all_generated)}")
     print(f"Total questions in DB: {total}")
+    if total != expected_total:
+        print(f"WARNING: DB count mismatch — expected {expected_total} ({before_count} + {len(all_generated)}), got {total}")
     if failed_topics:
         print(f"Failed topics: {', '.join(failed_topics)}")
     else:
