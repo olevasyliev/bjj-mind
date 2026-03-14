@@ -55,7 +55,7 @@ final class AdaptiveQuestionSelectorTests: XCTestCase {
 
     // MARK: - Test 3: Within never-seen group, easier questions come first (difficulty asc)
 
-    func test_withinNeverSeenGroup_easierQuestionsComFirst() {
+    func test_withinNeverSeenGroup_easierQuestionsFirst() {
         let hard   = makeQuestion(id: "hard",   difficulty: 5)
         let medium = makeQuestion(id: "medium", difficulty: 3)
         let easy   = makeQuestion(id: "easy",   difficulty: 1)

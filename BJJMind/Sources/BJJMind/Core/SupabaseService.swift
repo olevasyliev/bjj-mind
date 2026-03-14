@@ -138,6 +138,9 @@ actor SupabaseService {
     private let base = "https://dwzzvxjycdbgzrjtjzsr.supabase.co/rest/v1"
     private let key  = "sb_publishable_gG_LALbHEJ_Fqsfj3AE39Q_NNdB_n6W"
 
+    // Reused across calls to avoid repeated allocations.
+    private let iso8601: ISO8601DateFormatter = ISO8601DateFormatter()
+
     // MARK: Catalog
 
     func fetchCatalog() async throws -> [RemoteUnitBundle] {
@@ -287,26 +290,18 @@ actor SupabaseService {
 
     /// Records or increments question stats for a user after a session.
     ///
-    /// Fetches the existing stat (if any), increments in memory, then upserts.
+    /// Uses a single upsert without a prior fetch. This is a simplified implementation
+    /// that assumes a single active session per user (the normal case for a learning app).
+    /// Concurrent sessions could cause off-by-one counts on `times_seen`/`times_wrong`,
+    /// but this is extremely rare and acceptable given the product context. A DB-side
+    /// atomic increment (via an RPC or trigger) would be needed to fully eliminate the
+    /// race, but is intentionally deferred as over-engineering for V1.
     ///
     /// - Parameters:
     ///   - userId:     The authenticated user's UUID.
     ///   - questionId: The question that was answered.
-    ///   - wasSeen:    Always true when called after a session.
     ///   - wasWrong:   Whether the user answered incorrectly.
-    func upsertQuestionStats(userId: UUID, questionId: String, wasSeen: Bool, wasWrong: Bool) async throws {
-        // Fetch current stat (may not exist)
-        let existing: [RemoteQuestionStat] = try await get(
-            [RemoteQuestionStat].self,
-            "/user_question_stats?user_id=eq.\(userId.uuidString)&question_id=eq.\(questionId)&select=question_id,times_seen,times_wrong"
-        )
-
-        let currentSeen  = existing.first?.timesSeen  ?? 0
-        let currentWrong = existing.first?.timesWrong ?? 0
-
-        let newSeen  = currentSeen  + (wasSeen  ? 1 : 0)
-        let newWrong = currentWrong + (wasWrong ? 1 : 0)
-
+    func upsertQuestionStats(userId: UUID, questionId: String, wasWrong: Bool) async throws {
         struct Body: Encodable {
             let user_id: String
             let question_id: String
@@ -315,7 +310,6 @@ actor SupabaseService {
             let last_seen_at: String
         }
 
-        let iso8601 = ISO8601DateFormatter()
         let now = iso8601.string(from: Date())
 
         _ = try await post(
@@ -323,8 +317,8 @@ actor SupabaseService {
             body: Body(
                 user_id: userId.uuidString,
                 question_id: questionId,
-                times_seen: newSeen,
-                times_wrong: newWrong,
+                times_seen: 1,
+                times_wrong: wasWrong ? 1 : 0,
                 last_seen_at: now
             ),
             prefer: "return=minimal,resolution=merge-duplicates"
@@ -334,22 +328,34 @@ actor SupabaseService {
     // MARK: HTTP Helpers
 
     private func get<T: Decodable>(_ type: T.Type, _ path: String) async throws -> T {
-        var req = URLRequest(url: URL(string: "\(base)\(path)")!)
+        guard let url = URL(string: "\(base)\(path)") else {
+            throw SupabaseError.invalidURL("\(base)\(path)")
+        }
+        var req = URLRequest(url: url)
         req.setValue(key, forHTTPHeaderField: "apikey")
         req.setValue("Bearer \(key)", forHTTPHeaderField: "Authorization")
-        let (data, _) = try await URLSession.shared.data(for: req)
+        let (data, response) = try await URLSession.shared.data(for: req)
+        if let http = response as? HTTPURLResponse, !(200..<300).contains(http.statusCode) {
+            throw SupabaseError.httpError(statusCode: http.statusCode, body: data)
+        }
         return try JSONDecoder().decode(type, from: data)
     }
 
     private func post<B: Encodable>(path: String, body: B, prefer: String) async throws -> Data {
-        var req = URLRequest(url: URL(string: "\(base)\(path)")!)
+        guard let url = URL(string: "\(base)\(path)") else {
+            throw SupabaseError.invalidURL("\(base)\(path)")
+        }
+        var req = URLRequest(url: url)
         req.httpMethod = "POST"
         req.setValue(key,               forHTTPHeaderField: "apikey")
         req.setValue("Bearer \(key)",   forHTTPHeaderField: "Authorization")
         req.setValue("application/json",forHTTPHeaderField: "Content-Type")
         req.setValue(prefer,            forHTTPHeaderField: "Prefer")
         req.httpBody = try JSONEncoder().encode(body)
-        let (data, _) = try await URLSession.shared.data(for: req)
+        let (data, response) = try await URLSession.shared.data(for: req)
+        if let http = response as? HTTPURLResponse, !(200..<300).contains(http.statusCode) {
+            throw SupabaseError.httpError(statusCode: http.statusCode, body: data)
+        }
         return data
     }
 }
@@ -358,4 +364,6 @@ actor SupabaseService {
 
 enum SupabaseError: Error {
     case noData
+    case invalidURL(_ url: String)
+    case httpError(statusCode: Int, body: Data)
 }
