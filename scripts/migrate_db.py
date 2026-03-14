@@ -10,6 +10,31 @@ import urllib.error
 ANON_KEY = "sb_publishable_gG_LALbHEJ_Fqsfj3AE39Q_NNdB_n6W"
 BASE = "https://dwzzvxjycdbgzrjtjzsr.supabase.co/rest/v1"
 
+# Maps unit_id prefix → topic slug used for adaptive question bank
+UNIT_TOPIC = {
+    "wb-01-l1": "closed_guard",
+    "wb-01-l2": "closed_guard",
+    "wb-02-l1": "closed_guard_attacks",
+    "wb-02-l2": "closed_guard_attacks",
+    "wb-03-l1": "guard_passing",
+    "wb-03-l2": "guard_passing",
+    "wb-04-l1": "side_control_top",
+    "wb-04-l2": "side_control_top",
+    "wb-05-l1": "side_control_escape",
+    "wb-05-l2": "side_control_escape",
+    "wb-06-l1": "mount_control",
+    "wb-06-l2": "mount_control",
+    "wb-07-l1": "mount_escape",
+    "wb-07-l2": "mount_escape",
+    "wb-08-l1": "back_control",
+    "wb-08-l2": "back_control",
+    "wb-09-l1": "submissions",
+    "wb-09-l2": "submissions",
+    "wb-10-l1": "takedowns",
+    "wb-10-l2": "takedowns",
+    # Review / exam / character / belt test units → no topic
+}
+
 HEADERS = {
     "apikey": ANON_KEY,
     "Authorization": f"Bearer {ANON_KEY}",
@@ -156,6 +181,7 @@ def build_unit_dicts() -> list:
             "lesson_total": l_tot,
             "character_name": c_name,
             "character_message": c_msg,
+            "topic": UNIT_TOPIC.get(uid),
         })
     return rows
 
@@ -279,30 +305,30 @@ sub = ["q-sub-01","q-sub-02","q-sub-03","q-sub-04","q-sub-05","q-sub-06","q-sub-
 td  = ["q-td-01","q-td-02","q-td-03","q-td-04","q-td-05","q-td-06","q-td-07","q-td-08"]
 
 UNIT_QUESTIONS = {
-    "wb-01-l1": cg[0:4],
-    "wb-01-l2": cg[4:8],
-    "wb-02-l1": cga[0:4],
-    "wb-02-l2": cga[4:8],
-    "wb-03-l1": gp[0:4],
-    "wb-03-l2": gp[4:8],
+    "wb-01-l1": cg[0:8],
+    "wb-01-l2": cg[0:8],
+    "wb-02-l1": cga[0:8],
+    "wb-02-l2": cga[0:8],
+    "wb-03-l1": gp[0:8],
+    "wb-03-l2": gp[0:8],
     "wb-mr-gg": [cg[0],cg[4],cga[0],cga[4],gp[0],gp[4]],
     "wb-me-gg": [cg[1],cg[5],cga[1],cga[5],gp[1],gp[5],cg[2],cga[2]],
-    "wb-04-l1": sc[0:4],
-    "wb-04-l2": sc[4:8],
-    "wb-05-l1": sce[0:4],
-    "wb-05-l2": sce[4:8],
-    "wb-06-l1": mc[0:4],
-    "wb-06-l2": mc[4:8],
-    "wb-07-l1": me[0:4],
-    "wb-07-l2": me[4:8],
+    "wb-04-l1": sc[0:8],
+    "wb-04-l2": sc[0:8],
+    "wb-05-l1": sce[0:8],
+    "wb-05-l2": sce[0:8],
+    "wb-06-l1": mc[0:8],
+    "wb-06-l2": mc[0:8],
+    "wb-07-l1": me[0:8],
+    "wb-07-l2": me[0:8],
     "wb-mr-tg": [sc[0],sc[4],sce[0],sce[4],mc[0],mc[4],me[0],me[4]],
     "wb-me-tg": [sc[1],sc[5],sce[1],sce[5],mc[1],mc[5],me[1],me[5]],
-    "wb-08-l1": bc[0:4],
-    "wb-08-l2": bc[4:8],
-    "wb-09-l1": sub[0:4],
-    "wb-09-l2": sub[4:8],
-    "wb-10-l1": td[0:4],
-    "wb-10-l2": td[4:8],
+    "wb-08-l1": bc[0:8],
+    "wb-08-l2": bc[0:8],
+    "wb-09-l1": sub[0:8],
+    "wb-09-l2": sub[0:8],
+    "wb-10-l1": td[0:8],
+    "wb-10-l2": td[0:8],
     "wb-mr-bs": [bc[0],bc[4],sub[0],sub[4],td[0],td[4]],
     "wb-me-bs": [bc[1],bc[5],sub[1],sub[5],td[1],td[5],bc[2],sub[2]],
     "wb-bt1": ["bt-cg-01","bt-cg-02","bt-cga-01","bt-cga-02","bt-gp-01","bt-gp-02",
@@ -323,7 +349,7 @@ def build_question_dicts() -> list:
         for i, src_qid in enumerate(q_ids):
             d = QUESTION_DATA[src_qid]
             fmt, prompt, opts, correct, expl, tags, diff, note = d
-            new_id = f"{unit_id}-{i+1:02d}" if unit_id in REVIEW_EXAM_UNITS else src_qid
+            new_id = f"{unit_id}-{i+1:02d}"
             if new_id in seen:
                 continue
             seen.add(new_id)
@@ -338,6 +364,8 @@ def build_question_dicts() -> list:
                 "tags": tags,
                 "difficulty": diff,
                 "coach_note": note,
+                "topic": UNIT_TOPIC.get(unit_id),
+                "belt_level": "white",
             })
     return rows
 
