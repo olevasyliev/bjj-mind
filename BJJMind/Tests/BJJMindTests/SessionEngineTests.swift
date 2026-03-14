@@ -222,4 +222,45 @@ final class SessionEngineTests: XCTestCase {
         XCTAssertEqual(engine.state, .showingIntro)
         XCTAssertEqual(engine.hearts, heartsBefore)
     }
+
+    // MARK: - Gap 2: answeredQuestions tracking
+
+    func test_answeredQuestions_emptyAtStart() {
+        let engine = SessionEngine(questions: questions)
+        XCTAssertTrue(engine.answeredQuestions.isEmpty)
+    }
+
+    func test_answeredQuestions_recordsCorrectAnswer() {
+        let engine = SessionEngine(questions: questions)
+        engine.submitAnswer("A") // correct for q1
+        XCTAssertEqual(engine.answeredQuestions.count, 1)
+        XCTAssertEqual(engine.answeredQuestions[0].questionId, "q1")
+        XCTAssertFalse(engine.answeredQuestions[0].wasWrong)
+    }
+
+    func test_answeredQuestions_recordsWrongAnswer() {
+        let engine = SessionEngine(questions: questions)
+        engine.submitAnswer("B") // wrong for q1 (correct is "A")
+        XCTAssertEqual(engine.answeredQuestions.count, 1)
+        XCTAssertEqual(engine.answeredQuestions[0].questionId, "q1")
+        XCTAssertTrue(engine.answeredQuestions[0].wasWrong)
+    }
+
+    func test_answeredQuestions_accumulatesAcrossMultipleAnswers() {
+        let engine = SessionEngine(questions: questions)
+        engine.submitAnswer("A"); engine.advance()   // q1 correct
+        engine.submitAnswer("False"); engine.advance() // q2 wrong (correct is "True")
+        engine.submitAnswer("X"); engine.advance()   // q3 correct
+        XCTAssertEqual(engine.answeredQuestions.count, 3)
+        XCTAssertFalse(engine.answeredQuestions[0].wasWrong)
+        XCTAssertTrue(engine.answeredQuestions[1].wasWrong)
+        XCTAssertFalse(engine.answeredQuestions[2].wasWrong)
+    }
+
+    func test_answeredQuestions_notDuplicatedOnDoubleTap() {
+        let engine = SessionEngine(questions: questions)
+        engine.submitAnswer("A")   // correct
+        engine.submitAnswer("A")   // double tap — ignored
+        XCTAssertEqual(engine.answeredQuestions.count, 1)
+    }
 }

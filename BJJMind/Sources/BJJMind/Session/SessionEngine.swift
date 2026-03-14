@@ -18,6 +18,10 @@ final class SessionEngine: ObservableObject {
     private(set) var correctCount: Int = 0
     private var answeredCount: Int = 0
 
+    /// Per-question answer log: accumulated as the session progresses.
+    /// Each entry holds the question's stable id and whether it was answered wrong.
+    private(set) var answeredQuestions: [(questionId: String, wasWrong: Bool)] = []
+
     let isBeltTest: Bool
     let coachIntro: String?
     let streak: Int
@@ -80,6 +84,7 @@ final class SessionEngine: ObservableObject {
         guard state == .answering, let question = currentQuestion else { return }
         answeredCount += 1
         lastAnswerWasCorrect = (answer == question.correctAnswer)
+        answeredQuestions.append((questionId: question.id, wasWrong: !lastAnswerWasCorrect))
         if lastAnswerWasCorrect {
             correctCount += 1
         } else {

@@ -2,6 +2,52 @@ import SwiftUI
 import AudioToolbox
 
 struct SessionView: View {
+    @EnvironmentObject var appState: AppState
+    @Environment(\.dismiss) private var dismiss
+
+    let unit: Unit
+    let isBeltTest: Bool
+    let streak: Int
+
+    private let passThreshold = 0.7
+
+    /// Loaded adaptively in `.task`; `nil` while fetch is in flight.
+    @State private var loadedQuestions: [Question]? = nil
+
+    init(unit: Unit, isBeltTest: Bool = false, streak: Int = 0) {
+        self.unit = unit
+        self.isBeltTest = isBeltTest
+        self.streak = streak
+    }
+
+    var body: some View {
+        ZStack {
+            Color.screenBg.ignoresSafeArea()
+
+            if let questions = loadedQuestions {
+                // Questions are ready — hand off to the inner engine-driven view
+                SessionEngineView(
+                    questions: questions,
+                    unit: unit,
+                    isBeltTest: isBeltTest,
+                    streak: streak
+                )
+            } else {
+                // Fetching adaptive questions — show a brief loading indicator
+                ProgressView()
+                    .tint(.brand)
+            }
+        }
+        .task {
+            let questions = await appState.fetchQuestionsForSession(for: unit)
+            loadedQuestions = questions
+        }
+    }
+}
+
+// MARK: - Engine-driven session (questions already resolved)
+
+private struct SessionEngineView: View {
     @StateObject private var engine: SessionEngine
     @EnvironmentObject var appState: AppState
     @Environment(\.dismiss) private var dismiss
@@ -11,11 +57,11 @@ struct SessionView: View {
 
     private let passThreshold = 0.7
 
-    init(unit: Unit, isBeltTest: Bool = false, streak: Int = 0) {
+    init(questions: [Question], unit: Unit, isBeltTest: Bool, streak: Int) {
         self.unit = unit
         self.isBeltTest = isBeltTest
         _engine = StateObject(wrappedValue: SessionEngine(
-            questions: unit.questions,
+            questions: questions,
             isBeltTest: isBeltTest,
             coachIntro: isBeltTest ? nil : unit.coachIntro,
             streak: streak
@@ -56,6 +102,7 @@ struct SessionView: View {
                         accuracy: engine.accuracy,
                         heartsRemaining: engine.hearts,
                         onDone: {
+                            appState.recordQuestionAnswers(engine.answeredQuestions)
                             appState.applySessionResult(SessionResult(
                                 userId: appState.user.id,
                                 unitId: unit.id,
