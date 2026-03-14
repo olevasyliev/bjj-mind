@@ -1,0 +1,3977 @@
+[
+  {
+    "id": "q-cg-09",
+    "topic": "closed_guard",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent is in your closed guard but has good posture with straight arms. They're not leaning forward. What should you do?",
+    "options": [
+      "Pull them down by the collar and break their posture",
+      "Open your guard and move to open guard",
+      "Wait for them to move first",
+      "Push their head back with both hands"
+    ],
+    "correct_answer": "Pull them down by the collar and break their posture",
+    "explanation": "Breaking their posture is your priority in closed guard\u2014it removes their base and makes them vulnerable to submissions. Pulling by the collar is the most direct way to collapse their structure.",
+    "difficulty": 2,
+    "coach_note": "Good posture is the guard player's worst enemy. Always work to break it early.",
+    "tags": [
+      "closed guard"
+    ]
+  },
+  {
+    "id": "q-cg-10",
+    "topic": "closed_guard",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent just postures up in your closed guard and puts both hands on your hips to create space. What's your next move?",
+    "options": [
+      "Immediately open your guard and transition",
+      "Grip behind their neck and pull them back down",
+      "Push their hands off and re-lock your feet",
+      "Extend your hips upward to bridge"
+    ],
+    "correct_answer": "Grip behind their neck and pull them back down",
+    "explanation": "Controlling their head and neck lets you collapse their posture and prevent them from standing or creating distance. This is more effective than trying to physically match their hand strength.",
+    "difficulty": 2,
+    "coach_note": "The neck/head control is your most powerful tool to break and maintain posture.",
+    "tags": [
+      "closed guard"
+    ]
+  },
+  {
+    "id": "q-cg-11",
+    "topic": "closed_guard",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "When your opponent is in your closed guard with good posture, you should immediately attempt a submission rather than break their posture first.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "Submissions are much harder to land against someone with good posture and frame. Breaking their posture first makes all submissions more available and higher percentage.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "closed guard"
+    ]
+  },
+  {
+    "id": "q-cg-12",
+    "topic": "closed_guard",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "Your opponent is posturing up in your closed guard. Should you pull them down toward your hips or push them away?",
+    "options": [
+      "Pull them down toward your hips",
+      "Push them away"
+    ],
+    "correct_answer": "Pull them down toward your hips",
+    "explanation": "Pulling down collapses their structure and brings them back into control range. Pushing away gives them exactly what they want\u2014distance and posture.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "closed guard"
+    ]
+  },
+  {
+    "id": "q-cg-13",
+    "topic": "closed_guard",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "To control your opponent in closed guard, always maintain collar and ___ grips to prevent them from creating distance.",
+    "options": [
+      "knee",
+      "sleeve",
+      "elbow",
+      "hip"
+    ],
+    "correct_answer": "sleeve",
+    "explanation": "Collar and sleeve control are the fundamental controlling grips in closed guard. Sleeve grip prevents them from posting and creating space.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "closed guard"
+    ]
+  },
+  {
+    "id": "q-cg-14",
+    "topic": "closed_guard",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent posts their hand on your chest to break your closed guard. What should you do immediately?",
+    "options": [
+      "Let them post\u2014it helps you set up an armlock",
+      "Grab their wrist and pull it across your body",
+      "Push their arm away with your other hand",
+      "Close your guard tighter and squeeze"
+    ],
+    "correct_answer": "Grab their wrist and pull it across your body",
+    "explanation": "Controlling their posted arm prevents them from using it as a frame and creates vulnerability for arm locks or sweeps. Pulling it across destabilizes their base.",
+    "difficulty": 2,
+    "coach_note": "A posted arm is a trapped arm\u2014use it to control them, don't ignore it.",
+    "tags": [
+      "closed guard"
+    ]
+  },
+  {
+    "id": "q-cg-15",
+    "topic": "closed_guard",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "In closed guard, you should keep your hips high and elevated to maintain your leg lock strength.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "Keeping your hips slightly lower and your seat on the mat gives you better control and leverage with your closed guard lock. High hips reduce your lock strength.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "closed guard"
+    ]
+  },
+  {
+    "id": "q-cg-16",
+    "topic": "closed_guard",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent is defending in your closed guard by holding both your collars and keeping their chest far from you. They're controlling distance well. What should you do?",
+    "options": [
+      "Keep pulling them down until they tap",
+      "Use your feet to push their hips closer while pulling their head down",
+      "Open your guard and re-establish position",
+      "Wait for them to attack first"
+    ],
+    "correct_answer": "Use your feet to push their hips closer while pulling their head down",
+    "explanation": "A two-point attack using your legs to compress their hips while pulling their head down breaks their distance control and collapses their structure.",
+    "difficulty": 3,
+    "coach_note": "Use your full body\u2014legs and arms together\u2014to break posture, not just one.",
+    "tags": [
+      "closed guard"
+    ]
+  },
+  {
+    "id": "q-cg-17",
+    "topic": "closed_guard",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "Your opponent has their weight on one leg in your closed guard. Should you target that leg with a hook or keep both legs locked?",
+    "options": [
+      "Target that leg with a hook",
+      "Keep both legs locked around their waist"
+    ],
+    "correct_answer": "Target that leg with a hook",
+    "explanation": "When they load weight onto one leg, hooking that leg disrupts their balance and creates sweep opportunities. This is a key detail for closed guard sweeps.",
+    "difficulty": 3,
+    "coach_note": "Weight distribution is everything\u2014exploit when they commit weight to one side.",
+    "tags": [
+      "closed guard"
+    ]
+  },
+  {
+    "id": "q-cg-18",
+    "topic": "closed_guard",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "When breaking posture in closed guard, pull your opponent's head toward your ___ rather than straight up.",
+    "options": [
+      "chest",
+      "face",
+      "knee",
+      "stomach"
+    ],
+    "correct_answer": "chest",
+    "explanation": "Pulling their head toward your chest creates the most mechanical advantage and collapses their posture efficiently. Pulling straight up gives them an easier angle to resist.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "closed guard"
+    ]
+  },
+  {
+    "id": "q-cg-19",
+    "topic": "closed_guard",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "It's okay to relax your closed guard lock if your opponent isn't actively trying to posture up, so you can focus on controlling their arms.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "Maintaining a strong closed guard lock is your foundation\u2014it keeps constant pressure and prevents them from creating space or standing. Never relax it.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "closed guard"
+    ]
+  },
+  {
+    "id": "q-cg-20",
+    "topic": "closed_guard",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent is in your closed guard and suddenly shifts their weight to one side to escape. What should you do?",
+    "options": [
+      "Tighten both legs equally",
+      "Hook the loaded leg and bridge in that direction to sweep them",
+      "Let them pass and reset",
+      "Pull them back to center immediately"
+    ],
+    "correct_answer": "Hook the loaded leg and bridge in that direction to sweep them",
+    "explanation": "When they shift weight, they create the perfect moment for a sweep\u2014hook the loaded leg and bridge through their center to take them over.",
+    "difficulty": 3,
+    "coach_note": "Recognize weight shifts as sweep opportunities, not escape threats.",
+    "tags": [
+      "closed guard"
+    ]
+  },
+  {
+    "id": "q-cg-21",
+    "topic": "closed_guard",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent is in your closed guard and frames their forearm against your neck to create space. What's the safest and most effective response?",
+    "options": [
+      "Ignore the frame and squeeze harder",
+      "Control their framing arm and pull it down across your body",
+      "Extend your neck to break the frame",
+      "Push their head away with both hands"
+    ],
+    "correct_answer": "Control their framing arm and pull it down across your body",
+    "explanation": "Controlling the framing arm prevents them from creating space and sets you up for submissions or sweeps. Pulling it across their body neutralizes their frame.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "closed guard"
+    ]
+  },
+  {
+    "id": "q-cg-22",
+    "topic": "closed_guard",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "In closed guard, you should always keep your ankles crossed tightly to prevent your opponent from stacking you.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "True",
+    "explanation": "A tight ankle lock prevents stacking and keeps your guard locked secure. Loose ankles let them create space and break your guard structure.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "closed guard"
+    ]
+  },
+  {
+    "id": "q-cg-23",
+    "topic": "closed_guard",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "Your opponent is defending in your closed guard by keeping their elbows tight and staying heavy on you. Should you try to pull them down more or shift to a different attack?",
+    "options": [
+      "Try to pull them down more with more force",
+      "Shift to attacking their elbows and creating space for arm attacks or positional adjustments"
+    ],
+    "correct_answer": "Shift to attacking their elbows and creating space for arm attacks or positional adjustments",
+    "explanation": "When they're defended with tight elbows and heavy pressure, forcing more pull-downs wastes energy. Attacking their elbows creates new opportunities and opens angles.",
+    "difficulty": 3,
+    "coach_note": null,
+    "tags": [
+      "closed guard"
+    ]
+  },
+  {
+    "id": "q-cg-24",
+    "topic": "closed_guard",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "To maintain control in closed guard when your opponent tries to stand, keep them pulled down and prevent them from getting their ___ underneath their hips.",
+    "options": [
+      "feet",
+      "knees",
+      "hands",
+      "elbows"
+    ],
+    "correct_answer": "feet",
+    "explanation": "If they can get their feet planted under their hips, they gain base to stand up. Keeping them pulled down and preventing foot placement maintains your guard control.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "closed guard"
+    ]
+  },
+  {
+    "id": "q-cg-25",
+    "topic": "closed_guard",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent creates distance in your closed guard by pushing both your knees apart slightly. What should you do?",
+    "options": [
+      "Lock your ankles harder to squeeze them back together",
+      "Re-lock your guard by squeezing your knees toward each other and pulling them back into your hips",
+      "Open your guard and transition",
+      "Push their hips away to regain distance"
+    ],
+    "correct_answer": "Re-lock your guard by squeezing your knees toward each other and pulling them back into your hips",
+    "explanation": "Re-establishing your guard lock immediately is crucial when they create any separation. Squeeze knees and pull them back to restore the locked position.",
+    "difficulty": 2,
+    "coach_note": "Small guard breaks are normal\u2014re-lock immediately before they can exploit it.",
+    "tags": [
+      "closed guard"
+    ]
+  },
+  {
+    "id": "q-cg-26",
+    "topic": "closed_guard",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "When your opponent is posturing up in your closed guard, you should focus on pinning their arms before worrying about breaking their posture.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "Breaking posture is your first priority\u2014once their posture is broken, arm control and submissions follow naturally. Posture breaks everything.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "closed guard"
+    ]
+  },
+  {
+    "id": "q-cg-27",
+    "topic": "closed_guard",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent is in your closed guard and suddenly drops their hips low to escape. What should you immediately do?",
+    "options": [
+      "Squeeze your legs tighter vertically",
+      "Bridge upward to counter their drop",
+      "Hook their legs and use your grip to prevent the escape",
+      "Open your guard and move to side control"
+    ],
+    "correct_answer": "Hook their legs and use your grip to prevent the escape",
+    "explanation": "When they drop their hips low, a leg hook combined with upper body control stops the escape and keeps them in your guard. This is the right counter to the hip escape attempt.",
+    "difficulty": 3,
+    "coach_note": "Hip drops are escape attempts\u2014prevent leg movement with hooks while maintaining upper control.",
+    "tags": [
+      "closed guard"
+    ]
+  },
+  {
+    "id": "q-cga-09",
+    "topic": "closed_guard_attacks",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent is posturing up in your closed guard with a straight back. Which attack should you prioritize?",
+    "options": [
+      "Triangle choke",
+      "Armbar from the bottom",
+      "Hip bump sweep",
+      "Omoplata"
+    ],
+    "correct_answer": "Triangle choke",
+    "explanation": "A posturing opponent with a straight back is vulnerable to triangles because their head and arm positioning opens the triangle window. Save sweeps for when they're more defensive.",
+    "difficulty": 2,
+    "coach_note": "Triangle catches posturers\u2014remember, you want their arm trapped inside the triangle.",
+    "tags": [
+      "closed guard attacks"
+    ]
+  },
+  {
+    "id": "q-cga-10",
+    "topic": "closed_guard_attacks",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "You should attempt a hip bump sweep only when your opponent is leaning their weight forward into you.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "True",
+    "explanation": "The hip bump sweep relies on your opponent's forward pressure to work. If they're sitting back, the sweep won't generate enough momentum to flip them.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "closed guard attacks"
+    ]
+  },
+  {
+    "id": "q-cga-11",
+    "topic": "closed_guard_attacks",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "Your opponent is defending a triangle by turning their face and tucking their chin. Should you keep squeezing or switch to a different attack?",
+    "options": [
+      "Keep squeezing\u2014they'll have to tap eventually",
+      "Switch to an armbar or different attack"
+    ],
+    "correct_answer": "Switch to an armbar or different attack",
+    "explanation": "A tucked chin and turned face is active defense. Switching to the armbar (often available from failed triangle position) is higher percentage.",
+    "difficulty": 2,
+    "coach_note": "Triangle defense \u2192 armbar is a natural combo from closed guard.",
+    "tags": [
+      "closed guard attacks"
+    ]
+  },
+  {
+    "id": "q-cga-12",
+    "topic": "closed_guard_attacks",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "When setting up a triangle from closed guard, you should pull your opponent's head ___ to close the triangle tightly.",
+    "options": [
+      "to the side",
+      "straight down",
+      "across your body",
+      "upward"
+    ],
+    "correct_answer": "across your body",
+    "explanation": "Pulling their head across your body (away from the trapped arm) closes the triangle geometry and compresses their neck effectively.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "closed guard attacks"
+    ]
+  },
+  {
+    "id": "q-cga-13",
+    "topic": "closed_guard_attacks",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're attacking with a scissor sweep from closed guard. Your opponent posts their far arm on the mat to defend. What's your best response?",
+    "options": [
+      "Abandon the sweep and go for a triangle",
+      "Keep driving the scissor sweep harder",
+      "Use the arm post as an opportunity to secure an armbar",
+      "Open your guard and escape"
+    ],
+    "correct_answer": "Use the arm post as an opportunity to secure an armbar",
+    "explanation": "When they post their arm to stop the scissor sweep, it's positioned perfectly for an armbar. Transition smoothly into the new attack.",
+    "difficulty": 3,
+    "coach_note": "Combos matter\u2014sweeps often set up submissions when defenses are active.",
+    "tags": [
+      "closed guard attacks"
+    ]
+  },
+  {
+    "id": "q-cga-14",
+    "topic": "closed_guard_attacks",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "An omoplata from closed guard is most effective when your opponent's shoulder is already internally rotated and trapped.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "True",
+    "explanation": "The omoplata works by leveraging shoulder rotation and control. If the shoulder is already trapped with their arm across their body, the position is stronger.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "closed guard attacks"
+    ]
+  },
+  {
+    "id": "q-cga-15",
+    "topic": "closed_guard_attacks",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "During a hip bump sweep attempt, your opponent sprawls their legs back and spreads their weight. What should you do?",
+    "options": [
+      "Release your guard and take side control",
+      "Transition to a different sweep or submission attack",
+      "Push harder with your hips",
+      "Open your legs and reset"
+    ],
+    "correct_answer": "Transition to a different sweep or submission attack",
+    "explanation": "A sprawled position kills the hip bump's effectiveness. Use the momentum to transition to triangle, armbar, or another closed guard attack.",
+    "difficulty": 3,
+    "coach_note": "Don't force failed sweeps\u2014flow to submissions instead.",
+    "tags": [
+      "closed guard attacks"
+    ]
+  },
+  {
+    "id": "q-cga-16",
+    "topic": "closed_guard_attacks",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "To set up an omoplata from closed guard, you typically trap one arm while bringing your leg over their ___ shoulder.",
+    "options": [
+      "opposite",
+      "near",
+      "trapped",
+      "back"
+    ],
+    "correct_answer": "opposite",
+    "explanation": "The omoplata isolates one arm by trapping it and hooking the opposite shoulder, creating a shoulder lock position.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "closed guard attacks"
+    ]
+  },
+  {
+    "id": "q-cga-17",
+    "topic": "closed_guard_attacks",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "If your opponent is very heavy and pressuring straight down in your closed guard, hip bump sweeps are still your best option.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "Heavy pressure straight down kills hip bump mechanics. Submission attacks like triangles and armbars are better against perpendicular pressure.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "closed guard attacks"
+    ]
+  },
+  {
+    "id": "q-cga-18",
+    "topic": "closed_guard_attacks",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're setting up a triangle, but your opponent manages to get their arm out from between your legs. Where is your grip strongest now?",
+    "options": [
+      "Around their neck only",
+      "Around their head and remaining arm\u2014this is your submission position",
+      "You should immediately open guard",
+      "Behind their head with both hands"
+    ],
+    "correct_answer": "Around their head and remaining arm\u2014this is your submission position",
+    "explanation": "A triangle with one arm trapped inside (against their body) is actually the strongest configuration for choking. Their trapped arm adds pressure.",
+    "difficulty": 2,
+    "coach_note": "One-arm triangle is just as good as two-arm\u2014sometimes better.",
+    "tags": [
+      "closed guard attacks"
+    ]
+  },
+  {
+    "id": "q-cga-19",
+    "topic": "closed_guard_attacks",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "Your opponent is in your closed guard and turtling (curling into a ball). Should you pursue a triangle or look for a different attack?",
+    "options": [
+      "Pursue the triangle\u2014it's always best from closed guard",
+      "Switch to an armbar or work on posture breaking first"
+    ],
+    "correct_answer": "Switch to an armbar or work on posture breaking first",
+    "explanation": "A turtled opponent makes triangles difficult. An armbar or breaking their posture to re-establish control is more practical.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "closed guard attacks"
+    ]
+  },
+  {
+    "id": "q-cga-20",
+    "topic": "closed_guard_attacks",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "During a scissor sweep, your opponent posts both hands on the mat wide apart. What does this tell you about their defense?",
+    "options": [
+      "They're vulnerable to a counter-attack",
+      "The scissor sweep is no longer viable\u2014transition to submissions",
+      "You should release your guard immediately",
+      "They're about to pass your guard safely"
+    ],
+    "correct_answer": "The scissor sweep is no longer viable\u2014transition to submissions",
+    "explanation": "Wide base = strong anti-sweep position. Switch to triangle, armbar, or omoplata instead of forcing a failed sweep.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "closed guard attacks"
+    ]
+  },
+  {
+    "id": "q-cga-21",
+    "topic": "closed_guard_attacks",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "You can successfully hit an armbar from closed guard even if your opponent has good frame and is keeping their elbow tucked to their body.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "A tucked elbow with good frame prevents the armbar mechanics. You need space between their arm and torso to execute it properly.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "closed guard attacks"
+    ]
+  },
+  {
+    "id": "q-cga-22",
+    "topic": "closed_guard_attacks",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "When your opponent defends by turning their shoulder into you during an omoplata attempt, you can transition to a ___ as a backup.",
+    "options": [
+      "heel hook",
+      "triangle",
+      "footlock",
+      "knee reap"
+    ],
+    "correct_answer": "triangle",
+    "explanation": "From omoplata position, if they turn in, you're often already positioned for a triangle choke on the opposite side.",
+    "difficulty": 3,
+    "coach_note": null,
+    "tags": [
+      "closed guard attacks"
+    ]
+  },
+  {
+    "id": "q-cga-23",
+    "topic": "closed_guard_attacks",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent is defending the hip bump sweep by stepping one foot back and widening their base. What's the most practical next move?",
+    "options": [
+      "Attempt the sweep again with more force",
+      "Open your guard and work for a different position",
+      "Attack with a submission that your current grip allows (triangle or armbar)",
+      "Stall and reset your guard"
+    ],
+    "correct_answer": "Attack with a submission that your current grip allows (triangle or armbar)",
+    "explanation": "A wide, stable base makes sweeps impossible. Your closed guard position is still strong for submissions\u2014capitalize on it.",
+    "difficulty": 2,
+    "coach_note": "Sweeps fail \u2192 go to submissions. Don't waste energy on dead sweeps.",
+    "tags": [
+      "closed guard attacks"
+    ]
+  },
+  {
+    "id": "q-cga-24",
+    "topic": "closed_guard_attacks",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "The scissor sweep is best executed when your opponent is leaning back and away from your body.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "The scissor sweep works when your opponent leans forward or is neutral. If they're leaning back, they're already resisting the sweep effectively.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "closed guard attacks"
+    ]
+  },
+  {
+    "id": "q-cga-25",
+    "topic": "closed_guard_attacks",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "You're attacking an armbar from closed guard, but your opponent manages to roll into you (toward the armbar side) to relieve pressure. Should you maintain the armbar or release?",
+    "options": [
+      "Maintain the armbar and control the roll",
+      "Release and transition to a different attack"
+    ],
+    "correct_answer": "Maintain the armbar and control the roll",
+    "explanation": "Rolling into the armbar is a common defense, but if you maintain control and ride the roll, you stay dominant and can finish or transition.",
+    "difficulty": 3,
+    "coach_note": null,
+    "tags": [
+      "closed guard attacks"
+    ]
+  },
+  {
+    "id": "q-cga-26",
+    "topic": "closed_guard_attacks",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent is in your closed guard but has their torso very upright with a strong posture. Which attack sequence makes most sense?",
+    "options": [
+      "Triangle immediately, then armbar if they defend",
+      "Scissor sweep, then triangle if it fails",
+      "Omoplata first, then triangle",
+      "Break their posture first, then choose your submission"
+    ],
+    "correct_answer": "Triangle immediately, then armbar if they defend",
+    "explanation": "An upright posture is the triangle's prime window. If they defend the triangle by turning, the armbar is the natural follow-up.",
+    "difficulty": 2,
+    "coach_note": "Upright posture = triangle time. Know your combo.",
+    "tags": [
+      "closed guard attacks"
+    ]
+  },
+  {
+    "id": "q-cga-27",
+    "topic": "closed_guard_attacks",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "During a failed scissor sweep where your opponent posts and establishes base, you should transition to a ___ attack using the momentum and hand position you already have.",
+    "options": [
+      "footlock",
+      "heel hook",
+      "triangle or armbar",
+      "ankle pick"
+    ],
+    "correct_answer": "triangle or armbar",
+    "explanation": "From scissor sweep position, your grips and leg placement are already set for triangle or armbar\u2014no major repositioning needed.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "closed guard attacks"
+    ]
+  },
+  {
+    "id": "q-cga-28",
+    "topic": "closed_guard_attacks",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "You should squeeze a triangle submission immediately upon locking it, even if your opponent hasn't yet committed their full weight into the position.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "Control first, squeeze second. Let your opponent settle or defend, then adjust and apply pressure\u2014rushing the squeeze gives them time to escape.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "closed guard attacks"
+    ]
+  },
+  {
+    "id": "q-gp-09",
+    "topic": "guard_passing",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent has you in closed guard and is pulling you down. You feel yourself getting pulled into their chest. What should you do first?",
+    "options": [
+      "Immediately try to stand up",
+      "Get your head and shoulders back to create space and posture",
+      "Push their knees apart with your hands",
+      "Wait for them to tire out"
+    ],
+    "correct_answer": "Get your head and shoulders back to create space and posture",
+    "explanation": "Creating space through good posture prevents them from controlling you and is the foundation for any guard pass attempt.",
+    "difficulty": 1,
+    "coach_note": "Posture is your first defense against closed guard control.",
+    "tags": [
+      "guard passing"
+    ]
+  },
+  {
+    "id": "q-gp-10",
+    "topic": "guard_passing",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent's closed guard is tight and they won't let you posture up. One foot is starting to slip near their bottom. What should you do?",
+    "options": [
+      "Grab their collar and pull harder",
+      "Step back with the foot that's slipping to reset your base",
+      "Immediately open their guard with your hands",
+      "Move your hips side to side to loosen their legs"
+    ],
+    "correct_answer": "Step back with the foot that's slipping to reset your base",
+    "explanation": "A slipping foot means you're losing stability \u2014 resetting your base maintains control and prevents them from sweeping you.",
+    "difficulty": 2,
+    "coach_note": "Your feet are your foundation; never ignore a slipping foot.",
+    "tags": [
+      "guard passing"
+    ]
+  },
+  {
+    "id": "q-gp-11",
+    "topic": "guard_passing",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "When breaking an opponent's closed guard, you should always try to get both of their feet off the ground at the same time.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "Breaking one hook at a time is more practical \u2014 trying both at once often fails and gives them control opportunities.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "guard passing"
+    ]
+  },
+  {
+    "id": "q-gp-12",
+    "topic": "guard_passing",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "You've just broken one of their guard hooks by extending your leg. They still have one foot locked around your back. Should you immediately try to pass, or re-establish your grip and posture?",
+    "options": [
+      "Immediately try to pass before they can re-lock",
+      "Re-establish your grip and posture to control them"
+    ],
+    "correct_answer": "Re-establish your grip and posture to control them",
+    "explanation": "Rushing the pass when they still have active control often leads to sweeps or submissions \u2014 secure control first.",
+    "difficulty": 2,
+    "coach_note": "Control before movement; rushing passes is how you get swept.",
+    "tags": [
+      "guard passing"
+    ]
+  },
+  {
+    "id": "q-gp-13",
+    "topic": "guard_passing",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent's hips are off the ground and their guard is broken, but they're grabbing your arm tightly. What should you do?",
+    "options": [
+      "Pull your arm away forcefully",
+      "Push their arm away with your free hand",
+      "Keep that arm tight and use your free hand to control their hip or leg",
+      "Go limp and let them tire from holding on"
+    ],
+    "correct_answer": "Keep that arm tight and use your free hand to control their hip or leg",
+    "explanation": "Once the guard is broken, their arm grab is less dangerous \u2014 control their lower body with your free hand to advance the pass.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "guard passing"
+    ]
+  },
+  {
+    "id": "q-gp-14",
+    "topic": "guard_passing",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "When your opponent opens their closed guard slightly, you should immediately ___ to prevent them from re-closing.",
+    "options": [
+      "drop your weight",
+      "control their hips",
+      "stand up",
+      "reach for their collar"
+    ],
+    "correct_answer": "control their hips",
+    "explanation": "Controlling their hips prevents them from pulling you back in and gives you the position to pass cleanly.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "guard passing"
+    ]
+  },
+  {
+    "id": "q-gp-15",
+    "topic": "guard_passing",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "It's safer to pass the closed guard by standing up and moving your knees out, rather than breaking the guard while staying low.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "True",
+    "explanation": "Standing gives you better leverage, safety, and control \u2014 staying low in a tight closed guard is riskier for sweeps and submissions.",
+    "difficulty": 1,
+    "coach_note": "Standing passes are typically safer for beginners.",
+    "tags": [
+      "guard passing"
+    ]
+  },
+  {
+    "id": "q-gp-16",
+    "topic": "guard_passing",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're standing in their closed guard with good posture. They try to pull you down using their legs. What should you do?",
+    "options": [
+      "Let yourself fall forward into their chest",
+      "Resist by pushing your hips back and staying on your feet",
+      "Jump backward out of their guard",
+      "Immediately pass to one side"
+    ],
+    "correct_answer": "Resist by pushing your hips back and staying on your feet",
+    "explanation": "Staying upright and keeping distance makes it harder for them to control you and sets up your pass attempt.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "guard passing"
+    ]
+  },
+  {
+    "id": "q-gp-17",
+    "topic": "guard_passing",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "Your opponent is defending their closed guard by keeping their hips elevated and legs tight. Is it better to try to pass immediately, or break their guard first?",
+    "options": [
+      "Pass immediately while they're elevated",
+      "Break their guard first to flatten them out"
+    ],
+    "correct_answer": "Break their guard first to flatten them out",
+    "explanation": "Elevated hips give them mobility and control \u2014 breaking the guard flattens them and removes their defensive power.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "guard passing"
+    ]
+  },
+  {
+    "id": "q-gp-18",
+    "topic": "guard_passing",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You've broken their closed guard and they're now pushing against your chest to create space. What does this mean you should do?",
+    "options": [
+      "Back away and reset",
+      "Move forward quickly before they can create more distance",
+      "Use that pushing energy against them by moving to the side and passing",
+      "Push back harder on their chest"
+    ],
+    "correct_answer": "Use that pushing energy against them by moving to the side and passing",
+    "explanation": "When they push, they're committed to that direction \u2014 sidestep and use their momentum to slip your pass through.",
+    "difficulty": 3,
+    "coach_note": "Use their defense against them by flowing to the weakened side.",
+    "tags": [
+      "guard passing"
+    ]
+  },
+  {
+    "id": "q-gp-19",
+    "topic": "guard_passing",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "When passing from the top of closed guard, keeping your elbows tight to your body is more important than controlling their legs.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "Controlling their legs and hips is more important \u2014 wide elbows are fine if you're controlling their lower body.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "guard passing"
+    ]
+  },
+  {
+    "id": "q-gp-20",
+    "topic": "guard_passing",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent's closed guard is broken but they keep trying to re-hook your back with their foot. What should you do?",
+    "options": [
+      "Ignore it and pass to the side",
+      "Move your hip away from the direction they're hooking",
+      "Grab their foot and pull it off",
+      "Stay still until they tire"
+    ],
+    "correct_answer": "Move your hip away from the direction they're hooking",
+    "explanation": "Moving away denies them the hook and forces them to reset \u2014 static defense lets them regain control.",
+    "difficulty": 2,
+    "coach_note": "Stay dynamic to prevent re-hooks.",
+    "tags": [
+      "guard passing"
+    ]
+  },
+  {
+    "id": "q-gp-21",
+    "topic": "guard_passing",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "When breaking the closed guard by extending your legs, you should keep your ___ tight to prevent sweeps.",
+    "options": [
+      "elbows",
+      "shoulders",
+      "posture",
+      "knees"
+    ],
+    "correct_answer": "posture",
+    "explanation": "Maintaining good posture keeps you upright and prevents them from pulling you forward into a sweep.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "guard passing"
+    ]
+  },
+  {
+    "id": "q-gp-22",
+    "topic": "guard_passing",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're in their closed guard and they're gripping behind your head to pull you down. You manage to create space. What's your next move?",
+    "options": [
+      "Immediately pass to the side",
+      "Break their guard before attempting any pass",
+      "Push their head away and posture harder",
+      "Switch to a knee slice"
+    ],
+    "correct_answer": "Break their guard before attempting any pass",
+    "explanation": "With their guard still closed, any pass attempt is risky \u2014 break the guard to neutralize their leg control first.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "guard passing"
+    ]
+  },
+  {
+    "id": "q-gp-23",
+    "topic": "guard_passing",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "If your opponent has you in closed guard and you can't create enough space to pass, standing up is usually a good option.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "True",
+    "explanation": "Standing up naturally creates space and leverage to break the guard safely.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "guard passing"
+    ]
+  },
+  {
+    "id": "q-gp-24",
+    "topic": "guard_passing",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "Your opponent's closed guard is starting to open slightly because they're trying to adjust. Should you help them close it, or take advantage of the opening?",
+    "options": [
+      "Help them close it so you have a fair fight",
+      "Take advantage of the opening to control and pass"
+    ],
+    "correct_answer": "Take advantage of the opening to control and pass",
+    "explanation": "In rolling, you should capitalize on any opening your opponent gives you \u2014 this is how you improve and they learn to tighten up.",
+    "difficulty": 1,
+    "coach_note": "Always take advantage of openings; it's how both partners improve.",
+    "tags": [
+      "guard passing"
+    ]
+  },
+  {
+    "id": "q-gp-25",
+    "topic": "guard_passing",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You've broken their closed guard but one of their hands is still gripping your collar. They're trying to pull you down as you move to pass. What should you do?",
+    "options": [
+      "Let them pull you in to maintain contact",
+      "Peel their grip off before continuing the pass",
+      "Ignore the grip and move to the side quickly",
+      "Try to submit them before they can pull"
+    ],
+    "correct_answer": "Peel their grip off before continuing the pass",
+    "explanation": "An active collar grip can disrupt your pass \u2014 removing it gives you clean movement and prevents them from re-controlling you.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "guard passing"
+    ]
+  },
+  {
+    "id": "q-gp-26",
+    "topic": "guard_passing",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "When standing to break the closed guard, your feet should be ___ apart for stability.",
+    "options": [
+      "close together",
+      "shoulder-width",
+      "as wide as possible",
+      "one in front"
+    ],
+    "correct_answer": "shoulder-width",
+    "explanation": "Shoulder-width stance provides balance and stability without being so wide that you lose mobility.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "guard passing"
+    ]
+  },
+  {
+    "id": "q-gp-27",
+    "topic": "guard_passing",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent's closed guard is tight and they're using their arms to keep you close. You feel stuck. What's the most fundamental thing to do?",
+    "options": [
+      "Try a different position entirely",
+      "Create space by improving your posture and controlling their hips",
+      "Apply more pressure to break through",
+      "Wait for the right moment to strike"
+    ],
+    "correct_answer": "Create space by improving your posture and controlling their hips",
+    "explanation": "Space and posture are fundamental \u2014 they solve most closed guard problems by preventing them from controlling you.",
+    "difficulty": 1,
+    "coach_note": "Posture and space solve 80% of closed guard problems.",
+    "tags": [
+      "guard passing"
+    ]
+  },
+  {
+    "id": "q-gp-28",
+    "topic": "guard_passing",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "When breaking the closed guard, it's better to focus on breaking one hook at a time rather than trying to escape both simultaneously.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "True",
+    "explanation": "Isolating one hook gives you better control and success rate \u2014 trying both at once usually fails and wastes energy.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "guard passing"
+    ]
+  },
+  {
+    "id": "q-sc-09",
+    "topic": "side_control_top",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent is in bottom side control and starts to turn their hips toward you to create space. What should you do?",
+    "options": [
+      "Immediately move to mount position",
+      "Increase pressure with your chest and prevent the hip turn",
+      "Let them turn and restart from a different position",
+      "Stand up and reset the position"
+    ],
+    "correct_answer": "Increase pressure with your chest and prevent the hip turn",
+    "explanation": "Preventing hip movement stops them from escaping or reversing you. Maintaining control is better than constantly adjusting positions.",
+    "difficulty": 2,
+    "coach_note": "The hip turn is the beginning of most side control escapes \u2014 stop it before it starts.",
+    "tags": [
+      "side control top"
+    ]
+  },
+  {
+    "id": "q-sc-10",
+    "topic": "side_control_top",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're in side control and your opponent pushes your head away. What's the best response?",
+    "options": [
+      "Release your side control to defend your head",
+      "Head-hunt immediately and apply a guillotine",
+      "Tuck your chin and maintain your side control frame",
+      "Stand up to create space"
+    ],
+    "correct_answer": "Tuck your chin and maintain your side control frame",
+    "explanation": "Tucking your chin defends against head control attempts while you maintain your dominant position. Don't give up top control just because they're pushing your head.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "side control top"
+    ]
+  },
+  {
+    "id": "q-sc-11",
+    "topic": "side_control_top",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "In side control, you should keep your weight distributed evenly across your entire body.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "You should concentrate your weight through your chest and hips into their torso \u2014 this creates pressure that makes escaping harder.",
+    "difficulty": 1,
+    "coach_note": "Heavy side control comes from focused pressure, not spreading your weight thin.",
+    "tags": [
+      "side control top"
+    ]
+  },
+  {
+    "id": "q-sc-12",
+    "topic": "side_control_top",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "Your opponent has their arm trapped between your body and theirs in side control. Should you keep trapping it or release it?",
+    "options": [
+      "Keep trapping it \u2014 this limits their escape options",
+      "Release it immediately \u2014 trapped arms are dangerous"
+    ],
+    "correct_answer": "Keep trapping it \u2014 this limits their escape options",
+    "explanation": "A trapped arm significantly reduces their ability to frame and escape. This is a strong positional control element.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "side control top"
+    ]
+  },
+  {
+    "id": "q-sc-13",
+    "topic": "side_control_top",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "When your opponent starts to bridge against your side control, you should ___ to maintain control.",
+    "options": [
+      "move your hips further back",
+      "post your hand on the mat",
+      "shift your weight into the bridge",
+      "escape to a new position"
+    ],
+    "correct_answer": "shift your weight into the bridge",
+    "explanation": "Meeting their bridge with your weight keeps you heavy and prevents them from creating space underneath. This stops the escape before it develops.",
+    "difficulty": 2,
+    "coach_note": "Don't let the bridge momentum lift you \u2014 press back down into it.",
+    "tags": [
+      "side control top"
+    ]
+  },
+  {
+    "id": "q-sc-14",
+    "topic": "side_control_top",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're holding side control and your opponent's free arm is reaching across their body toward your back. What should you do?",
+    "options": [
+      "Ignore it and focus on maintaining position",
+      "Control that arm by pinning it to their body or framing on it",
+      "Immediately transition to mount to avoid getting caught",
+      "Let them grab your back so you can work a counter"
+    ],
+    "correct_answer": "Control that arm by pinning it to their body or framing on it",
+    "explanation": "Controlling their reaching arm prevents them from getting grips on your back that could lead to escapes or sweeps. Manage their limbs actively.",
+    "difficulty": 2,
+    "coach_note": "Active arm control is part of maintaining side control \u2014 don't let them build their escape framework.",
+    "tags": [
+      "side control top"
+    ]
+  },
+  {
+    "id": "q-sc-15",
+    "topic": "side_control_top",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "You should keep your head directly over your opponent's chest when in side control.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "Keeping your head directly over their chest makes you vulnerable to arm traps and head control. Keep your head slightly lower and to the side, maintaining good posture.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "side control top"
+    ]
+  },
+  {
+    "id": "q-sc-16",
+    "topic": "side_control_top",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent creates space in side control by pushing into your hip. What's the priority?",
+    "options": [
+      "Push back harder to re-collapse the position",
+      "Move to north-south to avoid the space",
+      "Re-establish heavy pressure through your chest before they fully escape",
+      "Transition immediately to a leg lock"
+    ],
+    "correct_answer": "Re-establish heavy pressure through your chest before they fully escape",
+    "explanation": "Once space opens, re-settling your upper body pressure faster than they can create more space maintains control and prevents the escape from progressing.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "side control top"
+    ]
+  },
+  {
+    "id": "q-sc-17",
+    "topic": "side_control_top",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "Should you transition out of side control as soon as you achieve it, or stay there to build pressure first?",
+    "options": [
+      "Transition immediately \u2014 side control is just a passing position",
+      "Stay and build pressure first \u2014 side control is a strong dominant position to work from"
+    ],
+    "correct_answer": "Stay and build pressure first \u2014 side control is a strong dominant position to work from",
+    "explanation": "Side control is a complete dominant position where you can attack submissions, control movement, and fatigue your opponent. Staying longer is often more valuable than rushing elsewhere.",
+    "difficulty": 2,
+    "coach_note": "Patience in dominant positions wears opponents down and creates better opportunities.",
+    "tags": [
+      "side control top"
+    ]
+  },
+  {
+    "id": "q-sc-18",
+    "topic": "side_control_top",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "When transitioning from side control to mount, you should move your ___ leg over your opponent's torso first.",
+    "options": [
+      "trapped",
+      "top",
+      "bottom",
+      "free"
+    ],
+    "correct_answer": "top",
+    "explanation": "The top leg (closest to their head in side control) is safest to swing over first, maintaining control throughout the transition.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "side control top"
+    ]
+  },
+  {
+    "id": "q-sc-19",
+    "topic": "side_control_top",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're in side control and feel your opponent loading their hips to bridge and sweep you. What should you do immediately?",
+    "options": [
+      "Stand up to break the bridge momentum",
+      "Increase chest pressure and drop your weight into them",
+      "Move to knee on belly to avoid the sweep",
+      "Grab their gi pants to prevent movement"
+    ],
+    "correct_answer": "Increase chest pressure and drop your weight into them",
+    "explanation": "Adding weight into a rising bridge prevents them from generating the momentum needed to flip you. Heavy pressure kills the sweep before it develops.",
+    "difficulty": 2,
+    "coach_note": "Feel the bridge coming and meet it with weight \u2014 don't let them build momentum.",
+    "tags": [
+      "side control top"
+    ]
+  },
+  {
+    "id": "q-sc-20",
+    "topic": "side_control_top",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "In side control, keeping your leg closer to their hips is better for maintaining control than keeping it closer to their head.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "True",
+    "explanation": "A leg position near their hips prevents their hip escape and bottom leg from posting. This is more controlling than positioning near the head.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "side control top"
+    ]
+  },
+  {
+    "id": "q-sc-21",
+    "topic": "side_control_top",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent in side control is trying to frame your chin with their hand to create distance. How should you respond?",
+    "options": [
+      "Pull your head back to avoid the frame",
+      "Let them frame since it doesn't matter",
+      "Turn into their hand and control it with your shoulder, maintaining pressure",
+      "Transition to mount immediately"
+    ],
+    "correct_answer": "Turn into their hand and control it with your shoulder, maintaining pressure",
+    "explanation": "Turning into their framing hand neutralizes it while your shoulder pressure prevents them from fully extending their arm to create space.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "side control top"
+    ]
+  },
+  {
+    "id": "q-sc-22",
+    "topic": "side_control_top",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "When in side control, should you keep both hips on the mat or keep your bottom hip slightly elevated?",
+    "options": [
+      "Keep both hips flat on the mat for maximum stability",
+      "Keep your bottom hip slightly elevated to maintain mobility and prevent reversals"
+    ],
+    "correct_answer": "Keep your bottom hip slightly elevated to maintain mobility and prevent reversals",
+    "explanation": "A slightly elevated bottom hip keeps you mobile for transitions and makes it harder for them to hook your leg for a sweep.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "side control top"
+    ]
+  },
+  {
+    "id": "q-sc-23",
+    "topic": "side_control_top",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "To transition from side control to the ___ position, you can post your leg on the mat and move around their head.",
+    "options": [
+      "knee on belly",
+      "guard",
+      "bottom side control",
+      "back control"
+    ],
+    "correct_answer": "knee on belly",
+    "explanation": "Knee on belly is a direct transition from side control where you post your leg and advance your knee into their midsection.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "side control top"
+    ]
+  },
+  {
+    "id": "q-sc-24",
+    "topic": "side_control_top",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're in side control and your opponent starts to grab your collar from underneath to set up a submission. What's your best action?",
+    "options": [
+      "Panic and move to a different position",
+      "Control their grabbing arm by pinning it or moving away from it before they set the grip",
+      "Let them grab \u2014 you're on top and safe",
+      "Try to submit them before they submit you"
+    ],
+    "correct_answer": "Control their grabbing arm by pinning it or moving away from it before they set the grip",
+    "explanation": "Stopping their grip early before they establish control is much easier than defending after the grip is set. Manage their limbs proactively.",
+    "difficulty": 2,
+    "coach_note": "Prevention is better than cure \u2014 stop the grip before it happens.",
+    "tags": [
+      "side control top"
+    ]
+  },
+  {
+    "id": "q-sc-25",
+    "topic": "side_control_top",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "It's acceptable to fully relax in side control as long as your weight is on top of your opponent.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "You must maintain active control with your core engaged and pressure through your hips and chest. Relaxing gives your opponent opportunities to escape.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "side control top"
+    ]
+  },
+  {
+    "id": "q-sc-26",
+    "topic": "side_control_top",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent in side control has one arm pinned underneath you. Where should their free arm be ideally controlled?",
+    "options": [
+      "Let it stay free so they don't feel trapped",
+      "Pinned against their own body or controlled by your frame",
+      "Wrapped around your leg to keep them comfortable",
+      "Positioned to help them escape"
+    ],
+    "correct_answer": "Pinned against their own body or controlled by your frame",
+    "explanation": "Both arms controlled or minimized makes side control nearly inescapable. Control or contain their free arm to maintain dominance.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "side control top"
+    ]
+  },
+  {
+    "id": "q-sc-27",
+    "topic": "side_control_top",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "When applying pressure in side control, should your elbows stay tight to your body or flared out?",
+    "options": [
+      "Elbows flared out \u2014 this creates more surface area contact",
+      "Elbows tight to your body \u2014 this protects your elbows and concentrates pressure"
+    ],
+    "correct_answer": "Elbows tight to your body \u2014 this protects your elbows and concentrates pressure",
+    "explanation": "Tight elbows concentrate your pressure into a more effective point and protect your joints from being trapped or manipulated.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "side control top"
+    ]
+  },
+  {
+    "id": "q-sc-28",
+    "topic": "side_control_top",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "A good side control position requires your body to be ___ to your opponent's torso, not parallel.",
+    "options": [
+      "parallel",
+      "perpendicular",
+      "diagonal",
+      "stacked"
+    ],
+    "correct_answer": "perpendicular",
+    "explanation": "Being perpendicular (90 degrees) to their body in true side control creates the most pressure and makes escapes most difficult.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "side control top"
+    ]
+  },
+  {
+    "id": "q-sce-09",
+    "topic": "side_control_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're pinned in side control and your opponent has their weight centered on your chest. You try to frame on their shoulder, but they're too heavy. What should you do next?",
+    "options": [
+      "Immediately shrimp your hips out to escape",
+      "Create a frame on their hip instead and work on clearing their leg",
+      "Push harder on the shoulder until they move",
+      "Wait for them to shift weight before attempting anything"
+    ],
+    "correct_answer": "Create a frame on their hip instead and work on clearing their leg",
+    "explanation": "Framing the hip helps you control their base and leg position, which is essential before shrimping. This creates space more effectively than fighting their chest pressure directly.",
+    "difficulty": 2,
+    "coach_note": "Hip control is your foundation for escape\u2014don't waste energy on shoulder frames alone.",
+    "tags": [
+      "side control escape"
+    ]
+  },
+  {
+    "id": "q-sce-10",
+    "topic": "side_control_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "When escaping side control, you should bridge and shrimp at the same time for maximum speed.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "Bridge first to lift their weight and create space, then shrimp your hips out. Doing both simultaneously wastes energy and reduces control.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "side control escape"
+    ]
+  },
+  {
+    "id": "q-sce-11",
+    "topic": "side_control_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "Your opponent has heavy side control with their far-side arm hugging your chest. Should you frame on their arm first or on their hip?",
+    "options": [
+      "Frame on their arm to break the hug",
+      "Frame on their hip to control their base and legs"
+    ],
+    "correct_answer": "Frame on their hip to control their base and legs",
+    "explanation": "Controlling the hip prevents them from adjusting their position and makes the escape sequence work. The arm hug is less critical than base control.",
+    "difficulty": 2,
+    "coach_note": "Hip frames stop their mobility\u2014that's your priority.",
+    "tags": [
+      "side control escape"
+    ]
+  },
+  {
+    "id": "q-sce-12",
+    "topic": "side_control_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You've created a frame on your opponent's hip in side control. Your hips are now mobile. What's your next immediate action?",
+    "options": [
+      "Bridge explosively to flip them over",
+      "Shrimp your hips toward the open side to create more space",
+      "Grab their arm and try a reversal",
+      "Push their head away from you"
+    ],
+    "correct_answer": "Shrimp your hips toward the open side to create more space",
+    "explanation": "Shrimping (moving your hips laterally) uses the frame you created to scoot out from under their weight. This is the natural follow-up after hip frame control.",
+    "difficulty": 2,
+    "coach_note": "Frame + shrimp = the core sequence. Master the timing between them.",
+    "tags": [
+      "side control escape"
+    ]
+  },
+  {
+    "id": "q-sce-13",
+    "topic": "side_control_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "In side control escape, your first priority should be to create a ___ on your opponent's body to prevent them from settling their weight on you.",
+    "options": [
+      "grip",
+      "frame",
+      "position",
+      "hook"
+    ],
+    "correct_answer": "frame",
+    "explanation": "A frame is a brace using your arm and hand against their body\u2014it's your primary defense against being crushed in side control.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "side control escape"
+    ]
+  },
+  {
+    "id": "q-sce-14",
+    "topic": "side_control_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "If your opponent is in heavy side control with their shoulder pinning your arm, you must tap out immediately.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "You can still escape by framing the hip, bridging to lift their weight, and shrimping. A pinned arm doesn't mean you're stuck.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "side control escape"
+    ]
+  },
+  {
+    "id": "q-sce-15",
+    "topic": "side_control_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You bridge successfully in side control and your opponent's upper body shifts backward slightly. What should you do in this moment?",
+    "options": [
+      "Hold the bridge position and wait for another opening",
+      "Immediately shrimp your hips to the open side while they're off-balanced",
+      "Bridge again to throw them further back",
+      "Try to grab their leg to prevent them resettling"
+    ],
+    "correct_answer": "Immediately shrimp your hips to the open side while they're off-balanced",
+    "explanation": "The bridge disrupts their base temporarily\u2014this is your window to shrimp. Hesitating allows them to resettle their weight.",
+    "difficulty": 3,
+    "coach_note": "Bridge and shrimp timing is everything; don't waste the momentum shift.",
+    "tags": [
+      "side control escape"
+    ]
+  },
+  {
+    "id": "q-sce-16",
+    "topic": "side_control_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "When framing from bottom side control, should your frame hand be open-palm or making a fist?",
+    "options": [
+      "Open-palm to distribute pressure and maintain control",
+      "It doesn't matter as long as you push hard"
+    ],
+    "correct_answer": "Open-palm to distribute pressure and maintain control",
+    "explanation": "An open palm spreads force across a larger area and is harder to break. A fist concentrates pressure and is easier for your opponent to control or crush.",
+    "difficulty": 1,
+    "coach_note": "Palm framing = better mechanics and injury prevention.",
+    "tags": [
+      "side control escape"
+    ]
+  },
+  {
+    "id": "q-sce-17",
+    "topic": "side_control_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent is in side control with their legs extended behind them for base. You get a frame on their hip. Where should you target your shrimp direction?",
+    "options": [
+      "Toward their head to push them away",
+      "Toward the side where their legs are extended (the open side)",
+      "Backward toward the mat behind you",
+      "Toward their trapped arm"
+    ],
+    "correct_answer": "Toward the side where their legs are extended (the open side)",
+    "explanation": "Shrimping toward the open side uses the space they've created with their leg extension. This is the path of least resistance and most effective escape angle.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "side control escape"
+    ]
+  },
+  {
+    "id": "q-sce-18",
+    "topic": "side_control_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "It's more important to escape side control quickly than to maintain proper frame and bridge technique.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "Proper technique (frame then bridge then shrimp) is more reliable than rushing. Sloppy escapes lead to faster re-pins.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "side control escape"
+    ]
+  },
+  {
+    "id": "q-sce-19",
+    "topic": "side_control_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're in side control and notice your opponent's weight is mostly on their far-side arm (the arm away from you). What advantage does this give you?",
+    "options": [
+      "None\u2014their weight distribution doesn't matter",
+      "Their near-side (closest to you) is lighter, making hip movement easier",
+      "You can grab their far arm for a submission",
+      "It means they're about to move to north-south"
+    ],
+    "correct_answer": "Their near-side (closest to you) is lighter, making hip movement easier",
+    "explanation": "If their weight is on the far side, the near side has less pressure, giving you more mobility to frame and shrimp on that side.",
+    "difficulty": 2,
+    "coach_note": "Always feel where their weight is\u2014it tells you where to push and shrimp.",
+    "tags": [
+      "side control escape"
+    ]
+  },
+  {
+    "id": "q-sce-20",
+    "topic": "side_control_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "When you can't frame on your opponent's shoulder or hip, try framing on their ___ to create space and control.",
+    "options": [
+      "head",
+      "neck",
+      "elbow",
+      "leg"
+    ],
+    "correct_answer": "elbow",
+    "explanation": "Framing the elbow or arm is a secondary option when hip and shoulder frames aren't accessible, helping you manage their posture.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "side control escape"
+    ]
+  },
+  {
+    "id": "q-sce-21",
+    "topic": "side_control_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "Should you allow your opponent to settle deeply into side control, or should you frame and shrimp as soon as you feel side control starting?",
+    "options": [
+      "Allow them to settle\u2014it's easier to escape once they're comfortable",
+      "Frame and shrimp immediately\u2014it's harder to escape from deep, settled side control"
+    ],
+    "correct_answer": "Frame and shrimp immediately\u2014it's harder to escape from deep, settled side control",
+    "explanation": "The longer they stay on you, the more control they gain. Escaping early, before they're fully established, requires less effort.",
+    "difficulty": 2,
+    "coach_note": "Prevention is easier than cure\u2014don't let them get comfortable.",
+    "tags": [
+      "side control escape"
+    ]
+  },
+  {
+    "id": "q-sce-22",
+    "topic": "side_control_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "During a shrimp escape, your opponent posts their hand on the mat to prevent your hip movement. What should you do?",
+    "options": [
+      "Stop shrimping and try a different escape",
+      "Push harder against their posted arm while continuing to shrimp",
+      "Bridge again to disrupt their base before continuing the shrimp",
+      "Grab their posted arm and pull it toward you"
+    ],
+    "correct_answer": "Bridge again to disrupt their base before continuing the shrimp",
+    "explanation": "A fresh bridge lifts their weight and disrupts their posted base, creating a new window to continue or reset your shrimp.",
+    "difficulty": 3,
+    "coach_note": "Chain escapes together\u2014bridge resets can break defensive posts.",
+    "tags": [
+      "side control escape"
+    ]
+  },
+  {
+    "id": "q-sce-23",
+    "topic": "side_control_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "Your hips should stay flat on the mat while framing in side control\u2014elevating them early telegraphs your escape.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "Your hips naturally elevate slightly during framing as you engage your core and prepare to bridge. This is expected and necessary for the escape sequence.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "side control escape"
+    ]
+  },
+  {
+    "id": "q-sce-24",
+    "topic": "side_control_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You've shrimped out partially and created some space. Your opponent immediately adjusts to re-pin you. What should you do?",
+    "options": [
+      "Give up\u2014they've recaptured you",
+      "Establish a new frame and bridge again; shrimping may take multiple cycles",
+      "Try a completely different escape technique",
+      "Grab their collar and pull them into you"
+    ],
+    "correct_answer": "Establish a new frame and bridge again; shrimping may take multiple cycles",
+    "explanation": "Side control escape often requires multiple frame-bridge-shrimp cycles. Resetting and repeating is normal and expected at white belt level.",
+    "difficulty": 2,
+    "coach_note": "Patience pays off\u2014keep cycling through the sequence until you get out.",
+    "tags": [
+      "side control escape"
+    ]
+  },
+  {
+    "id": "q-sce-25",
+    "topic": "side_control_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "To prevent your opponent from driving their weight down during a side control escape, you should use a ___ to create separation.",
+    "options": [
+      "grip",
+      "bridge",
+      "submission",
+      "knee"
+    ],
+    "correct_answer": "bridge",
+    "explanation": "A bridge is a controlled hip thrust that lifts their weight and creates space\u2014it's your primary tool for fighting pressure in side control.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "side control escape"
+    ]
+  },
+  {
+    "id": "q-sce-26",
+    "topic": "side_control_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "When shrimping in side control, should you move your hips in one explosive motion or in smaller, controlled increments?",
+    "options": [
+      "One explosive motion to create maximum space instantly",
+      "Smaller, controlled movements to maintain frame contact and balance"
+    ],
+    "correct_answer": "Smaller, controlled movements to maintain frame contact and balance",
+    "explanation": "Controlled shrimping lets you maintain your frame and adjust if your opponent counters. Explosive movements risk losing contact and balance.",
+    "difficulty": 2,
+    "coach_note": "Control beats speed in escapes\u2014stay connected to your frame.",
+    "tags": [
+      "side control escape"
+    ]
+  },
+  {
+    "id": "q-sce-27",
+    "topic": "side_control_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "If you successfully frame and bridge but cannot shrimp because your opponent is blocking your hip movement, you should immediately try a submission instead.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "If shrimping is blocked, repeat the bridge to disrupt their block, or try framing a different target. Submissions from bottom side control are dangerous and unnecessary at white belt.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "side control escape"
+    ]
+  },
+  {
+    "id": "q-sce-28",
+    "topic": "side_control_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're escaping side control and have nearly cleared their leg. Your opponent starts to move their weight to re-establish control. What's your priority?",
+    "options": [
+      "Complete the leg clear first, then worry about pressure",
+      "Create a new frame immediately to manage their repositioning weight",
+      "Turn your hips away from them to prevent re-pinning",
+      "Push their head away before they settle back in"
+    ],
+    "correct_answer": "Create a new frame immediately to manage their repositioning weight",
+    "explanation": "A fresh frame stops them from resettling and gives you time to finish clearing the leg or continue escaping. Managing pressure is always the priority.",
+    "difficulty": 3,
+    "coach_note": "Always have an active frame\u2014it's your first line of defense against resettlement.",
+    "tags": [
+      "side control escape"
+    ]
+  },
+  {
+    "id": "q-mc-09",
+    "topic": "mount_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're mounted on your opponent. They bridge hard and lift their hips. What should you do immediately?",
+    "options": [
+      "Sit back and let them bridge",
+      "Post your hands on their chest to stay heavy",
+      "Jump off and reset",
+      "Go for a submission right away"
+    ],
+    "correct_answer": "Post your hands on their chest to stay heavy",
+    "explanation": "Posting your hands maintains pressure and prevents them from creating space or completing the escape. Staying heavy kills their momentum.",
+    "difficulty": 2,
+    "coach_note": "Don't fight the bridge \u2014 manage it by staying connected and heavy.",
+    "tags": [
+      "mount control"
+    ]
+  },
+  {
+    "id": "q-mc-10",
+    "topic": "mount_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent frames on your hip from bottom mount, pushing to create space. Where should you place your weight?",
+    "options": [
+      "Shift weight away from their frame",
+      "Move your hips higher on their chest, away from the frame",
+      "Keep equal weight on both sides",
+      "Lean into their frame with force"
+    ],
+    "correct_answer": "Move your hips higher on their chest, away from the frame",
+    "explanation": "Moving up and past their frame keeps you safe and prevents them from creating the space they're seeking. You control distance by controlling hip position.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "mount control"
+    ]
+  },
+  {
+    "id": "q-mc-11",
+    "topic": "mount_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "In mount position, you should always grip both of their wrists to prevent escapes.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "Gripping both wrists limits your mobility and submission options. Strategic hand placement depends on what you're attacking or defending.",
+    "difficulty": 1,
+    "coach_note": "Keep your hands free to attack, defend, or maintain position as needed.",
+    "tags": [
+      "mount control"
+    ]
+  },
+  {
+    "id": "q-mc-12",
+    "topic": "mount_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "You're in mount and feel your opponent building pressure to roll you. Should you fight the momentum or move with it?",
+    "options": [
+      "Move with it and adjust your position",
+      "Fight it with all your strength"
+    ],
+    "correct_answer": "Move with it and adjust your position",
+    "explanation": "Fighting a strong bridge wastes energy. Instead, move with their momentum and reestablish control quickly at a better angle.",
+    "difficulty": 2,
+    "coach_note": "Flow with the escape attempt, then re-establish dominance.",
+    "tags": [
+      "mount control"
+    ]
+  },
+  {
+    "id": "q-mc-13",
+    "topic": "mount_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "When your opponent starts to turn their hips to escape mount, you should secure your hooks by placing your feet under their ___.",
+    "options": [
+      "neck",
+      "armpits",
+      "shoulders",
+      "elbows"
+    ],
+    "correct_answer": "armpits",
+    "explanation": "Hooks under the armpits control their upper body and prevent the rotation needed for bottom escapes. This is a fundamental mount control principle.",
+    "difficulty": 1,
+    "coach_note": "Hooks under the armpits = locked mount position.",
+    "tags": [
+      "mount control"
+    ]
+  },
+  {
+    "id": "q-mc-14",
+    "topic": "mount_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent is trying to shrimp (hip escape) from mount. What should you do?",
+    "options": [
+      "Drop all your weight straight down on their stomach",
+      "Post one hand on the mat and circle your hips to the side they're escaping toward, then readjust",
+      "Stand up and reset position",
+      "Pull their arm across their body"
+    ],
+    "correct_answer": "Post one hand on the mat and circle your hips to the side they're escaping toward, then readjust",
+    "explanation": "Following their escape direction with your hips prevents them from creating space. You stay heavy and in control while they waste energy.",
+    "difficulty": 3,
+    "coach_note": "Match their movement, don't fight it \u2014 stay ahead of their escape.",
+    "tags": [
+      "mount control"
+    ]
+  },
+  {
+    "id": "q-mc-15",
+    "topic": "mount_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "You should maintain high mount (sitting on their chest near their neck) at all times for maximum control.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "High mount is better for submissions but harder to maintain and risks getting armbarred. Mid-mount is more stable and easier to defend.",
+    "difficulty": 2,
+    "coach_note": "Adjust mount height based on your goal \u2014 control or submission.",
+    "tags": [
+      "mount control"
+    ]
+  },
+  {
+    "id": "q-mc-16",
+    "topic": "mount_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent creates space at their hips during mount. They're about to buck or rotate. What position should you immediately move into?",
+    "options": [
+      "Stand up completely",
+      "Knee slice pass",
+      "High mount with your knees pinched tight on their ribs",
+      "Side control"
+    ],
+    "correct_answer": "High mount with your knees pinched tight on their ribs",
+    "explanation": "Tightening your knees eliminates the space they just created and keeps you in a dominant position. This is the fastest way to re-establish control.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "mount control"
+    ]
+  },
+  {
+    "id": "q-mc-17",
+    "topic": "mount_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "To prevent your opponent from armbarring you from bottom mount, keep your elbows ___ your ribs.",
+    "options": [
+      "far from",
+      "tight to",
+      "above",
+      "below"
+    ],
+    "correct_answer": "tight to",
+    "explanation": "Keeping elbows glued to your ribs makes it impossible for them to isolate your arm and create the leverage needed for an armbar.",
+    "difficulty": 1,
+    "coach_note": "Elbows in = armbar prevention + shoulder safety.",
+    "tags": [
+      "mount control"
+    ]
+  },
+  {
+    "id": "q-mc-18",
+    "topic": "mount_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "You notice your opponent's breathing is getting heavy while you maintain mount. Should you increase pressure or stay steady?",
+    "options": [
+      "Increase pressure immediately to tire them faster",
+      "Stay steady and patient \u2014 fatigue is already working for you"
+    ],
+    "correct_answer": "Stay steady and patient \u2014 fatigue is already working for you",
+    "explanation": "Steady pressure is more efficient than burning energy with increased aggression. Let their fatigue open up submission opportunities naturally.",
+    "difficulty": 2,
+    "coach_note": "Patient control wins. Pressure over urgency.",
+    "tags": [
+      "mount control"
+    ]
+  },
+  {
+    "id": "q-mc-19",
+    "topic": "mount_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "Once you're in a stable mount position, you can relax your core and let your bodyweight do all the work.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "Your core must stay engaged to maintain balance, adjust quickly, and prevent escapes. Relaxing invites reversal or escape attempts.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "mount control"
+    ]
+  },
+  {
+    "id": "q-mc-20",
+    "topic": "mount_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent is defending submissions by tucking their chin and controlling your arms in mount. What should you do?",
+    "options": [
+      "Force the submission attempt anyway",
+      "Switch to attacking their legs",
+      "Transition to a pin that improves your dominant position while wearing down their defenses",
+      "Get frustrated and stand up"
+    ],
+    "correct_answer": "Transition to a pin that improves your dominant position while wearing down their defenses",
+    "explanation": "Intelligent transitions maintain control while creating new openings. Pinning variations exhaust their defenses and lead to better submission setups.",
+    "difficulty": 2,
+    "coach_note": "Don't chase the tap \u2014 advance your position.",
+    "tags": [
+      "mount control"
+    ]
+  },
+  {
+    "id": "q-mc-21",
+    "topic": "mount_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're mounted, and your opponent suddenly goes completely still and passive. What does this likely mean?",
+    "options": [
+      "They've given up and you should relax",
+      "They're gathering energy for a big escape attempt \u2014 stay sharp",
+      "You've won the match",
+      "They need medical attention"
+    ],
+    "correct_answer": "They're gathering energy for a big escape attempt \u2014 stay sharp",
+    "explanation": "Sudden stillness in jiu-jitsu often indicates they're collecting themselves for an explosive move. Maintain full alertness and control.",
+    "difficulty": 3,
+    "coach_note": "Passivity in mount is dangerous \u2014 stay ready.",
+    "tags": [
+      "mount control"
+    ]
+  },
+  {
+    "id": "q-mc-22",
+    "topic": "mount_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "When you feel your opponent's hips pressing up against your mount, you should shift your weight slightly ___ to maintain control.",
+    "options": [
+      "forward",
+      "backward",
+      "to the side",
+      "down"
+    ],
+    "correct_answer": "forward",
+    "explanation": "Shifting forward keeps your weight centered and prevents them from creating the upward pressure that leads to bridges and escapes.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "mount control"
+    ]
+  },
+  {
+    "id": "q-mc-23",
+    "topic": "mount_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "Should you look down at your opponent's face/body frequently while in mount, or keep your eyes up?",
+    "options": [
+      "Look down \u2014 you need to see what they're doing",
+      "Keep your eyes up \u2014 awareness of surroundings and posture matter"
+    ],
+    "correct_answer": "Keep your eyes up \u2014 awareness of surroundings and posture matter",
+    "explanation": "Constant head position awareness helps you maintain posture, spot incoming escapes earlier, and avoid losing balance from looking down.",
+    "difficulty": 2,
+    "coach_note": "Posture + awareness > tunnel vision.",
+    "tags": [
+      "mount control"
+    ]
+  },
+  {
+    "id": "q-mc-24",
+    "topic": "mount_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "In mount position, keeping your hands near your opponent's hips is the best strategy for both control and attack.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "Hand placement should vary based on your immediate goal \u2014 defend escapes, control limbs, or set up submissions. No single hand position works for everything.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "mount control"
+    ]
+  },
+  {
+    "id": "q-mc-25",
+    "topic": "mount_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent keeps framing against your arm in mount to create space. After you address the frame, what should you do next?",
+    "options": [
+      "Immediately go for a submission",
+      "Move to side control to reset",
+      "Re-establish your weight distribution before attacking",
+      "Stand up and restart"
+    ],
+    "correct_answer": "Re-establish your weight distribution before attacking",
+    "explanation": "Resetting your position after defending ensures you have a stable base. Attacks from unstable positions fail and put you at risk.",
+    "difficulty": 2,
+    "coach_note": "Stability first, then attack.",
+    "tags": [
+      "mount control"
+    ]
+  },
+  {
+    "id": "q-mc-26",
+    "topic": "mount_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're in mount and your opponent keeps turning their face to one side repeatedly. What are they likely trying to set up?",
+    "options": [
+      "A guillotine escape",
+      "A reversal by rotating their hips",
+      "A defensive posture for collar chokes",
+      "Nothing \u2014 just moving randomly"
+    ],
+    "correct_answer": "A reversal by rotating their hips",
+    "explanation": "Turning the face is often the first step toward rotating the hips for a mount escape. Recognize this pattern and control their torso tightly.",
+    "difficulty": 3,
+    "coach_note": "Watch for patterns \u2014 face turns predict hip movement.",
+    "tags": [
+      "mount control"
+    ]
+  },
+  {
+    "id": "q-mc-27",
+    "topic": "mount_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "Once you reach mount position, you should immediately begin attacking with submissions rather than consolidating control first.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "Securing and maintaining stable mount position first prevents escapes and makes submissions far more effective. Rush to attack from unstable mount and you'll lose position.",
+    "difficulty": 1,
+    "coach_note": "Control beats speed. Submissions flow from dominance.",
+    "tags": [
+      "mount control"
+    ]
+  },
+  {
+    "id": "q-me-09",
+    "topic": "mount_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're mounted and your opponent has both hands on the mat beside your head. What should you do first to set up an escape?",
+    "options": [
+      "Push their head back immediately",
+      "Break their posture by pulling them down toward you",
+      "Trap one arm and bridge",
+      "Explode your hips upward without a plan"
+    ],
+    "correct_answer": "Break their posture by pulling them down toward you",
+    "explanation": "Breaking posture removes their base and makes them dependent on their hands for balance, setting up the bridge perfectly.",
+    "difficulty": 1,
+    "coach_note": "A straight-armed mounted opponent is strong \u2014 collapse their posture first.",
+    "tags": [
+      "mount escape"
+    ]
+  },
+  {
+    "id": "q-me-10",
+    "topic": "mount_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "During an upa escape, you've bridged high and trapped your opponent's arm. Which leg position helps most?",
+    "options": [
+      "Both feet flat on the mat, knees bent",
+      "One foot on the mat, driving through your heel",
+      "Feet together in the middle",
+      "Legs straight and locked"
+    ],
+    "correct_answer": "One foot on the mat, driving through your heel",
+    "explanation": "Driving through one heel gives you maximum power and stability to bridge explosively while maintaining control.",
+    "difficulty": 2,
+    "coach_note": "Think of a sprinter's start position \u2014 one powerful drive beats two weak pushes.",
+    "tags": [
+      "mount escape"
+    ]
+  },
+  {
+    "id": "q-me-11",
+    "topic": "mount_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "When you bridge during an upa escape, your opponent should still be balanced on top of you.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "A successful bridge disrupts their balance and shifts their weight, making the roll possible.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "mount escape"
+    ]
+  },
+  {
+    "id": "q-me-12",
+    "topic": "mount_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're mounted and attempt the elbow-knee escape. You trap their arm with your elbow and their leg with your knee. What happens next?",
+    "options": [
+      "Shrimp to the side away from the trapped limbs",
+      "Shrimp toward the trapped side and roll them over",
+      "Push straight up with your hips",
+      "Pull them down onto your chest"
+    ],
+    "correct_answer": "Shrimp toward the trapped side and roll them over",
+    "explanation": "Rolling toward the trapped side uses their own trapped limbs as a lever against them, making the escape efficient.",
+    "difficulty": 2,
+    "coach_note": "The trap IS your escape \u2014 move into it, not away from it.",
+    "tags": [
+      "mount escape"
+    ]
+  },
+  {
+    "id": "q-me-13",
+    "topic": "mount_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "To set up an elbow-knee escape, you trap your opponent's arm with your ___ and their leg with your knee.",
+    "options": [
+      "elbow",
+      "hand",
+      "head",
+      "shin"
+    ],
+    "correct_answer": "elbow",
+    "explanation": "Your elbow creates a frame against their arm while your knee controls their leg from underneath.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "mount escape"
+    ]
+  },
+  {
+    "id": "q-me-14",
+    "topic": "mount_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "Your opponent is mounted with good posture and a lot of weight on you. Should you upa or elbow-knee escape?",
+    "options": [
+      "Upa (bridge and roll)",
+      "Elbow-knee escape"
+    ],
+    "correct_answer": "Upa (bridge and roll)",
+    "explanation": "When they're upright with weight distributed, the upa's explosive bridge is more effective than trapping limbs.",
+    "difficulty": 2,
+    "coach_note": "Heavy, upright mounted opponents fear the bridge.",
+    "tags": [
+      "mount escape"
+    ]
+  },
+  {
+    "id": "q-me-15",
+    "topic": "mount_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You start your upa escape but your opponent sprawls backward, taking weight off you. What should you do?",
+    "options": [
+      "Continue the upa since you've already started",
+      "Switch to an elbow-knee escape or frame and create space",
+      "Give up and reset",
+      "Push their chest"
+    ],
+    "correct_answer": "Switch to an elbow-knee escape or frame and create space",
+    "explanation": "When they sprawl back, the bridge loses power \u2014 transition to trapping limbs or create frames to escape instead.",
+    "difficulty": 3,
+    "coach_note": "Adaptability matters \u2014 read their response and adjust.",
+    "tags": [
+      "mount escape"
+    ]
+  },
+  {
+    "id": "q-me-16",
+    "topic": "mount_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "Both the upa and elbow-knee escapes require you to trap one of your opponent's arms.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "The upa uses a powerful bridge without necessarily trapping an arm, while elbow-knee requires specific trapping.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "mount escape"
+    ]
+  },
+  {
+    "id": "q-me-17",
+    "topic": "mount_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're mounted and your opponent has one hand on your chest and one on your hip, base is wide. What's your first move?",
+    "options": [
+      "Trap the hip-side arm and frame with your hands",
+      "Bridge immediately before they adjust",
+      "Push their head back",
+      "Wrap your legs around their waist"
+    ],
+    "correct_answer": "Bridge immediately before they adjust",
+    "explanation": "A wide base with two hands down is perfect for the upa \u2014 strike while they're not ready to defend.",
+    "difficulty": 2,
+    "coach_note": "Timing the upa matters \u2014 catch them in a vulnerable hand position.",
+    "tags": [
+      "mount escape"
+    ]
+  },
+  {
+    "id": "q-me-18",
+    "topic": "mount_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "During the elbow-knee escape, should you trap your opponent's arm on the same side as the leg you trap?",
+    "options": [
+      "Yes, trap the arm and leg on the same side",
+      "No, trap arm on one side and leg on the other"
+    ],
+    "correct_answer": "Yes, trap the arm and leg on the same side",
+    "explanation": "Trapping limbs on the same side creates a unified control point and makes the roll cohesive and powerful.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "mount escape"
+    ]
+  },
+  {
+    "id": "q-me-19",
+    "topic": "mount_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "After a successful upa bridge, you must ___ to complete the escape and roll them over.",
+    "options": [
+      "follow through with your momentum",
+      "stop pushing",
+      "relax",
+      "grab their collar"
+    ],
+    "correct_answer": "follow through with your momentum",
+    "explanation": "The bridge creates momentum \u2014 you must commit to the roll by continuing to drive and shift weight to complete it.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "mount escape"
+    ]
+  },
+  {
+    "id": "q-me-20",
+    "topic": "mount_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're mounted and realize your opponent is too heavy for an upa to work. What should you prioritize?",
+    "options": [
+      "Attempt the upa anyway with more force",
+      "Focus on framing their arms and creating space to escape sideways",
+      "Wait for them to make a mistake",
+      "Immediately go for a submission"
+    ],
+    "correct_answer": "Focus on framing their arms and creating space to escape sideways",
+    "explanation": "Against heavy opponents, controlled frames and space creation are more reliable than explosive movements.",
+    "difficulty": 2,
+    "coach_note": "Not all escapes work the same against all body types \u2014 adapt.",
+    "tags": [
+      "mount escape"
+    ]
+  },
+  {
+    "id": "q-me-21",
+    "topic": "mount_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "You should keep your chin tucked and head still during a mount escape to protect your neck.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "True",
+    "explanation": "Protecting your neck prevents chokes and keeps you safe while your hips do the work during the escape.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "mount escape"
+    ]
+  },
+  {
+    "id": "q-me-22",
+    "topic": "mount_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "During the elbow-knee escape, your opponent defends by pulling their trapped arm free. What should you do?",
+    "options": [
+      "Release immediately and restart",
+      "Use your leg trap alone and continue rolling with shrimp",
+      "Switch to a bridge escape",
+      "Tap since the escape failed"
+    ],
+    "correct_answer": "Use your leg trap alone and continue rolling with shrimp",
+    "explanation": "Even with one limb trapped, you can still shrimp and roll \u2014 a leg trap alone is often enough.",
+    "difficulty": 3,
+    "coach_note": "Partial control is still useful \u2014 don't abandon the escape.",
+    "tags": [
+      "mount escape"
+    ]
+  },
+  {
+    "id": "q-me-23",
+    "topic": "mount_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "Is it easier to escape from mount when your opponent is upright or when they're collapsed on you?",
+    "options": [
+      "When they're upright with good posture",
+      "When they're collapsed on your chest"
+    ],
+    "correct_answer": "When they're upright with good posture",
+    "explanation": "Upright posture means they're lighter and more vulnerable to the upa bridge; collapsed weight makes escapes harder.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "mount escape"
+    ]
+  },
+  {
+    "id": "q-me-24",
+    "topic": "mount_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "In the upa escape, after you bridge, roll to the ___ side where you've trapped your opponent's arm and leg.",
+    "options": [
+      "trapped",
+      "open",
+      "opposite",
+      "back"
+    ],
+    "correct_answer": "trapped",
+    "explanation": "Rolling toward the trapped side uses their stuck limbs as a pivot point and path of least resistance.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "mount escape"
+    ]
+  },
+  {
+    "id": "q-me-25",
+    "topic": "mount_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're mounted and your opponent is heavy and controlling your arms. Which escape is most practical?",
+    "options": [
+      "Upa bridge and roll",
+      "Elbow-knee escape",
+      "Try to trap their hands",
+      "Wait and let them move first"
+    ],
+    "correct_answer": "Upa bridge and roll",
+    "explanation": "The upa doesn't rely on arm control \u2014 your legs and hips do all the work, making it perfect when arms are pinned.",
+    "difficulty": 2,
+    "coach_note": "Remember: your legs are always free under mount, your arms might not be.",
+    "tags": [
+      "mount escape"
+    ]
+  },
+  {
+    "id": "q-me-26",
+    "topic": "mount_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "When escaping mount, you should always use the same escape technique every time regardless of your opponent's position.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "Good escaologists read their opponent's posture and base, then choose the most effective escape for that moment.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "mount escape"
+    ]
+  },
+  {
+    "id": "q-me-27",
+    "topic": "mount_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "During the upa, you've bridged but your opponent has excellent balance and isn't going anywhere. What's your next move?",
+    "options": [
+      "Stop and try again from the beginning",
+      "Maintain the bridge height and look to trap their arm, then roll",
+      "Collapse back down and rest",
+      "Push their head with both hands"
+    ],
+    "correct_answer": "Maintain the bridge height and look to trap their arm, then roll",
+    "explanation": "A good bridge is still a good position \u2014 from here, trap their arm and use the momentum to roll them.",
+    "difficulty": 3,
+    "coach_note": "The bridge is just step one \u2014 commit to controlling and rolling after.",
+    "tags": [
+      "mount escape"
+    ]
+  },
+  {
+    "id": "q-me-28",
+    "topic": "mount_escape",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're mounted and want to escape. Your opponent's base is narrow and they're leaning forward. What's your best choice?",
+    "options": [
+      "Elbow-knee escape since they're unstable",
+      "Upa bridge because their forward lean makes them easy to roll",
+      "Push their head",
+      "Grab their collar"
+    ],
+    "correct_answer": "Upa bridge because their forward lean makes them easy to roll",
+    "explanation": "A forward lean and narrow base mean minimal balance \u2014 the bridge will easily tip them over.",
+    "difficulty": 3,
+    "coach_note": "Read the base \u2014 a narrow, forward-leaning opponent is ripe for the upa.",
+    "tags": [
+      "mount escape"
+    ]
+  },
+  {
+    "id": "q-bc-09",
+    "topic": "back_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You have back control with both hooks in. Your opponent starts to turn their hips toward you to escape. What should you do first?",
+    "options": [
+      "Immediately go for the rear naked choke",
+      "Tighten your hooks and flatten them back to the mat",
+      "Release your hooks and transition to side control",
+      "Let them turn and reset your position"
+    ],
+    "correct_answer": "Tighten your hooks and flatten them back to the mat",
+    "explanation": "Flattening your opponent prevents their escape by controlling their hips. Choke attempts are premature if they're still mobile and defending.",
+    "difficulty": 2,
+    "coach_note": "Hooks are your primary control tool\u2014use them before you hunt for submissions.",
+    "tags": [
+      "back control"
+    ]
+  },
+  {
+    "id": "q-bc-10",
+    "topic": "back_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "Your opponent manages to get one hook out, but you still have control of their back. Should you immediately attack the rear naked choke or work to re-establish both hooks?",
+    "options": [
+      "Re-establish both hooks first",
+      "Immediately attack the rear naked choke"
+    ],
+    "correct_answer": "Re-establish both hooks first",
+    "explanation": "With only one hook, your position is unstable and they can escape more easily. Secure control before hunting for the finish.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "back control"
+    ]
+  },
+  {
+    "id": "q-bc-11",
+    "topic": "back_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "When you have back control, keeping your chest tight against your opponent's back is more important than maintaining high, active hooks.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "Hooks are your primary control mechanism. Without them, chest pressure alone won't prevent escapes. Hooks must stay active and engaged.",
+    "difficulty": 1,
+    "coach_note": "Hooks control the hips; chest control supports them\u2014don't sacrifice hooks for chest pressure.",
+    "tags": [
+      "back control"
+    ]
+  },
+  {
+    "id": "q-bc-12",
+    "topic": "back_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're on your opponent's back with hooks in, but they're defending your seatbelt grip by tucking their elbow tight to their ribs. What should you do?",
+    "options": [
+      "Switch to a different grip on their far arm",
+      "Release the grip and go straight to the choke",
+      "Use your legs to break their arm free from their body",
+      "Wait for them to make a mistake"
+    ],
+    "correct_answer": "Switch to a different grip on their far arm",
+    "explanation": "Control the far arm instead\u2014a two-on-one grip or collar/sleeve control works well when the seatbelt is defended. You maintain control while opening submission options.",
+    "difficulty": 2,
+    "coach_note": "Flexibility in your grips keeps your opponent guessing and prevents them from settling into static defense.",
+    "tags": [
+      "back control"
+    ]
+  },
+  {
+    "id": "q-bc-13",
+    "topic": "back_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "When setting up the rear naked choke from back control, your first priority should be controlling their ___ before you apply neck pressure.",
+    "options": [
+      "head",
+      "arms",
+      "breathing",
+      "posture"
+    ],
+    "correct_answer": "arms",
+    "explanation": "If their arms are free, they can defend the choke or escape. Controlling both arms (via seatbelt or sleeve/collar grips) makes the choke unstoppable.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "back control"
+    ]
+  },
+  {
+    "id": "q-bc-14",
+    "topic": "back_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "You should squeeze your choke with maximum power as soon as your arms are around your opponent's neck.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "Apply pressure gradually while you finish controlling their arms and flatten their posture. Squeezing too early gives them time to defend or escape.",
+    "difficulty": 2,
+    "coach_note": "Chokes work through position and control first, then gradual pressure.",
+    "tags": [
+      "back control"
+    ]
+  },
+  {
+    "id": "q-bc-15",
+    "topic": "back_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent is on their back under you with hooks in, but they bridge hard and lift your hips off the mat. What's your best response?",
+    "options": [
+      "Base on your arms and lean your weight into them",
+      "Tighten your hooks and shift your weight to one side",
+      "Release your hooks and post your feet to stop the bridge",
+      "Attempt the choke immediately before they escape"
+    ],
+    "correct_answer": "Tighten your hooks and shift your weight to one side",
+    "explanation": "Shifting your weight distributes their bridge power and keeps your hooks engaged. This prevents the full escape while maintaining back control.",
+    "difficulty": 2,
+    "coach_note": "Don't fight their bridge straight-on\u2014redirect your weight sideways instead.",
+    "tags": [
+      "back control"
+    ]
+  },
+  {
+    "id": "q-bc-16",
+    "topic": "back_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "Your opponent is defending your rear naked choke by tucking their chin hard. Should you try to force the choke anyway or adjust your technique?",
+    "options": [
+      "Adjust your grip or reposition to create an opening",
+      "Try to force the choke anyway"
+    ],
+    "correct_answer": "Adjust your grip or reposition to create an opening",
+    "explanation": "A tucked chin prevents a clean choke. Adjusting your position\u2014like getting your arm higher on the neck or controlling their head\u2014creates the opening you need.",
+    "difficulty": 3,
+    "coach_note": "A chin tuck means the choke isn't finished yet\u2014reposition rather than muscle.",
+    "tags": [
+      "back control"
+    ]
+  },
+  {
+    "id": "q-bc-17",
+    "topic": "back_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "Both your hooks should be at the same height on your opponent's body for maximum stability.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "Your hooks work best when one is higher (near the ribs) and one is lower (near the legs), creating a wide control base. This prevents hip rotation escapes.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "back control"
+    ]
+  },
+  {
+    "id": "q-bc-18",
+    "topic": "back_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You have back control, but your opponent manages to get on their knees to stand up. Which hook position is harder for them to escape from?",
+    "options": [
+      "Both hooks with heels on the mat",
+      "Both hooks with toes under their armpits",
+      "One hook in, one hook out",
+      "High hooks under their arms instead of low hooks on their legs"
+    ],
+    "correct_answer": "Both hooks with heels on the mat",
+    "explanation": "Heels-in hooks on the legs are harder to remove than toe-under hooks. They apply downward pressure that prevents hip extension and standing.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "back control"
+    ]
+  },
+  {
+    "id": "q-bc-19",
+    "topic": "back_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent is on their knees with your back control. They suddenly drop their weight straight down, trying to crush your hooks. What should you do?",
+    "options": [
+      "Squeeze harder with your legs to resist",
+      "Pop your hips up and shift to the side to relieve pressure",
+      "Let your legs go limp to reset",
+      "Go straight for the choke without hooks"
+    ],
+    "correct_answer": "Pop your hips up and shift to the side to relieve pressure",
+    "explanation": "This movement prevents them from flattening and breaking your hooks while keeping you positioned on their back. You maintain control and avoid leg fatigue.",
+    "difficulty": 3,
+    "coach_note": "Stay mobile on the back\u2014don't just hold on and resist pressure statically.",
+    "tags": [
+      "back control"
+    ]
+  },
+  {
+    "id": "q-bc-20",
+    "topic": "back_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "The seatbelt grip is created by wrapping one arm around their torso and gripping your own ___ arm with your other hand.",
+    "options": [
+      "opposite",
+      "same",
+      "extended",
+      "trapped"
+    ],
+    "correct_answer": "opposite",
+    "explanation": "Your arms wrap opposite directions around their torso\u2014one arm hugs their ribs while the other wraps underneath, creating the classic seatbelt control.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "back control"
+    ]
+  },
+  {
+    "id": "q-bc-21",
+    "topic": "back_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "You can establish back control and hooks without taking a grip on your opponent's arms or head.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "True",
+    "explanation": "Hooks alone provide solid control. Arm and head grips enhance the position, but pure back control with hooks is sufficient to dominate until you open submission lanes.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "back control"
+    ]
+  },
+  {
+    "id": "q-bc-22",
+    "topic": "back_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent escapes your hooks and rolls toward you. You're about to lose the back. What's your priority?",
+    "options": [
+      "Try to catch a leg to prevent them from rolling",
+      "Immediately go for side control on top",
+      "Keep your body glued to theirs and re-establish at least one hook",
+      "Release and reset from a neutral position"
+    ],
+    "correct_answer": "Keep your body glued to theirs and re-establish at least one hook",
+    "explanation": "Staying connected to their body lets you re-establish control before they fully escape. One hook is better than losing the position entirely.",
+    "difficulty": 2,
+    "coach_note": "Don't let go of the back until you absolutely have to\u2014fight to keep connection.",
+    "tags": [
+      "back control"
+    ]
+  },
+  {
+    "id": "q-bc-23",
+    "topic": "back_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "Should your hook be deeper (heel closer to their centerline) or shallower (heel more toward their side) for maximum control?",
+    "options": [
+      "Deeper, closer to their centerline",
+      "Shallower, toward their side"
+    ],
+    "correct_answer": "Deeper, closer to their centerline",
+    "explanation": "A deeper hook resists hip rotation and escape attempts better. Shallow hooks are easier for opponents to remove by extending their hip.",
+    "difficulty": 2,
+    "coach_note": "Drive your heel inward\u2014don't hook on the outside of their thigh.",
+    "tags": [
+      "back control"
+    ]
+  },
+  {
+    "id": "q-bc-24",
+    "topic": "back_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're attacking the rear naked choke, but your opponent is defending well by holding your arms. Your grip is secure around the neck. What should you do?",
+    "options": [
+      "Squeeze harder to force the choke",
+      "Use your arms to pull their hands away from yours",
+      "Keep steady pressure while you flatten their posture with your body weight",
+      "Release and reset for a different submission"
+    ],
+    "correct_answer": "Keep steady pressure while you flatten their posture with your body weight",
+    "explanation": "Flattening them with body weight makes it harder for them to defend and creates the space and leverage to finish the choke. Don't muscle it\u2014use positioning.",
+    "difficulty": 3,
+    "coach_note": "Body positioning wins chokes, not arm strength\u2014flatten first, squeeze second.",
+    "tags": [
+      "back control"
+    ]
+  },
+  {
+    "id": "q-bc-25",
+    "topic": "back_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "If your opponent stands up while you have back control, staying ___ will make it much harder for them to shake you off.",
+    "options": [
+      "tight to their back",
+      "loose and relaxed",
+      "high on their shoulders",
+      "ready to bail"
+    ],
+    "correct_answer": "tight to their back",
+    "explanation": "Body connection with active hooks prevents them from getting leverage to throw you off. Distance gives them space to work escapes.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "back control"
+    ]
+  },
+  {
+    "id": "q-bc-26",
+    "topic": "back_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "When your opponent is defending the rear naked choke, it's a good time to switch to attacking a different submission like an armlock or kimura.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "From back control with a tight choke setup, switching submissions wastes your positional advantage. Stay patient and adjust your choke grip or posture instead.",
+    "difficulty": 2,
+    "coach_note": "Stick with the choke\u2014it's the highest percentage finish from the back.",
+    "tags": [
+      "back control"
+    ]
+  },
+  {
+    "id": "q-bc-27",
+    "topic": "back_control",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent manages to turn and face you while you still have back control (rare situation). What should you do immediately?",
+    "options": [
+      "Transition to mount position",
+      "Let them roll and re-establish back control on the other side",
+      "Try to recover back control by rotating with them",
+      "Sit back and reset from side control"
+    ],
+    "correct_answer": "Try to recover back control by rotating with them",
+    "explanation": "If you rotate with them as they turn, you can transition to back control on the other side and maintain dominance. This keeps your positional advantage.",
+    "difficulty": 3,
+    "coach_note": "When someone rolls toward you from under your back control, rotate with them to the new back control.",
+    "tags": [
+      "back control"
+    ]
+  },
+  {
+    "id": "q-sub-09",
+    "topic": "submissions",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're in mount position and your opponent has their arms crossed defending their chest. You want to set up an armbar. What should you do first?",
+    "options": [
+      "Isolate one arm and drive your hips forward",
+      "Go for a kimura immediately",
+      "Drop back to their guard",
+      "Punch through their guard"
+    ],
+    "correct_answer": "Isolate one arm and drive your hips forward",
+    "explanation": "Isolating an arm removes their ability to defend with both arms and creates the control needed for an armbar setup. Driving your hips forward keeps them pinned.",
+    "difficulty": 2,
+    "coach_note": "One arm isolated = one less problem. Always work on breaking that cross-body defense.",
+    "tags": [
+      "submissions"
+    ]
+  },
+  {
+    "id": "q-sub-10",
+    "topic": "submissions",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent escapes your mount and you land in their guard. You base out with good posture. Their hips suddenly shoot up toward you. What is the best response?",
+    "options": [
+      "Sit back and let them escape",
+      "Keep your posture and block their hips from coming up further",
+      "Immediately pass to side control",
+      "Jump back to give them space"
+    ],
+    "correct_answer": "Keep your posture and block their hips from coming up further",
+    "explanation": "Blocking their hips prevents them from bridging effectively or setting up submissions like triangles. Maintaining posture keeps you safe.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "submissions"
+    ]
+  },
+  {
+    "id": "q-sub-11",
+    "topic": "submissions",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "If your opponent's arm is under their own head in closed guard, you should immediately attempt an armbar.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "An arm under their own head is protected and difficult to finish. You need to first isolate it away from their body before attempting the armbar.",
+    "difficulty": 2,
+    "coach_note": "Always check: can you fully extend their arm? If not, it's not ready.",
+    "tags": [
+      "submissions"
+    ]
+  },
+  {
+    "id": "q-sub-12",
+    "topic": "submissions",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "You have someone in a rear naked choke from behind, but they're defending by tucking their chin. Should you keep squeezing or adjust your position?",
+    "options": [
+      "Keep squeezing harder until they tap",
+      "Adjust your hand position and angle to get underneath the chin"
+    ],
+    "correct_answer": "Adjust your hand position and angle to get underneath the chin",
+    "explanation": "A tucked chin prevents the choke from being effective. Repositioning your arm underneath their chin properly will apply pressure to the carotid artery.",
+    "difficulty": 2,
+    "coach_note": "Strength doesn't finish a chin-tucked choke \u2014 angles do.",
+    "tags": [
+      "submissions"
+    ]
+  },
+  {
+    "id": "q-sub-13",
+    "topic": "submissions",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "When finishing a triangle from guard, you should pull your opponent's head down and ___ their opposite arm.",
+    "options": [
+      "trap",
+      "release",
+      "push",
+      "extend"
+    ],
+    "correct_answer": "trap",
+    "explanation": "Trapping the opposite arm prevents them from posting and defending their neck, making the triangle finish much tighter and more effective.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "submissions"
+    ]
+  },
+  {
+    "id": "q-sub-14",
+    "topic": "submissions",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're setting up a guillotine choke in the opponent's guard. They start to stand up. What should you do?",
+    "options": [
+      "Release the choke and adjust to side control",
+      "Maintain the choke grip and lock your hands tighter",
+      "Let them stand fully to avoid losing position",
+      "Transition to an armbar instead"
+    ],
+    "correct_answer": "Maintain the choke grip and lock your hands tighter",
+    "explanation": "If you've got the grip set correctly, standing actually helps compress the neck more due to gravity. Locking your hands prevents escape.",
+    "difficulty": 2,
+    "coach_note": "Standing doesn't save you from a locked guillotine \u2014 tight hands do.",
+    "tags": [
+      "submissions"
+    ]
+  },
+  {
+    "id": "q-sub-15",
+    "topic": "submissions",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "A kimura is best finished by pushing your opponent's arm across their body in one explosive movement.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "A kimura should be finished with steady pressure and control, rotating their shoulder backward slowly to avoid giving them time to defend or escape.",
+    "difficulty": 3,
+    "coach_note": "Slow and steady pressure wins. Explosive movements give them time to react.",
+    "tags": [
+      "submissions"
+    ]
+  },
+  {
+    "id": "q-sub-16",
+    "topic": "submissions",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're in side control and want to set up a submission. Your opponent's far arm is extended away from their body. What opportunity does this present?",
+    "options": [
+      "A kimura by underhooking their extended arm",
+      "A rear naked choke",
+      "A triangle choke",
+      "A guillotine choke"
+    ],
+    "correct_answer": "A kimura by underhooking their extended arm",
+    "explanation": "An extended arm in side control is perfectly positioned for a kimura grip. Underhooking and controlling their wrist gives you dominant shoulder pressure.",
+    "difficulty": 2,
+    "coach_note": "Extended arms are gifts. Recognize them and underhook quickly.",
+    "tags": [
+      "submissions"
+    ]
+  },
+  {
+    "id": "q-sub-17",
+    "topic": "submissions",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "Your opponent defends your triangle attempt by turning their body toward you. Should you still complete the triangle or try something else?",
+    "options": [
+      "Still complete the triangle; it will work from any angle",
+      "Switch to an armbar since their arm is now accessible"
+    ],
+    "correct_answer": "Switch to an armbar since their arm is now accessible",
+    "explanation": "When they turn into you to defend the triangle, they expose their arm perfectly for an armbar. Recognizing position changes allows you to flow to better submissions.",
+    "difficulty": 3,
+    "coach_note": "Submissions are connected. One defense often creates another submission setup.",
+    "tags": [
+      "submissions"
+    ]
+  },
+  {
+    "id": "q-sub-18",
+    "topic": "submissions",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "To finish a rear naked choke effectively, your forearm should be across their ___, not their jaw.",
+    "options": [
+      "neck",
+      "shoulder",
+      "chin",
+      "chest"
+    ],
+    "correct_answer": "neck",
+    "explanation": "Your forearm must compress the carotid artery on the side of the neck, not the chin. This creates the choke effect that causes the tap.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "submissions"
+    ]
+  },
+  {
+    "id": "q-sub-19",
+    "topic": "submissions",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're attempting an armbar from mount and your opponent manages to get their elbow inside your triangle. What should you do?",
+    "options": [
+      "Squeeze harder with your legs",
+      "Release and reset the position",
+      "Fall backward anyway and hope for the finish",
+      "Transition to a kimura instead"
+    ],
+    "correct_answer": "Release and reset the position",
+    "explanation": "If their elbow is inside your triangle, the armbar isn't properly set and forcing it risks injury to you or won't work. Reset and reposition for a clean submission.",
+    "difficulty": 2,
+    "coach_note": "A sloppy armbar doesn't finish. Reset and do it right.",
+    "tags": [
+      "submissions"
+    ]
+  },
+  {
+    "id": "q-sub-20",
+    "topic": "submissions",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "When setting up a guillotine choke from your guard, having your opponent's posture broken is more important than having their arm trapped.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "True",
+    "explanation": "A broken posture (head pulled down) is essential for the guillotine to work effectively. Trapping the arm is secondary to controlling their head position.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "submissions"
+    ]
+  },
+  {
+    "id": "q-sub-21",
+    "topic": "submissions",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're in your opponent's guard with good posture. They try to pull you down by grabbing your neck. What's the best response?",
+    "options": [
+      "Pull away from the grip immediately",
+      "Keep your posture and base, then begin passing",
+      "Go for a guillotine defense",
+      "Drop into side control"
+    ],
+    "correct_answer": "Keep your posture and base, then begin passing",
+    "explanation": "Maintaining posture prevents their submissions and keeps you in a dominant passing position. Their grip on your neck means their arms are occupied and can't defend the pass.",
+    "difficulty": 2,
+    "coach_note": "Good posture = good defense. Never let them pull you down.",
+    "tags": [
+      "submissions"
+    ]
+  },
+  {
+    "id": "q-sub-22",
+    "topic": "submissions",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "Your triangle attempt from guard is locked in, but your opponent is able to stack you and is putting weight on your hips. Should you continue squeezing or defend the stack?",
+    "options": [
+      "Continue squeezing because the choke is already locked",
+      "Release one leg and defend against the stack pressure"
+    ],
+    "correct_answer": "Continue squeezing because the choke is already locked",
+    "explanation": "Once a triangle is properly locked, stacking pressure doesn't matter \u2014 the choke is already being applied. Keep squeezing; they will tap.",
+    "difficulty": 3,
+    "coach_note": "A locked triangle finishes regardless of stack. Trust your setup.",
+    "tags": [
+      "submissions"
+    ]
+  },
+  {
+    "id": "q-sub-23",
+    "topic": "submissions",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "When executing an armbar from the mount position, you should grip the opponent's wrist or forearm with your ___ hand.",
+    "options": [
+      "same side",
+      "opposite side",
+      "dominant",
+      "weaker"
+    ],
+    "correct_answer": "same side",
+    "explanation": "Gripping with your same-side hand allows you to control their arm with the correct leverage as you fall back and finish the armbar.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "submissions"
+    ]
+  },
+  {
+    "id": "q-sub-24",
+    "topic": "submissions",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "If your opponent taps during a submission but you don't feel the tap, you should keep applying pressure until you're certain.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "You must release immediately when you feel any tap, even a light one. Continuing pressure after a tap is dangerous and poor mat etiquette.",
+    "difficulty": 1,
+    "coach_note": "Respect the tap. Always. Safety first.",
+    "tags": [
+      "submissions"
+    ]
+  },
+  {
+    "id": "q-sub-25",
+    "topic": "submissions",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You have side control and your opponent's head is turned away from you. You want to set up a submission. What should you consider?",
+    "options": [
+      "Their exposed neck is vulnerable to a guillotine attempt",
+      "You should pass to mount immediately",
+      "A triangle is the best option here",
+      "You cannot finish any submission from this position"
+    ],
+    "correct_answer": "Their exposed neck is vulnerable to a guillotine attempt",
+    "explanation": "When their head is turned away in side control, you can wrap around their neck from behind for a guillotine choke. The exposed neck is a clear opportunity.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "submissions"
+    ]
+  },
+  {
+    "id": "q-sub-26",
+    "topic": "submissions",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're attempting a kimura from side control, but your opponent is using their legs to bridge and create space. What should you do?",
+    "options": [
+      "Increase the kimura pressure immediately",
+      "Control their hips first to limit their bridge, then finish the kimura",
+      "Switch to an armbar",
+      "Release and restart from mount"
+    ],
+    "correct_answer": "Control their hips first to limit their bridge, then finish the kimura",
+    "explanation": "Controlling their hips removes their ability to bridge and create space, making the kimura finish much more secure and dominant.",
+    "difficulty": 2,
+    "coach_note": "Submissions flow from position. Fix the position before forcing the finish.",
+    "tags": [
+      "submissions"
+    ]
+  },
+  {
+    "id": "q-sub-27",
+    "topic": "submissions",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "In a rear naked choke, your choking arm should wrap around their neck with your ___ forming the main pressure point.",
+    "options": [
+      "wrist",
+      "bicep",
+      "forearm",
+      "palm"
+    ],
+    "correct_answer": "forearm",
+    "explanation": "Your forearm creates the main pressure against the carotid artery, while your other arm supports by gripping it. The forearm does the actual choking work.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "submissions"
+    ]
+  },
+  {
+    "id": "q-sub-28",
+    "topic": "submissions",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "Your opponent is defending a triangle choke by turning their body perpendicular to you. Is the triangle still viable or should you abandon it?",
+    "options": [
+      "The triangle is still finishable if you keep control of their head and leg",
+      "You should immediately switch to a different submission"
+    ],
+    "correct_answer": "The triangle is still finishable if you keep control of their head and leg",
+    "explanation": "Even if they turn slightly, a properly locked triangle with head and leg control can still be finished by maintaining pressure and adjusting your angle.",
+    "difficulty": 3,
+    "coach_note": "Don't panic when they move. Lock down the key controls (head and leg) and finish.",
+    "tags": [
+      "submissions"
+    ]
+  },
+  {
+    "id": "q-td-09",
+    "topic": "takedowns",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent shoots a double-leg takedown and gets their head to the side of your body. Their hands are locked around your legs. What should you do first?",
+    "options": [
+      "Immediately try to escape their grip by running backwards",
+      "Grip the back of their head and neck while keeping your hips back",
+      "Push their head down hard to the mat",
+      "Jump up and try to land on top of them"
+    ],
+    "correct_answer": "Grip the back of their head and neck while keeping your hips back",
+    "explanation": "Controlling their head prevents them from driving forward, and keeping your hips back denies them the leverage to complete the takedown.",
+    "difficulty": 2,
+    "coach_note": "Head control is your best defense against the drive \u2014 don't just rely on leg strength.",
+    "tags": [
+      "takedowns"
+    ]
+  },
+  {
+    "id": "q-td-10",
+    "topic": "takedowns",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You notice your opponent is trying to get into position for a single-leg takedown but hasn't wrapped your leg yet. They're still in the grip-fighting phase. What's your best response?",
+    "options": [
+      "Immediately pull your leg away sharply",
+      "Control their collar and wrist while stepping your leg back to create distance",
+      "Push them down by their shoulders",
+      "Stay still and wait for them to finish the setup"
+    ],
+    "correct_answer": "Control their collar and wrist while stepping your leg back to create distance",
+    "explanation": "By controlling their arm and creating space early, you prevent them from fully establishing the grip they need to execute the takedown.",
+    "difficulty": 2,
+    "coach_note": "Defense starts in grip fighting \u2014 don't let them set up cleanly.",
+    "tags": [
+      "takedowns"
+    ]
+  },
+  {
+    "id": "q-td-11",
+    "topic": "takedowns",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "When defending against a double-leg takedown, it's best to keep your weight distributed equally on both feet so you can't be knocked off balance.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "You should sit your hips back and load slightly onto your back leg to prevent the drive forward \u2014 equal weight is actually vulnerable to being bulldozed.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "takedowns"
+    ]
+  },
+  {
+    "id": "q-td-12",
+    "topic": "takedowns",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "Your opponent grabs your leg for a single-leg but you circle your hips away from them. Should you push their head down or pull their head closer to your body?",
+    "options": [
+      "Push their head down",
+      "Pull their head closer to your body"
+    ],
+    "correct_answer": "Pull their head closer to your body",
+    "explanation": "Pulling their head in controls their posture and prevents them from driving; pushing them away actually gives them space to finish the takedown.",
+    "difficulty": 2,
+    "coach_note": "Pulling breaks their posture and keeps them off-balance.",
+    "tags": [
+      "takedowns"
+    ]
+  },
+  {
+    "id": "q-td-13",
+    "topic": "takedowns",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "During a sprawl defense against a double-leg, you shoot your legs back and your chest stays ___ to their back.",
+    "options": [
+      "above",
+      "away from",
+      "close to",
+      "beside"
+    ],
+    "correct_answer": "close to",
+    "explanation": "Staying tight to their back maintains control and prevents them from getting their head up to drive forward.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "takedowns"
+    ]
+  },
+  {
+    "id": "q-td-14",
+    "topic": "takedowns",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent reaches for your collar in grip fighting. They're trying to establish a clinch. What should you do with your arm?",
+    "options": [
+      "Let them take the collar and focus on their hips",
+      "Post your hand on their shoulder to create distance",
+      "Control their wrist and post it to the side to deny the grip",
+      "Pull your head back as far as possible"
+    ],
+    "correct_answer": "Control their wrist and post it to the side to deny the grip",
+    "explanation": "Controlling their wrist prevents them from establishing the collar grip, which is essential for setting up throws and takedowns.",
+    "difficulty": 2,
+    "coach_note": "Wrist control in grip fighting prevents clinch dominance.",
+    "tags": [
+      "takedowns"
+    ]
+  },
+  {
+    "id": "q-td-15",
+    "topic": "takedowns",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "If your opponent shoots a takedown and you're falling, it's usually better to land on your side rather than your back.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "True",
+    "explanation": "Landing on your side helps you maintain guard position and defend better than being flat on your back with them in side control.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "takedowns"
+    ]
+  },
+  {
+    "id": "q-td-16",
+    "topic": "takedowns",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're in grip fighting and your opponent's hand is on your chest. They're starting to load weight forward. What should your first defensive action be?",
+    "options": [
+      "Strike them to create distance",
+      "Grab their hand and pull it away sharply",
+      "Post your hand on their wrist or arm to prevent them from loading deeper",
+      "Move your feet forward to close the distance"
+    ],
+    "correct_answer": "Post your hand on their wrist or arm to prevent them from loading deeper",
+    "explanation": "A posted hand controls their arm before they can create a strong setup, stopping the takedown attempt early.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "takedowns"
+    ]
+  },
+  {
+    "id": "q-td-17",
+    "topic": "takedowns",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "When defending a single-leg, you should step across your opponent's body with your ___ leg to avoid getting swept.",
+    "options": [
+      "same side",
+      "opposite",
+      "rear",
+      "front"
+    ],
+    "correct_answer": "opposite",
+    "explanation": "Stepping your opposite leg across their body (the leg they're not attacking) prevents them from rotating you over.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "takedowns"
+    ]
+  },
+  {
+    "id": "q-td-18",
+    "topic": "takedowns",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "Your opponent shoots a double-leg and gets low. Should you circle your hips to the left or right?",
+    "options": [
+      "Circle away from their head position",
+      "Circle toward their head position"
+    ],
+    "correct_answer": "Circle away from their head position",
+    "explanation": "Circling away creates space and denies them the angle to drive through; circling toward them brings you closer to the takedown.",
+    "difficulty": 3,
+    "coach_note": "Always circle to the open side \u2014 away from where their head is.",
+    "tags": [
+      "takedowns"
+    ]
+  },
+  {
+    "id": "q-td-19",
+    "topic": "takedowns",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "During grip fighting, you should always keep both hands active and high to control your opponent's arms.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "You need at least one hand ready to post on the mat or their body for balance and base \u2014 not every hand needs to be 'active' on their arms.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "takedowns"
+    ]
+  },
+  {
+    "id": "q-td-20",
+    "topic": "takedowns",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent is circling with their hands up, looking for an opening to shoot. You want to prevent them from getting close enough. What should you do?",
+    "options": [
+      "Charge forward and push them back repeatedly",
+      "Maintain distance and use foot movement while keeping your hands ready to defend",
+      "Stand completely still so they can't approach",
+      "Constantly circle in the same direction they're circling"
+    ],
+    "correct_answer": "Maintain distance and use foot movement while keeping your hands ready to defend",
+    "explanation": "Smart footwork keeps distance while staying ready to react to their entry; charging and static defense are both problematic.",
+    "difficulty": 2,
+    "coach_note": "Stay light on your feet and match their movement.",
+    "tags": [
+      "takedowns"
+    ]
+  },
+  {
+    "id": "q-td-21",
+    "topic": "takedowns",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You sprawl against a double-leg takedown, but your opponent keeps driving and pushes you into the fence or wall. Your weight is on top of them. What should you do?",
+    "options": [
+      "Stay on top of them and wait for them to tire",
+      "Let go and step back to reset",
+      "Work to transition to a front headlock or position yourself to take their back as they try to stand",
+      "Push yourself away hard to create immediate distance"
+    ],
+    "correct_answer": "Work to transition to a front headlock or position yourself to take their back as they try to stand",
+    "explanation": "When you're on top of a sprawled opponent, you should look to advance position rather than just hold or reset; a front headlock is a strong attacking position.",
+    "difficulty": 3,
+    "coach_note": "Top position in a sprawl is offensive \u2014 attack immediately.",
+    "tags": [
+      "takedowns"
+    ]
+  },
+  {
+    "id": "q-td-22",
+    "topic": "takedowns",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "When your opponent shoots a double-leg takedown, the sprawl is the only effective defense.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "While a sprawl is one strong defense, you can also use head and collar control, hip movement, or underhooks to stop the takedown.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "takedowns"
+    ]
+  },
+  {
+    "id": "q-td-23",
+    "topic": "takedowns",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "Your opponent is in the process of setting up a single-leg. They have your leg wrapped and are starting to elevate your foot off the ground. Your hips haven't been fully broken down yet. What should you prioritize?",
+    "options": [
+      "Try to pull your leg free by kicking",
+      "Control their head and shoulders to prevent them from driving through",
+      "Jump on one leg to escape",
+      "Fall backward to create space"
+    ],
+    "correct_answer": "Control their head and shoulders to prevent them from driving through",
+    "explanation": "Head and shoulder control stops them from completing the takedown; focusing only on leg escape won't work if they have leverage on your upper body.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "takedowns"
+    ]
+  },
+  {
+    "id": "q-td-24",
+    "topic": "takedowns",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "fillBlank",
+    "prompt": "In grip fighting, if your opponent has control of your wrist, you should ___ their grip by controlling their arm at the elbow instead.",
+    "options": [
+      "ignore",
+      "match",
+      "break",
+      "tighten"
+    ],
+    "correct_answer": "break",
+    "explanation": "Controlling their elbow arm breaks their wrist control and resets the grip-fighting position.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "takedowns"
+    ]
+  },
+  {
+    "id": "q-td-25",
+    "topic": "takedowns",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq2",
+    "prompt": "Your opponent has you in a clinch from grip fighting and is loading weight on you. Should you stay upright or bend forward at the waist?",
+    "options": [
+      "Stay upright and keep your core tight",
+      "Bend forward at the waist to match their angle"
+    ],
+    "correct_answer": "Stay upright and keep your core tight",
+    "explanation": "Staying upright preserves your posture and balance, making you harder to take down; bending forward gives them the angle they need to execute the takedown.",
+    "difficulty": 2,
+    "coach_note": null,
+    "tags": [
+      "takedowns"
+    ]
+  },
+  {
+    "id": "q-td-26",
+    "topic": "takedowns",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You're defending a takedown and your opponent is trying to break your posture by pulling you down by the collar. Where should you post your hand?",
+    "options": [
+      "On their hips to push them away",
+      "On the mat between you and them to create space and support",
+      "On their head to push it down",
+      "On their leg to prevent movement"
+    ],
+    "correct_answer": "On the mat between you and them to create space and support",
+    "explanation": "A post on the mat gives you base and prevents your posture from being broken; posting on their body is less stable.",
+    "difficulty": 2,
+    "coach_note": "A good mat post is your foundation against posture breaks.",
+    "tags": [
+      "takedowns"
+    ]
+  },
+  {
+    "id": "q-td-27",
+    "topic": "takedowns",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "trueFalse",
+    "prompt": "During a sprawl defense, your feet should stay close together to prevent your opponent from separating your legs.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "False",
+    "explanation": "Your feet should be spread apart for a wider, more stable base during a sprawl; close feet actually make you less stable.",
+    "difficulty": 1,
+    "coach_note": null,
+    "tags": [
+      "takedowns"
+    ]
+  },
+  {
+    "id": "q-td-28",
+    "topic": "takedowns",
+    "belt_level": "white",
+    "unit_id": null,
+    "format": "mcq4",
+    "prompt": "You've successfully sprawled on your opponent's double-leg attempt. They're now trying to get their legs back underneath them to stand up. What should you do?",
+    "options": [
+      "Step off and let them stand so you can reset grip fighting",
+      "Keep pressure on their back while staying heavy and ready to advance position or defend if they escape",
+      "Immediately try to take their back by sliding your arm around their neck",
+      "Push their head into the mat hard to keep them down"
+    ],
+    "correct_answer": "Keep pressure on their back while staying heavy and ready to advance position or defend if they escape",
+    "explanation": "Maintaining top pressure controls the situation and lets you react to their escape attempt; stepping off gives up your advantage.",
+    "difficulty": 2,
+    "coach_note": "Stay patient and heavy on top \u2014 control before you attack.",
+    "tags": [
+      "takedowns"
+    ]
+  }
+]
