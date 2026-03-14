@@ -177,6 +177,89 @@ final class AppStateTests: XCTestCase {
         XCTAssertTrue(sut.canRetryBeltTest)
     }
 
+    // MARK: - Adaptive Session Fetching Tests
+
+    /// When no remoteUserId is set, fetchQuestionsForSession must fall back to unit.questions.
+    func test_fetchQuestionsForSession_noUserId_returnsLocalQuestions() async {
+        // Arrange: pick the first unit that has questions
+        guard let unit = sut.units.first(where: { !$0.questions.isEmpty }) else {
+            XCTFail("Expected at least one unit with questions in SampleData")
+            return
+        }
+        // No remoteUserId is set (fresh defaults) — fallback path must fire
+
+        // Act
+        let questions = await sut.fetchQuestionsForSession(for: unit)
+
+        // Assert: falls back to the unit's local question list
+        XCTAssertFalse(questions.isEmpty, "Fallback should return unit's local questions")
+        XCTAssertEqual(
+            Set(questions.map(\.id)),
+            Set(unit.questions.map(\.id)),
+            "Fallback questions should match unit.questions"
+        )
+    }
+
+    /// When the unit has no topic, fetchQuestionsForSession must fall back to unit.questions.
+    func test_fetchQuestionsForSession_noTopic_returnsLocalQuestions() async {
+        // Arrange: create a unit with NO topicTitle but with questions
+        let localQuestion = Question(
+            id: "local-q1", unitId: "no-topic-unit", format: .mcq4,
+            prompt: "Test prompt", options: ["A", "B"], correctAnswer: "A",
+            explanation: "Because A", tags: [], difficulty: 1, sceneImageName: nil
+        )
+        let noTopicUnit = Unit(
+            id: "no-topic-unit", belt: .white, orderIndex: 99,
+            title: "No Topic Unit", description: "",
+            tags: [], isLocked: false, isCompleted: false,
+            kind: .lesson, questions: [localQuestion]
+        )
+        // No remoteUserId, no topicTitle → must fall back
+
+        // Act
+        let questions = await sut.fetchQuestionsForSession(for: noTopicUnit)
+
+        // Assert
+        XCTAssertEqual(questions.count, 1)
+        XCTAssertEqual(questions.first?.id, "local-q1")
+    }
+
+    /// sessionQuestions is nil before any session is started.
+    func test_sessionQuestions_isNilInitially() {
+        XCTAssertNil(sut.sessionQuestions)
+    }
+
+    /// After fetchQuestionsForSession, sessionQuestions is populated.
+    func test_fetchQuestionsForSession_setsSessionQuestions() async {
+        guard let unit = sut.units.first(where: { !$0.questions.isEmpty }) else {
+            XCTFail("Expected at least one unit with questions")
+            return
+        }
+
+        _ = await sut.fetchQuestionsForSession(for: unit)
+
+        XCTAssertNotNil(sut.sessionQuestions, "sessionQuestions should be set after fetch")
+        XCTAssertFalse(sut.sessionQuestions!.isEmpty)
+    }
+
+    /// recordQuestionAnswers with no userId is a no-op (must not crash).
+    func test_recordQuestionAnswers_noUserId_isNoOp() {
+        // No remoteUserId — this should silently do nothing (fire-and-forget)
+        // We just verify no crash and the method exists
+        let answers: [(questionId: String, wasWrong: Bool)] = [
+            ("q1", false), ("q2", true)
+        ]
+        sut.recordQuestionAnswers(answers)
+        // If we reach here without crashing, the test passes
+        XCTAssertTrue(true)
+    }
+
+    /// recordQuestionAnswers with empty list is a no-op (must not crash).
+    func test_recordQuestionAnswers_emptyList_isNoOp() {
+        sut.recordQuestionAnswers([])
+        XCTAssertTrue(true)
+    }
+
     // MARK: - Sequential Unlock Does Not Touch Belt Test
 
     func test_completeLastContentUnit_doesNotUnlockBeltTestSequentially() {

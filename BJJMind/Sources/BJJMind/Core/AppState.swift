@@ -11,6 +11,10 @@ final class AppState: ObservableObject {
     @Published var language: String = LanguageManager.shared.code
     @Published var isLoadingContent: Bool = false
 
+    /// Questions fetched for the current (or most recently started) session.
+    /// `nil` before any session is started. Reset to `nil` when a new session begins.
+    @Published private(set) var sessionQuestions: [Question]? = nil
+
     /// Stable Supabase UUID for this device, persisted in UserDefaults.
     private(set) var remoteUserId: UUID? {
         get {
@@ -202,6 +206,66 @@ final class AppState: ObservableObject {
     func setLanguage(_ code: String) {
         LanguageManager.shared.setLanguage(code)
         language = code
+    }
+
+    // MARK: - Adaptive Session
+
+    /// Fetches questions for a session using adaptive ordering when possible.
+    ///
+    /// If the unit has a `topicTitle` and a `remoteUserId` is available, questions are
+    /// fetched from Supabase and ordered adaptively (unseen → weak → ok, easiest-first within
+    /// each group). On any failure — network error, empty result, missing topic, or no userId —
+    /// the method falls back transparently to the unit's local question list.
+    ///
+    /// The fetched questions are also stored in `sessionQuestions` so views can read them
+    /// without re-fetching.
+    ///
+    /// - Parameter unit: The unit the user is about to start.
+    /// - Returns: The adaptive question list, or the unit's local questions as fallback.
+    @discardableResult
+    func fetchQuestionsForSession(for unit: Unit) async -> [Question] {
+        // Reset any previously stored session questions
+        sessionQuestions = nil
+
+        guard let topic = unit.topicTitle, let userId = remoteUserId else {
+            // Offline or anonymous: fall back to unit's embedded questions
+            sessionQuestions = unit.questions
+            return unit.questions
+        }
+
+        do {
+            let fetched = try await SupabaseService.shared.fetchQuestionsForSession(
+                topic: topic,
+                beltLevel: user.belt.rawValue,
+                userId: userId,
+                count: 8
+            )
+            // Guard against an empty remote result (e.g. topic not yet seeded in DB)
+            let result = fetched.isEmpty ? unit.questions : fetched
+            sessionQuestions = result
+            return result
+        } catch {
+            print("[AppState] fetchQuestionsForSession failed, using local fallback: \(error)")
+            sessionQuestions = unit.questions
+            return unit.questions
+        }
+    }
+
+    /// Records per-question answer stats after a session completes.
+    ///
+    /// Fire-and-forget: runs in a background `Task` so it never blocks the UI.
+    /// Silently skipped when no `remoteUserId` is available (offline / anonymous).
+    ///
+    /// - Parameter answers: Pairs of (questionId, wasWrong) for every question answered.
+    func recordQuestionAnswers(_ answers: [(questionId: String, wasWrong: Bool)]) {
+        guard let userId = remoteUserId, !answers.isEmpty else { return }
+        Task {
+            for (questionId, wasWrong) in answers {
+                try? await SupabaseService.shared.upsertQuestionStats(
+                    userId: userId, questionId: questionId, wasWrong: wasWrong
+                )
+            }
+        }
     }
 
     func passBeltTest() {
