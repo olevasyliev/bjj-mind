@@ -337,25 +337,19 @@ UNIT_QUESTIONS = {
                "bt-td-01","bt-td-02"],
 }
 
-REVIEW_EXAM_UNITS = {
-    "wb-mr-gg","wb-me-gg","wb-mr-tg","wb-me-tg","wb-mr-bs","wb-me-bs","wb-bt1"
-}
-
-
 def build_question_dicts() -> list:
     rows = []
     seen = set()
     for unit_id, q_ids in UNIT_QUESTIONS.items():
-        for i, src_qid in enumerate(q_ids):
+        for src_qid in q_ids:
+            if src_qid in seen:
+                continue
+            seen.add(src_qid)
             d = QUESTION_DATA[src_qid]
             fmt, prompt, opts, correct, expl, tags, diff, note = d
-            new_id = f"{unit_id}-{i+1:02d}"
-            if new_id in seen:
-                continue
-            seen.add(new_id)
             rows.append({
-                "id": new_id,
-                "unit_id": unit_id,
+                "id": src_qid,
+                "unit_id": None,
                 "format": fmt,
                 "prompt": prompt,
                 "options": opts,

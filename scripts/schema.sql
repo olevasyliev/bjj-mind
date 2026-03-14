@@ -53,3 +53,7 @@ CREATE POLICY "Users can delete own question stats"
     ON user_question_stats
     FOR DELETE
     USING (auth.uid() = user_id);
+
+-- ── 4. INDEXES ────────────────────────────────────────────────────────────────
+
+CREATE INDEX IF NOT EXISTS idx_questions_topic ON questions(topic, belt_level);
