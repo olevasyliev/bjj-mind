@@ -5,22 +5,20 @@ struct WelcomeView: View {
     let onContinue: () -> Void
 
     var body: some View {
-        let _ = appState.language  // observe language for re-render
+        let _ = appState.language
         ZStack(alignment: .topTrailing) {
+            Color.screenBg.ignoresSafeArea()
+
             VStack(spacing: 0) {
                 Spacer()
 
-                ZStack {
-                    RoundedRectangle(cornerRadius: 40)
-                        .fill(Color.brandVeryPale)
-                        .frame(width: 200, height: 200)
-                        .shadow(color: Color.brand.opacity(0.22), radius: 20, x: 0, y: 16)
-                    Text("🥋")
-                        .font(.system(size: 90))
-                }
-                .padding(.bottom, 32)
+                Image("gi-ghost")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 420)
+                    .padding(.bottom, 8)
 
-                VStack(spacing: 8) {
+                VStack(spacing: 10) {
                     Text("BJJ Mind")
                         .font(.appTitle)
                         .foregroundColor(.brand)
@@ -31,9 +29,8 @@ struct WelcomeView: View {
                         .foregroundColor(.textSecondary)
                         .multilineTextAlignment(.center)
                         .lineSpacing(4)
+                        .padding(.horizontal, 40)
                 }
-                .padding(.horizontal, 32)
-                .padding(.bottom, 28)
 
                 Spacer()
 
@@ -49,6 +46,5 @@ struct WelcomeView: View {
                 .padding(.top, 56)
                 .padding(.trailing, 24)
         }
-        .background(Color.screenBg.ignoresSafeArea())
     }
 }

@@ -15,36 +15,27 @@ struct AhaMomentView: View {
 
             Spacer()
 
-            // Mascot
-            ZStack {
-                RoundedRectangle(cornerRadius: 32)
-                    .fill(Color.brandVeryPale)
-                    .frame(width: 100, height: 100)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 32)
-                            .strokeBorder(Color.xpBorder, lineWidth: 2.5)
-                    )
-                    .shadow(color: Color.brandPale, radius: 0, x: 0, y: 6)
-                Text("🥋")
-                    .font(.system(size: 52))
-            }
-            .padding(.bottom, 20)
+            Image("gi-ghost")
+                .resizable()
+                .scaledToFit()
+                .frame(height: 260)
+                .padding(.bottom, 4)
 
             Text(L10n.Aha.title)
                 .font(.screenTitle)
                 .foregroundColor(.textPrimary)
                 .tracking(-0.5)
-                .padding(.bottom, 6)
+                .padding(.bottom, 4)
 
             Text(L10n.Aha.subtitle)
                 .font(.bodyMd)
                 .foregroundColor(.textMuted)
-                .padding(.bottom, 24)
+                .padding(.bottom, 20)
 
-            // Insight strips
+            // Insight cards
             VStack(spacing: 10) {
-                ForEach(L10n.Aha.insights, id: \.text) { item in
-                    InsightStrip(emoji: item.emoji, text: item.text)
+                ForEach(Array(L10n.Aha.insights.enumerated()), id: \.offset) { idx, item in
+                    InsightCard(emoji: item.emoji, text: item.text, index: idx)
                 }
             }
             .padding(.horizontal, 20)
@@ -59,27 +50,42 @@ struct AhaMomentView: View {
     }
 }
 
-private struct InsightStrip: View {
+private struct InsightCard: View {
     let emoji: String
     let text: String
+    let index: Int
+
+    private let iconBg: [Color] = [
+        .brandPale,
+        .errorPale,
+        .goldPale,
+        .successPale,
+    ]
 
     var body: some View {
-        HStack(spacing: 12) {
-            Text(emoji)
-                .font(.system(size: 24))
-                .frame(width: 24)
+        HStack(spacing: 14) {
+            ZStack {
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(iconBg[index % 4])
+                    .frame(width: 48, height: 48)
+                Text(emoji)
+                    .font(.system(size: 24))
+            }
+
             Text(text)
-                .font(.nunito(13, weight: .bold))
-                .foregroundColor(.brandDark)
+                .font(.nunito(14, weight: .bold))
+                .foregroundColor(.textPrimary)
                 .lineSpacing(3)
+                .fixedSize(horizontal: false, vertical: true)
+
             Spacer()
         }
         .padding(.horizontal, 16)
-        .padding(.vertical, 12)
-        .background(Color.brandVeryPale)
+        .padding(.vertical, 14)
+        .background(Color.cardBg)
         .overlay(
             RoundedRectangle(cornerRadius: 16)
-                .strokeBorder(Color.xpBorder, lineWidth: 1.5)
+                .strokeBorder(Color.borderMedium, lineWidth: 1.5)
         )
         .clipShape(RoundedRectangle(cornerRadius: 16))
     }

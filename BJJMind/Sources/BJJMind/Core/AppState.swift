@@ -132,9 +132,10 @@ final class AppState: ObservableObject {
 
     // MARK: - Actions
 
-    func completeOnboarding(skillLevel: SkillLevel, clubInfo: ClubInfo?) {
-        user.belt = .white
+    func completeOnboarding(belt: Belt, skillLevel: SkillLevel, struggles: [String], clubInfo: ClubInfo?) {
+        user.belt = belt
         user.skillLevel = skillLevel
+        user.weakTags = struggles
         user.clubInfo = clubInfo
         defaults.set(true, forKey: "onboardingComplete")
         persistUser()

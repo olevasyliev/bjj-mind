@@ -1,4 +1,5 @@
 import SwiftUI
+import AudioToolbox
 
 struct SessionView: View {
     @StateObject private var engine: SessionEngine
@@ -10,13 +11,14 @@ struct SessionView: View {
 
     private let passThreshold = 0.7
 
-    init(unit: Unit, isBeltTest: Bool = false) {
+    init(unit: Unit, isBeltTest: Bool = false, streak: Int = 0) {
         self.unit = unit
         self.isBeltTest = isBeltTest
         _engine = StateObject(wrappedValue: SessionEngine(
             questions: unit.questions,
             isBeltTest: isBeltTest,
-            coachIntro: isBeltTest ? nil : unit.coachIntro
+            coachIntro: isBeltTest ? nil : unit.coachIntro,
+            streak: streak
         ))
     }
 
@@ -320,15 +322,97 @@ private struct MCQ4GridView: View {
     var body: some View {
         LazyVGrid(columns: columns, spacing: 10) {
             ForEach(Array(options.enumerated()), id: \.offset) { index, option in
-                OptionButton(
+                MCQ4OptionButton(
                     letter: String(UnicodeScalar(65 + index)!),
                     text: option,
                     state: .normal
                 ) {
                     onSubmit(option)
                 }
-                .frame(maxHeight: .infinity)
             }
+        }
+    }
+}
+
+private struct MCQ4OptionButton: View {
+    let letter: String
+    let text: String
+    let state: OptionState
+    let onTap: () -> Void
+
+    @State private var isPressed = false
+
+    var body: some View {
+        VStack(spacing: 10) {
+            Text(letter)
+                .font(.nunito(15, weight: .black))
+                .foregroundColor(letterColor)
+                .frame(width: 32, height: 32)
+                .background(letterBg)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+
+            Text(text)
+                .font(.nunito(14, weight: .bold))
+                .foregroundColor(textColor)
+                .multilineTextAlignment(.center)
+                .lineSpacing(2)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(.horizontal, 10)
+        .padding(.vertical, 14)
+        .background(isPressed ? Color.brandVeryPale : cardBg)
+        .overlay(
+            RoundedRectangle(cornerRadius: 18)
+                .strokeBorder(isPressed ? Color.brand : borderColor, lineWidth: 2.5)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 18))
+        .scaleEffect(isPressed ? 0.97 : 1.0)
+        .animation(.easeOut(duration: 0.1), value: isPressed)
+        .simultaneousGesture(
+            DragGesture(minimumDistance: 0)
+                .onChanged { _ in isPressed = true }
+                .onEnded { _ in
+                    isPressed = false
+                    playAnswerFeedback()
+                    onTap()
+                }
+        )
+    }
+
+    private var letterBg: Color {
+        switch state {
+        case .normal:  return Color.brandVeryPale
+        case .correct: return Color.successPale
+        case .wrong:   return Color.errorPale
+        }
+    }
+    private var letterColor: Color {
+        switch state {
+        case .normal:  return .brand
+        case .correct: return Color(hex: "#16a34a")
+        case .wrong:   return .error
+        }
+    }
+    private var textColor: Color {
+        switch state {
+        case .normal:  return .textPrimary
+        case .correct: return Color(hex: "#15803d")
+        case .wrong:   return Color(hex: "#dc2626")
+        }
+    }
+    private var borderColor: Color {
+        switch state {
+        case .normal:  return Color.brandPale
+        case .correct: return Color.successLight
+        case .wrong:   return Color.errorLight
+        }
+    }
+    private var cardBg: Color {
+        switch state {
+        case .normal:  return .white
+        case .correct: return Color(hex: "#f0fdf4")
+        case .wrong:   return Color(hex: "#fef2f2")
         }
     }
 }
@@ -375,6 +459,13 @@ private struct FlowLayout: Layout {
     }
 }
 
+// MARK: - Haptic + Sound
+
+private func playAnswerFeedback() {
+    UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+    AudioServicesPlaySystemSound(1104)
+}
+
 // MARK: - Option Button
 
 enum OptionState { case normal, correct, wrong }
@@ -385,34 +476,43 @@ struct OptionButton: View {
     let state: OptionState
     let onTap: () -> Void
 
+    @State private var isPressed = false
+
     var body: some View {
-        Button(action: onTap) {
-            HStack(spacing: 14) {
-                // Letter badge
-                Text(letter)
-                    .font(.optionLetter)
-                    .foregroundColor(letterColor)
-                    .frame(width: 36, height: 36)
-                    .background(letterBg)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
+        HStack(spacing: 14) {
+            Text(letter)
+                .font(.optionLetter)
+                .foregroundColor(letterColor)
+                .frame(width: 36, height: 36)
+                .background(letterBg)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
 
-                Text(text)
-                    .font(.optionText)
-                    .foregroundColor(textColor)
-                    .multilineTextAlignment(.leading)
+            Text(text)
+                .font(.optionText)
+                .foregroundColor(textColor)
+                .multilineTextAlignment(.leading)
 
-                Spacer()
-            }
-            .padding(.horizontal, 16)
-            .frame(minHeight: 62)
-            .background(cardBg)
-            .overlay(
-                RoundedRectangle(cornerRadius: 18)
-                    .strokeBorder(borderColor, lineWidth: 2.5)
-            )
-            .clipShape(RoundedRectangle(cornerRadius: 18))
+            Spacer()
         }
-        .buttonStyle(.plain)
+        .padding(.horizontal, 16)
+        .frame(minHeight: 62)
+        .background(isPressed ? Color.brandVeryPale : cardBg)
+        .overlay(
+            RoundedRectangle(cornerRadius: 18)
+                .strokeBorder(isPressed ? Color.brand : borderColor, lineWidth: 2.5)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 18))
+        .scaleEffect(isPressed ? 0.97 : 1.0)
+        .animation(.easeOut(duration: 0.1), value: isPressed)
+        .simultaneousGesture(
+            DragGesture(minimumDistance: 0)
+                .onChanged { _ in isPressed = true }
+                .onEnded { _ in
+                    isPressed = false
+                    playAnswerFeedback()
+                    onTap()
+                }
+        )
     }
 
     private var letterBg: Color {
@@ -465,14 +565,10 @@ private struct CoachIntroCard: View {
             VStack(spacing: 32) {
                 Spacer()
 
-                ZStack {
-                    RoundedRectangle(cornerRadius: 32)
-                        .fill(Color.brandVeryPale)
-                        .frame(width: 120, height: 120)
-                        .shadow(color: Color.brand.opacity(0.2), radius: 16, x: 0, y: 8)
-                    Text("👨‍🏫")
-                        .font(.system(size: 60))
-                }
+                Image("marco")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200, height: 200)
 
                 VStack(spacing: 12) {
                     Text(L10n.Coach.name.uppercased())

@@ -146,6 +146,49 @@ final class SessionEngineTests: XCTestCase {
         XCTAssertGreaterThan(engine.xpEarned, 0)
     }
 
+    // MARK: - Streak XP Multiplier
+    // All 3 questions answered correctly → base = 3*10 + 5hearts*2 = 40
+
+    func test_xpEarned_streak0HasNoMultiplier() {
+        let engine = SessionEngine(questions: questions, streak: 0)
+        engine.submitAnswer("A"); engine.advance()
+        engine.submitAnswer("True"); engine.advance()
+        engine.submitAnswer("X"); engine.advance()
+        XCTAssertEqual(engine.xpEarned, 40) // base 40, ×1.0
+    }
+
+    func test_xpEarned_streak1Applies1_1Multiplier() {
+        let engine = SessionEngine(questions: questions, streak: 1)
+        engine.submitAnswer("A"); engine.advance()
+        engine.submitAnswer("True"); engine.advance()
+        engine.submitAnswer("X"); engine.advance()
+        XCTAssertEqual(engine.xpEarned, 44) // Int(40 * 1.1) = 44
+    }
+
+    func test_xpEarned_streak3Applies1_25Multiplier() {
+        let engine = SessionEngine(questions: questions, streak: 3)
+        engine.submitAnswer("A"); engine.advance()
+        engine.submitAnswer("True"); engine.advance()
+        engine.submitAnswer("X"); engine.advance()
+        XCTAssertEqual(engine.xpEarned, 50) // Int(40 * 1.25) = 50
+    }
+
+    func test_xpEarned_streak7Applies1_5Multiplier() {
+        let engine = SessionEngine(questions: questions, streak: 7)
+        engine.submitAnswer("A"); engine.advance()
+        engine.submitAnswer("True"); engine.advance()
+        engine.submitAnswer("X"); engine.advance()
+        XCTAssertEqual(engine.xpEarned, 60) // Int(40 * 1.5) = 60
+    }
+
+    func test_xpEarned_streak20StillApplies1_5Multiplier() {
+        let engine = SessionEngine(questions: questions, streak: 20)
+        engine.submitAnswer("A"); engine.advance()
+        engine.submitAnswer("True"); engine.advance()
+        engine.submitAnswer("X"); engine.advance()
+        XCTAssertEqual(engine.xpEarned, 60) // capped at 1.5
+    }
+
     // MARK: - showingIntro state
 
     func test_init_withCoachIntro_stateIsShowingIntro() {

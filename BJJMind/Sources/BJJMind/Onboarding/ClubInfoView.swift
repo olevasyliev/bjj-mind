@@ -93,11 +93,9 @@ struct ClubInfoView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            AppProgressBar(progress: 0.7)
-                .padding(.horizontal, 24)
-                .padding(.top, 52)
+            Spacer()
 
-            VStack(alignment: .leading, spacing: 6) {
+            VStack(spacing: 6) {
                 Text(L10n.ClubInfoL10n.title)
                     .font(.sectionTitle)
                     .foregroundColor(.textPrimary)
@@ -105,10 +103,9 @@ struct ClubInfoView: View {
                 Text(L10n.ClubInfoL10n.subtitle)
                     .font(.bodyMd)
                     .foregroundColor(.textMuted)
+                    .multilineTextAlignment(.center)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.horizontal, 24)
-            .padding(.top, 36)
+            .padding(.horizontal, 28)
             .padding(.bottom, 24)
 
             VStack(spacing: 12) {

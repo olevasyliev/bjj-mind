@@ -172,8 +172,10 @@
 "kat_intro.eyebrow" = "Meet your rival";
 "kat_intro.name" = "Kat";
 "kat_intro.record" = "Blue Belt · 847 wins";
-"kat_intro.message.beginner" = "A fresh white belt. Don't worry, we all started somewhere.";
-"kat_intro.message.intermediate" = "Another white belt. Let's see if you actually know anything... or if you just watch YouTube.";
-"kat_intro.message.advanced" = "Okay, you've got some mat time. Let's find out if it shows.";
+"kat_intro.message.white" = "Another white belt. Let's see if you actually know anything... or if you just watch YouTube.";
+"kat_intro.message.blue" = "A blue belt. Okay, you've got some mat time. Let's see how you actually think.";
+"kat_intro.message.purple" = "Purple belt showing up. Alright. I'll be paying attention.";
+"kat_intro.message.brown" = "A brown belt? This should be interesting. Don't disappoint me.";
+"kat_intro.message.black" = "Black belt in the building. Bold of you to show up.";
 "kat_intro.cta" = "I'll prove it";
 "kat_intro.unlock_note" = "vs Kat matches unlock after your first lesson";

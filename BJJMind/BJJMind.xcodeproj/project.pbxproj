@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,10 +15,12 @@
 		25AD64B0B59D6D0B9114C288 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1480FB75F0887DA479BC0DD /* Nunito-SemiBold.ttf */; };
 		33AE19D2AFFBF2885701E18B /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B8DCE0881078EC425B8C73 /* FeedbackView.swift */; };
 		377166205E99D03D82E86FF5 /* AhaMomentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD6EEDA667AEB0FBE721EA5 /* AhaMomentView.swift */; };
+		3789620A4A399906954B59BB /* StrugglesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8C4C35CE404C51846062B /* StrugglesView.swift */; };
 		4426095B2CF804430A3A6B4A /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0873A43D763EE480C355E72 /* ModelTests.swift */; };
 		4D97A62387F5569A22FEE2D5 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C6B01CF49966F1854B9EEC /* LanguageManager.swift */; };
 		55814374DA587BF0F18E2E04 /* AppStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B71981ACC4153E76E5E9DB /* AppStateTests.swift */; };
 		58B12AD6D706D3761DEEE98F /* SupabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F951EECB1FAF0C66FBB3 /* SupabaseService.swift */; };
+		609E4A34EDC2E69F899C0949 /* BeltSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B25329B8331DF0CF194DEE /* BeltSelectView.swift */; };
 		63637ABFF5B30800253E3EDA /* BeltTestViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2988D1C00962FB4D915903F /* BeltTestViews.swift */; };
 		66083351B6A47F1BCA5F590F /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAF625C9C12C1D0878A2758 /* SampleData.swift */; };
 		69713C62884492C9820CAFA0 /* ClubInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297E3F50F4F260B6157D0F33 /* ClubInfoView.swift */; };
@@ -64,12 +66,14 @@
 		1022009DE91D79734D44F01D /* SessionEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionEngineTests.swift; sourceTree = "<group>"; };
 		11B7C552BE8EDA878A2C21CD /* BJJMindApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BJJMindApp.swift; sourceTree = "<group>"; };
 		11C6B01CF49966F1854B9EEC /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
+		12B25329B8331DF0CF194DEE /* BeltSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltSelectView.swift; sourceTree = "<group>"; };
 		16C37E87887F8522AB2EE1B9 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		1AB8C4C35CE404C51846062B /* StrugglesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrugglesView.swift; sourceTree = "<group>"; };
 		2329EF0D26291969A12F81D7 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		26A47F00194B779CBA8A7479 /* SampleData_ES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData_ES.swift; sourceTree = "<group>"; };
 		297E3F50F4F260B6157D0F33 /* ClubInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubInfoView.swift; sourceTree = "<group>"; };
 		3DAF625C9C12C1D0878A2758 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
-		44D184A283A3C1227616243C /* BJJMind.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = BJJMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		44D184A283A3C1227616243C /* BJJMind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BJJMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4502CFACC767B730CF6D2AE8 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		4FFC2F4B2254AFC6DF95E00B /* KatIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KatIntroView.swift; sourceTree = "<group>"; };
 		52B71981ACC4153E76E5E9DB /* AppStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateTests.swift; sourceTree = "<group>"; };
@@ -215,11 +219,13 @@
 			isa = PBXGroup;
 			children = (
 				BBD6EEDA667AEB0FBE721EA5 /* AhaMomentView.swift */,
+				12B25329B8331DF0CF194DEE /* BeltSelectView.swift */,
 				297E3F50F4F260B6157D0F33 /* ClubInfoView.swift */,
 				4FFC2F4B2254AFC6DF95E00B /* KatIntroView.swift */,
 				617E3467664C0C66AD2AA6C2 /* OnboardingFlow.swift */,
 				E67E7BB8487171ED01983123 /* SkillAssessmentEngine.swift */,
 				9C1BC2808ADB3A89017CE526 /* SkillAssessmentView.swift */,
+				1AB8C4C35CE404C51846062B /* StrugglesView.swift */,
 				B50144D844C5C1FCC1291A59 /* WelcomeView.swift */,
 			);
 			path = Onboarding;
@@ -311,9 +317,6 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
-					06DC92CE5E3E95752E5F6C85 = {
-						DevelopmentTeam = "";
-					};
 					702C5A563A3AD3612524B911 = {
 						DevelopmentTeam = "";
 					};
@@ -330,7 +333,6 @@
 			);
 			mainGroup = 91949210A29E6B8E3FAC506E;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -378,6 +380,7 @@
 				212D4737D9F7F05BBEA35002 /* AppFonts.swift in Sources */,
 				9C74848C307F20977B41A64C /* AppState.swift in Sources */,
 				DA38311EC72F8657B09B4EB5 /* BJJMindApp.swift in Sources */,
+				609E4A34EDC2E69F899C0949 /* BeltSelectView.swift in Sources */,
 				63637ABFF5B30800253E3EDA /* BeltTestViews.swift in Sources */,
 				F3A9776E947E394C340C45C3 /* CharacterMomentView.swift in Sources */,
 				69713C62884492C9820CAFA0 /* ClubInfoView.swift in Sources */,
@@ -400,6 +403,7 @@
 				EE5059447BAD6AA0A79962BE /* SessionView.swift in Sources */,
 				E61A4A9BD37AA2807E875C10 /* SkillAssessmentEngine.swift in Sources */,
 				A9D2429D5AABB405BAE16D5A /* SkillAssessmentView.swift in Sources */,
+				3789620A4A399906954B59BB /* StrugglesView.swift in Sources */,
 				BE4DBD82E217ED6205B9276A /* SummaryView.swift in Sources */,
 				58B12AD6D706D3761DEEE98F /* SupabaseService.swift in Sources */,
 				C91EDC5C1199BA1685C9AD0C /* WelcomeView.swift in Sources */,
@@ -434,6 +438,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6WL2FH49XD;
 				INFOPLIST_FILE = Sources/BJJMind/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -449,6 +454,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6WL2FH49XD;
 				INFOPLIST_FILE = Sources/BJJMind/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -493,7 +499,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_LANGUAGE = en;
 				DEVELOPMENT_TEAM = "";
@@ -508,7 +514,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.aleksei.BJJMind;
@@ -555,7 +561,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_LANGUAGE = en;
 				DEVELOPMENT_TEAM = "";
@@ -576,7 +582,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;

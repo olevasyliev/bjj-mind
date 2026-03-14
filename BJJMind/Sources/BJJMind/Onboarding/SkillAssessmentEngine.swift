@@ -43,13 +43,12 @@ enum SkillAssessmentEngine {
     /// frequency is captured for future personalisation but does not affect level.
     static func computeSkillLevel(
         duration: TrainingDuration,
-        frequency: TrainingFrequency,
-        correctCount: Int
+        frequency: TrainingFrequency
     ) -> SkillLevel {
-        if duration.rawValue >= TrainingDuration.oneToThreeYears.rawValue && correctCount == 3 {
+        if duration.rawValue >= TrainingDuration.oneToThreeYears.rawValue {
             return .advanced
         }
-        if duration == .lessThan6Months || correctCount <= 1 {
+        if duration == .lessThan6Months {
             return .beginner
         }
         return .intermediate

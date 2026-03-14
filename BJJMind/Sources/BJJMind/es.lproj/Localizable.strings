@@ -171,8 +171,10 @@
 "kat_intro.eyebrow" = "Conoce a tu rival";
 "kat_intro.name" = "Kat";
 "kat_intro.record" = "Cinturón azul · 847 victorias";
-"kat_intro.message.beginner" = "Un cinturón blanco nuevo. No te preocupes, todos empezamos en algún lugar.";
-"kat_intro.message.intermediate" = "Otro cinturón blanco. A ver si realmente sabes algo... o solo ves YouTube.";
-"kat_intro.message.advanced" = "Okay, tienes algo de tiempo en el tatami. Veamos si se nota.";
+"kat_intro.message.white" = "Otro cinturón blanco. A ver si realmente sabes algo... o solo ves YouTube.";
+"kat_intro.message.blue" = "Cinturón azul. Okay, tienes algo de tiempo en el tatami. Veamos cómo piensas.";
+"kat_intro.message.purple" = "Se presenta cinturón morado. Bien. Voy a prestar atención.";
+"kat_intro.message.brown" = "¿Cinturón marrón? Esto debería ser interesante. No me decepciones.";
+"kat_intro.message.black" = "Cinturón negro en el edificio. Qué valiente de tu parte.";
 "kat_intro.cta" = "Lo voy a demostrar";
 "kat_intro.unlock_note" = "Los combates vs Kat se desbloquean tras tu primera lección";

@@ -13,16 +13,11 @@ struct CharacterMomentView: View {
             VStack(spacing: 0) {
                 Spacer()
 
-                // Character avatar placeholder (real assets TBD)
-                ZStack {
-                    Circle()
-                        .fill(characterColor.opacity(0.15))
-                        .frame(width: 120, height: 120)
-                    Image(systemName: characterSystemImage)
-                        .font(.system(size: 56))
-                        .foregroundColor(characterColor)
-                }
-                .padding(.bottom, 20)
+                Image(characterImageName)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 220, height: 220)
+                    .padding(.bottom, 8)
 
                 // Character name
                 Text(moment?.character.displayName ?? "")
@@ -77,13 +72,13 @@ struct CharacterMomentView: View {
         }
     }
 
-    private var characterSystemImage: String {
+    private var characterImageName: String {
         switch moment?.character {
-        case .marco:    return "person.fill"
-        case .oldChen:  return "person.fill"
-        case .rex:      return "person.fill"
-        case .giGhost:  return "person.crop.circle.fill"
-        case .none:     return "person.fill"
+        case .marco:    return "marco"
+        case .oldChen:  return "old-chen"
+        case .rex:      return "rex"
+        case .giGhost:  return "gi-ghost"
+        case .none:     return "gi-ghost"
         }
     }
 }

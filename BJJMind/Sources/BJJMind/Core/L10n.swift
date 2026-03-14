@@ -75,11 +75,13 @@ enum L10n {
         static var record: String     { l("kat_intro.record") }
         static var cta: String        { l("kat_intro.cta") }
         static var unlockNote: String { l("kat_intro.unlock_note") }
-        static func message(for level: SkillLevel) -> String {
-            switch level {
-            case .beginner:     return l("kat_intro.message.beginner")
-            case .intermediate: return l("kat_intro.message.intermediate")
-            case .advanced:     return l("kat_intro.message.advanced")
+        static func message(for belt: BJJMind.Belt) -> String {
+            switch belt {
+            case .white:  return l("kat_intro.message.white")
+            case .blue:   return l("kat_intro.message.blue")
+            case .purple: return l("kat_intro.message.purple")
+            case .brown:  return l("kat_intro.message.brown")
+            case .black:  return l("kat_intro.message.black")
             }
         }
     }
