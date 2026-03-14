@@ -5,42 +5,41 @@ final class SkillAssessmentTests: XCTestCase {
 
     // MARK: - computeSkillLevel
 
-    func test_beginner_shortTraining_noCorrect() {
+    func test_beginner_shortTraining() {
         let level = SkillAssessmentEngine.computeSkillLevel(
-            duration: .lessThan6Months, frequency: .onceAWeek, correctCount: 0)
+            duration: .lessThan6Months, frequency: .onceAWeek)
         XCTAssertEqual(level, .beginner)
     }
 
-    func test_intermediate_midTraining_someCorrect() {
+    func test_intermediate_midTraining() {
         let level = SkillAssessmentEngine.computeSkillLevel(
-            duration: .sixTo18Months, frequency: .twoThreeTimes, correctCount: 2)
+            duration: .sixTo18Months, frequency: .twoThreeTimes)
         XCTAssertEqual(level, .intermediate)
     }
 
-    func test_advanced_longTraining_allCorrect() {
+    func test_advanced_longTraining() {
         let level = SkillAssessmentEngine.computeSkillLevel(
-            duration: .oneToThreeYears, frequency: .fourPlusTimes, correctCount: 3)
+            duration: .oneToThreeYears, frequency: .fourPlusTimes)
         XCTAssertEqual(level, .advanced)
     }
 
-    func test_beginner_shortDuration_overridesQuizScore() {
-        // < 6 months → beginner even with perfect quiz (design doc: "< 6 months OR 0–1 correct")
+    func test_beginner_shortDuration() {
         let level = SkillAssessmentEngine.computeSkillLevel(
-            duration: .lessThan6Months, frequency: .fourPlusTimes, correctCount: 3)
+            duration: .lessThan6Months, frequency: .fourPlusTimes)
         XCTAssertEqual(level, .beginner)
     }
 
-    func test_advanced_threePlusYears_allCorrect() {
+    func test_advanced_threePlusYears() {
         let level = SkillAssessmentEngine.computeSkillLevel(
-            duration: .threePlusYears, frequency: .fourPlusTimes, correctCount: 3)
+            duration: .threePlusYears, frequency: .fourPlusTimes)
         XCTAssertEqual(level, .advanced)
     }
 
-    func test_beginner_longTraining_zeroCorrect() {
-        // 0–1 correct always → beginner, even with 3+ years (design doc: "0–1 correct → beginner")
+    func test_intermediate_longTrainingMidFrequency() {
+        // sixTo18Months is intermediate per the engine
         let level = SkillAssessmentEngine.computeSkillLevel(
-            duration: .threePlusYears, frequency: .onceAWeek, correctCount: 0)
-        XCTAssertEqual(level, .beginner)
+            duration: .sixTo18Months, frequency: .onceAWeek)
+        XCTAssertEqual(level, .intermediate)
     }
 
     // MARK: - questionDifficulty

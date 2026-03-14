@@ -30,23 +30,23 @@ final class AppStateTests: XCTestCase {
     }
 
     func test_completeOnboarding_transitionsToMain() {
-        sut.completeOnboarding(skillLevel: .beginner, clubInfo: nil)
+        sut.completeOnboarding(belt: .white, skillLevel: .beginner, struggles: [], clubInfo: nil)
         XCTAssertEqual(sut.currentScreen, .main)
     }
 
     func test_completeOnboarding_withSkillLevel_setsLevel() {
-        sut.completeOnboarding(skillLevel: .advanced, clubInfo: nil)
+        sut.completeOnboarding(belt: .white, skillLevel: .advanced, struggles: [], clubInfo: nil)
         XCTAssertEqual(sut.user.skillLevel, .advanced)
     }
 
     func test_completeOnboarding_withClubInfo_savesClub() {
         let club = ClubInfo(country: "Brazil", city: "São Paulo", clubName: "Gracie Barra")
-        sut.completeOnboarding(skillLevel: .beginner, clubInfo: club)
+        sut.completeOnboarding(belt: .white, skillLevel: .beginner, struggles: [], clubInfo: club)
         XCTAssertEqual(sut.user.clubInfo?.clubName, "Gracie Barra")
     }
 
     func test_completeOnboarding_beltAlwaysWhite() {
-        sut.completeOnboarding(skillLevel: .advanced, clubInfo: nil)
+        sut.completeOnboarding(belt: .white, skillLevel: .advanced, struggles: [], clubInfo: nil)
         XCTAssertEqual(sut.user.belt, .white)
     }
 
@@ -90,7 +90,7 @@ final class AppStateTests: XCTestCase {
     func test_userProfile_persistsAcrossInstances() {
         let defaults = UserDefaults(suiteName: "test-\(UUID().uuidString)")!
         let state1 = AppState(defaults: defaults)
-        state1.completeOnboarding(skillLevel: .intermediate, clubInfo: nil)
+        state1.completeOnboarding(belt: .white, skillLevel: .intermediate, struggles: [], clubInfo: nil)
         state1.addXP(120)
 
         let state2 = AppState(defaults: defaults)

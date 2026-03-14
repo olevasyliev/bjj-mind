@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 63;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,10 +16,12 @@
 		33AE19D2AFFBF2885701E18B /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B8DCE0881078EC425B8C73 /* FeedbackView.swift */; };
 		377166205E99D03D82E86FF5 /* AhaMomentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD6EEDA667AEB0FBE721EA5 /* AhaMomentView.swift */; };
 		3789620A4A399906954B59BB /* StrugglesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8C4C35CE404C51846062B /* StrugglesView.swift */; };
+		43A0687962023849D5DB4765 /* AdaptiveQuestionSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A03364BC79D08D158D04A0B /* AdaptiveQuestionSelector.swift */; };
 		4426095B2CF804430A3A6B4A /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0873A43D763EE480C355E72 /* ModelTests.swift */; };
 		4D97A62387F5569A22FEE2D5 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C6B01CF49966F1854B9EEC /* LanguageManager.swift */; };
 		55814374DA587BF0F18E2E04 /* AppStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B71981ACC4153E76E5E9DB /* AppStateTests.swift */; };
 		58B12AD6D706D3761DEEE98F /* SupabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F951EECB1FAF0C66FBB3 /* SupabaseService.swift */; };
+		5CDB7D80E36340BB80BCB92F /* AdaptiveQuestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED372096733C222ED5438283 /* AdaptiveQuestionTests.swift */; };
 		609E4A34EDC2E69F899C0949 /* BeltSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B25329B8331DF0CF194DEE /* BeltSelectView.swift */; };
 		63637ABFF5B30800253E3EDA /* BeltTestViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2988D1C00962FB4D915903F /* BeltTestViews.swift */; };
 		66083351B6A47F1BCA5F590F /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAF625C9C12C1D0878A2758 /* SampleData.swift */; };
@@ -73,7 +75,7 @@
 		26A47F00194B779CBA8A7479 /* SampleData_ES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData_ES.swift; sourceTree = "<group>"; };
 		297E3F50F4F260B6157D0F33 /* ClubInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubInfoView.swift; sourceTree = "<group>"; };
 		3DAF625C9C12C1D0878A2758 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
-		44D184A283A3C1227616243C /* BJJMind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BJJMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		44D184A283A3C1227616243C /* BJJMind.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = BJJMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4502CFACC767B730CF6D2AE8 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		4FFC2F4B2254AFC6DF95E00B /* KatIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KatIntroView.swift; sourceTree = "<group>"; };
 		52B71981ACC4153E76E5E9DB /* AppStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateTests.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 		78C7169986E1672733BEFCFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7C29505DEB88F51700E6BBC2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7E5837FDB73D7C29BF62D45D /* SkillAssessmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillAssessmentTests.swift; sourceTree = "<group>"; };
+		9A03364BC79D08D158D04A0B /* AdaptiveQuestionSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveQuestionSelector.swift; sourceTree = "<group>"; };
 		9A37B188946080C6A5CB3856 /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
 		9C1BC2808ADB3A89017CE526 /* SkillAssessmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillAssessmentView.swift; sourceTree = "<group>"; };
 		A167B51AA8D1167A1C0CECDD /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
@@ -107,6 +110,7 @@
 		E157714400C4AF269892BFED /* BJJMindTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = BJJMindTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2988D1C00962FB4D915903F /* BeltTestViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltTestViews.swift; sourceTree = "<group>"; };
 		E67E7BB8487171ED01983123 /* SkillAssessmentEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillAssessmentEngine.swift; sourceTree = "<group>"; };
+		ED372096733C222ED5438283 /* AdaptiveQuestionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveQuestionTests.swift; sourceTree = "<group>"; };
 		F0873A43D763EE480C355E72 /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
 		FE2C5DA939B10103B268FA25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFE9EDFF53587037D18773C9 /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -165,6 +169,7 @@
 		86D8354A1A4033AA55300BF2 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				9A03364BC79D08D158D04A0B /* AdaptiveQuestionSelector.swift */,
 				D813E1EABB947FDA9D5C6923 /* AppState.swift */,
 				A167B51AA8D1167A1C0CECDD /* L10n.swift */,
 				11C6B01CF49966F1854B9EEC /* LanguageManager.swift */,
@@ -207,6 +212,7 @@
 		C59F885C55BE52BD40265757 /* BJJMindTests */ = {
 			isa = PBXGroup;
 			children = (
+				ED372096733C222ED5438283 /* AdaptiveQuestionTests.swift */,
 				52B71981ACC4153E76E5E9DB /* AppStateTests.swift */,
 				F0873A43D763EE480C355E72 /* ModelTests.swift */,
 				1022009DE91D79734D44F01D /* SessionEngineTests.swift */,
@@ -317,6 +323,9 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
+					06DC92CE5E3E95752E5F6C85 = {
+						DevelopmentTeam = "";
+					};
 					702C5A563A3AD3612524B911 = {
 						DevelopmentTeam = "";
 					};
@@ -333,6 +342,7 @@
 			);
 			mainGroup = 91949210A29E6B8E3FAC506E;
 			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -364,6 +374,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CDB7D80E36340BB80BCB92F /* AdaptiveQuestionTests.swift in Sources */,
 				55814374DA587BF0F18E2E04 /* AppStateTests.swift in Sources */,
 				4426095B2CF804430A3A6B4A /* ModelTests.swift in Sources */,
 				B8A3A82FFE870A177C1898A2 /* SessionEngineTests.swift in Sources */,
@@ -375,6 +386,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43A0687962023849D5DB4765 /* AdaptiveQuestionSelector.swift in Sources */,
 				377166205E99D03D82E86FF5 /* AhaMomentView.swift in Sources */,
 				AF0693762093E8FF732DAA25 /* AppColors.swift in Sources */,
 				212D4737D9F7F05BBEA35002 /* AppFonts.swift in Sources */,
@@ -438,7 +450,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 6WL2FH49XD;
 				INFOPLIST_FILE = Sources/BJJMind/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -454,7 +465,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 6WL2FH49XD;
 				INFOPLIST_FILE = Sources/BJJMind/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -44,12 +44,17 @@ private struct RemoteQuestion: Decodable {
     let tags: [String]
     let difficulty: Int
     let coachNote: String?
+    // Optional fields for adaptive fetching
+    let topic: String?
+    let beltLevel: String?
 
     enum CodingKeys: String, CodingKey {
         case id, format, prompt, options, explanation, tags, difficulty
         case unitId        = "unit_id"
         case correctAnswer = "correct_answer"
         case coachNote     = "coach_note"
+        case topic
+        case beltLevel     = "belt_level"
     }
 
     var questionFormat: QuestionFormat {
@@ -89,6 +94,18 @@ struct RemoteUnitProgress: Decodable {
         case unitId      = "unit_id"
         case isCompleted = "is_completed"
         case isLocked    = "is_locked"
+    }
+}
+
+struct RemoteQuestionStat: Decodable {
+    let questionId: String
+    let timesSeen: Int
+    let timesWrong: Int
+
+    enum CodingKeys: String, CodingKey {
+        case questionId  = "question_id"
+        case timesSeen   = "times_seen"
+        case timesWrong  = "times_wrong"
     }
 }
 
@@ -229,6 +246,88 @@ actor SupabaseService {
             body: Body(user_id: userId.uuidString, unit_id: unitId,
                        xp_earned: xpEarned, accuracy: accuracy, hearts_used: heartsUsed),
             prefer: "return=minimal"
+        )
+    }
+
+    // MARK: Adaptive Question Fetching
+
+    /// Fetches questions for a session, ordered adaptively based on user's history.
+    ///
+    /// Priority: never seen → weak (timesWrong ≥ 2) → seen-but-ok.
+    /// Within each group, easier questions come first (difficulty ascending).
+    ///
+    /// - Parameters:
+    ///   - topic:     The BJJ topic slug (e.g. "guard-passing").
+    ///   - beltLevel: The belt level (e.g. "white").
+    ///   - userId:    The authenticated user's UUID.
+    ///   - count:     Maximum number of questions to return.
+    func fetchQuestionsForSession(topic: String, beltLevel: String, userId: UUID, count: Int) async throws -> [Question] {
+        // 1. Fetch all questions for this topic + belt level
+        let encodedTopic = topic.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? topic
+        let encodedBelt  = beltLevel.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? beltLevel
+        let remoteQuestions: [RemoteQuestion] = try await get(
+            [RemoteQuestion].self,
+            "/questions?topic=eq.\(encodedTopic)&belt_level=eq.\(encodedBelt)&order=id"
+        )
+        let questions = remoteQuestions.map { $0.toQuestion() }
+
+        guard !questions.isEmpty else { return [] }
+
+        // 2. Fetch user stats for these question IDs
+        let ids = questions.map { $0.id }.joined(separator: ",")
+        let remoteStats: [RemoteQuestionStat] = try await get(
+            [RemoteQuestionStat].self,
+            "/user_question_stats?user_id=eq.\(userId.uuidString)&question_id=in.(\(ids))&select=question_id,times_seen,times_wrong"
+        )
+        let stats = remoteStats.map { QuestionStat(questionId: $0.questionId, timesSeen: $0.timesSeen, timesWrong: $0.timesWrong) }
+
+        // 3. Sort adaptively and return the requested slice
+        return AdaptiveQuestionSelector.select(from: questions, stats: stats, count: count)
+    }
+
+    /// Records or increments question stats for a user after a session.
+    ///
+    /// Fetches the existing stat (if any), increments in memory, then upserts.
+    ///
+    /// - Parameters:
+    ///   - userId:     The authenticated user's UUID.
+    ///   - questionId: The question that was answered.
+    ///   - wasSeen:    Always true when called after a session.
+    ///   - wasWrong:   Whether the user answered incorrectly.
+    func upsertQuestionStats(userId: UUID, questionId: String, wasSeen: Bool, wasWrong: Bool) async throws {
+        // Fetch current stat (may not exist)
+        let existing: [RemoteQuestionStat] = try await get(
+            [RemoteQuestionStat].self,
+            "/user_question_stats?user_id=eq.\(userId.uuidString)&question_id=eq.\(questionId)&select=question_id,times_seen,times_wrong"
+        )
+
+        let currentSeen  = existing.first?.timesSeen  ?? 0
+        let currentWrong = existing.first?.timesWrong ?? 0
+
+        let newSeen  = currentSeen  + (wasSeen  ? 1 : 0)
+        let newWrong = currentWrong + (wasWrong ? 1 : 0)
+
+        struct Body: Encodable {
+            let user_id: String
+            let question_id: String
+            let times_seen: Int
+            let times_wrong: Int
+            let last_seen_at: String
+        }
+
+        let iso8601 = ISO8601DateFormatter()
+        let now = iso8601.string(from: Date())
+
+        _ = try await post(
+            path: "/user_question_stats?on_conflict=user_id,question_id",
+            body: Body(
+                user_id: userId.uuidString,
+                question_id: questionId,
+                times_seen: newSeen,
+                times_wrong: newWrong,
+                last_seen_at: now
+            ),
+            prefer: "return=minimal,resolution=merge-duplicates"
         )
     }
 
