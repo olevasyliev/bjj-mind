@@ -101,6 +101,7 @@ final class AppState: ObservableObject {
                 coachIntro: b.coachIntro,
                 sectionTitle: b.sectionTitle,
                 topicTitle: b.topicTitle,
+                topic: b.topic,
                 lessonIndex: b.lessonIndex,
                 lessonTotal: b.lessonTotal,
                 characterMoment: b.characterMoment
@@ -227,7 +228,7 @@ final class AppState: ObservableObject {
         // Reset any previously stored session questions
         sessionQuestions = nil
 
-        guard let topic = unit.topicTitle, let userId = remoteUserId else {
+        guard let topic = unit.topic, let userId = remoteUserId else {
             // Offline or anonymous: fall back to unit's embedded questions
             sessionQuestions = unit.questions
             return unit.questions

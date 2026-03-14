@@ -125,7 +125,10 @@ private struct SessionEngineView: View {
                         dismiss()
                     })
                 } else {
-                    GameOverView(onDone: { dismiss() })
+                    GameOverView(onDone: {
+                        appState.recordQuestionAnswers(engine.answeredQuestions)
+                        dismiss()
+                    })
                 }
             }
         }

@@ -14,13 +14,14 @@ private struct RemoteUnit: Decodable {
     let kind: String?
     let sectionTitle: String?
     let topicTitle: String?
+    let topic: String?         // BJJ topic slug (e.g. "guard_passing") — used for adaptive queries
     let lessonIndex: Int?
     let lessonTotal: Int?
     let characterName: String?
     let characterMessage: String?
 
     enum CodingKeys: String, CodingKey {
-        case id, belt, title, description, tags, kind
+        case id, belt, title, description, tags, kind, topic
         case orderIndex      = "order_index"
         case coachIntro      = "coach_intro"
         case isBeltTest      = "is_belt_test"
@@ -124,6 +125,7 @@ struct RemoteUnitBundle {
     let kind: UnitKind
     let sectionTitle: String?
     let topicTitle: String?
+    let topic: String?         // BJJ topic slug (e.g. "guard_passing")
     let lessonIndex: Int?
     let lessonTotal: Int?
     let characterMoment: CharacterMomentData?
@@ -190,6 +192,7 @@ actor SupabaseService {
                 kind:            resolvedKind,
                 sectionTitle:    ru.sectionTitle,
                 topicTitle:      ru.topicTitle,
+                topic:           ru.topic,
                 lessonIndex:     ru.lessonIndex,
                 lessonTotal:     ru.lessonTotal,
                 characterMoment: characterMoment
@@ -288,14 +291,12 @@ actor SupabaseService {
         return AdaptiveQuestionSelector.select(from: questions, stats: stats, count: count)
     }
 
-    /// Records or increments question stats for a user after a session.
+    /// Atomically increments question stats for a user after a session.
     ///
-    /// Uses a single upsert without a prior fetch. This is a simplified implementation
-    /// that assumes a single active session per user (the normal case for a learning app).
-    /// Concurrent sessions could cause off-by-one counts on `times_seen`/`times_wrong`,
-    /// but this is extremely rare and acceptable given the product context. A DB-side
-    /// atomic increment (via an RPC or trigger) would be needed to fully eliminate the
-    /// race, but is intentionally deferred as over-engineering for V1.
+    /// Calls the `increment_question_stats` Supabase RPC (PostgreSQL function) which
+    /// uses `ON CONFLICT DO UPDATE SET col = col + 1` — a true atomic increment.
+    /// This avoids the PostgREST `merge-duplicates` behaviour which overwrites the
+    /// existing value with the incoming value (always resetting to 1).
     ///
     /// - Parameters:
     ///   - userId:     The authenticated user's UUID.
@@ -303,25 +304,19 @@ actor SupabaseService {
     ///   - wasWrong:   Whether the user answered incorrectly.
     func upsertQuestionStats(userId: UUID, questionId: String, wasWrong: Bool) async throws {
         struct Body: Encodable {
-            let user_id: String
-            let question_id: String
-            let times_seen: Int
-            let times_wrong: Int
-            let last_seen_at: String
+            let p_user_id: String
+            let p_question_id: String
+            let p_was_wrong: Bool
         }
 
-        let now = iso8601.string(from: Date())
-
         _ = try await post(
-            path: "/user_question_stats?on_conflict=user_id,question_id",
+            path: "/rpc/increment_question_stats",
             body: Body(
-                user_id: userId.uuidString,
-                question_id: questionId,
-                times_seen: 1,
-                times_wrong: wasWrong ? 1 : 0,
-                last_seen_at: now
+                p_user_id: userId.uuidString,
+                p_question_id: questionId,
+                p_was_wrong: wasWrong
             ),
-            prefer: "return=minimal,resolution=merge-duplicates"
+            prefer: "return=minimal"
         )
     }
 

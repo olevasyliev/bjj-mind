@@ -119,10 +119,46 @@ struct Unit: Identifiable, Codable, Hashable {
     // Optional metadata
     var coachIntro: String?
     var sectionTitle: String?
-    var topicTitle: String?
+    var topicTitle: String?    // Display text, e.g. "Guard Passing"
+    var topic: String?         // DB slug for adaptive queries, e.g. "guard_passing"
     var lessonIndex: Int?
     var lessonTotal: Int?
     var characterMoment: CharacterMomentData?
+
+    // Custom init so that existing call sites (SampleData) that omit `topic` still compile.
+    // `topic` defaults to `nil`; all other parameters are required.
+    init(
+        id: String, belt: Belt, orderIndex: Int,
+        title: String, description: String, tags: [String],
+        isLocked: Bool, isCompleted: Bool,
+        kind: UnitKind,
+        questions: [Question],
+        coachIntro: String? = nil,
+        sectionTitle: String? = nil,
+        topicTitle: String? = nil,
+        topic: String? = nil,
+        lessonIndex: Int? = nil,
+        lessonTotal: Int? = nil,
+        characterMoment: CharacterMomentData? = nil
+    ) {
+        self.id = id
+        self.belt = belt
+        self.orderIndex = orderIndex
+        self.title = title
+        self.description = description
+        self.tags = tags
+        self.isLocked = isLocked
+        self.isCompleted = isCompleted
+        self.kind = kind
+        self.questions = questions
+        self.coachIntro = coachIntro
+        self.sectionTitle = sectionTitle
+        self.topicTitle = topicTitle
+        self.topic = topic
+        self.lessonIndex = lessonIndex
+        self.lessonTotal = lessonTotal
+        self.characterMoment = characterMoment
+    }
 
     // MARK: - Computed backward-compat
     var isBeltTest: Bool        { kind == .beltTest }
