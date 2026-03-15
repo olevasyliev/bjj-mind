@@ -27,6 +27,7 @@
 		58B12AD6D706D3761DEEE98F /* SupabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F951EECB1FAF0C66FBB3 /* SupabaseService.swift */; };
 		5CDB7D80E36340BB80BCB92F /* AdaptiveQuestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED372096733C222ED5438283 /* AdaptiveQuestionTests.swift */; };
 		609E4A34EDC2E69F899C0949 /* BeltSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B25329B8331DF0CF194DEE /* BeltSelectView.swift */; };
+		61B76065C510DFCF8771B6CD /* TournamentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D9985B57AAB190726C12BF /* TournamentTests.swift */; };
 		63637ABFF5B30800253E3EDA /* BeltTestViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2988D1C00962FB4D915903F /* BeltTestViews.swift */; };
 		66083351B6A47F1BCA5F590F /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAF625C9C12C1D0878A2758 /* SampleData.swift */; };
 		69713C62884492C9820CAFA0 /* ClubInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297E3F50F4F260B6157D0F33 /* ClubInfoView.swift */; };
@@ -36,6 +37,7 @@
 		86B658C26774878E13BD4D08 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167B51AA8D1167A1C0CECDD /* L10n.swift */; };
 		8A2EFC51271D14A28AA33A25 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92C43A31E69789CCFC62648 /* HomeView.swift */; };
 		8D0824680181A6C013BB7D85 /* SessionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE0045FCFE4F1EE41C818B3 /* SessionEngine.swift */; };
+		8E54F85A2BB2FBD2111C4046 /* TournamentBracketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D5B00053AD0A925D21FAB4 /* TournamentBracketView.swift */; };
 		9360805B16197C110BCAB2FE /* SampleData_ES.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A47F00194B779CBA8A7479 /* SampleData_ES.swift */; };
 		97A733F36C38DA0A9E6F472F /* OnboardingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E3467664C0C66AD2AA6C2 /* OnboardingFlow.swift */; };
 		9A411B345ADC3749CF984F6F /* QuestionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E8F1A6EF3A3CB9DAFEE220 /* QuestionProvider.swift */; };
@@ -55,6 +57,7 @@
 		DDF00BB111408710B998748C /* BattleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1055DB63C8A242818CF2C5 /* BattleView.swift */; };
 		E61A4A9BD37AA2807E875C10 /* SkillAssessmentEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67E7BB8487171ED01983123 /* SkillAssessmentEngine.swift */; };
 		EE5059447BAD6AA0A79962BE /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C199CE1C5893BB3CF48F9B5E /* SessionView.swift */; };
+		F2B96C1E8E04ACB27F6B6A48 /* Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = E544A2BC81A16BE3C08D1C43 /* Tournament.swift */; };
 		F35C2F6BB50AC3919BD2DFE6 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF5CF77D5866F5B5EA08CAF /* Components.swift */; };
 		F3A9776E947E394C340C45C3 /* CharacterMomentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E7548B8EA49DFF2C649F /* CharacterMomentView.swift */; };
 		F97D24BD72265BAAC94D9708 /* CompeteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41BD33438B314F57AC002EB /* CompeteView.swift */; };
@@ -117,12 +120,15 @@
 		C41BD33438B314F57AC002EB /* CompeteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompeteView.swift; sourceTree = "<group>"; };
 		C64392883F3D08C2964809F3 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
 		C967BF4D41809272474BED1C /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		D0D9985B57AAB190726C12BF /* TournamentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTests.swift; sourceTree = "<group>"; };
+		D3D5B00053AD0A925D21FAB4 /* TournamentBracketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentBracketView.swift; sourceTree = "<group>"; };
 		D6C58996C53646A70790D499 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		D813E1EABB947FDA9D5C6923 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		DDE0045FCFE4F1EE41C818B3 /* SessionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionEngine.swift; sourceTree = "<group>"; };
 		E1480FB75F0887DA479BC0DD /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
 		E157714400C4AF269892BFED /* BJJMindTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = BJJMindTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2988D1C00962FB4D915903F /* BeltTestViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltTestViews.swift; sourceTree = "<group>"; };
+		E544A2BC81A16BE3C08D1C43 /* Tournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
 		E67E7BB8487171ED01983123 /* SkillAssessmentEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillAssessmentEngine.swift; sourceTree = "<group>"; };
 		ED372096733C222ED5438283 /* AdaptiveQuestionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveQuestionTests.swift; sourceTree = "<group>"; };
 		F0873A43D763EE480C355E72 /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
@@ -174,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				2C1055DB63C8A242818CF2C5 /* BattleView.swift */,
+				D3D5B00053AD0A925D21FAB4 /* TournamentBracketView.swift */,
 			);
 			path = Battle;
 			sourceTree = "<group>";
@@ -203,6 +210,7 @@
 				26A47F00194B779CBA8A7479 /* SampleData_ES.swift */,
 				3DAF625C9C12C1D0878A2758 /* SampleData.swift */,
 				BB23F951EECB1FAF0C66FBB3 /* SupabaseService.swift */,
+				E544A2BC81A16BE3C08D1C43 /* Tournament.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -245,6 +253,7 @@
 				B0839A6FC1583E727B4EE8FC /* OpponentProfileTests.swift */,
 				1022009DE91D79734D44F01D /* SessionEngineTests.swift */,
 				7E5837FDB73D7C29BF62D45D /* SkillAssessmentTests.swift */,
+				D0D9985B57AAB190726C12BF /* TournamentTests.swift */,
 			);
 			path = BJJMindTests;
 			sourceTree = "<group>";
@@ -411,6 +420,7 @@
 				792EBB4A2A8903E53877E022 /* OpponentProfileTests.swift in Sources */,
 				B8A3A82FFE870A177C1898A2 /* SessionEngineTests.swift in Sources */,
 				DA1DE14EA102C4E4AB46D19B /* SkillAssessmentTests.swift in Sources */,
+				61B76065C510DFCF8771B6CD /* TournamentTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +464,8 @@
 				3789620A4A399906954B59BB /* StrugglesView.swift in Sources */,
 				BE4DBD82E217ED6205B9276A /* SummaryView.swift in Sources */,
 				58B12AD6D706D3761DEEE98F /* SupabaseService.swift in Sources */,
+				F2B96C1E8E04ACB27F6B6A48 /* Tournament.swift in Sources */,
+				8E54F85A2BB2FBD2111C4046 /* TournamentBracketView.swift in Sources */,
 				C91EDC5C1199BA1685C9AD0C /* WelcomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

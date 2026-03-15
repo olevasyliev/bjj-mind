@@ -30,6 +30,12 @@ struct OpponentProfile: Identifiable {
 
 extension OpponentProfile {
 
+    /// All opponents across all tournaments, used for lookup by id.
+    static var all: [OpponentProfile] {
+        whiteBeltFinalTournament + intermediateTournament
+    }
+
+
     // MARK: White Belt Final Tournament (5 opponents, difficulty 1–5)
 
     static let whiteBeltFinalTournament: [OpponentProfile] = [
