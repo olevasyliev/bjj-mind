@@ -63,6 +63,16 @@ Currently "Coming Soon". Core feature of the product.
 
 ## 🗂️ Future (not in current sprint)
 
+### P2P — реальные соперники онлайн
+- Бои в реальном времени против других игроков (тот же движок, другой соперник)
+- Онлайн турниры с живой сеткой из реальных игроков
+- Рейтинговая система
+
+### Брендированные турниры и соперники (маркетинг / бизнес)
+- Партнёрство с академиями и организациями (IBJJF, AJP, known gyms)
+- Специальные соперники с брендом партнёра
+- Брендированные турниры как маркетинговый инструмент
+
 ### vs Kat — full system
 - League (Bronze → Diamond, weekly reset)
 - Tournament Run (5 sequential matches, resources carry)
