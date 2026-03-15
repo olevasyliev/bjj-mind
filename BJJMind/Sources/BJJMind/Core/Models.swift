@@ -68,11 +68,17 @@ struct ClubInfo: Codable, Equatable {
 // MARK: - UnitKind
 
 enum UnitKind: String, Codable {
+    // Existing (keep these)
     case lesson           // regular lesson (~4-8 questions) within a topic
     case mixedReview      // cross-topic review lesson
     case miniExam         // section-level exam (~8 questions)
-    case beltTest         // existing stripe belt test
+    case beltTest         // belt test / finalTournament gateway
     case characterMoment  // character card — no questions, tap to complete
+
+    // New: battle system nodes
+    case bossFight              // boss fight at end of each cycle
+    case intermediateTournament // 3-fight tournament (after Cycle 2)
+    case finalTournament        // 5-fight tournament (leads to Blue Belt)
 }
 
 // MARK: - AppCharacter
@@ -125,8 +131,12 @@ struct Unit: Identifiable, Codable, Hashable {
     var lessonTotal: Int?
     var characterMoment: CharacterMomentData?
 
-    // Custom init so that existing call sites (SampleData) that omit `topic` still compile.
-    // `topic` defaults to `nil`; all other parameters are required.
+    // Cycle / battle metadata
+    var cycleNumber: Int?      // which cycle (1–4) this unit belongs to
+    var isBoss: Bool           // true for boss fight nodes
+
+    // Custom init so that existing call sites (SampleData) that omit optional params still compile.
+    // New params default to nil / false so no existing call sites need updating.
     init(
         id: String, belt: Belt, orderIndex: Int,
         title: String, description: String, tags: [String],
@@ -139,7 +149,9 @@ struct Unit: Identifiable, Codable, Hashable {
         topic: String? = nil,
         lessonIndex: Int? = nil,
         lessonTotal: Int? = nil,
-        characterMoment: CharacterMomentData? = nil
+        characterMoment: CharacterMomentData? = nil,
+        cycleNumber: Int? = nil,
+        isBoss: Bool = false
     ) {
         self.id = id
         self.belt = belt
@@ -158,6 +170,8 @@ struct Unit: Identifiable, Codable, Hashable {
         self.lessonIndex = lessonIndex
         self.lessonTotal = lessonTotal
         self.characterMoment = characterMoment
+        self.cycleNumber = cycleNumber
+        self.isBoss = isBoss
     }
 
     // MARK: - Computed backward-compat
@@ -165,10 +179,15 @@ struct Unit: Identifiable, Codable, Hashable {
     var isCharacterMoment: Bool { kind == .characterMoment }
     var isMiniExam: Bool        { kind == .miniExam }
     var isMixedReview: Bool     { kind == .mixedReview }
+    var isBossFight: Bool       { kind == .bossFight }
+    var isTournament: Bool      { kind == .intermediateTournament || kind == .finalTournament }
     var requiresSession: Bool {
         switch kind {
-        case .lesson, .mixedReview, .miniExam, .beltTest: return true
-        case .characterMoment: return false
+        case .lesson, .mixedReview, .miniExam, .beltTest,
+             .bossFight, .intermediateTournament, .finalTournament:
+            return true
+        case .characterMoment:
+            return false
         }
     }
 }

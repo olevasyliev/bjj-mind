@@ -39,6 +39,7 @@
 		8D0824680181A6C013BB7D85 /* SessionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE0045FCFE4F1EE41C818B3 /* SessionEngine.swift */; };
 		8E54F85A2BB2FBD2111C4046 /* TournamentBracketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D5B00053AD0A925D21FAB4 /* TournamentBracketView.swift */; };
 		9360805B16197C110BCAB2FE /* SampleData_ES.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A47F00194B779CBA8A7479 /* SampleData_ES.swift */; };
+		942AAB4C978397A30FF79F28 /* CycleStructureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01A1D5B5AB56D822B33D3FD /* CycleStructureTests.swift */; };
 		97A733F36C38DA0A9E6F472F /* OnboardingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E3467664C0C66AD2AA6C2 /* OnboardingFlow.swift */; };
 		9A411B345ADC3749CF984F6F /* QuestionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E8F1A6EF3A3CB9DAFEE220 /* QuestionProvider.swift */; };
 		9B5E556F1905A9F93D3F8980 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7108B55FDFE579DB3BD9451B /* Models.swift */; };
@@ -106,6 +107,7 @@
 		9A03364BC79D08D158D04A0B /* AdaptiveQuestionSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveQuestionSelector.swift; sourceTree = "<group>"; };
 		9A37B188946080C6A5CB3856 /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
 		9C1BC2808ADB3A89017CE526 /* SkillAssessmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillAssessmentView.swift; sourceTree = "<group>"; };
+		A01A1D5B5AB56D822B33D3FD /* CycleStructureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleStructureTests.swift; sourceTree = "<group>"; };
 		A167B51AA8D1167A1C0CECDD /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
 		A645FEF1310ECF5FB15750C7 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		A92C43A31E69789CCFC62648 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				52B71981ACC4153E76E5E9DB /* AppStateTests.swift */,
 				47AD5C412154F2F9C9940E90 /* BattleEngineTests.swift */,
 				68C912FCFA091B492601BF91 /* BattleScaleTests.swift */,
+				A01A1D5B5AB56D822B33D3FD /* CycleStructureTests.swift */,
 				F0873A43D763EE480C355E72 /* ModelTests.swift */,
 				B0839A6FC1583E727B4EE8FC /* OpponentProfileTests.swift */,
 				1022009DE91D79734D44F01D /* SessionEngineTests.swift */,
@@ -416,6 +419,7 @@
 				55814374DA587BF0F18E2E04 /* AppStateTests.swift in Sources */,
 				3BD79B22994B04AA3B1474BE /* BattleEngineTests.swift in Sources */,
 				AA2D197FE3E51F8AFD08A6F4 /* BattleScaleTests.swift in Sources */,
+				942AAB4C978397A30FF79F28 /* CycleStructureTests.swift in Sources */,
 				4426095B2CF804430A3A6B4A /* ModelTests.swift in Sources */,
 				792EBB4A2A8903E53877E022 /* OpponentProfileTests.swift in Sources */,
 				B8A3A82FFE870A177C1898A2 /* SessionEngineTests.swift in Sources */,

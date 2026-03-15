@@ -47,7 +47,7 @@ struct HomeView: View {
                         .padding(.bottom, 12)
 
                         // Active unit banner
-                        if let active = units.first(where: { !$0.isCompleted && !$0.isLocked && !$0.isBeltTest && !$0.isCharacterMoment }) {
+                        if let active = units.first(where: { !$0.isCompleted && !$0.isLocked && !$0.isBeltTest && !$0.isCharacterMoment && !$0.isBossFight && !$0.isTournament }) {
                             ActiveUnitBanner(unit: active)
                                 .padding(.horizontal, 16)
                                 .padding(.bottom, 8)
@@ -279,6 +279,8 @@ struct BeltNode: View {
         if unit.isCompleted        { return Color(hex: "#dcfce7") }
         if unit.isLocked           { return Color(hex: "#f1f5f9") }
         if unit.isBeltTest         { return Color(hex: "#fef3c7") }
+        if unit.isBossFight        { return Color(hex: "#fce7f3") }
+        if unit.isTournament       { return Color(hex: "#fefce8") }
         if unit.isCharacterMoment  { return Color(hex: "#f3e8ff") }
         if unit.isMiniExam         { return Color(hex: "#fff7ed") }
         if unit.isMixedReview      { return Color(hex: "#eff6ff") }
@@ -289,6 +291,8 @@ struct BeltNode: View {
         if unit.isCompleted        { return Color(hex: "#22c55e") }
         if unit.isLocked           { return Color(hex: "#cbd5e1") }
         if unit.isBeltTest         { return Color(hex: "#f59e0b") }
+        if unit.isBossFight        { return Color(hex: "#ec4899") }
+        if unit.isTournament       { return Color(hex: "#eab308") }
         if unit.isCharacterMoment  { return Color(hex: "#c084fc") }
         if unit.isMiniExam         { return Color(hex: "#fb923c") }
         if unit.isMixedReview      { return Color(hex: "#60a5fa") }
@@ -299,6 +303,8 @@ struct BeltNode: View {
         if unit.isCompleted        { return Color(hex: "#15803d") }
         if unit.isLocked           { return Color(hex: "#94a3b8") }
         if unit.isBeltTest         { return Color(hex: "#d97706") }
+        if unit.isBossFight        { return Color(hex: "#db2777") }
+        if unit.isTournament       { return Color(hex: "#ca8a04") }
         if unit.isCharacterMoment  { return Color(hex: "#a855f7") }
         if unit.isMiniExam         { return Color(hex: "#ea580c") }
         if unit.isMixedReview      { return Color(hex: "#3b82f6") }
@@ -308,6 +314,8 @@ struct BeltNode: View {
     private var nodeLabel: Color {
         if unit.isCompleted        { return Color(hex: "#16a34a") }
         if unit.isLocked           { return Color(hex: "#94a3b8") }
+        if unit.isBossFight        { return Color(hex: "#db2777") }
+        if unit.isTournament       { return Color(hex: "#ca8a04") }
         if unit.isCharacterMoment  { return Color(hex: "#9333ea") }
         if unit.isMiniExam         { return Color(hex: "#ea580c") }
         if unit.isMixedReview      { return Color(hex: "#2563eb") }
@@ -318,6 +326,8 @@ struct BeltNode: View {
         if unit.isCompleted        { return "" }
         if unit.isLocked           { return "🔒" }
         if unit.isBeltTest         { return "🛡️" }
+        if unit.isBossFight        { return "⚔️" }
+        if unit.isTournament       { return "🏆" }
         if unit.isCharacterMoment  { return "💬" }
         if unit.isMiniExam         { return "📋" }
         if unit.isMixedReview      { return "🔀" }
