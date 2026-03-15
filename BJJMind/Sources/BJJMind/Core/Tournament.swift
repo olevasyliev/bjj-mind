@@ -28,9 +28,9 @@ enum TournamentRound: String, Codable, CaseIterable {
         case .semifinal:         return "Semifinal"
         case .intermediateFinal: return "Final"
         case .r16:               return "Round of 16"
-        case .r8:                return "Quarterfinal"
-        case .quarterfinalFinal: return "Quarterfinal"
-        case .semifinalFinal:    return "Semifinal"
+        case .r8:                return "Round of 8"
+        case .quarterfinalFinal: return "Quarter-Final"
+        case .semifinalFinal:    return "Semi-Final"
         case .grandFinal:        return "Grand Final"
         }
     }
@@ -128,7 +128,7 @@ struct Tournament: Identifiable, Codable {
     // MARK: - Fight Recording
 
     mutating func recordFightResult(_ result: FightResult) {
-        guard currentFightIndex < fights.count else { return }
+        guard !isComplete else { return }
         fights[currentFightIndex].result = result
         currentFightIndex += 1
     }

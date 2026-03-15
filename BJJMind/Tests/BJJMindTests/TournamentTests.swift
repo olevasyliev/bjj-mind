@@ -238,6 +238,17 @@ final class TournamentTests: XCTestCase {
 
     // MARK: - isComplete guard: extra recordFightResult calls are ignored
 
+    func test_recordFightResult_ignoredAfterLoss() {
+        var t = Tournament.finalTournament()
+        t.recordFightResult(.loss(bySubmission: false))
+        XCTAssertTrue(t.playerEliminated)
+        let indexAfterLoss = t.currentFightIndex
+        // Calling again should be a no-op
+        t.recordFightResult(.win(bySubmission: false))
+        XCTAssertEqual(t.currentFightIndex, indexAfterLoss)
+        XCTAssertFalse(t.fights[indexAfterLoss].isComplete)
+    }
+
     func test_recordFightResult_ignoredWhenAlreadyComplete() {
         var t = Tournament.intermediateTournament()
         t.recordFightResult(.win(bySubmission: false))

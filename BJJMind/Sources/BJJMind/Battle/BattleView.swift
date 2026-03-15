@@ -181,7 +181,7 @@ struct BattleView: View {
 
                     case .opponentTurn:
                         OpponentTurnView(opponent: opponent) {
-                            // auto-advance handled inside OpponentTurnView
+                            engine.proceedToNextTurn()
                         }
 
                     case .showingOpponentResult(let markerMoved, let steps):
@@ -247,9 +247,11 @@ struct BattleView: View {
                 timeRemaining -= 1
             }
             // Time's up — treat as wrong answer
+            guard !Task.isCancelled else { return }
             if case .playerTurn = engine.state {
                 engine.submitAnswer(wasCorrect: false)
                 try? await Task.sleep(nanoseconds: 1_500_000_000)
+                guard !Task.isCancelled else { return }
                 engine.proceedToOpponentTurn()
             }
         }
@@ -536,6 +538,7 @@ struct OpponentTurnView: View {
         }
         .task {
             try? await Task.sleep(nanoseconds: 800_000_000)
+            onDone()
         }
     }
 }

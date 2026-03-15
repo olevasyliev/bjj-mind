@@ -19,6 +19,8 @@ private struct RemoteUnit: Decodable {
     let lessonTotal: Int?
     let characterName: String?
     let characterMessage: String?
+    let cycleNumber: Int?
+    let isBoss: Bool?
 
     enum CodingKeys: String, CodingKey {
         case id, belt, title, description, tags, kind, topic
@@ -31,6 +33,8 @@ private struct RemoteUnit: Decodable {
         case lessonTotal     = "lesson_total"
         case characterName   = "character_name"
         case characterMessage = "character_message"
+        case cycleNumber     = "cycle_number"
+        case isBoss          = "is_boss"
     }
 }
 
@@ -132,6 +136,8 @@ struct RemoteUnitBundle {
     let lessonIndex: Int?
     let lessonTotal: Int?
     let characterMoment: CharacterMomentData?
+    let cycleNumber: Int?
+    let isBoss: Bool
 }
 
 // MARK: - SupabaseService
@@ -198,7 +204,9 @@ actor SupabaseService {
                 topic:           ru.topic,
                 lessonIndex:     ru.lessonIndex,
                 lessonTotal:     ru.lessonTotal,
-                characterMoment: characterMoment
+                characterMoment: characterMoment,
+                cycleNumber:     ru.cycleNumber,
+                isBoss:          ru.isBoss ?? false
             )
         }
     }

@@ -104,7 +104,9 @@ final class AppState: ObservableObject {
                 topic: b.topic,
                 lessonIndex: b.lessonIndex,
                 lessonTotal: b.lessonTotal,
-                characterMoment: b.characterMoment
+                characterMoment: b.characterMoment,
+                cycleNumber: b.cycleNumber,
+                isBoss: b.isBoss
             )
         }
 
