@@ -33,7 +33,7 @@ iOS only. iPhone portrait (9:16). No React Native, no Expo.
 - `L10n` enum — type-safe localized strings via LanguageManager.bundle
 - `SupabaseService` — URLSession (no SPM), REST API, adaptive question fetching + stat tracking
 
-**110 tests, all green** — v1.1.1 (build 4)
+**237 tests, all green** — v1.2.0 (build 5)
 
 ---
 
@@ -46,7 +46,8 @@ iOS only. iPhone portrait (9:16). No React Native, no Expo.
 - ✅ **V0.4 Lesson Structure** — UnitKind enum (.lesson/.characterMoment/.mixedReview/.miniExam/.beltTest), 31-node catalog
 - ✅ **Supabase integration** — user profile + unit progress + session results sync, URLSession-based
 - ✅ **Onboarding redesign** — characters on all screens, Kat typewriter speech bubble, belt-personalized messages
-- ✅ **Adaptive question bank** — 297 questions in Supabase (80 seed + 197 AI-generated), AdaptiveQuestionSelector, per-question stats via RPC
+- ✅ **Adaptive question bank** — 723 questions in Supabase (297 original + 426 battle mcq3), AdaptiveQuestionSelector, per-question stats via RPC
+- ✅ **Battle system** — BattleScale (BJJ position scale), BattleEngine (turn-based state machine), OpponentProfile (8 opponents), BattleView UI, Tournament bracket (3-fight intermediate + 5-fight final), 4-cycle White Belt structure in SampleData
 
 ---
 
@@ -58,11 +59,15 @@ iOS only. iPhone portrait (9:16). No React Native, no Expo.
 - Per-question mistake tracking → feeds back into adaptive selection next session
 - Belt Test with pass/fail and 24h retry cooldown
 - EN/ES localization with runtime switching
+- Battle system data models: BattleScale, BattleEngine, OpponentProfile, Tournament (all tested)
+- Battle UI: BattleView, BattlePreviewView, PositionScaleView, BattleQuestionView, TournamentBracketView, TournamentDebriefView
+- 4-cycle White Belt content structure: Closed Guard → Half Guard → Guard Passing → Submissions
+- Battle question fetching: `fetchQuestionsForBattle` on AppState+SupabaseService (position+perspective+mcq3 filtered)
 
-### What is displayed but not yet wired to mechanics
+### What is implemented but not yet wired to navigation
+- **Battle system** — models + UI complete, not yet integrated into HomeView tap handlers (boss fight / tournament nodes don't launch BattleView yet)
 - **XP** — shown in session summary, not connected to progression/stripes
 - **Streak** — shown in summary, not persisted between sessions
-- **Compete tab** — "Coming Soon" placeholder
 - **Progress tab** — "Coming Soon" placeholder
 
 ---
@@ -83,12 +88,13 @@ iOS only. iPhone portrait (9:16). No React Native, no Expo.
 ```
 BJJMind/              ← Xcode project (Swift 6.0)
   Sources/BJJMind/
-    Core/             ← AppState, SessionEngine, AdaptiveQuestionSelector, SupabaseService
+    Core/             ← AppState, SessionEngine, AdaptiveQuestionSelector, SupabaseService, BattleEngine, BattleScale, OpponentProfile, Tournament
     Models/           ← Question, Unit, Belt, UserProfile
     Onboarding/       ← 7-step onboarding flow
     Home/             ← HomeView, belt path map
     Session/          ← SessionView, SessionEngine, question format views
-  Tests/BJJMindTests/ ← 110 tests, TDD
+    Battle/           ← BattleView, TournamentBracketView
+  Tests/BJJMindTests/ ← 237 tests, TDD
 characters-graphics/  ← Character PNG assets
 scripts/
   migrate_db.py       ← Supabase seed data migration

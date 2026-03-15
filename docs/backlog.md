@@ -1,9 +1,18 @@
 # BJJ Mind — Backlog
-**Last updated: 2026-03-15**
+**Last updated: 2026-03-15 (post battle system)**
 
 ---
 
 ## 🔥 Current priorities
+
+### 0. Battle system — wire to HomeView navigation
+Battle models + UI are complete (237 tests green) but boss fight / tournament nodes in HomeView don't launch BattleView yet.
+
+- [ ] HomeView: tap on `.bossFight` node → present `BattlePreviewView` → `BattleView`
+- [ ] HomeView: tap on `.intermediateTournament` / `.finalTournament` node → present `TournamentBracketView`
+- [ ] AppState: `completeBattle(opponentId:won:)` — mark boss fight node complete if player won
+- [ ] AppState: `completeTournament(_:)` — mark tournament node complete when tournament ends
+- [ ] Wire XP reward from battle win/loss into AppState
 
 ### 1. XP system — wire to mechanics
 XP is currently calculated and shown but not connected to anything.
@@ -110,14 +119,15 @@ Currently "Coming Soon". Core feature of the product.
 ## ✅ Done
 
 - Onboarding (7 steps): Welcome → BeltSelect → SkillAssessment → Struggles → ClubInfo → AhaMoment → KatIntro
-- HomeView with 31-node belt path map
+- HomeView with 4-cycle White Belt path (Closed Guard → Half Guard → Guard Passing → Submissions)
 - SessionFlow with 5 hearts, MCQ2/MCQ4/TrueFalse/FillBlank formats
-- UnitKind system (.lesson / .characterMoment / .mixedReview / .miniExam / .beltTest)
+- UnitKind system (.lesson / .characterMoment / .mixedReview / .miniExam / .beltTest / .bossFight / .intermediateTournament / .finalTournament)
 - Belt Test: pass/fail, 80% accuracy threshold, 24h retry cooldown
 - EN/ES localization with runtime switching
 - Supabase sync: user profile, unit progress, session results
-- Adaptive question bank: 297 questions, topic-based fetching, unseen→weak→rest ordering
+- Adaptive question bank: 723 questions (297 original + 426 battle mcq3), topic+perspective filtered
 - Per-question mistake tracking via `increment_question_stats` RPC
 - Character illustrations on all onboarding screens (Kat typewriter animation)
 - App icon (1024px + all sizes)
-- GitHub: olevasyliev/bjj-mind, v1.1.1 (build 4), 110 tests green
+- **Battle system (v1.2.0)**: BattleScale, BattleEngine, OpponentProfile (8 opponents), BattleView, TournamentBracketView, TournamentDebriefView — 237 tests green
+- GitHub: olevasyliev/bjj-mind, v1.2.0 (build 5), 237 tests green
