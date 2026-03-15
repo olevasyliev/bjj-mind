@@ -52,6 +52,7 @@
 		CA12C19941208E08F60DAE4F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C37E87887F8522AB2EE1B9 /* ProfileView.swift */; };
 		DA1DE14EA102C4E4AB46D19B /* SkillAssessmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5837FDB73D7C29BF62D45D /* SkillAssessmentTests.swift */; };
 		DA38311EC72F8657B09B4EB5 /* BJJMindApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B7C552BE8EDA878A2C21CD /* BJJMindApp.swift */; };
+		DDF00BB111408710B998748C /* BattleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1055DB63C8A242818CF2C5 /* BattleView.swift */; };
 		E61A4A9BD37AA2807E875C10 /* SkillAssessmentEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67E7BB8487171ED01983123 /* SkillAssessmentEngine.swift */; };
 		EE5059447BAD6AA0A79962BE /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C199CE1C5893BB3CF48F9B5E /* SessionView.swift */; };
 		F35C2F6BB50AC3919BD2DFE6 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF5CF77D5866F5B5EA08CAF /* Components.swift */; };
@@ -81,6 +82,7 @@
 		2329EF0D26291969A12F81D7 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		26A47F00194B779CBA8A7479 /* SampleData_ES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData_ES.swift; sourceTree = "<group>"; };
 		297E3F50F4F260B6157D0F33 /* ClubInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubInfoView.swift; sourceTree = "<group>"; };
+		2C1055DB63C8A242818CF2C5 /* BattleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleView.swift; sourceTree = "<group>"; };
 		3DAF625C9C12C1D0878A2758 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		44D184A283A3C1227616243C /* BJJMind.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = BJJMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4502CFACC767B730CF6D2AE8 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
@@ -166,6 +168,14 @@
 				C59F885C55BE52BD40265757 /* BJJMindTests */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		812F15579048F5FD98D2A9EF /* Battle */ = {
+			isa = PBXGroup;
+			children = (
+				2C1055DB63C8A242818CF2C5 /* BattleView.swift */,
+			);
+			path = Battle;
 			sourceTree = "<group>";
 		};
 		85DA78CC07AA940E62A0E051 /* Home */ = {
@@ -282,6 +292,7 @@
 				11B7C552BE8EDA878A2C21CD /* BJJMindApp.swift */,
 				78C7169986E1672733BEFCFA /* Info.plist */,
 				8CD5BDBCAF84642EFF5E963A /* Localizable.strings */,
+				812F15579048F5FD98D2A9EF /* Battle */,
 				86D8354A1A4033AA55300BF2 /* Core */,
 				372537675D371C91A7234287 /* Design */,
 				85DA78CC07AA940E62A0E051 /* Home */,
@@ -415,6 +426,7 @@
 				DA38311EC72F8657B09B4EB5 /* BJJMindApp.swift in Sources */,
 				5555A0B48BC402AF22C3A2CD /* BattleEngine.swift in Sources */,
 				18D1E82ACCE66EDBA1094C8C /* BattleScale.swift in Sources */,
+				DDF00BB111408710B998748C /* BattleView.swift in Sources */,
 				609E4A34EDC2E69F899C0949 /* BeltSelectView.swift in Sources */,
 				63637ABFF5B30800253E3EDA /* BeltTestViews.swift in Sources */,
 				F3A9776E947E394C340C45C3 /* CharacterMomentView.swift in Sources */,
