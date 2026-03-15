@@ -1,4 +1,5 @@
 # BJJ Mind — Titles & Achievements
+> ⚠️ [PLANNED] — Not yet implemented.
 
 ---
 

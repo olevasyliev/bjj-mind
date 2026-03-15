@@ -1,199 +1,156 @@
 # BJJ Mind — User Flow
-> Complete map of every possible user path through the app.
+**Last updated: 2026-03-15**
+
+> Actual implemented flows. Sections marked [PLANNED] are specced but not yet built.
 
 ---
 
-## First Launch Flow
+## First Launch — Onboarding
 
-```mermaid
-flowchart TD
-    A([App Open]) --> B[Welcome Screen]
-    B -->|Get Started| C[Belt Select]
-    B -->|I have account| AUTH[Login]
-    AUTH --> HOME
-
-    C --> D[Problem Select]
-    D --> E[Aha Moment]
-    E --> F[First Micro-Round]
-    F --> G{Answer}
-    G -->|Correct| H[Feedback Correct]
-    G -->|Wrong| I[Feedback Wrong]
-    H --> J{More questions?}
-    I --> J
-    J -->|Yes| F
-    J -->|No| K[Session Summary]
-    K --> HOME[Home Screen]
 ```
+App Open
+  └── Welcome Screen
+        ├── "Get Started" → Belt Select
+        └── "I have account" → [PLANNED: Login]
+
+Belt Select → Skill Assessment (2 questions: experience + situational)
+  └── → Struggles (multi-select: what's hard for you)
+        └── → Club Info (country/city/club — optional, can skip)
+              └── → Aha Moment (pitch + Gi Ghost)
+                    └── → Kat Intro (Kat's speech bubble, belt-personalized message)
+                          └── → completeOnboarding() → Home Screen
+```
+
+**What's saved after onboarding:**
+- `belt` (white/blue/purple/brown/black)
+- `skillLevel` (beginner/intermediate/advanced)
+- `struggles[]`
+- `clubInfo` (optional)
+- Supabase user profile created
 
 ---
 
-## Return User — Daily Session
+## Home Screen
 
-```mermaid
-flowchart TD
-    HOME[Home Screen] -->|Tap active node / Start| SESSION
+- 31 nodes displayed as vertical path map
+- Node types: lesson (📚) / character moment (💬) / mixed review (🔀) / mini exam (📋) / belt test (🥋)
+- Completed nodes: filled circle
+- Active node: pulsing, tappable
+- Locked nodes: greyed out
 
-    subgraph SESSION [Session Loop]
-        Q[Question Screen] --> ANS{Answer}
-        ANS -->|Correct| FC[Feedback Correct]
-        ANS -->|Wrong + hearts left| FW[Feedback Wrong]
-        ANS -->|Wrong + no hearts| OOH[Out of Hearts]
-        FC --> NEXT{More?}
-        FW --> NEXT
-        NEXT -->|Yes| Q
-        NEXT -->|No| SUMMARY
-    end
+---
 
-    OOH -->|Wait / Practice| HOME
-    SUMMARY[Session Summary] --> XP_ANIM[XP Animation]
-    XP_ANIM --> STRIPE_CHECK{Stripe progress?}
-    STRIPE_CHECK -->|Stripe unlocked| STRIPE_ANIM[Stripe Celebration]
-    STRIPE_CHECK -->|No| HOME
-    STRIPE_ANIM --> HOME
+## Session Flow
+
 ```
+Tap active node on Home
+  └── SessionView loads
+        └── .task: fetchQuestionsForSession(for: unit)
+              ├── Has topic + userId → fetch from Supabase (adaptive)
+              └── Offline / no topic → local SampleData questions
+                    ↓
+              Show ProgressView spinner while loading
+                    ↓
+              SessionEngineView initializes with [Question]
+
+Session Loop:
+  Question shown
+    ├── User answers → correct: feedback(1.5s) → next question
+    │                  wrong: -1 heart → feedback(2.5s) → next question
+    └── hearts == 0 → GameOverView → recordQuestionAnswers() → dismiss
+
+All questions done → SummaryView
+  └── Shows: accuracy, hearts left, XP earned, streak
+        └── "Continue" → recordQuestionAnswers() → completeUnit() → Home
+```
+
+**After session:** `upsertQuestionStats` called fire-and-forget for each answered question via `increment_question_stats` RPC.
+
+---
+
+## Question Formats (implemented)
+
+| Format | Description |
+|--------|-------------|
+| `mcq2` | 2-option multiple choice |
+| `mcq4` | 4-option multiple choice |
+| `trueFalse` | True / False |
+| `fillBlank` | Fill in blank from word bank |
+
+---
+
+## Adaptive Question Selection
+
+On session start, `AdaptiveQuestionSelector.select()` orders questions:
+1. **Never seen** (`times_seen == 0`) — first
+2. **Weak** (`times_wrong >= 2`) — second
+3. **Rest** — last
+
+Within each group: difficulty ascending. 8 questions returned per session.
 
 ---
 
 ## Belt Test Flow
 
-```mermaid
-flowchart TD
-    HOME --> TRAIN[Train Tab]
-    TRAIN -->|All units complete| GATE[Belt Test Gate Screen]
-    GATE -->|Start Test| TEST
-
-    subgraph TEST [Belt Test — 16 questions, 5s timer, no hints]
-        TQ[Question] --> TANS{Answer}
-        TANS -->|Correct| TFC[Correct — no celebration, keep going]
-        TANS -->|Wrong| TFW[Wrong — show answer]
-        TFC --> TNEXT{More?}
-        TFW --> TNEXT
-        TNEXT -->|Yes| TQ
-        TNEXT -->|No| TRESULT
-    end
-
-    TRESULT{Pass all 4 tags?}
-    TRESULT -->|Yes| BELT_UP[Belt/Stripe Ceremony Screen]
-    TRESULT -->|No| FAIL[Test Failed Screen]
-    BELT_UP --> HOME
-    FAIL -->|Shows failed tags| TRAIN
-    FAIL -->|Retry failed tags only| TRAIN
+```
+All lesson nodes completed → Belt Test node becomes active
+  └── Tap → BeltTestGateView (rules: no hints, 80% threshold, hearts carry over)
+        └── "Start Test" → Session (belt test mode)
+              ├── Correct: show answer only (no coach note)
+              └── Wrong: show correct answer (no explanation)
+                    ↓
+              All 16 questions answered (or hearts = 0)
+                    ↓
+              accuracy >= 80% → BeltTestPassView → belt.advance() saved to Supabase
+              accuracy < 80%  → BeltTestFailView → 24h cooldown → can retry
+              hearts = 0      → BeltTestFailView (fail reason: hearts)
 ```
 
 ---
 
-## Compete — vs Kat Match
+## Character Moment Flow
 
-```mermaid
-flowchart TD
-    HOME --> COMPETE[Compete Tab]
-    COMPETE -->|Fight Kat| KAT_BRIEF[vs Kat Intro]
-    KAT_BRIEF --> MATCH
+```
+Character moment node becomes active
+  └── Tap → CharacterMomentView
+        └── Character image + quote + "Got it" button → marks unit complete → Home
+```
 
-    subgraph MATCH [Match — 5 questions, 8s timer]
-        MQ[Question + Kat is thinking...] --> MANS{Answer}
-        MANS -->|Correct| MFC[+1 point you]
-        MANS -->|Wrong| MFW[+1 point Kat]
-        MFC --> MNEXT{More?}
-        MFW --> MNEXT
-        MNEXT -->|Yes| MQ
-        MNEXT -->|No| MRESULT
-    end
+No questions. No hearts. No XP. Just narrative.
 
-    MRESULT{Who won?}
-    MRESULT -->|You| WIN[Win Screen — XP + League points]
-    MRESULT -->|Kat| LOSE[Lose Screen — lose heart, small XP]
-    WIN --> COMPETE
-    LOSE --> COMPETE
+---
+
+## [PLANNED] vs Kat Match
+
+```
+Compete Tab → vs Kat
+  └── Kat Intro → 5 questions (8s timer)
+        └── Kat "plays" same questions via Claude API
+              └── Score comparison → Win/Lose screen → XP
 ```
 
 ---
 
-## Compete — Tournament Run
+## [PLANNED] Streak Flow
 
-```mermaid
-flowchart TD
-    COMPETE -->|Tournament Run| T_BRIEF[Tournament Intro — 5 matches, bracket shown]
-    T_BRIEF --> M1[Match 1 vs NPC]
-    M1 -->|Win| M2[Match 2 vs NPC]
-    M1 -->|Lose| T_ELIM[Eliminated — consolation XP]
-    M2 -->|Win| M3[Match 3 vs NPC]
-    M2 -->|Lose| T_ELIM
-    M3 -->|Win| M4[Match 4]
-    M3 -->|Lose| T_ELIM
-    M4 -->|Win| FINAL[Final Match]
-    M4 -->|Lose| T_ELIM
-    FINAL -->|Win| TROPHY[Tournament Trophy — big XP + title]
-    FINAL -->|Lose| RUNNER[Runner Up — good XP]
-    T_ELIM --> COMPETE
-    TROPHY --> COMPETE
-    RUNNER --> COMPETE
+```
+Session completed
+  └── Check: first session today?
+        ├── Yes → streak_days + 1, save to Supabase
+        └── No  → streak unchanged
+
+Next app open (no session yesterday)
+  └── streak_days = 0 (streak freeze auto-activates if available)
 ```
 
 ---
 
-## Streak Flow
+## [PLANNED] Subscription / Paywall
 
-```mermaid
-flowchart TD
-    SESSION_DONE[Session Complete] --> STREAK_CHECK{Trained today?}
-    STREAK_CHECK -->|First session today| STREAK_INC[streak_days + 1]
-    STREAK_CHECK -->|Already trained today| STREAK_SAME[streak unchanged]
-    STREAK_INC --> MILESTONE{Streak milestone?}
-    MILESTONE -->|7 / 14 / 30 / 100 days| STREAK_BADGE[Streak Achievement]
-    MILESTONE -->|No| HOME
-
-    subgraph BROKEN [Next day, no session]
-        NEXT_DAY[User opens app] --> STREAK_BROKEN{Last session > 24h ago?}
-        STREAK_BROKEN -->|Yes, streak freeze active| FREEZE_USED[Use streak freeze — streak saved]
-        STREAK_BROKEN -->|Yes, no freeze| RESET[streak = 0, show broken heart]
-        RESET --> RECOVERY[Recovery prompt: Start a session to rebuild]
-    end
 ```
-
----
-
-## Hearts / Lives Flow
-
-```mermaid
-flowchart TD
-    WRONG[Wrong Answer] --> LOSE_HEART[hearts - 1]
-    LOSE_HEART --> HEARTS_CHECK{hearts > 0?}
-    HEARTS_CHECK -->|Yes| CONTINUE[Continue session]
-    HEARTS_CHECK -->|No| OUT[Out of Hearts Screen]
-    OUT -->|Wait 4h| REFILL[1 heart refilled]
-    OUT -->|Practice mode| PRACTICE[Unlimited practice — no XP, no hearts used]
-    OUT -->|Subscription| INSTANT[Instant refill]
-
-    REFILL_FULL[5 hearts when?]
-    REFILL_FULL --> FULL_REFILL[After 20h OR midnight reset OR competition win]
+Free user completes White Belt Stripe 1
+  └── Taps locked Stripe 2 node → Paywall screen
+        ├── Subscribe → all content unlocked
+        ├── Promo code → full access, no expiry
+        └── Not now → Home
 ```
-
----
-
-## Subscription / Paywall Flow
-
-```mermaid
-flowchart TD
-    FREE[Free User — Stripe 1 complete] --> LOCKED_NODE[Tap locked Stripe 2 node]
-    LOCKED_NODE --> PAYWALL[Paywall Screen]
-    PAYWALL -->|Subscribe| SUB[Subscription active]
-    PAYWALL -->|Promo Code| CODE[Enter code → full access]
-    PAYWALL -->|Not now| HOME
-    SUB --> UNLOCK[All content unlocked]
-    CODE --> UNLOCK
-```
-
----
-
-## Edge Cases
-
-| Scenario | Behaviour |
-|----------|-----------|
-| User quits mid-session | Progress lost, no XP, hearts not spent |
-| Timer runs out | Auto-submit = wrong answer |
-| Belt test failed | Only failed tags re-unlocked for practice, no full retake |
-| All hearts lost in belt test | Test ends, must wait / practice to retry |
-| First day (no data) | Home shows Day 1 state, no streak counter |
-| Streak freeze | Available to subscription users, max 2 per week |
-| Offline | Cached questions available, sync on reconnect |

@@ -1,4 +1,5 @@
 # BJJ Mind — Compete System Spec
+> ⚠️ [PLANNED] — Not yet implemented. Compete tab shows "Coming Soon".
 
 ---
 

@@ -1,4 +1,5 @@
 # BJJ Mind — XP & Progression System
+> ⚠️ [PLANNED] — XP is displayed in app but not wired to stripe/belt progression. Streak shown but not persisted. See backlog.md for implementation priorities.
 
 ---
 
