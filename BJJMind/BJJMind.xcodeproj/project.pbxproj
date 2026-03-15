@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		147FC679CFCB49566F13BDF6 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7188F2AE91E8F93A06FBEE6C /* Nunito-Black.ttf */; };
 		15B4CA21CC25B64FC5CC4581 /* KatIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFC2F4B2254AFC6DF95E00B /* KatIntroView.swift */; };
+		18D1E82ACCE66EDBA1094C8C /* BattleScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4E2129BF88EA11F6B516A9 /* BattleScale.swift */; };
 		19DFDD282B5F03F16C69D70F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8CD5BDBCAF84642EFF5E963A /* Localizable.strings */; };
 		212D4737D9F7F05BBEA35002 /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37B188946080C6A5CB3856 /* AppFonts.swift */; };
 		248C6ACC9329AFB2A436E0EF /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C64392883F3D08C2964809F3 /* Nunito-Bold.ttf */; };
@@ -19,6 +20,7 @@
 		43A0687962023849D5DB4765 /* AdaptiveQuestionSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A03364BC79D08D158D04A0B /* AdaptiveQuestionSelector.swift */; };
 		4426095B2CF804430A3A6B4A /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0873A43D763EE480C355E72 /* ModelTests.swift */; };
 		4D97A62387F5569A22FEE2D5 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C6B01CF49966F1854B9EEC /* LanguageManager.swift */; };
+		528EA0AC1A69BED2843D9656 /* OpponentProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FC429E7DDDB2B20330DF86 /* OpponentProfile.swift */; };
 		55814374DA587BF0F18E2E04 /* AppStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B71981ACC4153E76E5E9DB /* AppStateTests.swift */; };
 		58B12AD6D706D3761DEEE98F /* SupabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F951EECB1FAF0C66FBB3 /* SupabaseService.swift */; };
 		5CDB7D80E36340BB80BCB92F /* AdaptiveQuestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED372096733C222ED5438283 /* AdaptiveQuestionTests.swift */; };
@@ -28,6 +30,7 @@
 		69713C62884492C9820CAFA0 /* ClubInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297E3F50F4F260B6157D0F33 /* ClubInfoView.swift */; };
 		768AE4B4070872E54B0C1D14 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2329EF0D26291969A12F81D7 /* ProgressView.swift */; };
 		77237438DF7D22B19B122392 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFE9EDFF53587037D18773C9 /* Nunito-ExtraBold.ttf */; };
+		792EBB4A2A8903E53877E022 /* OpponentProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0839A6FC1583E727B4EE8FC /* OpponentProfileTests.swift */; };
 		86B658C26774878E13BD4D08 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167B51AA8D1167A1C0CECDD /* L10n.swift */; };
 		8A2EFC51271D14A28AA33A25 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92C43A31E69789CCFC62648 /* HomeView.swift */; };
 		8D0824680181A6C013BB7D85 /* SessionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE0045FCFE4F1EE41C818B3 /* SessionEngine.swift */; };
@@ -37,6 +40,7 @@
 		9B5E556F1905A9F93D3F8980 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7108B55FDFE579DB3BD9451B /* Models.swift */; };
 		9C74848C307F20977B41A64C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D813E1EABB947FDA9D5C6923 /* AppState.swift */; };
 		A9D2429D5AABB405BAE16D5A /* SkillAssessmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1BC2808ADB3A89017CE526 /* SkillAssessmentView.swift */; };
+		AA2D197FE3E51F8AFD08A6F4 /* BattleScaleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C912FCFA091B492601BF91 /* BattleScaleTests.swift */; };
 		AF0693762093E8FF732DAA25 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4502CFACC767B730CF6D2AE8 /* AppColors.swift */; };
 		B8A3A82FFE870A177C1898A2 /* SessionEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1022009DE91D79734D44F01D /* SessionEngineTests.swift */; };
 		BE4DBD82E217ED6205B9276A /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C58996C53646A70790D499 /* SummaryView.swift */; };
@@ -71,6 +75,7 @@
 		12B25329B8331DF0CF194DEE /* BeltSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltSelectView.swift; sourceTree = "<group>"; };
 		16C37E87887F8522AB2EE1B9 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		1AB8C4C35CE404C51846062B /* StrugglesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrugglesView.swift; sourceTree = "<group>"; };
+		1C4E2129BF88EA11F6B516A9 /* BattleScale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleScale.swift; sourceTree = "<group>"; };
 		2329EF0D26291969A12F81D7 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		26A47F00194B779CBA8A7479 /* SampleData_ES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData_ES.swift; sourceTree = "<group>"; };
 		297E3F50F4F260B6157D0F33 /* ClubInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubInfoView.swift; sourceTree = "<group>"; };
@@ -81,6 +86,8 @@
 		52B71981ACC4153E76E5E9DB /* AppStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateTests.swift; sourceTree = "<group>"; };
 		58E8F1A6EF3A3CB9DAFEE220 /* QuestionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionProvider.swift; sourceTree = "<group>"; };
 		617E3467664C0C66AD2AA6C2 /* OnboardingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlow.swift; sourceTree = "<group>"; };
+		68C912FCFA091B492601BF91 /* BattleScaleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleScaleTests.swift; sourceTree = "<group>"; };
+		69FC429E7DDDB2B20330DF86 /* OpponentProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentProfile.swift; sourceTree = "<group>"; };
 		6AF5CF77D5866F5B5EA08CAF /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		7108B55FDFE579DB3BD9451B /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		7188F2AE91E8F93A06FBEE6C /* Nunito-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Black.ttf"; sourceTree = "<group>"; };
@@ -94,6 +101,7 @@
 		A645FEF1310ECF5FB15750C7 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		A92C43A31E69789CCFC62648 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AA47E7548B8EA49DFF2C649F /* CharacterMomentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMomentView.swift; sourceTree = "<group>"; };
+		B0839A6FC1583E727B4EE8FC /* OpponentProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentProfileTests.swift; sourceTree = "<group>"; };
 		B50144D844C5C1FCC1291A59 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		B6B8DCE0881078EC425B8C73 /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
 		BB23F951EECB1FAF0C66FBB3 /* SupabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseService.swift; sourceTree = "<group>"; };
@@ -171,9 +179,11 @@
 			children = (
 				9A03364BC79D08D158D04A0B /* AdaptiveQuestionSelector.swift */,
 				D813E1EABB947FDA9D5C6923 /* AppState.swift */,
+				1C4E2129BF88EA11F6B516A9 /* BattleScale.swift */,
 				A167B51AA8D1167A1C0CECDD /* L10n.swift */,
 				11C6B01CF49966F1854B9EEC /* LanguageManager.swift */,
 				7108B55FDFE579DB3BD9451B /* Models.swift */,
+				69FC429E7DDDB2B20330DF86 /* OpponentProfile.swift */,
 				58E8F1A6EF3A3CB9DAFEE220 /* QuestionProvider.swift */,
 				26A47F00194B779CBA8A7479 /* SampleData_ES.swift */,
 				3DAF625C9C12C1D0878A2758 /* SampleData.swift */,
@@ -214,7 +224,9 @@
 			children = (
 				ED372096733C222ED5438283 /* AdaptiveQuestionTests.swift */,
 				52B71981ACC4153E76E5E9DB /* AppStateTests.swift */,
+				68C912FCFA091B492601BF91 /* BattleScaleTests.swift */,
 				F0873A43D763EE480C355E72 /* ModelTests.swift */,
+				B0839A6FC1583E727B4EE8FC /* OpponentProfileTests.swift */,
 				1022009DE91D79734D44F01D /* SessionEngineTests.swift */,
 				7E5837FDB73D7C29BF62D45D /* SkillAssessmentTests.swift */,
 			);
@@ -376,7 +388,9 @@
 			files = (
 				5CDB7D80E36340BB80BCB92F /* AdaptiveQuestionTests.swift in Sources */,
 				55814374DA587BF0F18E2E04 /* AppStateTests.swift in Sources */,
+				AA2D197FE3E51F8AFD08A6F4 /* BattleScaleTests.swift in Sources */,
 				4426095B2CF804430A3A6B4A /* ModelTests.swift in Sources */,
+				792EBB4A2A8903E53877E022 /* OpponentProfileTests.swift in Sources */,
 				B8A3A82FFE870A177C1898A2 /* SessionEngineTests.swift in Sources */,
 				DA1DE14EA102C4E4AB46D19B /* SkillAssessmentTests.swift in Sources */,
 			);
@@ -392,6 +406,7 @@
 				212D4737D9F7F05BBEA35002 /* AppFonts.swift in Sources */,
 				9C74848C307F20977B41A64C /* AppState.swift in Sources */,
 				DA38311EC72F8657B09B4EB5 /* BJJMindApp.swift in Sources */,
+				18D1E82ACCE66EDBA1094C8C /* BattleScale.swift in Sources */,
 				609E4A34EDC2E69F899C0949 /* BeltSelectView.swift in Sources */,
 				63637ABFF5B30800253E3EDA /* BeltTestViews.swift in Sources */,
 				F3A9776E947E394C340C45C3 /* CharacterMomentView.swift in Sources */,
@@ -406,6 +421,7 @@
 				C21C612BCC572A90AEA050D8 /* MainTabView.swift in Sources */,
 				9B5E556F1905A9F93D3F8980 /* Models.swift in Sources */,
 				97A733F36C38DA0A9E6F472F /* OnboardingFlow.swift in Sources */,
+				528EA0AC1A69BED2843D9656 /* OpponentProfile.swift in Sources */,
 				CA12C19941208E08F60DAE4F /* ProfileView.swift in Sources */,
 				768AE4B4070872E54B0C1D14 /* ProgressView.swift in Sources */,
 				9A411B345ADC3749CF984F6F /* QuestionProvider.swift in Sources */,
