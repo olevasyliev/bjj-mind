@@ -17,10 +17,12 @@
 		33AE19D2AFFBF2885701E18B /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B8DCE0881078EC425B8C73 /* FeedbackView.swift */; };
 		377166205E99D03D82E86FF5 /* AhaMomentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD6EEDA667AEB0FBE721EA5 /* AhaMomentView.swift */; };
 		3789620A4A399906954B59BB /* StrugglesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8C4C35CE404C51846062B /* StrugglesView.swift */; };
+		3BD79B22994B04AA3B1474BE /* BattleEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AD5C412154F2F9C9940E90 /* BattleEngineTests.swift */; };
 		43A0687962023849D5DB4765 /* AdaptiveQuestionSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A03364BC79D08D158D04A0B /* AdaptiveQuestionSelector.swift */; };
 		4426095B2CF804430A3A6B4A /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0873A43D763EE480C355E72 /* ModelTests.swift */; };
 		4D97A62387F5569A22FEE2D5 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C6B01CF49966F1854B9EEC /* LanguageManager.swift */; };
 		528EA0AC1A69BED2843D9656 /* OpponentProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FC429E7DDDB2B20330DF86 /* OpponentProfile.swift */; };
+		5555A0B48BC402AF22C3A2CD /* BattleEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3F3C7D76FB7942D032E8AC /* BattleEngine.swift */; };
 		55814374DA587BF0F18E2E04 /* AppStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B71981ACC4153E76E5E9DB /* AppStateTests.swift */; };
 		58B12AD6D706D3761DEEE98F /* SupabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23F951EECB1FAF0C66FBB3 /* SupabaseService.swift */; };
 		5CDB7D80E36340BB80BCB92F /* AdaptiveQuestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED372096733C222ED5438283 /* AdaptiveQuestionTests.swift */; };
@@ -82,6 +84,8 @@
 		3DAF625C9C12C1D0878A2758 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		44D184A283A3C1227616243C /* BJJMind.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = BJJMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4502CFACC767B730CF6D2AE8 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		47AD5C412154F2F9C9940E90 /* BattleEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleEngineTests.swift; sourceTree = "<group>"; };
+		4F3F3C7D76FB7942D032E8AC /* BattleEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleEngine.swift; sourceTree = "<group>"; };
 		4FFC2F4B2254AFC6DF95E00B /* KatIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KatIntroView.swift; sourceTree = "<group>"; };
 		52B71981ACC4153E76E5E9DB /* AppStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateTests.swift; sourceTree = "<group>"; };
 		58E8F1A6EF3A3CB9DAFEE220 /* QuestionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionProvider.swift; sourceTree = "<group>"; };
@@ -179,6 +183,7 @@
 			children = (
 				9A03364BC79D08D158D04A0B /* AdaptiveQuestionSelector.swift */,
 				D813E1EABB947FDA9D5C6923 /* AppState.swift */,
+				4F3F3C7D76FB7942D032E8AC /* BattleEngine.swift */,
 				1C4E2129BF88EA11F6B516A9 /* BattleScale.swift */,
 				A167B51AA8D1167A1C0CECDD /* L10n.swift */,
 				11C6B01CF49966F1854B9EEC /* LanguageManager.swift */,
@@ -224,6 +229,7 @@
 			children = (
 				ED372096733C222ED5438283 /* AdaptiveQuestionTests.swift */,
 				52B71981ACC4153E76E5E9DB /* AppStateTests.swift */,
+				47AD5C412154F2F9C9940E90 /* BattleEngineTests.swift */,
 				68C912FCFA091B492601BF91 /* BattleScaleTests.swift */,
 				F0873A43D763EE480C355E72 /* ModelTests.swift */,
 				B0839A6FC1583E727B4EE8FC /* OpponentProfileTests.swift */,
@@ -388,6 +394,7 @@
 			files = (
 				5CDB7D80E36340BB80BCB92F /* AdaptiveQuestionTests.swift in Sources */,
 				55814374DA587BF0F18E2E04 /* AppStateTests.swift in Sources */,
+				3BD79B22994B04AA3B1474BE /* BattleEngineTests.swift in Sources */,
 				AA2D197FE3E51F8AFD08A6F4 /* BattleScaleTests.swift in Sources */,
 				4426095B2CF804430A3A6B4A /* ModelTests.swift in Sources */,
 				792EBB4A2A8903E53877E022 /* OpponentProfileTests.swift in Sources */,
@@ -406,6 +413,7 @@
 				212D4737D9F7F05BBEA35002 /* AppFonts.swift in Sources */,
 				9C74848C307F20977B41A64C /* AppState.swift in Sources */,
 				DA38311EC72F8657B09B4EB5 /* BJJMindApp.swift in Sources */,
+				5555A0B48BC402AF22C3A2CD /* BattleEngine.swift in Sources */,
 				18D1E82ACCE66EDBA1094C8C /* BattleScale.swift in Sources */,
 				609E4A34EDC2E69F899C0949 /* BeltSelectView.swift in Sources */,
 				63637ABFF5B30800253E3EDA /* BeltTestViews.swift in Sources */,
