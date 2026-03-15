@@ -4,12 +4,16 @@ private enum HomeSheet: Identifiable {
     case session(Unit)
     case beltTest(Unit)
     case characterMoment(Unit)
+    case bossFight(Unit)
+    case tournament(Unit)
 
     var id: String {
         switch self {
         case .session(let u):         return "session-\(u.id)"
         case .beltTest(let u):        return "belttest-\(u.id)"
         case .characterMoment(let u): return "moment-\(u.id)"
+        case .bossFight(let u):       return "bossfight-\(u.id)"
+        case .tournament(let u):      return "tournament-\(u.id)"
         }
     }
 }
@@ -62,6 +66,10 @@ struct HomeView: View {
                                 activeSheet = .beltTest(unit)
                             case .characterMoment:
                                 activeSheet = .characterMoment(unit)
+                            case .bossFight:
+                                activeSheet = .bossFight(unit)
+                            case .intermediateTournament, .finalTournament:
+                                activeSheet = .tournament(unit)
                             default:
                                 activeSheet = .session(unit)
                             }
@@ -83,6 +91,22 @@ struct HomeView: View {
                         appState.completeUnit(id: unit.id)
                         activeSheet = nil
                     }
+                case .bossFight(let unit):
+                    BattleLauncherView(
+                        unit: unit,
+                        scale: appState.battleScale(for: unit),
+                        opponent: appState.battleOpponent(for: unit) ?? OpponentProfile.all[0]
+                    ) { won in
+                        appState.completeBattle(unitId: unit.id, won: won)
+                        activeSheet = nil
+                    }
+                    .environmentObject(appState)
+                case .tournament(let unit):
+                    TournamentFlowView(unit: unit) { tournament in
+                        appState.completeTournament(unitId: unit.id, tournament: tournament)
+                        activeSheet = nil
+                    }
+                    .environmentObject(appState)
                 }
             }
         }
@@ -366,6 +390,143 @@ private struct SyncBar: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .ignoresSafeArea()
         .onAppear { phase = 1.6 }
+    }
+}
+
+// MARK: - Battle Launcher
+
+/// Async wrapper that fetches battle questions then shows BattlePreviewView → BattleView.
+private struct BattleLauncherView: View {
+    @EnvironmentObject var appState: AppState
+
+    let unit: Unit
+    let scale: BattleScale
+    let opponent: OpponentProfile
+    let onComplete: (Bool) -> Void
+
+    @State private var questions: [Question] = []
+    @State private var isLoading = true
+    @State private var showingBattle = false
+
+    var body: some View {
+        Group {
+            if isLoading {
+                ZStack {
+                    Color.screenBg.ignoresSafeArea()
+                    ProgressView()
+                        .scaleEffect(1.4)
+                        .tint(.brand)
+                }
+            } else if showingBattle {
+                BattleView(
+                    opponent: opponent,
+                    scale: scale,
+                    questions: questions,
+                    onComplete: onComplete
+                )
+            } else {
+                BattlePreviewView(opponent: opponent) {
+                    showingBattle = true
+                }
+            }
+        }
+        .task {
+            let fetched = await appState.fetchQuestionsForBattle(
+                position: scale.positions[scale.centerIndex],
+                perspective: "bottom",
+                count: 15
+            )
+            questions = fetched.isEmpty ? unit.questions : fetched
+            isLoading = false
+        }
+    }
+}
+
+// MARK: - Tournament Flow
+
+/// Wrapper that manages a @State Tournament and wires each fight to BattleView.
+private struct TournamentFlowView: View {
+    @EnvironmentObject var appState: AppState
+
+    let unit: Unit
+    let onComplete: (Tournament) -> Void
+
+    @State private var tournament: Tournament
+    @State private var activeFight: TournamentFight? = nil
+    @State private var fightQuestions: [Question] = []
+    @State private var isFetchingQuestions = false
+
+    init(unit: Unit, onComplete: @escaping (Tournament) -> Void) {
+        self.unit = unit
+        self.onComplete = onComplete
+        let t = unit.kind == .intermediateTournament
+            ? Tournament.intermediateTournament()
+            : Tournament.finalTournament()
+        _tournament = State(initialValue: t)
+    }
+
+    var body: some View {
+        ZStack {
+            if let fight = activeFight {
+                fightView(fight: fight)
+            } else {
+                TournamentBracketView(
+                    tournament: $tournament,
+                    onStartFight: { fight in
+                        Task { await startFight(fight) }
+                    },
+                    onComplete: {
+                        onComplete(tournament)
+                    }
+                )
+            }
+
+            if isFetchingQuestions {
+                Color.black.opacity(0.3).ignoresSafeArea()
+                ProgressView()
+                    .scaleEffect(1.4)
+                    .tint(.white)
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func fightView(fight: TournamentFight) -> some View {
+        let opponent = OpponentProfile.all.first { $0.id == fight.opponentId }
+            ?? OpponentProfile.all[0]
+        let scale = appState.battleScale(for: unit)
+
+        if fightQuestions.isEmpty {
+            // Show corner tip while questions load
+            CornerView(opponent: opponent) { }
+        } else {
+            BattleView(
+                opponent: opponent,
+                scale: scale,
+                questions: fightQuestions,
+                onComplete: { playerWon in
+                    let result: FightResult = playerWon
+                        ? .win(bySubmission: false)
+                        : .loss(bySubmission: false)
+                    tournament.recordFightResult(result)
+                    activeFight = nil
+                    fightQuestions = []
+                }
+            )
+        }
+    }
+
+    private func startFight(_ fight: TournamentFight) async {
+        isFetchingQuestions = true
+        let scale = appState.battleScale(for: unit)
+        let fetched = await appState.fetchQuestionsForBattle(
+            position: scale.positions[scale.centerIndex],
+            perspective: "bottom",
+            count: 15
+        )
+        fightQuestions = fetched.isEmpty ? unit.questions : fetched
+        isFetchingQuestions = false
+        activeFight = fight
     }
 }
 

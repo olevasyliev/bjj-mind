@@ -306,6 +306,35 @@ final class AppState: ObservableObject {
         }
     }
 
+    // MARK: - Battle / Tournament Completion
+
+    func completeBattle(unitId: String, won: Bool) {
+        addXP(won ? 80 : 20)
+        guard won else { return }
+        completeUnit(id: unitId)
+    }
+
+    func completeTournament(unitId: String, tournament: Tournament) {
+        guard tournament.playerWon else { return }
+        completeUnit(id: unitId)
+    }
+
+    // MARK: - Battle Helpers
+
+    func battleScale(for unit: Unit) -> BattleScale {
+        let cycle = unit.cycleNumber ?? 1
+        return BattleScale.forCycle(cycle)
+    }
+
+    func battleOpponent(for unit: Unit) -> OpponentProfile? {
+        guard unit.kind == .bossFight else { return nil }
+        let cycle = unit.cycleNumber ?? 1
+        // Cycle 1 → marcus, Cycle 2 → diego, Cycle 3 → yuki, Cycle 4 → andre
+        let bossIds: [Int: String] = [1: "marcus", 2: "diego", 3: "yuki", 4: "andre"]
+        guard let bossId = bossIds[cycle] else { return OpponentProfile.all.first }
+        return OpponentProfile.all.first { $0.id == bossId }
+    }
+
     func passBeltTest() {
         user.addStripe()
         persistUser()
