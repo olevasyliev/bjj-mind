@@ -252,6 +252,41 @@ final class AppState: ObservableObject {
         }
     }
 
+    /// Fetches questions for a battle turn filtered by BJJ position, perspective, and belt.
+    ///
+    /// Uses adaptive ordering (unseen → weak → ok) when a remote user ID is available.
+    /// On any error — network, empty result, missing userId — returns an empty array.
+    /// BattleView is expected to handle an empty result gracefully (e.g. skip the question).
+    ///
+    /// - Parameters:
+    ///   - position:    The BJJPosition the battle marker is currently on.
+    ///   - perspective: "top" or "bottom" from BattleScale.perspective(atMarkerIndex:).
+    ///   - count:       Maximum number of questions to fetch (typically 10–15 to cover a battle).
+    /// - Returns: An adaptively ordered list of up to `count` questions, or [] on failure.
+    func fetchQuestionsForBattle(
+        position: BJJPosition,
+        perspective: String,
+        count: Int
+    ) async -> [Question] {
+        guard let userId = remoteUserId else {
+            print("[AppState] fetchQuestionsForBattle: no remoteUserId, returning empty")
+            return []
+        }
+
+        do {
+            return try await SupabaseService.shared.fetchQuestionsForBattle(
+                position: position,
+                perspective: perspective,
+                beltLevel: user.belt.rawValue,
+                userId: userId,
+                count: count
+            )
+        } catch {
+            print("[AppState] fetchQuestionsForBattle failed: \(error)")
+            return []
+        }
+    }
+
     /// Records per-question answer stats after a session completes.
     ///
     /// Fire-and-forget: runs in a background `Task` so it never blocks the UI.

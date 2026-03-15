@@ -41,13 +41,20 @@ final class BattleEngine: ObservableObject {
     /// Whether the last player answer was correct. Used by opponent attack to pick rate.
     private var lastAnswerWasCorrect: Bool = false
 
+    /// Questions provided for the battle. Cycled by `questionForCurrentPosition()`.
+    private(set) var questions: [Question]
+
+    /// Index into `questions` for the current turn.
+    private var questionCursor: Int = 0
+
     // MARK: - Init
 
-    init(scale: BattleScale, opponent: OpponentProfile, maxTurns: Int) {
+    init(scale: BattleScale, opponent: OpponentProfile, maxTurns: Int, questions: [Question] = []) {
         self.scale = scale
         self.opponent = opponent
         self.maxTurns = maxTurns
         self.markerIndex = scale.centerIndex
+        self.questions = questions
     }
 
     // MARK: - Computed Properties
@@ -58,6 +65,18 @@ final class BattleEngine: ObservableObject {
 
     var currentPosition: BJJPosition {
         scale.positions[markerIndex]
+    }
+
+    // MARK: - Question Access
+
+    /// Returns the next unused question from the provided questions array and advances the cursor.
+    /// Cycles back to the start when all questions have been used.
+    /// Returns `nil` if no questions are available.
+    func questionForCurrentPosition() -> Question? {
+        guard !questions.isEmpty else { return nil }
+        let q = questions[questionCursor % questions.count]
+        questionCursor = (questionCursor + 1) % questions.count
+        return q
     }
 
     // MARK: - Player Turn

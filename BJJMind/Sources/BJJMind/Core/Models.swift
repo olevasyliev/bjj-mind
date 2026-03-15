@@ -195,7 +195,7 @@ struct Unit: Identifiable, Codable, Hashable {
 // MARK: - Question
 
 enum QuestionFormat: String, Codable {
-    case mcq2, mcq4, trueFalse, sequence, tapZone, fillBlank, spotMistake
+    case mcq2, mcq3, mcq4, trueFalse, sequence, tapZone, fillBlank, spotMistake
 }
 
 struct Question: Identifiable, Codable {

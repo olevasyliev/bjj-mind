@@ -111,4 +111,49 @@ final class BattleScaleTests: XCTestCase {
         // Center is closedGuard = 0 points
         XCTAssertEqual(scale.pointsForPosition(atMarkerIndex: scale.centerIndex), 0)
     }
+
+    // MARK: - BJJPosition.topic (Supabase slug mapping)
+
+    func test_topic_submission() {
+        XCTAssertEqual(BJJPosition.submission.topic, "submission")
+    }
+
+    func test_topic_backControl() {
+        XCTAssertEqual(BJJPosition.backControl.topic, "back_control")
+    }
+
+    func test_topic_mount() {
+        XCTAssertEqual(BJJPosition.mount.topic, "mount")
+    }
+
+    func test_topic_sideControl() {
+        XCTAssertEqual(BJJPosition.sideControl.topic, "side_control")
+    }
+
+    func test_topic_halfGuard() {
+        XCTAssertEqual(BJJPosition.halfGuard.topic, "half_guard")
+    }
+
+    func test_topic_openGuard() {
+        XCTAssertEqual(BJJPosition.openGuard.topic, "open_guard")
+    }
+
+    func test_topic_closedGuard() {
+        XCTAssertEqual(BJJPosition.closedGuard.topic, "closed_guard")
+    }
+
+    func test_allPositions_haveNonEmptyTopics() {
+        for position in BJJPosition.allCases {
+            XCTAssertFalse(position.topic.isEmpty, "\(position) should have a non-empty topic slug")
+        }
+    }
+
+    func test_allPositions_topicsUseUnderscores_notHyphens() {
+        for position in BJJPosition.allCases {
+            XCTAssertFalse(
+                position.topic.contains("-"),
+                "\(position).topic '\(position.topic)' should use underscores, not hyphens"
+            )
+        }
+    }
 }

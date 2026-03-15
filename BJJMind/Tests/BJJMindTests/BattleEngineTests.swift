@@ -263,6 +263,108 @@ final class BattleEngineTests: XCTestCase {
         XCTAssertEqual(engine.markerIndex, startIndex - 1)
     }
 
+    // MARK: - Question Cycling
+
+    private func makeQuestion(id: String, difficulty: Int = 1) -> Question {
+        Question(
+            id: id,
+            unitId: "battle-unit",
+            format: .mcq3,
+            prompt: "Question \(id)?",
+            options: ["A", "B", "C"],
+            correctAnswer: "A",
+            explanation: "Because A",
+            tags: [],
+            difficulty: difficulty,
+            sceneImageName: nil
+        )
+    }
+
+    func test_questionForCurrentPosition_returnsFirstQuestion() {
+        let q1 = makeQuestion(id: "q1")
+        let q2 = makeQuestion(id: "q2")
+        let engine = BattleEngine(
+            scale: scale, opponent: easyOpponent, maxTurns: 10,
+            questions: [q1, q2]
+        )
+        let result = engine.questionForCurrentPosition()
+        XCTAssertEqual(result?.id, "q1")
+    }
+
+    func test_questionForCurrentPosition_cyclesThrough() {
+        let q1 = makeQuestion(id: "q1")
+        let q2 = makeQuestion(id: "q2")
+        let engine = BattleEngine(
+            scale: scale, opponent: easyOpponent, maxTurns: 10,
+            questions: [q1, q2]
+        )
+        _ = engine.questionForCurrentPosition() // q1
+        _ = engine.questionForCurrentPosition() // q2
+        let third = engine.questionForCurrentPosition() // wraps back to q1
+        XCTAssertEqual(third?.id, "q1")
+    }
+
+    func test_questionForCurrentPosition_returnsNilWhenEmpty() {
+        let engine = BattleEngine(
+            scale: scale, opponent: easyOpponent, maxTurns: 10,
+            questions: []
+        )
+        XCTAssertNil(engine.questionForCurrentPosition())
+    }
+
+    func test_engineInit_withDefaultQuestions_isEmpty() {
+        let engine = BattleEngine(scale: scale, opponent: easyOpponent, maxTurns: 10)
+        XCTAssertEqual(engine.questions.count, 0)
+    }
+
+    func test_engineInit_withQuestions_storesAll() {
+        let qs = (1...5).map { makeQuestion(id: "q\($0)") }
+        let engine = BattleEngine(
+            scale: scale, opponent: easyOpponent, maxTurns: 10,
+            questions: qs
+        )
+        XCTAssertEqual(engine.questions.count, 5)
+    }
+
+    // MARK: - AdaptiveQuestionSelector with mcq3 format (battle-specific)
+
+    private func makeBattleQuestion(id: String, difficulty: Int) -> Question {
+        Question(
+            id: id,
+            unitId: "battle",
+            format: .mcq3,
+            prompt: "Battle Q \(id)?",
+            options: ["A", "B", "C"],
+            correctAnswer: "A",
+            explanation: "Because A",
+            tags: [],
+            difficulty: difficulty,
+            sceneImageName: nil
+        )
+    }
+
+    func test_adaptiveSelector_mcq3_returnsUpToCount() {
+        let questions = (1...6).map { makeBattleQuestion(id: "b\($0)", difficulty: $0) }
+        let result = AdaptiveQuestionSelector.select(from: questions, stats: [], count: 4)
+        XCTAssertEqual(result.count, 4)
+    }
+
+    func test_adaptiveSelector_mcq3_emptyStats_allNeverSeen() {
+        let q1 = makeBattleQuestion(id: "b1", difficulty: 2)
+        let q2 = makeBattleQuestion(id: "b2", difficulty: 1)
+        let result = AdaptiveQuestionSelector.select(from: [q1, q2], stats: [], count: 2)
+        // Empty stats → never-seen group, sorted by difficulty ascending
+        XCTAssertEqual(result.map(\.id), ["b2", "b1"])
+    }
+
+    func test_adaptiveSelector_mcq3_seenQuestionsDeprioritized() {
+        let seen   = makeBattleQuestion(id: "seen",   difficulty: 1)
+        let unseen = makeBattleQuestion(id: "unseen", difficulty: 3)
+        let stats  = [QuestionStat(questionId: "seen", timesSeen: 2, timesWrong: 0)]
+        let result = AdaptiveQuestionSelector.select(from: [seen, unseen], stats: stats, count: 2)
+        XCTAssertEqual(result.first?.id, "unseen", "Never-seen question should come before seen question")
+    }
+
     // MARK: - Computed Properties
 
     func test_currentPerspective_isBottomAtStart() {

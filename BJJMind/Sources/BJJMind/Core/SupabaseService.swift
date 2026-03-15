@@ -48,6 +48,7 @@ private struct RemoteQuestion: Decodable {
     // Optional fields for adaptive fetching
     let topic: String?
     let beltLevel: String?
+    let perspective: String?
 
     enum CodingKeys: String, CodingKey {
         case id, format, prompt, options, explanation, tags, difficulty
@@ -56,6 +57,7 @@ private struct RemoteQuestion: Decodable {
         case coachNote     = "coach_note"
         case topic
         case beltLevel     = "belt_level"
+        case perspective
     }
 
     var questionFormat: QuestionFormat {
@@ -63,6 +65,7 @@ private struct RemoteQuestion: Decodable {
         case "trueFalse": return .trueFalse
         case "fillBlank": return .fillBlank
         case "mcq2":      return .mcq2
+        case "mcq3":      return .mcq3
         case "mcq4":      return .mcq4
         default:          return .mcq4
         }
@@ -288,6 +291,66 @@ actor SupabaseService {
         let stats = remoteStats.map { QuestionStat(questionId: $0.questionId, timesSeen: $0.timesSeen, timesWrong: $0.timesWrong) }
 
         // 3. Sort adaptively and return the requested slice
+        return AdaptiveQuestionSelector.select(from: questions, stats: stats, count: count)
+    }
+
+    /// Fetches questions for a battle turn, filtered by position, perspective, and belt level.
+    ///
+    /// Primary fetch: topic + belt_level + perspective + format=mcq3.
+    /// Fallback (if fewer than `count` results): drops perspective filter and shuffles.
+    /// Applies adaptive ordering (unseen → weak → ok, easiest first) using user stats.
+    ///
+    /// - Parameters:
+    ///   - position:    The BJJPosition the marker is currently on.
+    ///   - perspective: "top" or "bottom" based on marker side of center.
+    ///   - beltLevel:   The user's current belt level (e.g. "white").
+    ///   - userId:      The authenticated user's UUID for adaptive prioritisation.
+    ///   - count:       Maximum number of questions to return.
+    func fetchQuestionsForBattle(
+        position: BJJPosition,
+        perspective: String,
+        beltLevel: String,
+        userId: UUID,
+        count: Int
+    ) async throws -> [Question] {
+        let topic = position.topic
+        let encodedTopic   = topic.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? topic
+        let encodedBelt    = beltLevel.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? beltLevel
+        let encodedPersp   = perspective.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? perspective
+
+        // Primary: filter by topic + belt + perspective + mcq3 format
+        let primary: [RemoteQuestion] = try await get(
+            [RemoteQuestion].self,
+            "/questions?topic=eq.\(encodedTopic)&belt_level=eq.\(encodedBelt)&perspective=eq.\(encodedPersp)&format=eq.mcq3&order=id"
+        )
+
+        var questions = primary.map { $0.toQuestion() }
+
+        // Fallback: if sparse, fetch without perspective filter and shuffle
+        if questions.count < count {
+            let fallback: [RemoteQuestion] = try await get(
+                [RemoteQuestion].self,
+                "/questions?topic=eq.\(encodedTopic)&belt_level=eq.\(encodedBelt)&format=eq.mcq3&order=id"
+            )
+            let fallbackQuestions = fallback.map { $0.toQuestion() }
+            // Merge: keep primary questions, add any from fallback not already present
+            let existingIds = Set(questions.map { $0.id })
+            let extras = fallbackQuestions.filter { !existingIds.contains($0.id) }.shuffled()
+            questions = questions + extras
+        }
+
+        guard !questions.isEmpty else { return [] }
+
+        // Fetch user stats for adaptive ordering
+        let ids = questions.map { $0.id }.joined(separator: ",")
+        let remoteStats: [RemoteQuestionStat] = try await get(
+            [RemoteQuestionStat].self,
+            "/user_question_stats?user_id=eq.\(userId.uuidString)&question_id=in.(\(ids))&select=question_id,times_seen,times_wrong"
+        )
+        let stats = remoteStats.map {
+            QuestionStat(questionId: $0.questionId, timesSeen: $0.timesSeen, timesWrong: $0.timesWrong)
+        }
+
         return AdaptiveQuestionSelector.select(from: questions, stats: stats, count: count)
     }
 
