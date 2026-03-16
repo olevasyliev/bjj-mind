@@ -49,7 +49,11 @@ enum AdaptiveQuestionSelector {
             }
         }
 
-        // Sort each group by difficulty ascending (easiest first)
+        // Shuffle each group first, then stable-sort by difficulty
+        // so questions of equal difficulty appear in random order each session
+        neverSeen.shuffle()
+        weak.shuffle()
+        ok.shuffle()
         let byDifficulty: (Question, Question) -> Bool = { $0.difficulty < $1.difficulty }
         neverSeen.sort(by: byDifficulty)
         weak.sort(by: byDifficulty)
