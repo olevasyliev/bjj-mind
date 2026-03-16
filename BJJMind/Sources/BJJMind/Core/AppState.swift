@@ -15,6 +15,12 @@ final class AppState: ObservableObject {
     /// `nil` before any session is started. Reset to `nil` when a new session begins.
     @Published private(set) var sessionQuestions: [Question]? = nil
 
+    /// Cached base units (EN, from Supabase) — used to restore EN without a full re-sync.
+    private var baseUnits: [Unit] = []
+
+    /// Cancellable handle for the in-flight language-switch task.
+    private var languageTask: Task<Void, Never>? = nil
+
     /// Stable Supabase UUID for this device, persisted in UserDefaults.
     private(set) var remoteUserId: UUID? {
         get {
@@ -126,6 +132,7 @@ final class AppState: ObservableObject {
         }
 
         units = rebuilt
+        baseUnits = rebuilt
     }
 
     // MARK: - Persistence
@@ -214,7 +221,8 @@ final class AppState: ObservableObject {
     func setLanguage(_ code: String) {
         LanguageManager.shared.setLanguage(code)
         language = code
-        Task { await applyLanguage(code) }
+        languageTask?.cancel()
+        languageTask = Task { await applyLanguage(code) }
     }
 
     // MARK: - i18n
@@ -224,12 +232,16 @@ final class AppState: ObservableObject {
     /// For any other locale, fetches rows from unit_translations and overlays them.
     func applyLanguage(_ code: String) async {
         if code == "en" {
-            // EN content lives directly on units — re-sync to restore base values.
-            await syncWithSupabase()
+            // EN content lives directly on units — restore from cache if available.
+            if !baseUnits.isEmpty {
+                self.units = self.baseUnits
+            } else {
+                await syncWithSupabase()
+            }
         } else {
-            guard remoteUserId != nil else { return }
             do {
                 let translations = try await SupabaseService.shared.fetchTranslations(locale: code)
+                guard !Task.isCancelled else { return }
                 applyTranslations(translations)
             } catch {
                 print("[i18n] Translation fetch failed: \(error)")
@@ -245,7 +257,7 @@ final class AppState: ObservableObject {
                 id: unit.id,
                 belt: unit.belt,
                 orderIndex: unit.orderIndex,
-                title: t.title,
+                title: t.title.isEmpty ? unit.title : t.title,
                 description: t.description ?? unit.description,
                 tags: unit.tags,
                 isLocked: unit.isLocked,

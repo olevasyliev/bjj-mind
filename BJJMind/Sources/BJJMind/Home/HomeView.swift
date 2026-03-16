@@ -121,11 +121,19 @@ struct HomeView: View {
                             activeSheet = nil
                         }
                     } else {
-                        // Defensive: no data → complete immediately
-                        Color.clear.onAppear {
-                            appState.completeUnit(id: unit.id)
-                            activeSheet = nil
+                        // miniTheoryData missing — show placeholder, don't auto-complete
+                        VStack(spacing: 16) {
+                            Image(systemName: "book.closed")
+                                .font(.system(size: 48))
+                                .foregroundColor(.secondary)
+                            Text("Theory content unavailable")
+                                .foregroundColor(.secondary)
+                            Button("Continue") {
+                                activeSheet = nil
+                            }
+                            .buttonStyle(.borderedProminent)
                         }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                 }
             }
@@ -328,6 +336,7 @@ struct BeltNode: View {
         if unit.isCharacterMoment  { return Color(hex: "#f3e8ff") }
         if unit.isMiniExam         { return Color(hex: "#fff7ed") }
         if unit.isMixedReview      { return Color(hex: "#eff6ff") }
+        if unit.kind == .miniTheory { return Color(hex: "#e0f2fe") }
         return .brand
     }
 
@@ -340,6 +349,7 @@ struct BeltNode: View {
         if unit.isCharacterMoment  { return Color(hex: "#c084fc") }
         if unit.isMiniExam         { return Color(hex: "#fb923c") }
         if unit.isMixedReview      { return Color(hex: "#60a5fa") }
+        if unit.kind == .miniTheory { return Color(hex: "#7dd3fc") }
         return Color(hex: "#a78bfa")
     }
 
@@ -352,6 +362,7 @@ struct BeltNode: View {
         if unit.isCharacterMoment  { return Color(hex: "#a855f7") }
         if unit.isMiniExam         { return Color(hex: "#ea580c") }
         if unit.isMixedReview      { return Color(hex: "#3b82f6") }
+        if unit.kind == .miniTheory { return Color(hex: "#38bdf8") }
         return Color(hex: "#5b21b6")
     }
 
@@ -363,6 +374,7 @@ struct BeltNode: View {
         if unit.isCharacterMoment  { return Color(hex: "#9333ea") }
         if unit.isMiniExam         { return Color(hex: "#ea580c") }
         if unit.isMixedReview      { return Color(hex: "#2563eb") }
+        if unit.kind == .miniTheory { return Color(hex: "#0369a1") }
         return .brand
     }
 
@@ -375,6 +387,7 @@ struct BeltNode: View {
         if unit.isCharacterMoment  { return "💬" }
         if unit.isMiniExam         { return "📋" }
         if unit.isMixedReview      { return "🔀" }
+        if unit.kind == .miniTheory { return "📖" }
         return "🥋"
     }
 }

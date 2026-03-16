@@ -128,7 +128,7 @@ final class CycleStructureTests: XCTestCase {
         """.data(using: .utf8)!
 
         let data = try JSONDecoder().decode(MiniTheoryData.self, from: json)
-        XCTAssertEqual(data.type, "cycleIntro")
+        XCTAssertEqual(data.type, .cycleIntro)
         XCTAssertEqual(data.screens.count, 2)
         XCTAssertEqual(data.screens[0].title, "Closed Guard")
         XCTAssertEqual(data.screens[0].body, "Control the distance.")
@@ -150,9 +150,9 @@ final class CycleStructureTests: XCTestCase {
 
     func test_miniTheoryData_equatable() {
         let screen = MiniTheoryScreen(title: nil, body: "Test", coachLine: nil, show3D: false)
-        let d1 = MiniTheoryData(type: "blockIntro", screens: [screen], buttonLabel: "OK")
-        let d2 = MiniTheoryData(type: "blockIntro", screens: [screen], buttonLabel: "OK")
-        let d3 = MiniTheoryData(type: "bossPrep", screens: [screen], buttonLabel: "OK")
+        let d1 = MiniTheoryData(type: .blockIntro, screens: [screen], buttonLabel: "OK")
+        let d2 = MiniTheoryData(type: .blockIntro, screens: [screen], buttonLabel: "OK")
+        let d3 = MiniTheoryData(type: .bossPrep, screens: [screen], buttonLabel: "OK")
         XCTAssertEqual(d1, d2)
         XCTAssertNotEqual(d1, d3)
     }
@@ -161,7 +161,7 @@ final class CycleStructureTests: XCTestCase {
 
     func test_unit_withMiniTheoryData_codableRoundtrip() throws {
         let screen = MiniTheoryScreen(title: "Welcome", body: "Closed guard basics.", coachLine: "Stay low.", show3D: false)
-        let theory = MiniTheoryData(type: "cycleIntro", screens: [screen], buttonLabel: "Start")
+        let theory = MiniTheoryData(type: .cycleIntro, screens: [screen], buttonLabel: "Start")
         let unit = AppUnit(
             id: "mt-unit-1", belt: .white, orderIndex: 5,
             title: "Cycle 1 Intro", description: "Intro to closed guard",
@@ -177,7 +177,7 @@ final class CycleStructureTests: XCTestCase {
         XCTAssertEqual(decoded.id, "mt-unit-1")
         XCTAssertEqual(decoded.kind, .miniTheory)
         XCTAssertNotNil(decoded.miniTheoryData)
-        XCTAssertEqual(decoded.miniTheoryData?.type, "cycleIntro")
+        XCTAssertEqual(decoded.miniTheoryData?.type, .cycleIntro)
         XCTAssertEqual(decoded.miniTheoryData?.screens.count, 1)
         XCTAssertEqual(decoded.miniTheoryData?.screens[0].title, "Welcome")
         XCTAssertEqual(decoded.miniTheoryData?.buttonLabel, "Start")

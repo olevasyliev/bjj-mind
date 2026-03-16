@@ -5,6 +5,7 @@ and upsert them into Supabase unit_translations table.
 """
 
 import json
+import re
 import time
 import requests
 
@@ -82,6 +83,17 @@ def call_claude(prompt: str) -> str:
     return resp.json()["content"][0]["text"].strip()
 
 
+# ── JSON extraction ───────────────────────────────────────────────────────────
+def extract_json(raw: str) -> str:
+    """Extract JSON from Claude response, handling markdown code fences."""
+    # Try to find JSON in code fence
+    match = re.search(r'```(?:json)?\s*([\s\S]*?)```', raw)
+    if match:
+        return match.group(1).strip()
+    # No fence — return as-is (might be raw JSON)
+    return raw.strip()
+
+
 # ── Translation helpers ───────────────────────────────────────────────────────
 def translate_title_description(title: str, description: str) -> dict:
     prompt = f"""You are a BJJ instructor translating app content to Spanish for Latin American audiences.
@@ -95,14 +107,7 @@ Description: {description}
 
 Respond with JSON only, no extra text: {{"title": "...", "description": "..."}}"""
     raw = call_claude(prompt)
-    # Strip markdown code fences if present
-    raw = raw.strip()
-    if raw.startswith("```"):
-        raw = raw.split("```")[1]
-        if raw.startswith("json"):
-            raw = raw[4:]
-        raw = raw.strip()
-    return json.loads(raw)
+    return json.loads(extract_json(raw))
 
 
 def translate_mini_theory(content: dict) -> dict:
@@ -114,13 +119,7 @@ Return valid JSON only, no extra text or markdown fences.
 
 {content_json}"""
     raw = call_claude(prompt)
-    raw = raw.strip()
-    if raw.startswith("```"):
-        raw = raw.split("```")[1]
-        if raw.startswith("json"):
-            raw = raw[4:]
-        raw = raw.strip()
-    return json.loads(raw)
+    return json.loads(extract_json(raw))
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────

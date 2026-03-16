@@ -52,7 +52,7 @@ final class RemoteTranslationDecodingTests: XCTestCase {
         XCTAssertEqual(decoded.unitId, "unit-2")
         XCTAssertNil(decoded.description)
         XCTAssertNotNil(decoded.miniTheoryContent)
-        XCTAssertEqual(decoded.miniTheoryContent?.type, "cycleIntro")
+        XCTAssertEqual(decoded.miniTheoryContent?.type, .cycleIntro)
         XCTAssertEqual(decoded.miniTheoryContent?.buttonLabel, "Empezar")
         XCTAssertEqual(decoded.miniTheoryContent?.screens.count, 1)
         XCTAssertEqual(decoded.miniTheoryContent?.screens.first?.body, "Cuerpo de la pantalla.")
@@ -239,7 +239,7 @@ final class ApplyTranslationsTests: XCTestCase {
 
     func test_applyTranslations_overridesMiniTheory_whenTranslationProvides() {
         let baseMiniTheory = MiniTheoryData(
-            type: "cycleIntro",
+            type: .cycleIntro,
             screens: [MiniTheoryScreen(title: "Screen 1", body: "English body", coachLine: nil, show3D: false)],
             buttonLabel: "Start"
         )
@@ -254,7 +254,7 @@ final class ApplyTranslationsTests: XCTestCase {
         ]
 
         let spanishMiniTheory = MiniTheoryData(
-            type: "cycleIntro",
+            type: .cycleIntro,
             screens: [MiniTheoryScreen(title: "Pantalla 1", body: "Cuerpo en español", coachLine: nil, show3D: false)],
             buttonLabel: "Empezar"
         )

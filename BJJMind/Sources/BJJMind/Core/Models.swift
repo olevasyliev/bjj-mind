@@ -93,8 +93,21 @@ struct MiniTheoryScreen: Codable, Equatable {
 
 // MARK: - MiniTheoryData
 
+enum MiniTheoryType: String, Codable, Equatable {
+    case cycleIntro
+    case blockIntro
+    case bossPrep
+    case unknown
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        let raw = try container.decode(String.self)
+        self = MiniTheoryType(rawValue: raw) ?? .unknown
+    }
+}
+
 struct MiniTheoryData: Codable, Equatable {
-    let type: String   // "cycleIntro", "blockIntro", "bossPrep"
+    let type: MiniTheoryType
     let screens: [MiniTheoryScreen]
     let buttonLabel: String
 }

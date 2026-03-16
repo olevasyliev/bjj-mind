@@ -27,7 +27,8 @@ final class MiniTheoryViewTests: XCTestCase {
                 show3D: false
             )
         }
-        return MiniTheoryData(type: type, screens: screens, buttonLabel: buttonLabel)
+        let miniType = MiniTheoryType(rawValue: type) ?? .unknown
+        return MiniTheoryData(type: miniType, screens: screens, buttonLabel: buttonLabel)
     }
 
     // MARK: - Screen count
@@ -141,13 +142,13 @@ final class MiniTheoryViewTests: XCTestCase {
 
     func test_miniTheory_bossPrep_type() {
         let data = makeData(screenCount: 1, buttonLabel: "Let's Fight →", type: "bossPrep")
-        XCTAssertEqual(data.type, "bossPrep")
+        XCTAssertEqual(data.type, .bossPrep)
         XCTAssertEqual(data.screens.count, 1)
     }
 
     func test_miniTheory_cycleIntro_type() {
         let data = makeData(screenCount: 2, buttonLabel: "Start Lessons →", type: "cycleIntro")
-        XCTAssertEqual(data.type, "cycleIntro")
+        XCTAssertEqual(data.type, .cycleIntro)
         XCTAssertEqual(data.buttonLabel, "Start Lessons →")
     }
 }
