@@ -42,6 +42,7 @@
 		8E54F85A2BB2FBD2111C4046 /* TournamentBracketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D5B00053AD0A925D21FAB4 /* TournamentBracketView.swift */; };
 		942AAB4C978397A30FF79F28 /* CycleStructureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01A1D5B5AB56D822B33D3FD /* CycleStructureTests.swift */; };
 		97A733F36C38DA0A9E6F472F /* OnboardingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E3467664C0C66AD2AA6C2 /* OnboardingFlow.swift */; };
+		993F577DADB253DAABEEFEA4 /* SupabaseDecodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130316A910C336330B71468E /* SupabaseDecodeTests.swift */; };
 		9B5E556F1905A9F93D3F8980 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7108B55FDFE579DB3BD9451B /* Models.swift */; };
 		9C74848C307F20977B41A64C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D813E1EABB947FDA9D5C6923 /* AppState.swift */; };
 		A9D2429D5AABB405BAE16D5A /* SkillAssessmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1BC2808ADB3A89017CE526 /* SkillAssessmentView.swift */; };
@@ -80,6 +81,7 @@
 		11B7C552BE8EDA878A2C21CD /* BJJMindApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BJJMindApp.swift; sourceTree = "<group>"; };
 		11C6B01CF49966F1854B9EEC /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		12B25329B8331DF0CF194DEE /* BeltSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeltSelectView.swift; sourceTree = "<group>"; };
+		130316A910C336330B71468E /* SupabaseDecodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseDecodeTests.swift; sourceTree = "<group>"; };
 		16C37E87887F8522AB2EE1B9 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		1AB8C4C35CE404C51846062B /* StrugglesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrugglesView.swift; sourceTree = "<group>"; };
 		1C4E2129BF88EA11F6B516A9 /* BattleScale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleScale.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				B0839A6FC1583E727B4EE8FC /* OpponentProfileTests.swift */,
 				1022009DE91D79734D44F01D /* SessionEngineTests.swift */,
 				7E5837FDB73D7C29BF62D45D /* SkillAssessmentTests.swift */,
+				130316A910C336330B71468E /* SupabaseDecodeTests.swift */,
 				D0D9985B57AAB190726C12BF /* TournamentTests.swift */,
 				8BB49EEA9CE281337881A32E /* TranslationTests.swift */,
 			);
@@ -433,6 +436,7 @@
 				792EBB4A2A8903E53877E022 /* OpponentProfileTests.swift in Sources */,
 				B8A3A82FFE870A177C1898A2 /* SessionEngineTests.swift in Sources */,
 				DA1DE14EA102C4E4AB46D19B /* SkillAssessmentTests.swift in Sources */,
+				993F577DADB253DAABEEFEA4 /* SupabaseDecodeTests.swift in Sources */,
 				61B76065C510DFCF8771B6CD /* TournamentTests.swift in Sources */,
 				00E5C2182CB14774EE8A61EE /* TranslationTests.swift in Sources */,
 			);
