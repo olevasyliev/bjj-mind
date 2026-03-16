@@ -33,7 +33,7 @@ iOS only. iPhone portrait (9:16). No React Native, no Expo.
 - `L10n` enum — type-safe localized strings via LanguageManager.bundle
 - `SupabaseService` — URLSession (no SPM), REST API, adaptive question fetching + stat tracking
 
-**237 tests, all green** — v1.2.0 (build 5)
+**221 tests, all green** — v1.3.0 (build 6)
 
 ---
 
@@ -47,7 +47,8 @@ iOS only. iPhone portrait (9:16). No React Native, no Expo.
 - ✅ **Supabase integration** — user profile + unit progress + session results sync, URLSession-based
 - ✅ **Onboarding redesign** — characters on all screens, Kat typewriter speech bubble, belt-personalized messages
 - ✅ **Adaptive question bank** — 723 questions in Supabase (297 original + 426 battle mcq3), AdaptiveQuestionSelector, per-question stats via RPC
-- ✅ **Battle system** — BattleScale (BJJ position scale), BattleEngine (turn-based state machine), OpponentProfile (8 opponents), BattleView UI, Tournament bracket (3-fight intermediate + 5-fight final), 4-cycle White Belt structure in SampleData
+- ✅ **Battle system** — BattleScale, BattleEngine, OpponentProfile (8 opponents), BattleView UI, Tournament bracket (3-fight intermediate + 5-fight final)
+- ✅ **Supabase-only catalog (v1.3.0)** — SampleData removed. 74-node 4-cycle curriculum in Supabase (miniTheory → lessons → boss → tournament per cycle). MiniTheoryData model. unit_translations table ready for i18n.
 
 ---
 
@@ -65,7 +66,7 @@ iOS only. iPhone portrait (9:16). No React Native, no Expo.
 - Battle question fetching: `fetchQuestionsForBattle` on AppState+SupabaseService (position+perspective+mcq3 filtered)
 
 ### What is implemented but not yet wired to navigation
-- **Battle system** — models + UI complete, not yet integrated into HomeView tap handlers (boss fight / tournament nodes don't launch BattleView yet)
+- **MiniTheoryView** — model exists, no UI yet (view needs to be built)
 - **XP** — shown in session summary, not connected to progression/stripes
 - **Streak** — shown in summary, not persisted between sessions
 - **Progress tab** — "Coming Soon" placeholder
@@ -143,6 +144,20 @@ CLAUDE.md             ← This file
 ### Pipeline for every feature
 **Tests → Code → Run tests → Code review → Push → Update docs**
 Code review cannot be skipped.
+
+### Before implementing any task — validate the task itself
+Before writing any code, evaluate whether the task is correctly stated:
+- Is the formulation unambiguous? If not — stop and clarify before starting.
+- Does the task rely on hidden assumptions? Surface and validate them.
+- Is the right place being used? (e.g. data belongs in Supabase, not in Swift code)
+- Ask: "What exactly is being done, and why this way?" If the answer isn't obvious — it's a signal to question the task, not just execute it.
+
+This applies at every level: requirements review, planning, subagent prompts, and code review. A task that is correctly implemented but incorrectly stated is still a failure. "Update SampleData" is an ambiguous formulation — the right question is "why is this data in SampleData and not in Supabase?" That question must be asked before work begins, not after.
+
+### Data vs code — where things live
+- **Supabase** — all content and structure: units, mini-theory, questions, user progress, curriculum
+- **Swift** — models, logic, UI only
+- **SampleData** — minimal fallback for tests only, never the source of truth
 
 ### SourceKit false positives
 "Cannot find type in scope" errors in SourceKit are cross-file indexing artifacts — not real compile errors. Code compiles fine. Ignore them.
