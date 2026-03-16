@@ -117,7 +117,8 @@ final class AppState: ObservableObject {
                 lessonTotal: b.lessonTotal,
                 characterMoment: b.characterMoment,
                 cycleNumber: b.cycleNumber,
-                isBoss: b.isBoss
+                isBoss: b.isBoss,
+                miniTheoryData: b.miniTheoryContent
             )
         }
 

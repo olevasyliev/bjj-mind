@@ -21,20 +21,22 @@ private struct RemoteUnit: Decodable {
     let characterMessage: String?
     let cycleNumber: Int?
     let isBoss: Bool?
+    let miniTheoryContent: MiniTheoryData?
 
     enum CodingKeys: String, CodingKey {
         case id, belt, title, description, tags, kind, topic
-        case orderIndex      = "order_index"
-        case coachIntro      = "coach_intro"
-        case isBeltTest      = "is_belt_test"
-        case sectionTitle    = "section_title"
-        case topicTitle      = "topic_title"
-        case lessonIndex     = "lesson_index"
-        case lessonTotal     = "lesson_total"
-        case characterName   = "character_name"
-        case characterMessage = "character_message"
-        case cycleNumber     = "cycle_number"
-        case isBoss          = "is_boss"
+        case orderIndex         = "order_index"
+        case coachIntro         = "coach_intro"
+        case isBeltTest         = "is_belt_test"
+        case sectionTitle       = "section_title"
+        case topicTitle         = "topic_title"
+        case lessonIndex        = "lesson_index"
+        case lessonTotal        = "lesson_total"
+        case characterName      = "character_name"
+        case characterMessage   = "character_message"
+        case cycleNumber        = "cycle_number"
+        case isBoss             = "is_boss"
+        case miniTheoryContent  = "mini_theory_content"
     }
 }
 
@@ -156,6 +158,7 @@ struct RemoteUnitBundle {
     let characterMoment: CharacterMomentData?
     let cycleNumber: Int?
     let isBoss: Bool
+    let miniTheoryContent: MiniTheoryData?
 }
 
 // MARK: - SupabaseService
@@ -224,7 +227,8 @@ actor SupabaseService {
                 lessonTotal:     ru.lessonTotal,
                 characterMoment: characterMoment,
                 cycleNumber:     ru.cycleNumber,
-                isBoss:          ru.isBoss ?? false
+                isBoss:          ru.isBoss ?? false,
+                miniTheoryContent: ru.miniTheoryContent
             )
         }
     }
