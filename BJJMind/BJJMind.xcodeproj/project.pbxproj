@@ -29,7 +29,6 @@
 		609E4A34EDC2E69F899C0949 /* BeltSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B25329B8331DF0CF194DEE /* BeltSelectView.swift */; };
 		61B76065C510DFCF8771B6CD /* TournamentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D9985B57AAB190726C12BF /* TournamentTests.swift */; };
 		63637ABFF5B30800253E3EDA /* BeltTestViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2988D1C00962FB4D915903F /* BeltTestViews.swift */; };
-		66083351B6A47F1BCA5F590F /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAF625C9C12C1D0878A2758 /* SampleData.swift */; };
 		69713C62884492C9820CAFA0 /* ClubInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297E3F50F4F260B6157D0F33 /* ClubInfoView.swift */; };
 		768AE4B4070872E54B0C1D14 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2329EF0D26291969A12F81D7 /* ProgressView.swift */; };
 		77237438DF7D22B19B122392 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFE9EDFF53587037D18773C9 /* Nunito-ExtraBold.ttf */; };
@@ -38,10 +37,8 @@
 		8A2EFC51271D14A28AA33A25 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92C43A31E69789CCFC62648 /* HomeView.swift */; };
 		8D0824680181A6C013BB7D85 /* SessionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE0045FCFE4F1EE41C818B3 /* SessionEngine.swift */; };
 		8E54F85A2BB2FBD2111C4046 /* TournamentBracketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D5B00053AD0A925D21FAB4 /* TournamentBracketView.swift */; };
-		9360805B16197C110BCAB2FE /* SampleData_ES.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A47F00194B779CBA8A7479 /* SampleData_ES.swift */; };
 		942AAB4C978397A30FF79F28 /* CycleStructureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01A1D5B5AB56D822B33D3FD /* CycleStructureTests.swift */; };
 		97A733F36C38DA0A9E6F472F /* OnboardingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E3467664C0C66AD2AA6C2 /* OnboardingFlow.swift */; };
-		9A411B345ADC3749CF984F6F /* QuestionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E8F1A6EF3A3CB9DAFEE220 /* QuestionProvider.swift */; };
 		9B5E556F1905A9F93D3F8980 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7108B55FDFE579DB3BD9451B /* Models.swift */; };
 		9C74848C307F20977B41A64C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D813E1EABB947FDA9D5C6923 /* AppState.swift */; };
 		A9D2429D5AABB405BAE16D5A /* SkillAssessmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1BC2808ADB3A89017CE526 /* SkillAssessmentView.swift */; };
@@ -84,17 +81,14 @@
 		1AB8C4C35CE404C51846062B /* StrugglesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrugglesView.swift; sourceTree = "<group>"; };
 		1C4E2129BF88EA11F6B516A9 /* BattleScale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleScale.swift; sourceTree = "<group>"; };
 		2329EF0D26291969A12F81D7 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
-		26A47F00194B779CBA8A7479 /* SampleData_ES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData_ES.swift; sourceTree = "<group>"; };
 		297E3F50F4F260B6157D0F33 /* ClubInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubInfoView.swift; sourceTree = "<group>"; };
 		2C1055DB63C8A242818CF2C5 /* BattleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleView.swift; sourceTree = "<group>"; };
-		3DAF625C9C12C1D0878A2758 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		44D184A283A3C1227616243C /* BJJMind.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = BJJMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4502CFACC767B730CF6D2AE8 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		47AD5C412154F2F9C9940E90 /* BattleEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleEngineTests.swift; sourceTree = "<group>"; };
 		4F3F3C7D76FB7942D032E8AC /* BattleEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleEngine.swift; sourceTree = "<group>"; };
 		4FFC2F4B2254AFC6DF95E00B /* KatIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KatIntroView.swift; sourceTree = "<group>"; };
 		52B71981ACC4153E76E5E9DB /* AppStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateTests.swift; sourceTree = "<group>"; };
-		58E8F1A6EF3A3CB9DAFEE220 /* QuestionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionProvider.swift; sourceTree = "<group>"; };
 		617E3467664C0C66AD2AA6C2 /* OnboardingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlow.swift; sourceTree = "<group>"; };
 		68C912FCFA091B492601BF91 /* BattleScaleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleScaleTests.swift; sourceTree = "<group>"; };
 		69FC429E7DDDB2B20330DF86 /* OpponentProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentProfile.swift; sourceTree = "<group>"; };
@@ -208,9 +202,6 @@
 				11C6B01CF49966F1854B9EEC /* LanguageManager.swift */,
 				7108B55FDFE579DB3BD9451B /* Models.swift */,
 				69FC429E7DDDB2B20330DF86 /* OpponentProfile.swift */,
-				58E8F1A6EF3A3CB9DAFEE220 /* QuestionProvider.swift */,
-				26A47F00194B779CBA8A7479 /* SampleData_ES.swift */,
-				3DAF625C9C12C1D0878A2758 /* SampleData.swift */,
 				BB23F951EECB1FAF0C66FBB3 /* SupabaseService.swift */,
 				E544A2BC81A16BE3C08D1C43 /* Tournament.swift */,
 			);
@@ -458,9 +449,6 @@
 				528EA0AC1A69BED2843D9656 /* OpponentProfile.swift in Sources */,
 				CA12C19941208E08F60DAE4F /* ProfileView.swift in Sources */,
 				768AE4B4070872E54B0C1D14 /* ProgressView.swift in Sources */,
-				9A411B345ADC3749CF984F6F /* QuestionProvider.swift in Sources */,
-				66083351B6A47F1BCA5F590F /* SampleData.swift in Sources */,
-				9360805B16197C110BCAB2FE /* SampleData_ES.swift in Sources */,
 				8D0824680181A6C013BB7D85 /* SessionEngine.swift in Sources */,
 				EE5059447BAD6AA0A79962BE /* SessionView.swift in Sources */,
 				E61A4A9BD37AA2807E875C10 /* SkillAssessmentEngine.swift in Sources */,

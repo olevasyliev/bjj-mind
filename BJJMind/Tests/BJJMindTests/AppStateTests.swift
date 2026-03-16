@@ -126,17 +126,27 @@ final class AppStateTests: XCTestCase {
     // MARK: - Unit Progression Tests
 
     func test_completeUnit_marksUnitCompleted() {
-        // wb-01-l2 is initially not completed
-        XCTAssertFalse(sut.units.first(where: { $0.id == "wb-01-l2" })!.isCompleted)
-        sut.completeUnit(id: "wb-01-l2")
-        XCTAssertTrue(sut.units.first(where: { $0.id == "wb-01-l2" })!.isCompleted)
+        sut.units = [
+            Unit(id: "u-first", belt: .white, orderIndex: 0, title: "First", description: "",
+                 tags: [], isLocked: false, isCompleted: false, kind: .lesson, questions: []),
+            Unit(id: "u-second", belt: .white, orderIndex: 1, title: "Second", description: "",
+                 tags: [], isLocked: true, isCompleted: false, kind: .lesson, questions: []),
+        ]
+        XCTAssertFalse(sut.units.first(where: { $0.id == "u-first" })!.isCompleted)
+        sut.completeUnit(id: "u-first")
+        XCTAssertTrue(sut.units.first(where: { $0.id == "u-first" })!.isCompleted)
     }
 
     func test_completeUnit_unlocksNextUnit() {
-        // wb-02-l1 is initially locked
-        XCTAssertTrue(sut.units.first(where: { $0.id == "wb-02-l1" })!.isLocked)
-        sut.completeUnit(id: "wb-01-l2")
-        XCTAssertFalse(sut.units.first(where: { $0.id == "wb-02-l1" })!.isLocked)
+        sut.units = [
+            Unit(id: "u-first", belt: .white, orderIndex: 0, title: "First", description: "",
+                 tags: [], isLocked: false, isCompleted: false, kind: .lesson, questions: []),
+            Unit(id: "u-second", belt: .white, orderIndex: 1, title: "Second", description: "",
+                 tags: [], isLocked: true, isCompleted: false, kind: .lesson, questions: []),
+        ]
+        XCTAssertTrue(sut.units.first(where: { $0.id == "u-second" })!.isLocked)
+        sut.completeUnit(id: "u-first")
+        XCTAssertFalse(sut.units.first(where: { $0.id == "u-second" })!.isLocked)
     }
 
     func test_completeUnit_invalidId_doesNothing() {
@@ -146,6 +156,14 @@ final class AppStateTests: XCTestCase {
     }
 
     func test_allNonBeltTestUnitsComplete_unlocksBeltTest() {
+        sut.units = [
+            Unit(id: "l1", belt: .white, orderIndex: 0, title: "L1", description: "",
+                 tags: [], isLocked: false, isCompleted: false, kind: .lesson, questions: []),
+            Unit(id: "l2", belt: .white, orderIndex: 1, title: "L2", description: "",
+                 tags: [], isLocked: true, isCompleted: false, kind: .lesson, questions: []),
+            Unit(id: "bt1", belt: .white, orderIndex: 2, title: "Belt Test", description: "",
+                 tags: [], isLocked: true, isCompleted: false, kind: .beltTest, questions: []),
+        ]
         // Complete every non-belt-test unit
         let nonTestIds = sut.units.filter { !$0.isBeltTest }.map { $0.id }
         for id in nonTestIds { sut.completeUnit(id: id) }
@@ -181,11 +199,18 @@ final class AppStateTests: XCTestCase {
 
     /// When no remoteUserId is set, fetchQuestionsForSession must fall back to unit.questions.
     func test_fetchQuestionsForSession_noUserId_returnsLocalQuestions() async {
-        // Arrange: pick the first unit that has questions
-        guard let unit = sut.units.first(where: { !$0.questions.isEmpty }) else {
-            XCTFail("Expected at least one unit with questions in SampleData")
-            return
-        }
+        // Arrange: build a unit with local questions (no remote user, no topic)
+        let localQuestion = Question(
+            id: "local-q99", unitId: "local-unit", format: .mcq4,
+            prompt: "Test prompt", options: ["A", "B"], correctAnswer: "A",
+            explanation: "Because A", tags: [], difficulty: 1, sceneImageName: nil
+        )
+        let unit = Unit(
+            id: "local-unit", belt: .white, orderIndex: 0,
+            title: "Local Unit", description: "",
+            tags: [], isLocked: false, isCompleted: false,
+            kind: .lesson, questions: [localQuestion]
+        )
         // No remoteUserId is set (fresh defaults) — fallback path must fire
 
         // Act
@@ -231,10 +256,17 @@ final class AppStateTests: XCTestCase {
 
     /// After fetchQuestionsForSession, sessionQuestions is populated.
     func test_fetchQuestionsForSession_setsSessionQuestions() async {
-        guard let unit = sut.units.first(where: { !$0.questions.isEmpty }) else {
-            XCTFail("Expected at least one unit with questions")
-            return
-        }
+        let localQuestion = Question(
+            id: "local-q98", unitId: "session-unit", format: .mcq4,
+            prompt: "Test prompt", options: ["A", "B"], correctAnswer: "A",
+            explanation: "Because A", tags: [], difficulty: 1, sceneImageName: nil
+        )
+        let unit = Unit(
+            id: "session-unit", belt: .white, orderIndex: 0,
+            title: "Session Unit", description: "",
+            tags: [], isLocked: false, isCompleted: false,
+            kind: .lesson, questions: [localQuestion]
+        )
 
         _ = await sut.fetchQuestionsForSession(for: unit)
 
@@ -263,6 +295,16 @@ final class AppStateTests: XCTestCase {
     // MARK: - Sequential Unlock Does Not Touch Belt Test
 
     func test_completeLastContentUnit_doesNotUnlockBeltTestSequentially() {
+        sut.units = [
+            Unit(id: "c1", belt: .white, orderIndex: 0, title: "C1", description: "",
+                 tags: [], isLocked: false, isCompleted: false, kind: .lesson, questions: []),
+            Unit(id: "c2", belt: .white, orderIndex: 1, title: "C2", description: "",
+                 tags: [], isLocked: true, isCompleted: false, kind: .lesson, questions: []),
+            Unit(id: "c3", belt: .white, orderIndex: 2, title: "C3", description: "",
+                 tags: [], isLocked: true, isCompleted: false, kind: .lesson, questions: []),
+            Unit(id: "bt", belt: .white, orderIndex: 3, title: "Belt Test", description: "",
+                 tags: [], isLocked: true, isCompleted: false, kind: .beltTest, questions: []),
+        ]
         // Complete all non-belt-test units except the last one — belt test must stay locked
         let nonTestUnits = sut.units.filter { !$0.isBeltTest }
         let allButLast = nonTestUnits.dropLast()

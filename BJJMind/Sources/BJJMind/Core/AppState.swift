@@ -7,7 +7,7 @@ final class AppState: ObservableObject {
 
     @Published var currentScreen: Screen = .onboarding
     @Published var user: UserProfile = .guest
-    @Published var units: [Unit] = QuestionProvider.whitebelt
+    @Published var units: [Unit] = []
     @Published var language: String = LanguageManager.shared.code
     @Published var isLoadingContent: Bool = false
 
@@ -86,9 +86,6 @@ final class AppState: ObservableObject {
     /// Merges remote catalog with completed set, rebuilding lock chain.
     private func applyRemoteBundles(_ bundles: [RemoteUnitBundle], completedIds: Set<String>) {
         guard !bundles.isEmpty else { return }
-        // If units exist but have no questions yet (migration in progress), keep local SampleData
-        let totalQuestions = bundles.reduce(0) { $0 + $1.questions.count }
-        guard totalQuestions > 0 else { return }
 
         var rebuilt: [Unit] = bundles.map { b in
             Unit(

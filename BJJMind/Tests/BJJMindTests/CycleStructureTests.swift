@@ -7,10 +7,6 @@ private typealias AppUnitKind = BJJMind.UnitKind
 
 final class CycleStructureTests: XCTestCase {
 
-    // MARK: - Helpers
-
-    private var units: [AppUnit] { AppUnit.whitebelt_en }
-
     // MARK: - UnitKind: new cases
 
     func test_unitKind_bossFight_isBossFightTrue() {
@@ -88,165 +84,117 @@ final class CycleStructureTests: XCTestCase {
         XCTAssertNil(unit.cycleNumber)
     }
 
-    // MARK: - SampleData: 4 cycles structure
+    // MARK: - UnitKind.miniTheory
 
-    func test_cycle1_hasFourLessonNodes() {
-        let cycle1Lessons = units.filter { $0.cycleNumber == 1 && $0.kind == .lesson }
-        XCTAssertEqual(cycle1Lessons.count, 4,
-                       "Cycle 1 should have exactly 4 lesson nodes")
+    func test_unitKind_miniTheory_exists() {
+        let kind = AppUnitKind.miniTheory
+        XCTAssertEqual(kind.rawValue, "miniTheory")
     }
 
-    func test_cycle2_hasFourLessonNodes() {
-        let cycle2Lessons = units.filter { $0.cycleNumber == 2 && $0.kind == .lesson }
-        XCTAssertEqual(cycle2Lessons.count, 4,
-                       "Cycle 2 should have exactly 4 lesson nodes")
+    func test_unitKind_miniTheory_doesNotRequireSession() {
+        let unit = AppUnit(
+            id: "mt-1", belt: .white, orderIndex: 0,
+            title: "Intro", description: "", tags: [],
+            isLocked: false, isCompleted: false,
+            kind: .miniTheory, questions: []
+        )
+        XCTAssertFalse(unit.requiresSession)
     }
 
-    func test_cycle3_hasFourLessonNodes() {
-        let cycle3Lessons = units.filter { $0.cycleNumber == 3 && $0.kind == .lesson }
-        XCTAssertEqual(cycle3Lessons.count, 4,
-                       "Cycle 3 should have exactly 4 lesson nodes")
+    func test_unitKind_miniTheory_isNotBossFight() {
+        let unit = AppUnit(
+            id: "mt-2", belt: .white, orderIndex: 0,
+            title: "Intro", description: "", tags: [],
+            isLocked: false, isCompleted: false,
+            kind: .miniTheory, questions: []
+        )
+        XCTAssertFalse(unit.isBossFight)
+        XCTAssertFalse(unit.isTournament)
+        XCTAssertFalse(unit.isBeltTest)
     }
 
-    func test_cycle4_hasFourLessonNodes() {
-        let cycle4Lessons = units.filter { $0.cycleNumber == 4 && $0.kind == .lesson }
-        XCTAssertEqual(cycle4Lessons.count, 4,
-                       "Cycle 4 should have exactly 4 lesson nodes")
-    }
+    // MARK: - MiniTheoryData decoding
 
-    func test_cycle1_bossIsBossFight() {
-        let bossFights = units.filter { $0.cycleNumber == 1 && $0.kind == .bossFight }
-        XCTAssertEqual(bossFights.count, 1, "Cycle 1 should have exactly 1 boss fight")
-        XCTAssertTrue(bossFights.first!.isBoss, "Boss fight node must have isBoss = true")
-    }
-
-    func test_cycle2_hasBossFight() {
-        let bossFights = units.filter { $0.cycleNumber == 2 && $0.kind == .bossFight }
-        XCTAssertEqual(bossFights.count, 1, "Cycle 2 should have exactly 1 boss fight")
-        XCTAssertTrue(bossFights.first!.isBoss)
-    }
-
-    func test_cycle3_hasBossFight() {
-        let bossFights = units.filter { $0.cycleNumber == 3 && $0.kind == .bossFight }
-        XCTAssertEqual(bossFights.count, 1, "Cycle 3 should have exactly 1 boss fight")
-    }
-
-    func test_cycle4_hasBossFight() {
-        let bossFights = units.filter { $0.cycleNumber == 4 && $0.kind == .bossFight }
-        XCTAssertEqual(bossFights.count, 1, "Cycle 4 should have exactly 1 boss fight")
-    }
-
-    func test_intermediateTournament_appearsAfterCycle2() {
-        let tournament = units.first(where: { $0.kind == .intermediateTournament })
-        XCTAssertNotNil(tournament, "There should be an intermediate tournament node")
-        XCTAssertEqual(tournament!.cycleNumber, 2,
-                       "Intermediate tournament should belong to Cycle 2")
-
-        let c2Boss = units.first(where: { $0.cycleNumber == 2 && $0.kind == .bossFight })
-        XCTAssertNotNil(c2Boss)
-        XCTAssertGreaterThan(tournament!.orderIndex, c2Boss!.orderIndex,
-                             "Tournament must come after the Cycle 2 boss fight")
-    }
-
-    func test_finalTournament_appearsAfterCycle4Boss() {
-        let finalTournament = units.first(where: { $0.kind == .finalTournament })
-        XCTAssertNotNil(finalTournament, "There should be a final tournament node")
-
-        let c4Boss = units.first(where: { $0.cycleNumber == 4 && $0.kind == .bossFight })
-        XCTAssertNotNil(c4Boss)
-        XCTAssertGreaterThan(finalTournament!.orderIndex, c4Boss!.orderIndex,
-                             "Final tournament must come after the Cycle 4 boss fight")
-    }
-
-    func test_beltTestNode_stillPresent() {
-        let beltTest = units.first(where: { $0.kind == .beltTest })
-        XCTAssertNotNil(beltTest, "Belt test node must still be present")
-        XCTAssertEqual(beltTest!.id, "wb-bt1")
-    }
-
-    func test_beltTestNode_isLastUnit() {
-        let beltTest = units.first(where: { $0.kind == .beltTest })
-        XCTAssertNotNil(beltTest)
-        let maxOrderIndex = units.map { $0.orderIndex }.max()!
-        XCTAssertEqual(beltTest!.orderIndex, maxOrderIndex,
-                       "Belt test should have the highest orderIndex")
-    }
-
-    func test_firstUnit_isUnlocked() {
-        let first = units.min(by: { $0.orderIndex < $1.orderIndex })
-        XCTAssertNotNil(first)
-        XCTAssertFalse(first!.isLocked, "First unit must start unlocked")
-    }
-
-    func test_cycle1_topicIsClosedGuard() {
-        let c1 = units.filter { $0.cycleNumber == 1 && $0.kind == .lesson }
-        for unit in c1 {
-            XCTAssertEqual(unit.topic, "closed_guard",
-                           "Cycle 1 lessons must use topic slug 'closed_guard'")
+    func test_miniTheoryData_decodesFromJSON() throws {
+        let json = """
+        {
+            "type": "cycleIntro",
+            "screens": [
+                {"title": "Closed Guard", "body": "Control the distance.", "coachLine": "Stay tight.", "show3D": false},
+                {"body": "Break posture first.", "show3D": true}
+            ],
+            "buttonLabel": "Let's go"
         }
+        """.data(using: .utf8)!
+
+        let data = try JSONDecoder().decode(MiniTheoryData.self, from: json)
+        XCTAssertEqual(data.type, "cycleIntro")
+        XCTAssertEqual(data.screens.count, 2)
+        XCTAssertEqual(data.screens[0].title, "Closed Guard")
+        XCTAssertEqual(data.screens[0].body, "Control the distance.")
+        XCTAssertEqual(data.screens[0].coachLine, "Stay tight.")
+        XCTAssertFalse(data.screens[0].show3D)
+        XCTAssertNil(data.screens[1].title)
+        XCTAssertNil(data.screens[1].coachLine)
+        XCTAssertTrue(data.screens[1].show3D)
+        XCTAssertEqual(data.buttonLabel, "Let's go")
     }
 
-    func test_cycle2_topicIsHalfGuard() {
-        let c2 = units.filter { $0.cycleNumber == 2 && $0.kind == .lesson }
-        for unit in c2 {
-            XCTAssertEqual(unit.topic, "half_guard",
-                           "Cycle 2 lessons must use topic slug 'half_guard'")
-        }
+    func test_miniTheoryScreen_equatable() {
+        let s1 = MiniTheoryScreen(title: "A", body: "Body", coachLine: nil, show3D: false)
+        let s2 = MiniTheoryScreen(title: "A", body: "Body", coachLine: nil, show3D: false)
+        let s3 = MiniTheoryScreen(title: "B", body: "Body", coachLine: nil, show3D: false)
+        XCTAssertEqual(s1, s2)
+        XCTAssertNotEqual(s1, s3)
     }
 
-    func test_cycle3_topicIsGuardPassing() {
-        let c3 = units.filter { $0.cycleNumber == 3 && $0.kind == .lesson }
-        for unit in c3 {
-            XCTAssertEqual(unit.topic, "guard_passing",
-                           "Cycle 3 lessons must use topic slug 'guard_passing'")
-        }
+    func test_miniTheoryData_equatable() {
+        let screen = MiniTheoryScreen(title: nil, body: "Test", coachLine: nil, show3D: false)
+        let d1 = MiniTheoryData(type: "blockIntro", screens: [screen], buttonLabel: "OK")
+        let d2 = MiniTheoryData(type: "blockIntro", screens: [screen], buttonLabel: "OK")
+        let d3 = MiniTheoryData(type: "bossPrep", screens: [screen], buttonLabel: "OK")
+        XCTAssertEqual(d1, d2)
+        XCTAssertNotEqual(d1, d3)
     }
 
-    func test_cycle4_topicIsSubmissions() {
-        let c4 = units.filter { $0.cycleNumber == 4 && $0.kind == .lesson }
-        for unit in c4 {
-            XCTAssertEqual(unit.topic, "submissions",
-                           "Cycle 4 lessons must use topic slug 'submissions'")
-        }
+    // MARK: - Unit with miniTheoryData encode/decode roundtrip
+
+    func test_unit_withMiniTheoryData_codableRoundtrip() throws {
+        let screen = MiniTheoryScreen(title: "Welcome", body: "Closed guard basics.", coachLine: "Stay low.", show3D: false)
+        let theory = MiniTheoryData(type: "cycleIntro", screens: [screen], buttonLabel: "Start")
+        let unit = AppUnit(
+            id: "mt-unit-1", belt: .white, orderIndex: 5,
+            title: "Cycle 1 Intro", description: "Intro to closed guard",
+            tags: ["guard"], isLocked: false, isCompleted: false,
+            kind: .miniTheory, questions: [],
+            cycleNumber: 1,
+            miniTheoryData: theory
+        )
+
+        let encoded = try JSONEncoder().encode(unit)
+        let decoded = try JSONDecoder().decode(AppUnit.self, from: encoded)
+
+        XCTAssertEqual(decoded.id, "mt-unit-1")
+        XCTAssertEqual(decoded.kind, .miniTheory)
+        XCTAssertNotNil(decoded.miniTheoryData)
+        XCTAssertEqual(decoded.miniTheoryData?.type, "cycleIntro")
+        XCTAssertEqual(decoded.miniTheoryData?.screens.count, 1)
+        XCTAssertEqual(decoded.miniTheoryData?.screens[0].title, "Welcome")
+        XCTAssertEqual(decoded.miniTheoryData?.buttonLabel, "Start")
+        XCTAssertEqual(decoded.cycleNumber, 1)
     }
 
-    func test_allUnitsHaveUniqueIds() {
-        let ids = units.map { $0.id }
-        XCTAssertEqual(ids.count, Set(ids).count, "All unit IDs must be unique")
-    }
+    func test_unit_withoutMiniTheoryData_miniTheoryDataIsNil() throws {
+        let unit = AppUnit(
+            id: "lesson-1", belt: .white, orderIndex: 1,
+            title: "Lesson", description: "", tags: [],
+            isLocked: false, isCompleted: false,
+            kind: .lesson, questions: []
+        )
+        XCTAssertNil(unit.miniTheoryData)
 
-    func test_cycle2_hasMixedReview() {
-        let reviews = units.filter { $0.cycleNumber == 2 && $0.kind == .mixedReview }
-        XCTAssertEqual(reviews.count, 1, "Cycle 2 should have exactly 1 mixed review")
-    }
-
-    func test_cycle3_hasMixedReview() {
-        let reviews = units.filter { $0.cycleNumber == 3 && $0.kind == .mixedReview }
-        XCTAssertEqual(reviews.count, 1, "Cycle 3 should have exactly 1 mixed review")
-    }
-
-    func test_cycle4_hasMixedReview() {
-        let reviews = units.filter { $0.cycleNumber == 4 && $0.kind == .mixedReview }
-        XCTAssertEqual(reviews.count, 1, "Cycle 4 should have exactly 1 mixed review")
-    }
-
-    func test_sampleData_en_and_es_haveIdenticalNodeCount() {
-        XCTAssertEqual(AppUnit.whitebelt_en.count, AppUnit.whitebelt_es.count,
-                       "EN and ES catalogs must have the same number of nodes")
-    }
-
-    func test_sampleData_en_and_es_haveIdenticalIds() {
-        let enIds = Set(AppUnit.whitebelt_en.map { $0.id })
-        let esIds = Set(AppUnit.whitebelt_es.map { $0.id })
-        XCTAssertEqual(enIds, esIds, "EN and ES catalogs must have identical unit IDs")
-    }
-
-    func test_sampleData_en_and_es_haveIdenticalKinds() {
-        let sortedEN = AppUnit.whitebelt_en.sorted { $0.orderIndex < $1.orderIndex }
-        let sortedES = AppUnit.whitebelt_es.sorted { $0.orderIndex < $1.orderIndex }
-        for (en, es) in zip(sortedEN, sortedES) {
-            XCTAssertEqual(en.kind, es.kind,
-                           "Unit \(en.id): EN kind '\(en.kind)' != ES kind '\(es.kind)'")
-        }
+        let encoded = try JSONEncoder().encode(unit)
+        let decoded = try JSONDecoder().decode(AppUnit.self, from: encoded)
+        XCTAssertNil(decoded.miniTheoryData)
     }
 }
