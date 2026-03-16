@@ -117,6 +117,24 @@ struct RemoteQuestionStat: Decodable {
     }
 }
 
+// MARK: - Remote DTOs (Translations)
+
+struct RemoteTranslation: Decodable {
+    let unitId: String
+    let locale: String
+    let title: String
+    let description: String?
+    let miniTheoryContent: MiniTheoryData?
+
+    enum CodingKeys: String, CodingKey {
+        case unitId             = "unit_id"
+        case locale
+        case title
+        case description
+        case miniTheoryContent  = "mini_theory_content"
+    }
+}
+
 // MARK: - Transfer bundle (crosses actor boundary)
 
 struct RemoteUnitBundle {
@@ -209,6 +227,16 @@ actor SupabaseService {
                 isBoss:          ru.isBoss ?? false
             )
         }
+    }
+
+    // MARK: Translations
+
+    func fetchTranslations(locale: String) async throws -> [RemoteTranslation] {
+        let encoded = locale.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? locale
+        return try await get(
+            [RemoteTranslation].self,
+            "/unit_translations?locale=eq.\(encoded)&select=unit_id,locale,title,description,mini_theory_content"
+        )
     }
 
     // MARK: User Profile

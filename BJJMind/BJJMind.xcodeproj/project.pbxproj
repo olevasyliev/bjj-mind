@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00E5C2182CB14774EE8A61EE /* TranslationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB49EEA9CE281337881A32E /* TranslationTests.swift */; };
 		147FC679CFCB49566F13BDF6 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7188F2AE91E8F93A06FBEE6C /* Nunito-Black.ttf */; };
 		15B4CA21CC25B64FC5CC4581 /* KatIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFC2F4B2254AFC6DF95E00B /* KatIntroView.swift */; };
 		18D1E82ACCE66EDBA1094C8C /* BattleScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4E2129BF88EA11F6B516A9 /* BattleScale.swift */; };
@@ -102,6 +103,7 @@
 		78C7169986E1672733BEFCFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7C29505DEB88F51700E6BBC2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7E5837FDB73D7C29BF62D45D /* SkillAssessmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillAssessmentTests.swift; sourceTree = "<group>"; };
+		8BB49EEA9CE281337881A32E /* TranslationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationTests.swift; sourceTree = "<group>"; };
 		9A03364BC79D08D158D04A0B /* AdaptiveQuestionSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveQuestionSelector.swift; sourceTree = "<group>"; };
 		9A37B188946080C6A5CB3856 /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
 		9C1BC2808ADB3A89017CE526 /* SkillAssessmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillAssessmentView.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				1022009DE91D79734D44F01D /* SessionEngineTests.swift */,
 				7E5837FDB73D7C29BF62D45D /* SkillAssessmentTests.swift */,
 				D0D9985B57AAB190726C12BF /* TournamentTests.swift */,
+				8BB49EEA9CE281337881A32E /* TranslationTests.swift */,
 			);
 			path = BJJMindTests;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				B8A3A82FFE870A177C1898A2 /* SessionEngineTests.swift in Sources */,
 				DA1DE14EA102C4E4AB46D19B /* SkillAssessmentTests.swift in Sources */,
 				61B76065C510DFCF8771B6CD /* TournamentTests.swift in Sources */,
+				00E5C2182CB14774EE8A61EE /* TranslationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

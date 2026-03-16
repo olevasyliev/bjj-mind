@@ -61,6 +61,14 @@ final class AppState: ObservableObject {
 
             // 4. Merge: prefer remote completed state, rebuild lock chain
             applyRemoteBundles(bundles, completedIds: remoteCompleted)
+
+            // 5. Apply translations if the app is not in English
+            let locale = LanguageManager.shared.code
+            if locale != "en" {
+                let translations = try await SupabaseService.shared.fetchTranslations(locale: locale)
+                applyTranslations(translations)
+            }
+
             persistUnits()
         } catch {
             print("[Supabase] sync failed: \(error)")
@@ -206,6 +214,56 @@ final class AppState: ObservableObject {
     func setLanguage(_ code: String) {
         LanguageManager.shared.setLanguage(code)
         language = code
+        Task { await applyLanguage(code) }
+    }
+
+    // MARK: - i18n
+
+    /// Re-applies translations for the given locale to the current unit list.
+    /// EN content is already embedded on units (no translation rows needed).
+    /// For any other locale, fetches rows from unit_translations and overlays them.
+    func applyLanguage(_ code: String) async {
+        if code == "en" {
+            // EN content lives directly on units — re-sync to restore base values.
+            await syncWithSupabase()
+        } else {
+            guard remoteUserId != nil else { return }
+            do {
+                let translations = try await SupabaseService.shared.fetchTranslations(locale: code)
+                applyTranslations(translations)
+            } catch {
+                print("[i18n] Translation fetch failed: \(error)")
+            }
+        }
+    }
+
+    private func applyTranslations(_ translations: [RemoteTranslation]) {
+        let map = Dictionary(uniqueKeysWithValues: translations.map { ($0.unitId, $0) })
+        units = units.map { unit in
+            guard let t = map[unit.id] else { return unit }
+            return Unit(
+                id: unit.id,
+                belt: unit.belt,
+                orderIndex: unit.orderIndex,
+                title: t.title,
+                description: t.description ?? unit.description,
+                tags: unit.tags,
+                isLocked: unit.isLocked,
+                isCompleted: unit.isCompleted,
+                kind: unit.kind,
+                questions: unit.questions,
+                coachIntro: unit.coachIntro,
+                sectionTitle: unit.sectionTitle,
+                topicTitle: unit.topicTitle,
+                topic: unit.topic,
+                lessonIndex: unit.lessonIndex,
+                lessonTotal: unit.lessonTotal,
+                characterMoment: unit.characterMoment,
+                cycleNumber: unit.cycleNumber,
+                isBoss: unit.isBoss,
+                miniTheoryData: t.miniTheoryContent ?? unit.miniTheoryData
+            )
+        }
     }
 
     // MARK: - Adaptive Session
