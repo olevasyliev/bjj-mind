@@ -55,6 +55,8 @@ private struct RemoteQuestion: Decodable {
     let topic: String?
     let beltLevel: String?
     let perspective: String?
+    let subTopic: String?
+    let language: String?
 
     enum CodingKeys: String, CodingKey {
         case id, format, prompt, options, explanation, tags, difficulty
@@ -64,6 +66,8 @@ private struct RemoteQuestion: Decodable {
         case topic
         case beltLevel     = "belt_level"
         case perspective
+        case subTopic      = "sub_topic"
+        case language
     }
 
     var questionFormat: QuestionFormat {
@@ -79,10 +83,11 @@ private struct RemoteQuestion: Decodable {
 
     func toQuestion() -> Question {
         Question(
-            id: id, unitId: unitId ?? "", format: questionFormat,
+            id: id, unitId: unitId, format: questionFormat,
             prompt: prompt, options: options, correctAnswer: correctAnswer,
             explanation: explanation, tags: tags, difficulty: difficulty,
-            sceneImageName: nil, coachNote: coachNote
+            sceneImageName: nil, coachNote: coachNote,
+            topic: topic, subTopic: subTopic, language: language ?? "en"
         )
     }
 }
@@ -111,11 +116,25 @@ struct RemoteQuestionStat: Decodable {
     let questionId: String
     let timesSeen: Int
     let timesWrong: Int
+    let strength: Int?
+    let lastSeen: Date?
 
     enum CodingKeys: String, CodingKey {
         case questionId  = "question_id"
         case timesSeen   = "times_seen"
         case timesWrong  = "times_wrong"
+        case strength
+        case lastSeen    = "last_seen"
+    }
+
+    func toQuestionStat() -> QuestionStat {
+        QuestionStat(
+            questionId: questionId,
+            timesSeen: timesSeen,
+            timesWrong: timesWrong,
+            strength: strength ?? 0,
+            lastSeen: lastSeen
+        )
     }
 }
 
@@ -305,32 +324,58 @@ actor SupabaseService {
     /// Priority: never seen → weak (timesWrong ≥ 2) → seen-but-ok.
     /// Within each group, easier questions come first (difficulty ascending).
     ///
+    /// Fetch strategy:
+    ///  1. If `unitId` is provided and has questions in DB → use those (unit-specific pool).
+    ///  2. Otherwise fall back to topic-wide pool, excluding battle questions (mcq3).
+    ///
     /// - Parameters:
-    ///   - topic:     The BJJ topic slug (e.g. "guard-passing").
+    ///   - topic:     The BJJ topic slug (e.g. "closed_guard").
     ///   - beltLevel: The belt level (e.g. "white").
     ///   - userId:    The authenticated user's UUID.
     ///   - count:     Maximum number of questions to return.
-    func fetchQuestionsForSession(topic: String, beltLevel: String, userId: UUID, count: Int) async throws -> [Question] {
-        // 1. Fetch all questions for this topic + belt level
+    ///   - unitId:    The specific unit ID to fetch questions for (tried first; optional).
+    func fetchQuestionsForSession(
+        topic: String,
+        beltLevel: String,
+        userId: UUID,
+        count: Int,
+        unitId: String? = nil
+    ) async throws -> [Question] {
+        // 1. Try unit-specific questions first (lesson-scoped pool)
+        if let uid = unitId {
+            let encodedUid = uid.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? uid
+            let unitQuestions: [RemoteQuestion] = try await get(
+                [RemoteQuestion].self,
+                "/questions?unit_id=eq.\(encodedUid)&format=neq.mcq3&order=id"
+            )
+            if !unitQuestions.isEmpty {
+                let questions = unitQuestions.map { $0.toQuestion() }
+                return try await applyAdaptiveSelection(to: questions, userId: userId, count: count)
+            }
+        }
+
+        // 2. Fall back to topic-wide pool, excluding battle questions
         let encodedTopic = topic.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? topic
         let encodedBelt  = beltLevel.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? beltLevel
         let remoteQuestions: [RemoteQuestion] = try await get(
             [RemoteQuestion].self,
-            "/questions?topic=eq.\(encodedTopic)&belt_level=eq.\(encodedBelt)&order=id"
+            "/questions?topic=eq.\(encodedTopic)&belt_level=eq.\(encodedBelt)&format=neq.mcq3&order=id"
         )
         let questions = remoteQuestions.map { $0.toQuestion() }
 
         guard !questions.isEmpty else { return [] }
 
-        // 2. Fetch user stats for these question IDs
+        return try await applyAdaptiveSelection(to: questions, userId: userId, count: count)
+    }
+
+    /// Fetches user stats for the given questions and applies adaptive ordering.
+    private func applyAdaptiveSelection(to questions: [Question], userId: UUID, count: Int) async throws -> [Question] {
         let ids = questions.map { $0.id }.joined(separator: ",")
         let remoteStats: [RemoteQuestionStat] = try await get(
             [RemoteQuestionStat].self,
-            "/user_question_stats?user_id=eq.\(userId.uuidString)&question_id=in.(\(ids))&select=question_id,times_seen,times_wrong"
+            "/user_question_stats?user_id=eq.\(userId.uuidString)&question_id=in.(\(ids))&select=question_id,times_seen,times_wrong,strength,last_seen"
         )
-        let stats = remoteStats.map { QuestionStat(questionId: $0.questionId, timesSeen: $0.timesSeen, timesWrong: $0.timesWrong) }
-
-        // 3. Sort adaptively and return the requested slice
+        let stats = remoteStats.map { $0.toQuestionStat() }
         return AdaptiveQuestionSelector.select(from: questions, stats: stats, count: count)
     }
 
@@ -385,11 +430,9 @@ actor SupabaseService {
         let ids = questions.map { $0.id }.joined(separator: ",")
         let remoteStats: [RemoteQuestionStat] = try await get(
             [RemoteQuestionStat].self,
-            "/user_question_stats?user_id=eq.\(userId.uuidString)&question_id=in.(\(ids))&select=question_id,times_seen,times_wrong"
+            "/user_question_stats?user_id=eq.\(userId.uuidString)&question_id=in.(\(ids))&select=question_id,times_seen,times_wrong,strength,last_seen"
         )
-        let stats = remoteStats.map {
-            QuestionStat(questionId: $0.questionId, timesSeen: $0.timesSeen, timesWrong: $0.timesWrong)
-        }
+        let stats = remoteStats.map { $0.toQuestionStat() }
 
         return AdaptiveQuestionSelector.select(from: questions, stats: stats, count: count)
     }
@@ -419,6 +462,118 @@ actor SupabaseService {
                 p_question_id: questionId,
                 p_was_wrong: wasWrong
             ),
+            prefer: "return=minimal"
+        )
+    }
+
+    // MARK: - v2 Adaptive Session Methods
+
+    /// Calls fetch_session_questions RPC and returns ordered questions (6-9).
+    func fetchSessionComposition(
+        userId: UUID,
+        topic: String,
+        beltLevel: String,
+        language: String = "en",
+        sessionSize: Int = 9
+    ) async throws -> [Question] {
+        struct Body: Encodable {
+            let p_user_id: String
+            let p_topic: String
+            let p_belt_level: String
+            let p_language: String
+            let p_session_size: Int
+        }
+        let data = try await post(
+            path: "/rpc/fetch_session_questions",
+            body: Body(
+                p_user_id: userId.uuidString,
+                p_topic: topic,
+                p_belt_level: beltLevel,
+                p_language: language,
+                p_session_size: sessionSize
+            ),
+            prefer: "return=representation"
+        )
+        let remote = try JSONDecoder().decode([RemoteQuestion].self, from: data)
+        return remote.map { $0.toQuestion() }
+    }
+
+    /// Calls increment_question_strength RPC.
+    func updateQuestionStrength(
+        userId: UUID,
+        questionId: String,
+        wasWrong: Bool,
+        firstAttempt: Bool = true
+    ) async throws {
+        struct Body: Encodable {
+            let p_user_id: String
+            let p_question_id: String
+            let p_was_wrong: Bool
+            let p_first_attempt: Bool
+        }
+        _ = try await post(
+            path: "/rpc/increment_question_strength",
+            body: Body(
+                p_user_id: userId.uuidString,
+                p_question_id: questionId,
+                p_was_wrong: wasWrong,
+                p_first_attempt: firstAttempt
+            ),
+            prefer: "return=minimal"
+        )
+    }
+
+    /// Fetches avg strength per sub-topic for the given topic.
+    func fetchSubTopicProgress(
+        userId: UUID,
+        topic: String,
+        subTopics: [String],
+        beltLevel: String
+    ) async throws -> [String: Int] {
+        struct Body: Encodable {
+            let p_user_id: String
+            let p_topic: String
+            let p_belt_level: String
+        }
+        struct Row: Decodable {
+            let subTopic: String
+            let avgStrength: Int
+            enum CodingKeys: String, CodingKey {
+                case subTopic    = "sub_topic"
+                case avgStrength = "avg_strength"
+            }
+        }
+        do {
+            let data = try await post(
+                path: "/rpc/get_subtopic_progress",
+                body: Body(p_user_id: userId.uuidString, p_topic: topic, p_belt_level: beltLevel),
+                prefer: "return=representation"
+            )
+            let rows = try JSONDecoder().decode([Row].self, from: data)
+            var result: [String: Int] = Dictionary(uniqueKeysWithValues: subTopics.map { ($0, 0) })
+            for row in rows { result[row.subTopic] = row.avgStrength }
+            return result
+        } catch {
+            // Fallback: return zeros for all sub-topics
+            return Dictionary(uniqueKeysWithValues: subTopics.map { ($0, 0) })
+        }
+    }
+
+    /// Fetches question stats for the given question IDs.
+    func fetchQuestionStats(userId: UUID, questionIds: [String]) async throws -> [QuestionStat] {
+        guard !questionIds.isEmpty else { return [] }
+        let idList = questionIds.joined(separator: ",")
+        let path = "/user_question_stats?user_id=eq.\(userId.uuidString)&question_id=in.(\(idList))&select=question_id,times_seen,times_wrong,strength,last_seen"
+        let remote: [RemoteQuestionStat] = try await get([RemoteQuestionStat].self, path)
+        return remote.map { $0.toQuestionStat() }
+    }
+
+    /// Calls apply_strength_decay RPC. Called once per app launch.
+    func triggerStrengthDecay(userId: UUID) async throws {
+        struct Body: Encodable { let p_user_id: String }
+        _ = try await post(
+            path: "/rpc/apply_strength_decay",
+            body: Body(p_user_id: userId.uuidString),
             prefer: "return=minimal"
         )
     }

@@ -60,6 +60,11 @@
 // MARK: - Home
 "home.current_unit" = "CURRENT UNIT";
 "home.questions" = "questions";
+"home.start_session" = "Start Session";
+"home.strength_label" = "Strength";
+"home.locked" = "Locked";
+"home.boss_locked_hint" = "Reach 70%% in all topics to unlock";
+"home.boss_unlocked" = "Challenge the Boss";
 
 // MARK: - Tab Bar
 "tab.train" = "Train";
@@ -67,7 +72,37 @@
 "tab.progress" = "Progress";
 "tab.profile" = "Profile";
 
+// MARK: - Cycles
+"cycle.closed_guard" = "Closed Guard";
+"cycle.guard_passing" = "Guard Passing";
+"cycle.side_control_mount" = "Side Control & Mount";
+"cycle.back_control" = "Back Control";
+
+// MARK: - Sub-topics
+"subtopic.posture_defense" = "Posture & Defense";
+"subtopic.guard_attacks" = "Guard Attacks";
+"subtopic.sweeps" = "Sweeps";
+"subtopic.guard_breaks" = "Guard Breaks";
+"subtopic.posture_in_guard" = "Posture in Guard";
+"subtopic.kneeling_pass" = "Kneeling Pass";
+"subtopic.standing_pass" = "Standing Pass";
+"subtopic.open_guard_passing" = "Open Guard Passing";
+"subtopic.side_control_defense" = "Side Control Defense";
+"subtopic.side_control_attacks" = "Side Control Attacks";
+"subtopic.mount_transitions" = "Getting to Mount";
+"subtopic.mount_defense" = "Mount Escapes";
+"subtopic.mount_attacks" = "Mount Attacks";
+"subtopic.back_defense" = "Back Escape";
+"subtopic.back_control_maintain" = "Maintaining Back";
+"subtopic.back_submissions" = "Back Submissions";
+"subtopic.back_combinations" = "Combinations";
+
+// MARK: - Theory Card
+"theory_card.got_it" = "Got it";
+"theory_card.swipe_hint" = "Swipe to continue";
+
 // MARK: - Session
+"session.new_topic" = "New topic";
 "session.position" = "POSITION";
 "session.belt_test_chip" = "🎯 Belt Test";
 "session.correct" = "Correct!";

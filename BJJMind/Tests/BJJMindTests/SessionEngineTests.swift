@@ -263,4 +263,221 @@ final class SessionEngineTests: XCTestCase {
         engine.submitAnswer("A")   // double tap — ignored
         XCTAssertEqual(engine.answeredQuestions.count, 1)
     }
+
+    // NOTE: Updated test to include firstAttempt field (v2)
+    func test_answeredQuestions_recordsCorrectAnswerWithFirstAttempt() {
+        // Given: question q1 with correct answer "A"
+        // When: user submits correct answer on first attempt
+        // Then: tuple has wasWrong=false, firstAttempt=true
+        let engine = SessionEngine(questions: questions)
+        engine.submitAnswer("A")
+        XCTAssertFalse(engine.answeredQuestions[0].wasWrong)
+        XCTAssertTrue(engine.answeredQuestions[0].firstAttempt)
+    }
+}
+
+// MARK: - Theory Card Tests (v2)
+
+@MainActor
+final class SessionEngineTheoryCardTests: XCTestCase {
+
+    private func makeQuestion(id: String) -> Question {
+        Question(id: id, unitId: "u1", format: .mcq4,
+                 prompt: "Q \(id)", options: ["A", "B", "C", "D"], correctAnswer: "A",
+                 explanation: "", tags: [], difficulty: 1, sceneImageName: nil)
+    }
+
+    private func makeTheoryCard(subTopic: String = "posture_defense") -> SessionItem {
+        let screen = MiniTheoryScreen(title: "Welcome", body: "Control the distance.", coachLine: nil, show3D: false)
+        let data = MiniTheoryData(type: .cycleIntro, screens: [screen], buttonLabel: "Got it")
+        return .theoryCard(data, subTopic: subTopic)
+    }
+
+    // MARK: - Initial state with theory card
+
+    func test_init_withTheoryCardAsFirstItem_stateIsShowingTheoryCard() {
+        // Given: session items start with a theory card followed by two questions
+        // When: engine initializes
+        // Then: initial state is showingTheoryCard, not answering
+        let items: [SessionItem] = [
+            makeTheoryCard(),
+            .question(makeQuestion(id: "q1")),
+            .question(makeQuestion(id: "q2")),
+        ]
+        let engine = SessionEngine(items: items)
+
+        if case .showingTheoryCard = engine.state {
+            // pass
+        } else {
+            XCTFail("Expected showingTheoryCard state, got \(engine.state)")
+        }
+    }
+
+    func test_init_withQuestionsOnly_stateIsAnswering() {
+        // Given: no theory cards in item list
+        // When: engine initializes
+        // Then: initial state is answering (unchanged behavior)
+        let items: [SessionItem] = [
+            .question(makeQuestion(id: "q1")),
+            .question(makeQuestion(id: "q2")),
+        ]
+        let engine = SessionEngine(items: items)
+        XCTAssertEqual(engine.state, .answering)
+    }
+
+    // MARK: - dismissTheoryCard advances to answering
+
+    func test_dismissTheoryCard_advancesToAnswering() {
+        // Given: engine is in showingTheoryCard state
+        // When: dismissTheoryCard() is called
+        // Then: state transitions to .answering
+        let items: [SessionItem] = [
+            makeTheoryCard(),
+            .question(makeQuestion(id: "q1")),
+        ]
+        let engine = SessionEngine(items: items)
+        engine.dismissTheoryCard()
+        XCTAssertEqual(engine.state, .answering)
+    }
+
+    func test_dismissTheoryCard_setsCurrentQuestionToFirstQuestion() {
+        // Given: theory card followed by q1
+        // When: theory card dismissed
+        // Then: currentQuestion is q1
+        let items: [SessionItem] = [
+            makeTheoryCard(),
+            .question(makeQuestion(id: "q1")),
+        ]
+        let engine = SessionEngine(items: items)
+        engine.dismissTheoryCard()
+        XCTAssertEqual(engine.currentQuestion?.id, "q1")
+    }
+
+    // MARK: - Already-seen theory card is skipped
+
+    func test_init_seenTheoryCard_skipsToAnswering() {
+        // Given: the UserDefaults key for this sub-topic theory is already set (seen before)
+        // When: engine initializes with a theory card for that sub-topic
+        // Then: state starts at answering (card is skipped automatically)
+        let subTopic = "posture_defense_seen_test_\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: "theory-card-test-\(UUID().uuidString)")!
+        defaults.set(true, forKey: "theory_seen_\(subTopic)")
+
+        let items: [SessionItem] = [
+            makeTheoryCard(subTopic: subTopic),
+            .question(makeQuestion(id: "q1")),
+        ]
+        let engine = SessionEngine(items: items, defaults: defaults)
+        XCTAssertEqual(engine.state, .answering,
+                       "Theory card already seen in UserDefaults must be skipped")
+    }
+
+    // MARK: - Max two theory cards per session
+
+    func test_session_maxTwoTheoryCards_thirdIsSkipped() {
+        // Given: session with 3 theory cards interleaved with questions
+        // When: completing the session
+        // Then: the third theory card is skipped automatically
+        let items: [SessionItem] = [
+            makeTheoryCard(subTopic: "st1"),
+            .question(makeQuestion(id: "q1")),
+            makeTheoryCard(subTopic: "st2"),
+            .question(makeQuestion(id: "q2")),
+            makeTheoryCard(subTopic: "st3"),  // third - must be skipped
+            .question(makeQuestion(id: "q3")),
+        ]
+        let engine = SessionEngine(items: items)
+        var theoryCardsShown = 0
+        var stepCount = 0
+        while engine.state != .completed && engine.state != .gameOver && stepCount < 20 {
+            switch engine.state {
+            case .showingTheoryCard:
+                theoryCardsShown += 1
+                engine.dismissTheoryCard()
+            case .answering:
+                engine.submitAnswer("A")
+            case .showingFeedback:
+                engine.advance()
+            default:
+                break
+            }
+            stepCount += 1
+        }
+        XCTAssertLessThanOrEqual(theoryCardsShown, 2,
+                                 "Session must show at most 2 theory cards")
+    }
+
+    // MARK: - firstAttempt flag
+
+    func test_answeredQuestions_firstAttemptIsTrue_forSingleAnswer() {
+        // Given: standard session with no re-attempts
+        // When: user answers question q1 correctly
+        // Then: answeredQuestions[0].firstAttempt is true
+        let items: [SessionItem] = [.question(makeQuestion(id: "q1"))]
+        let engine = SessionEngine(items: items)
+        engine.submitAnswer("A")  // correct
+        XCTAssertEqual(engine.answeredQuestions.count, 1)
+        XCTAssertTrue(engine.answeredQuestions[0].firstAttempt,
+                      "All standard session answers are first-attempt")
+    }
+
+    func test_answeredQuestions_containsQuestionIdWasWrongAndFirstAttempt() {
+        // Given: session with one question
+        // When: user answers wrong
+        // Then: tuple has correct questionId, wasWrong=true, firstAttempt=true
+        let items: [SessionItem] = [.question(makeQuestion(id: "q1"))]
+        let engine = SessionEngine(items: items)
+        engine.submitAnswer("B")  // wrong (correct is "A")
+        XCTAssertEqual(engine.answeredQuestions[0].questionId, "q1")
+        XCTAssertTrue(engine.answeredQuestions[0].wasWrong)
+        XCTAssertTrue(engine.answeredQuestions[0].firstAttempt)
+    }
+
+    func test_answeredQuestions_doesNotIncludeTheoryCardEntries() {
+        // Given: session with theory card and two questions
+        // When: complete full session
+        // Then: answeredQuestions only contains the 2 question entries, not the theory card
+        let items: [SessionItem] = [
+            makeTheoryCard(),
+            .question(makeQuestion(id: "q1")),
+            .question(makeQuestion(id: "q2")),
+        ]
+        let engine = SessionEngine(items: items)
+        engine.dismissTheoryCard()
+        engine.submitAnswer("A"); engine.advance()
+        engine.submitAnswer("A"); engine.advance()
+        XCTAssertEqual(engine.answeredQuestions.count, 2,
+                       "Theory cards must not create entries in answeredQuestions")
+    }
+
+    // MARK: - progress only counts questions, not theory cards
+
+    func test_progress_doesNotAdvanceOnTheoryCardDismissal() {
+        // Given: theory card then question
+        // When: theory card is dismissed
+        // Then: progress is still 0.0 (no question answered yet)
+        let items: [SessionItem] = [
+            makeTheoryCard(),
+            .question(makeQuestion(id: "q1")),
+        ]
+        let engine = SessionEngine(items: items)
+        engine.dismissTheoryCard()
+        XCTAssertEqual(engine.progress, 0.0, accuracy: 0.01,
+                       "Dismissing a theory card must not advance the session progress bar")
+    }
+
+    // MARK: - Belt test mode - no theory cards
+
+    func test_beltTestMode_theoryCardsIgnoredEvenIfPresent() {
+        // Given: belt test session (isBeltTest = true) with a theory card in the item list
+        // When: engine initializes
+        // Then: theory card is skipped, state starts at answering
+        let items: [SessionItem] = [
+            makeTheoryCard(),
+            .question(makeQuestion(id: "q1")),
+        ]
+        let engine = SessionEngine(items: items, isBeltTest: true)
+        XCTAssertEqual(engine.state, .answering,
+                       "Belt test sessions must never show theory cards")
+    }
 }

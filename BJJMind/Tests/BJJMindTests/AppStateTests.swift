@@ -278,8 +278,8 @@ final class AppStateTests: XCTestCase {
     func test_recordQuestionAnswers_noUserId_isNoOp() {
         // No remoteUserId — this should silently do nothing (fire-and-forget)
         // We just verify no crash and the method exists
-        let answers: [(questionId: String, wasWrong: Bool)] = [
-            ("q1", false), ("q2", true)
+        let answers: [(questionId: String, wasWrong: Bool, firstAttempt: Bool)] = [
+            ("q1", false, true), ("q2", true, true)
         ]
         sut.recordQuestionAnswers(answers)
         // If we reach here without crashing, the test passes
@@ -288,7 +288,8 @@ final class AppStateTests: XCTestCase {
 
     /// recordQuestionAnswers with empty list is a no-op (must not crash).
     func test_recordQuestionAnswers_emptyList_isNoOp() {
-        sut.recordQuestionAnswers([])
+        let empty: [(questionId: String, wasWrong: Bool, firstAttempt: Bool)] = []
+        sut.recordQuestionAnswers(empty)
         XCTAssertTrue(true)
     }
 

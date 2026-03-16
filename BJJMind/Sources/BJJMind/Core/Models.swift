@@ -235,7 +235,7 @@ enum QuestionFormat: String, Codable {
 
 struct Question: Identifiable, Codable {
     var id: String
-    var unitId: String
+    var unitId: String?      // Optional (adaptive questions have no unit)
     var format: QuestionFormat
     var prompt: String
     var options: [String]?
@@ -245,11 +245,15 @@ struct Question: Identifiable, Codable {
     private(set) var difficulty: Int
     var sceneImageName: String?
     var coachNote: String?
+    var topic: String?       // BJJ topic slug e.g. "closed_guard"
+    var subTopic: String?    // Sub-topic slug e.g. "posture_defense"
+    var language: String     // "en" (default), "es", "pt"
 
-    init(id: String, unitId: String, format: QuestionFormat, prompt: String,
+    init(id: String, unitId: String?, format: QuestionFormat, prompt: String,
          options: [String]?, correctAnswer: String, explanation: String,
          tags: [String], difficulty: Int, sceneImageName: String?,
-         coachNote: String? = nil) {
+         coachNote: String? = nil, topic: String? = nil, subTopic: String? = nil,
+         language: String = "en") {
         self.id = id
         self.unitId = unitId
         self.format = format
@@ -261,6 +265,9 @@ struct Question: Identifiable, Codable {
         self.difficulty = min(5, max(1, difficulty))
         self.sceneImageName = sceneImageName
         self.coachNote = coachNote
+        self.topic = topic
+        self.subTopic = subTopic
+        self.language = language
     }
 }
 

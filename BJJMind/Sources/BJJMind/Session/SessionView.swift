@@ -76,6 +76,13 @@ private struct SessionEngineView: View {
             case .showingIntro:
                 CoachIntroCard(text: engine.coachIntro ?? "", onTap: { engine.dismissIntro() })
 
+            case .showingTheoryCard(let data, let subTopic):
+                InlineTheoryCardView(
+                    data: data,
+                    subTopicSlug: subTopic,
+                    onDismiss: { engine.dismissTheoryCard() }
+                )
+
             case .answering:
                 QuestionView(engine: engine, unit: unit, isBeltTest: isBeltTest, onClose: { dismiss() })
 
@@ -102,7 +109,7 @@ private struct SessionEngineView: View {
                         accuracy: engine.accuracy,
                         heartsRemaining: engine.hearts,
                         onDone: {
-                            appState.recordQuestionAnswers(engine.answeredQuestions)
+                            appState.recordQuestionAnswers(engine.answeredQuestions.map { ($0.questionId, $0.wasWrong, $0.firstAttempt) })
                             appState.applySessionResult(SessionResult(
                                 userId: appState.user.id,
                                 unitId: unit.id,
@@ -126,7 +133,7 @@ private struct SessionEngineView: View {
                     })
                 } else {
                     GameOverView(onDone: {
-                        appState.recordQuestionAnswers(engine.answeredQuestions)
+                        appState.recordQuestionAnswers(engine.answeredQuestions.map { ($0.questionId, $0.wasWrong, $0.firstAttempt) })
                         dismiss()
                     })
                 }

@@ -60,6 +60,11 @@
 // MARK: - Home
 "home.current_unit" = "UNIDAD ACTUAL";
 "home.questions" = "preguntas";
+"home.start_session" = "Comenzar sesion";
+"home.strength_label" = "Fuerza";
+"home.locked" = "Bloqueado";
+"home.boss_locked_hint" = "Alcanza el 70%% en todos los temas";
+"home.boss_unlocked" = "Desafiar al jefe";
 
 // MARK: - Tab Bar
 "tab.train" = "Entrenar";
@@ -67,7 +72,37 @@
 "tab.progress" = "Progreso";
 "tab.profile" = "Perfil";
 
+// MARK: - Cycles
+"cycle.closed_guard" = "Guardia cerrada";
+"cycle.guard_passing" = "Paso de guardia";
+"cycle.side_control_mount" = "Control lateral y montada";
+"cycle.back_control" = "Control de espalda";
+
+// MARK: - Sub-topics
+"subtopic.posture_defense" = "Postura y defensa";
+"subtopic.guard_attacks" = "Ataques desde guardia";
+"subtopic.sweeps" = "Barridos";
+"subtopic.guard_breaks" = "Romper la guardia";
+"subtopic.posture_in_guard" = "Postura en guardia";
+"subtopic.kneeling_pass" = "Paso de rodillas";
+"subtopic.standing_pass" = "Paso de pie";
+"subtopic.open_guard_passing" = "Pasar guardia abierta";
+"subtopic.side_control_defense" = "Defensa control lateral";
+"subtopic.side_control_attacks" = "Ataques control lateral";
+"subtopic.mount_transitions" = "Transiciones a montada";
+"subtopic.mount_defense" = "Escapes de montada";
+"subtopic.mount_attacks" = "Ataques desde montada";
+"subtopic.back_defense" = "Escape de espalda";
+"subtopic.back_control_maintain" = "Mantener control de espalda";
+"subtopic.back_submissions" = "Sumisiones desde espalda";
+"subtopic.back_combinations" = "Combinaciones";
+
+// MARK: - Theory Card
+"theory_card.got_it" = "Entendido";
+"theory_card.swipe_hint" = "Desliza para continuar";
+
 // MARK: - Session
+"session.new_topic" = "Nuevo tema";
 "session.position" = "POSICIÓN";
 "session.belt_test_chip" = "🎯 Examen de franja";
 "session.correct" = "¡Correcto!";

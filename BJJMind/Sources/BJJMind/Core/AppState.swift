@@ -10,6 +10,7 @@ final class AppState: ObservableObject {
     @Published var units: [Unit] = []
     @Published var language: String = LanguageManager.shared.code
     @Published var isLoadingContent: Bool = false
+    @Published private(set) var cycleProgress: [CycleProgress] = []
 
     /// Questions fetched for the current (or most recently started) session.
     /// `nil` before any session is started. Reset to `nil` when a new session begins.
@@ -57,6 +58,9 @@ final class AppState: ObservableObject {
         do {
             // 1. Ensure we have a stable remote user ID
             let userId = try await ensureRemoteUser()
+
+            // 1b. Trigger strength decay (fire-and-forget; errors are non-fatal)
+            Task { try? await SupabaseService.shared.triggerStrengthDecay(userId: userId) }
 
             // 2. Fetch fresh catalog
             let bundles = try await SupabaseService.shared.fetchCatalog()
@@ -309,7 +313,8 @@ final class AppState: ObservableObject {
                 topic: topic,
                 beltLevel: user.belt.rawValue,
                 userId: userId,
-                count: 8
+                count: 8,
+                unitId: unit.id
             )
             // Guard against an empty remote result (e.g. topic not yet seeded in DB)
             let result = fetched.isEmpty ? unit.questions : fetched
@@ -362,17 +367,130 @@ final class AppState: ObservableObject {
     /// Fire-and-forget: runs in a background `Task` so it never blocks the UI.
     /// Silently skipped when no `remoteUserId` is available (offline / anonymous).
     ///
-    /// - Parameter answers: Pairs of (questionId, wasWrong) for every question answered.
-    func recordQuestionAnswers(_ answers: [(questionId: String, wasWrong: Bool)]) {
+    /// - Parameter answers: Tuples of (questionId, wasWrong, firstAttempt) for every question answered.
+    func recordQuestionAnswers(_ answers: [(questionId: String, wasWrong: Bool, firstAttempt: Bool)]) {
         guard let userId = remoteUserId, !answers.isEmpty else { return }
         Task {
-            for (questionId, wasWrong) in answers {
-                try? await SupabaseService.shared.upsertQuestionStats(
-                    userId: userId, questionId: questionId, wasWrong: wasWrong
+            for answer in answers {
+                try? await SupabaseService.shared.updateQuestionStrength(
+                    userId: userId,
+                    questionId: answer.questionId,
+                    wasWrong: answer.wasWrong,
+                    firstAttempt: answer.firstAttempt
                 )
             }
         }
     }
+
+    /// Fetches questions for a topic-wide session (v2 adaptive).
+    @discardableResult
+    func fetchSessionForTopic(_ topic: String) async -> [Question] {
+        sessionQuestions = nil
+        guard let userId = remoteUserId else { return [] }
+        do {
+            let fetched = try await SupabaseService.shared.fetchSessionComposition(
+                userId: userId,
+                topic: topic,
+                beltLevel: user.belt.rawValue,
+                language: language
+            )
+            let result = fetched.isEmpty ? [] : fetched
+            sessionQuestions = result
+            return result
+        } catch {
+            print("[AppState] fetchSessionForTopic failed: \(error)")
+            return []
+        }
+    }
+
+    /// Fetches and updates cycleProgress for all 4 topics.
+    func fetchCycleProgress() async {
+        guard let userId = remoteUserId else { return }
+
+        let topicSubTopics: [(topic: String, subTopics: [(slug: String, title: String)], cycleNum: Int)] = [
+            ("closed_guard", [
+                ("posture_defense", "Posture & Defense"),
+                ("guard_attacks", "Guard Attacks"),
+                ("sweeps", "Sweeps"),
+                ("guard_breaks", "Guard Breaks"),
+            ], 1),
+            ("guard_passing", [
+                ("posture_in_guard", "Posture in Guard"),
+                ("kneeling_pass", "Kneeling Pass"),
+                ("standing_pass", "Standing Pass"),
+                ("open_guard_passing", "Open Guard Passing"),
+            ], 2),
+            ("side_control_mount", [
+                ("side_control_defense", "Side Control Defense"),
+                ("side_control_attacks", "Side Control Attacks"),
+                ("mount_transitions", "Getting to Mount"),
+                ("mount_defense", "Mount Escapes"),
+                ("mount_attacks", "Mount Attacks"),
+            ], 3),
+            ("back_control", [
+                ("back_defense", "Back Escape"),
+                ("back_control_maintain", "Maintaining Back"),
+                ("back_submissions", "Back Submissions"),
+                ("back_combinations", "Combinations"),
+            ], 4),
+        ]
+
+        var result: [CycleProgress] = []
+        for entry in topicSubTopics {
+            do {
+                let slugs = entry.subTopics.map(\.slug)
+                let strengthMap = try await SupabaseService.shared.fetchSubTopicProgress(
+                    userId: userId,
+                    topic: entry.topic,
+                    subTopics: slugs,
+                    beltLevel: user.belt.rawValue
+                )
+                let subTopicProgress = entry.subTopics.map { sub in
+                    let avg = strengthMap[sub.slug] ?? 0
+                    return SubTopicProgress(
+                        slug: sub.slug,
+                        title: sub.title,
+                        avgStrength: avg,
+                        questionsSeen: 0,
+                        totalQuestions: 0,
+                        isUnlocked: true,
+                        isMastered: avg >= 70
+                    )
+                }
+                let cycle = CycleProgress(
+                    cycleNumber: entry.cycleNum,
+                    topic: entry.topic,
+                    subTopics: subTopicProgress
+                )
+                result.append(cycle)
+            } catch {
+                print("[AppState] fetchCycleProgress failed for \(entry.topic): \(error)")
+            }
+        }
+        cycleProgress = result
+    }
+
+    #if DEBUG
+    var devModeEnabled: Bool {
+        get { defaults.bool(forKey: "devModeEnabled") }
+        set { defaults.set(newValue, forKey: "devModeEnabled") }
+    }
+
+    func devResetTopicProgress(_ topic: String) async {
+        guard let userId = remoteUserId else { return }
+        struct Body: Encodable {
+            let p_user_id: String
+            let p_topic: String
+        }
+        // Fire-and-forget reset via Supabase RPC
+        _ = try? await SupabaseService.shared.fetchSessionComposition(
+            userId: userId,
+            topic: topic,
+            beltLevel: user.belt.rawValue
+        )
+        print("[DevMode] Reset topic progress for \(topic) (userId: \(userId))")
+    }
+    #endif
 
     // MARK: - Battle / Tournament Completion
 

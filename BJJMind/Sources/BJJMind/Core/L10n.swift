@@ -101,8 +101,48 @@ enum L10n {
 
     // MARK: Home
     enum Home {
-        static var currentUnit: String { l("home.current_unit") }
-        static var questions: String   { l("home.questions") }
+        static var currentUnit: String  { l("home.current_unit") }
+        static var questions: String    { l("home.questions") }
+        static var startSession: String { l("home.start_session") }
+        static var strengthLabel: String { l("home.strength_label") }
+        static var locked: String       { l("home.locked") }
+        static var bossLockedHint: String { l("home.boss_locked_hint") }
+        static var bossUnlocked: String { l("home.boss_unlocked") }
+    }
+
+    // MARK: Cycle
+    enum Cycle {
+        static var closedGuard: String      { l("cycle.closed_guard") }
+        static var guardPassing: String     { l("cycle.guard_passing") }
+        static var sideControlMount: String { l("cycle.side_control_mount") }
+        static var backControl: String      { l("cycle.back_control") }
+    }
+
+    // MARK: SubTopic
+    enum SubTopic {
+        static var postureDefense: String      { l("subtopic.posture_defense") }
+        static var guardAttacks: String        { l("subtopic.guard_attacks") }
+        static var sweeps: String              { l("subtopic.sweeps") }
+        static var guardBreaks: String         { l("subtopic.guard_breaks") }
+        static var postureInGuard: String      { l("subtopic.posture_in_guard") }
+        static var kneelingPass: String        { l("subtopic.kneeling_pass") }
+        static var standingPass: String        { l("subtopic.standing_pass") }
+        static var openGuardPassing: String    { l("subtopic.open_guard_passing") }
+        static var sideControlDefense: String  { l("subtopic.side_control_defense") }
+        static var sideControlAttacks: String  { l("subtopic.side_control_attacks") }
+        static var mountTransitions: String    { l("subtopic.mount_transitions") }
+        static var mountDefense: String        { l("subtopic.mount_defense") }
+        static var mountAttacks: String        { l("subtopic.mount_attacks") }
+        static var backDefense: String         { l("subtopic.back_defense") }
+        static var backControlMaintain: String { l("subtopic.back_control_maintain") }
+        static var backSubmissions: String     { l("subtopic.back_submissions") }
+        static var backCombinations: String    { l("subtopic.back_combinations") }
+    }
+
+    // MARK: Theory Card
+    enum TheoryCard {
+        static var gotIt: String      { l("theory_card.got_it") }
+        static var swipeHint: String  { l("theory_card.swipe_hint") }
     }
 
     // MARK: Tabs
@@ -122,6 +162,7 @@ enum L10n {
         static func xpEarned(_ n: Int) -> String { lf("session.xp_earned", n) }
         static var continueCta: String   { l("session.continue") }
         static var fillBlankHint: String { l("session.fill_blank_hint") }
+        static var newTopic: String      { l("session.new_topic") }
     }
 
     // MARK: Summary
