@@ -30,9 +30,11 @@
 		61B76065C510DFCF8771B6CD /* TournamentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D9985B57AAB190726C12BF /* TournamentTests.swift */; };
 		63637ABFF5B30800253E3EDA /* BeltTestViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2988D1C00962FB4D915903F /* BeltTestViews.swift */; };
 		69713C62884492C9820CAFA0 /* ClubInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297E3F50F4F260B6157D0F33 /* ClubInfoView.swift */; };
+		69DF002B06A03288C2B29F67 /* MiniTheoryViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A066E81071027FEE01D6F75 /* MiniTheoryViewTests.swift */; };
 		768AE4B4070872E54B0C1D14 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2329EF0D26291969A12F81D7 /* ProgressView.swift */; };
 		77237438DF7D22B19B122392 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFE9EDFF53587037D18773C9 /* Nunito-ExtraBold.ttf */; };
 		792EBB4A2A8903E53877E022 /* OpponentProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0839A6FC1583E727B4EE8FC /* OpponentProfileTests.swift */; };
+		798E70DE61085211EBFC3FCC /* MiniTheoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF77AAFF6737DEEA333E220 /* MiniTheoryView.swift */; };
 		86B658C26774878E13BD4D08 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167B51AA8D1167A1C0CECDD /* L10n.swift */; };
 		8A2EFC51271D14A28AA33A25 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92C43A31E69789CCFC62648 /* HomeView.swift */; };
 		8D0824680181A6C013BB7D85 /* SessionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE0045FCFE4F1EE41C818B3 /* SessionEngine.swift */; };
@@ -82,7 +84,9 @@
 		1C4E2129BF88EA11F6B516A9 /* BattleScale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleScale.swift; sourceTree = "<group>"; };
 		2329EF0D26291969A12F81D7 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		297E3F50F4F260B6157D0F33 /* ClubInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubInfoView.swift; sourceTree = "<group>"; };
+		2A066E81071027FEE01D6F75 /* MiniTheoryViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniTheoryViewTests.swift; sourceTree = "<group>"; };
 		2C1055DB63C8A242818CF2C5 /* BattleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleView.swift; sourceTree = "<group>"; };
+		3BF77AAFF6737DEEA333E220 /* MiniTheoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniTheoryView.swift; sourceTree = "<group>"; };
 		44D184A283A3C1227616243C /* BJJMind.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = BJJMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4502CFACC767B730CF6D2AE8 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		47AD5C412154F2F9C9940E90 /* BattleEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleEngineTests.swift; sourceTree = "<group>"; };
@@ -144,6 +148,14 @@
 				D6C58996C53646A70790D499 /* SummaryView.swift */,
 			);
 			path = Session;
+			sourceTree = "<group>";
+		};
+		1A28C6AB0C37D3F463F5BE19 /* MiniTheory */ = {
+			isa = PBXGroup;
+			children = (
+				3BF77AAFF6737DEEA333E220 /* MiniTheoryView.swift */,
+			);
+			path = MiniTheory;
 			sourceTree = "<group>";
 		};
 		273F017BF3271995F4F5E824 /* Resources */ = {
@@ -243,6 +255,7 @@
 				47AD5C412154F2F9C9940E90 /* BattleEngineTests.swift */,
 				68C912FCFA091B492601BF91 /* BattleScaleTests.swift */,
 				A01A1D5B5AB56D822B33D3FD /* CycleStructureTests.swift */,
+				2A066E81071027FEE01D6F75 /* MiniTheoryViewTests.swift */,
 				F0873A43D763EE480C355E72 /* ModelTests.swift */,
 				B0839A6FC1583E727B4EE8FC /* OpponentProfileTests.swift */,
 				1022009DE91D79734D44F01D /* SessionEngineTests.swift */,
@@ -299,6 +312,7 @@
 				86D8354A1A4033AA55300BF2 /* Core */,
 				372537675D371C91A7234287 /* Design */,
 				85DA78CC07AA940E62A0E051 /* Home */,
+				1A28C6AB0C37D3F463F5BE19 /* MiniTheory */,
 				E245AFA705E4D6BECE7B81C7 /* Onboarding */,
 				B91AE70F96468ECE8D8F5656 /* Profile */,
 				273F017BF3271995F4F5E824 /* Resources */,
@@ -411,6 +425,7 @@
 				3BD79B22994B04AA3B1474BE /* BattleEngineTests.swift in Sources */,
 				AA2D197FE3E51F8AFD08A6F4 /* BattleScaleTests.swift in Sources */,
 				942AAB4C978397A30FF79F28 /* CycleStructureTests.swift in Sources */,
+				69DF002B06A03288C2B29F67 /* MiniTheoryViewTests.swift in Sources */,
 				4426095B2CF804430A3A6B4A /* ModelTests.swift in Sources */,
 				792EBB4A2A8903E53877E022 /* OpponentProfileTests.swift in Sources */,
 				B8A3A82FFE870A177C1898A2 /* SessionEngineTests.swift in Sources */,
@@ -444,6 +459,7 @@
 				86B658C26774878E13BD4D08 /* L10n.swift in Sources */,
 				4D97A62387F5569A22FEE2D5 /* LanguageManager.swift in Sources */,
 				C21C612BCC572A90AEA050D8 /* MainTabView.swift in Sources */,
+				798E70DE61085211EBFC3FCC /* MiniTheoryView.swift in Sources */,
 				9B5E556F1905A9F93D3F8980 /* Models.swift in Sources */,
 				97A733F36C38DA0A9E6F472F /* OnboardingFlow.swift in Sources */,
 				528EA0AC1A69BED2843D9656 /* OpponentProfile.swift in Sources */,

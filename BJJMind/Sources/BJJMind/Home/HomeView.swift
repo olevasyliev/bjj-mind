@@ -6,6 +6,7 @@ private enum HomeSheet: Identifiable {
     case characterMoment(Unit)
     case bossFight(Unit)
     case tournament(Unit)
+    case miniTheory(Unit)
 
     var id: String {
         switch self {
@@ -14,6 +15,7 @@ private enum HomeSheet: Identifiable {
         case .characterMoment(let u): return "moment-\(u.id)"
         case .bossFight(let u):       return "bossfight-\(u.id)"
         case .tournament(let u):      return "tournament-\(u.id)"
+        case .miniTheory(let u):      return "minitheory-\(u.id)"
         }
     }
 }
@@ -70,6 +72,8 @@ struct HomeView: View {
                                 activeSheet = .bossFight(unit)
                             case .intermediateTournament, .finalTournament:
                                 activeSheet = .tournament(unit)
+                            case .miniTheory:
+                                activeSheet = .miniTheory(unit)
                             default:
                                 activeSheet = .session(unit)
                             }
@@ -107,6 +111,22 @@ struct HomeView: View {
                         activeSheet = nil
                     }
                     .environmentObject(appState)
+                case .miniTheory(let unit):
+                    if let theoryData = unit.miniTheoryData {
+                        MiniTheoryView(
+                            data: theoryData,
+                            unitTitle: unit.title
+                        ) {
+                            appState.completeUnit(id: unit.id)
+                            activeSheet = nil
+                        }
+                    } else {
+                        // Defensive: no data → complete immediately
+                        Color.clear.onAppear {
+                            appState.completeUnit(id: unit.id)
+                            activeSheet = nil
+                        }
+                    }
                 }
             }
         }
