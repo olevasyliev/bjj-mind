@@ -40,7 +40,7 @@ private struct RemoteUnit: Decodable {
 
 private struct RemoteQuestion: Decodable {
     let id: String
-    let unitId: String
+    let unitId: String?
     let format: String
     let prompt: String
     let options: [String]?
@@ -77,7 +77,7 @@ private struct RemoteQuestion: Decodable {
 
     func toQuestion() -> Question {
         Question(
-            id: id, unitId: unitId, format: questionFormat,
+            id: id, unitId: unitId ?? "", format: questionFormat,
             prompt: prompt, options: options, correctAnswer: correctAnswer,
             explanation: explanation, tags: tags, difficulty: difficulty,
             sceneImageName: nil, coachNote: coachNote
@@ -175,7 +175,7 @@ actor SupabaseService {
     func fetchCatalog() async throws -> [RemoteUnitBundle] {
         let remoteUnits     = try await get([RemoteUnit].self,     "/units?order=order_index")
         let remoteQuestions = try await get([RemoteQuestion].self, "/questions?order=unit_id")
-        let byUnit          = Dictionary(grouping: remoteQuestions, by: \.unitId)
+        let byUnit          = Dictionary(grouping: remoteQuestions.filter { $0.unitId != nil }, by: { $0.unitId! })
 
         return remoteUnits.map { ru in
             let resolvedKind: UnitKind
