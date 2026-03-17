@@ -13,6 +13,7 @@ struct SessionView: View {
 
     /// Loaded adaptively in `.task`; `nil` while fetch is in flight.
     @State private var loadedQuestions: [Question]? = nil
+    @State private var previouslyWrongIds: Set<String> = []
 
     init(unit: Unit, isBeltTest: Bool = false, streak: Int = 0) {
         self.unit = unit
@@ -30,7 +31,8 @@ struct SessionView: View {
                     questions: questions,
                     unit: unit,
                     isBeltTest: isBeltTest,
-                    streak: streak
+                    streak: streak,
+                    previouslyWrongIds: previouslyWrongIds
                 )
             } else {
                 // Fetching adaptive questions — show a brief loading indicator
@@ -39,8 +41,11 @@ struct SessionView: View {
             }
         }
         .task {
-            let questions = await appState.fetchQuestionsForSession(for: unit)
-            loadedQuestions = questions
+            async let questions = appState.fetchQuestionsForSession(for: unit)
+            async let wrongIds = appState.fetchPreviouslyWrongQuestionIds()
+            let (q, ids) = await (questions, wrongIds)
+            previouslyWrongIds = ids
+            loadedQuestions = q
         }
     }
 }
@@ -57,14 +62,15 @@ private struct SessionEngineView: View {
 
     private let passThreshold = 0.7
 
-    init(questions: [Question], unit: Unit, isBeltTest: Bool, streak: Int) {
+    init(questions: [Question], unit: Unit, isBeltTest: Bool, streak: Int, previouslyWrongIds: Set<String>) {
         self.unit = unit
         self.isBeltTest = isBeltTest
         _engine = StateObject(wrappedValue: SessionEngine(
             questions: questions,
             isBeltTest: isBeltTest,
             coachIntro: isBeltTest ? nil : unit.coachIntro,
-            streak: streak
+            streak: streak,
+            previouslyWrongQuestionIds: previouslyWrongIds
         ))
     }
 
@@ -96,6 +102,7 @@ private struct SessionEngineView: View {
                         isCorrect: engine.lastAnswerWasCorrect,
                         explanation: isBeltTest ? "" : (engine.currentQuestion?.explanation ?? ""),
                         coachNote: engine.lastAnswerWasCorrect ? nil : engine.currentQuestion?.coachNote,
+                        characterComment: engine.characterComment,
                         onContinue: { engine.advance() }
                     )
                 }

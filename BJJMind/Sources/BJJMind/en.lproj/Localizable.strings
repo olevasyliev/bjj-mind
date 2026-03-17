@@ -104,6 +104,9 @@
 // MARK: - Session
 "session.new_topic" = "New topic";
 "session.position" = "POSITION";
+"session.character_comment.previously_wrong" = "You got this wrong last time. Now you know.";
+"session.character_comment.three_in_a_row" = "You've got the mechanics. Now let's test your timing.";
+"session.character_comment.first_wrong" = "This one trips everyone up. Keep going.";
 "session.belt_test_chip" = "🎯 Belt Test";
 "session.correct" = "Correct!";
 "session.not_quite" = "Not quite";

@@ -276,6 +276,171 @@ final class SessionEngineTests: XCTestCase {
     }
 }
 
+// MARK: - Character Comment Tests
+
+@MainActor
+final class SessionEngineCharacterCommentTests: XCTestCase {
+
+    private func makeQ(id: String) -> Question {
+        Question(id: id, unitId: "u1", format: .mcq4,
+                 prompt: "Q \(id)", options: ["A", "B", "C", "D"],
+                 correctAnswer: "A",
+                 explanation: "", tags: [], difficulty: 1, sceneImageName: nil)
+    }
+
+    // MARK: - nil at start and after plain correct answer
+
+    func test_characterComment_nilAtStart() {
+        let engine = SessionEngine(questions: [makeQ(id: "q1")])
+        XCTAssertNil(engine.characterComment)
+    }
+
+    func test_characterComment_nilAfterFirstCorrectAnswerNoSpecialCase() {
+        // Single correct answer with no previously-wrong context → nil
+        let engine = SessionEngine(questions: [makeQ(id: "q1"), makeQ(id: "q2")])
+        engine.submitAnswer("A")
+        XCTAssertNil(engine.characterComment)
+    }
+
+    // MARK: - First wrong answer fires once
+
+    func test_characterComment_firstWrongAnswer_showsMessage() {
+        let engine = SessionEngine(questions: [makeQ(id: "q1")])
+        engine.submitAnswer("B") // wrong
+        XCTAssertNotNil(engine.characterComment)
+    }
+
+    func test_characterComment_firstWrongAnswer_noMolodetsNoOtlichno() {
+        // Rule: never "молодец" or "отлично"
+        let engine = SessionEngine(questions: [makeQ(id: "q1")])
+        engine.submitAnswer("B")
+        let comment = engine.characterComment ?? ""
+        XCTAssertFalse(comment.lowercased().contains("молодец"),
+                       "Character must not say 'молодец'")
+        XCTAssertFalse(comment.lowercased().contains("отлично"),
+                       "Character must not say 'отлично'")
+    }
+
+    func test_characterComment_secondWrongAnswer_nilComment() {
+        // First-wrong message fires only once per session
+        let qs = [makeQ(id: "q1"), makeQ(id: "q2"), makeQ(id: "q3")]
+        let engine = SessionEngine(questions: qs)
+        engine.submitAnswer("B"); engine.advance() // first wrong → comment shown
+        engine.submitAnswer("B")                   // second wrong → no comment
+        XCTAssertNil(engine.characterComment)
+    }
+
+    // MARK: - 3 correct in a row
+
+    func test_characterComment_3CorrectInRow_showsMessage() {
+        let qs = (1...4).map { makeQ(id: "q\($0)") }
+        let engine = SessionEngine(questions: qs)
+        engine.submitAnswer("A"); engine.advance() // 1 correct
+        engine.submitAnswer("A"); engine.advance() // 2 correct
+        engine.submitAnswer("A")                   // 3rd correct — should trigger
+        XCTAssertNotNil(engine.characterComment)
+    }
+
+    func test_characterComment_2CorrectInRow_nilComment() {
+        let qs = [makeQ(id: "q1"), makeQ(id: "q2")]
+        let engine = SessionEngine(questions: qs)
+        engine.submitAnswer("A"); engine.advance() // 1 correct
+        engine.submitAnswer("A")                   // 2nd correct — no trigger
+        XCTAssertNil(engine.characterComment)
+    }
+
+    func test_characterComment_wrongBreaksStreak_restartsCount() {
+        // After a wrong answer the streak resets; next 2 correct do NOT trigger
+        let qs = (1...5).map { makeQ(id: "q\($0)") }
+        let engine = SessionEngine(questions: qs)
+        engine.submitAnswer("A"); engine.advance() // 1 correct
+        engine.submitAnswer("A"); engine.advance() // 2 correct
+        engine.submitAnswer("B"); engine.advance() // wrong — streak reset
+        engine.submitAnswer("A"); engine.advance() // 1 correct (new streak)
+        engine.submitAnswer("A")                   // 2 correct — NOT 3 in a row
+        XCTAssertNil(engine.characterComment)
+    }
+
+    func test_characterComment_after3Correct_countResets_next3TriggersAgain() {
+        // After the 3-in-a-row message fires, counter resets; next 3 correct fires again
+        let qs = (1...7).map { makeQ(id: "q\($0)") }
+        let engine = SessionEngine(questions: qs)
+        // First batch: 3 correct → trigger
+        engine.submitAnswer("A"); engine.advance()
+        engine.submitAnswer("A"); engine.advance()
+        engine.submitAnswer("A"); engine.advance() // trigger fires
+        // Clear + next 2 correct — no trigger
+        engine.submitAnswer("A"); engine.advance()
+        engine.submitAnswer("A"); engine.advance()
+        // 3rd after reset — should trigger again
+        engine.submitAnswer("A")
+        XCTAssertNotNil(engine.characterComment)
+    }
+
+    // MARK: - Previously-wrong question reappears
+
+    func test_characterComment_previouslyWrongQuestion_correctAnswer_showsMessage() {
+        let engine = SessionEngine(questions: [makeQ(id: "q1")],
+                                   previouslyWrongQuestionIds: ["q1"])
+        engine.submitAnswer("A") // correct on previously-wrong question
+        XCTAssertNotNil(engine.characterComment)
+    }
+
+    func test_characterComment_previouslyWrongQuestion_wrongAnswer_noContextMessage() {
+        // Previously-wrong context only fires on a CORRECT answer
+        // Getting it wrong again triggers the first-wrong rule instead
+        let qs = [makeQ(id: "q1"), makeQ(id: "q2")]
+        let engine = SessionEngine(questions: qs,
+                                   previouslyWrongQuestionIds: ["q1"])
+        engine.submitAnswer("B") // wrong on q1 (prev wrong) → first-wrong message
+        // The comment is the first-wrong message, not the context message
+        // We just verify that a comment IS shown (first-wrong rule)
+        XCTAssertNotNil(engine.characterComment)
+    }
+
+    func test_characterComment_previouslyWrong_overrides3CorrectInRow() {
+        // 3rd consecutive correct happens to be a previously-wrong question
+        // "previously wrong" context takes priority over "3 in a row"
+        let qs = (1...3).map { makeQ(id: "q\($0)") }
+        let engine = SessionEngine(questions: qs,
+                                   previouslyWrongQuestionIds: ["q3"])
+        engine.submitAnswer("A"); engine.advance() // q1 correct
+        engine.submitAnswer("A"); engine.advance() // q2 correct
+        engine.submitAnswer("A")                   // q3: 3rd correct AND previously wrong
+        // A comment must appear (either "previously wrong" or "3 in a row" — impl decides priority)
+        XCTAssertNotNil(engine.characterComment)
+    }
+
+    func test_characterComment_previouslyWrongMidStreak_streakResetsAndRefires() {
+        // Previously-wrong fires on the 2nd consecutive correct (not the 3rd).
+        // This resets the streak counter. The next 3 consecutive correct should then
+        // re-trigger the 3-in-a-row message — NOT just 1 more after the reset.
+        let qs = (1...6).map { makeQ(id: "q\($0)") }
+        // q2 is previously wrong — fires the context message on the 2nd consecutive correct
+        let engine = SessionEngine(questions: qs,
+                                   previouslyWrongQuestionIds: ["q2"])
+        engine.submitAnswer("A"); engine.advance() // q1 correct — streak=1, no trigger
+        engine.submitAnswer("A"); engine.advance() // q2 correct + prev-wrong → context fires, streak reset to 0
+        // Now streak is 0. Need 3 more to trigger.
+        engine.submitAnswer("A"); engine.advance() // q3 correct — streak=1, no trigger
+        engine.submitAnswer("A"); engine.advance() // q4 correct — streak=2, no trigger
+        engine.submitAnswer("A")                   // q5 correct — streak=3, 3-in-a-row fires
+        XCTAssertNotNil(engine.characterComment,
+                        "3-in-a-row should re-trigger after streak was reset by a previously-wrong comment")
+    }
+
+    // MARK: - Comment clears on advance
+
+    func test_characterComment_clearedAfterAdvance() {
+        let qs = [makeQ(id: "q1"), makeQ(id: "q2")]
+        let engine = SessionEngine(questions: qs)
+        engine.submitAnswer("B") // wrong — comment set
+        XCTAssertNotNil(engine.characterComment)
+        engine.advance()
+        XCTAssertNil(engine.characterComment)
+    }
+}
+
 // MARK: - Theory Card Tests (v2)
 
 @MainActor

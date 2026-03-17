@@ -163,6 +163,9 @@ enum L10n {
         static var continueCta: String   { l("session.continue") }
         static var fillBlankHint: String { l("session.fill_blank_hint") }
         static var newTopic: String      { l("session.new_topic") }
+        static var characterCommentPreviouslyWrong: String { l("session.character_comment.previously_wrong") }
+        static var characterCommentThreeInARow: String     { l("session.character_comment.three_in_a_row") }
+        static var characterCommentFirstWrong: String      { l("session.character_comment.first_wrong") }
     }
 
     // MARK: Summary

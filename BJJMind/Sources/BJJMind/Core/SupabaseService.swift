@@ -568,6 +568,22 @@ actor SupabaseService {
         return remote.map { $0.toQuestionStat() }
     }
 
+    /// Fetches all question IDs the user has answered wrong at least once.
+    func fetchPreviouslyWrongQuestionIds(userId: UUID) async throws -> Set<String> {
+        struct Body: Encodable { let p_user_id: String }
+        struct Row: Decodable {
+            let questionId: String
+            enum CodingKeys: String, CodingKey { case questionId = "question_id" }
+        }
+        let data = try await post(
+            path: "/rpc/get_previously_wrong_question_ids",
+            body: Body(p_user_id: userId.uuidString),
+            prefer: "return=representation"
+        )
+        let rows = try JSONDecoder().decode([Row].self, from: data)
+        return Set(rows.map(\.questionId))
+    }
+
     /// Calls apply_strength_decay RPC. Called once per app launch.
     func triggerStrengthDecay(userId: UUID) async throws {
         struct Body: Encodable { let p_user_id: String }

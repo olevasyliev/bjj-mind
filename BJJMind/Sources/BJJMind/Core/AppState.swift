@@ -80,6 +80,9 @@ final class AppState: ObservableObject {
             }
 
             persistUnits()
+
+            // 6. Fetch sub-topic strength progress for HomeView progress bars
+            await fetchCycleProgress()
         } catch {
             print("[Supabase] sync failed: \(error)")
         }
@@ -379,6 +382,20 @@ final class AppState: ObservableObject {
                     firstAttempt: answer.firstAttempt
                 )
             }
+            // Refresh sub-topic progress bars after strength values are updated
+            await fetchCycleProgress()
+        }
+    }
+
+    /// Fetches question IDs the user has previously answered wrong.
+    /// Returns empty set if not authenticated or on any error.
+    func fetchPreviouslyWrongQuestionIds() async -> Set<String> {
+        guard let userId = remoteUserId else { return [] }
+        do {
+            return try await SupabaseService.shared.fetchPreviouslyWrongQuestionIds(userId: userId)
+        } catch {
+            print("[AppState] fetchPreviouslyWrongQuestionIds failed: \(error)")
+            return []
         }
     }
 
@@ -445,17 +462,21 @@ final class AppState: ObservableObject {
                     subTopics: slugs,
                     beltLevel: user.belt.rawValue
                 )
-                let subTopicProgress = entry.subTopics.map { sub in
+                // Build sub-topic progress with sequential unlock gates:
+                // first sub-topic always unlocked; each next unlocks when previous avgStrength >= 60.
+                var subTopicProgress: [SubTopicProgress] = []
+                for (i, sub) in entry.subTopics.enumerated() {
                     let avg = strengthMap[sub.slug] ?? 0
-                    return SubTopicProgress(
+                    let isUnlocked = i == 0 ? true : (subTopicProgress[i - 1].avgStrength >= 60)
+                    subTopicProgress.append(SubTopicProgress(
                         slug: sub.slug,
                         title: sub.title,
                         avgStrength: avg,
                         questionsSeen: 0,
                         totalQuestions: 0,
-                        isUnlocked: true,
+                        isUnlocked: isUnlocked,
                         isMastered: avg >= 70
-                    )
+                    ))
                 }
                 let cycle = CycleProgress(
                     cycleNumber: entry.cycleNum,

@@ -60,7 +60,18 @@ struct HomeView: View {
                                 .id(appState.language + active.id)
                         }
 
-                        // Belt path
+                        // Sub-topic strength progress bars (per cycle)
+                        if !appState.cycleProgress.isEmpty {
+                            VStack(spacing: 12) {
+                                ForEach(appState.cycleProgress, id: \.cycleNumber) { cycle in
+                                    CycleProgressCard(cycle: cycle)
+                                }
+                            }
+                            .padding(.horizontal, 16)
+                            .padding(.bottom, 16)
+                        }
+
+                        // Belt path (boss fights + tournaments + mini-theory)
                         BeltPathView(units: units) { unit in
                             guard !unit.isLocked else { return }
                             switch unit.kind {
@@ -137,6 +148,101 @@ struct HomeView: View {
                     }
                 }
             }
+        }
+    }
+}
+
+// MARK: - Cycle Progress Card
+
+private struct CycleProgressCard: View {
+    let cycle: CycleProgress
+
+    private var topicLabel: String {
+        cycle.topic
+            .replacingOccurrences(of: "_", with: " ")
+            .capitalized
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            // Header: topic name + average strength
+            HStack {
+                Text(topicLabel.uppercased())
+                    .font(.nunito(11, weight: .black))
+                    .foregroundColor(Color(hex: "#7c3aed"))
+                    .tracking(1.2)
+                Spacer()
+                Text("\(cycle.avgStrength)%")
+                    .font(.nunito(11, weight: .bold))
+                    .foregroundColor(Color(hex: "#94a3b8"))
+            }
+
+            // Sub-topic rows with strength bars
+            let unlocked = cycle.subTopicUnlockStates()
+            ForEach(unlocked, id: \.slug) { sub in
+                SubTopicRow(sub: sub)
+            }
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 14)
+        .background(Color(hex: "#faf5ff"))
+        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .strokeBorder(Color(hex: "#e9d5ff"), lineWidth: 1.5)
+        )
+    }
+}
+
+private struct SubTopicRow: View {
+    let sub: SubTopicProgress
+
+    var body: some View {
+        HStack(spacing: 10) {
+            // Sub-topic title
+            Text(sub.title)
+                .font(.nunito(12, weight: .bold))
+                .foregroundColor(sub.isUnlocked ? Color(hex: "#374151") : Color(hex: "#94a3b8"))
+                .frame(width: 130, alignment: .leading)
+                .lineLimit(1)
+
+            // Strength bar
+            GeometryReader { geo in
+                ZStack(alignment: .leading) {
+                    RoundedRectangle(cornerRadius: 4)
+                        .fill(Color(hex: "#ede9fe"))
+                        .frame(height: 8)
+
+                    if sub.isUnlocked && sub.avgStrength > 0 {
+                        RoundedRectangle(cornerRadius: 4)
+                            .fill(strengthColor(sub.avgStrength))
+                            .frame(width: geo.size.width * CGFloat(sub.avgStrength) / 100, height: 8)
+                    }
+
+                    if !sub.isUnlocked {
+                        Image(systemName: "lock.fill")
+                            .font(.system(size: 8))
+                            .foregroundColor(Color(hex: "#cbd5e1"))
+                            .frame(maxWidth: .infinity, alignment: .center)
+                    }
+                }
+            }
+            .frame(height: 8)
+
+            // Percentage label
+            Text(sub.isUnlocked ? "\(sub.avgStrength)%" : "—")
+                .font(.nunito(11, weight: .bold))
+                .foregroundColor(sub.isUnlocked ? Color(hex: "#6d28d9") : Color(hex: "#cbd5e1"))
+                .frame(width: 32, alignment: .trailing)
+        }
+    }
+
+    private func strengthColor(_ strength: Int) -> Color {
+        switch strength {
+        case 0..<50:  return Color(hex: "#f87171") // red — weak
+        case 50..<70: return Color(hex: "#fbbf24") // amber — learning
+        case 70..<90: return Color(hex: "#34d399") // green — solid
+        default:      return Color(hex: "#6d28d9") // purple — mastered
         }
     }
 }

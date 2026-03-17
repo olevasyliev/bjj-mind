@@ -33,6 +33,8 @@ final class SessionEngine: ObservableObject {
     @Published private(set) var hearts: Int
     @Published private(set) var state: State = .answering
     @Published private(set) var lastAnswerWasCorrect: Bool = false
+    /// Character comment shown during .showingFeedback. Nil when character has nothing to say.
+    @Published private(set) var characterComment: String? = nil
 
     // MARK: - Private
 
@@ -45,6 +47,15 @@ final class SessionEngine: ObservableObject {
 
     /// Per-question answer log: accumulated as the session progresses.
     private(set) var answeredQuestions: [(questionId: String, wasWrong: Bool, firstAttempt: Bool)] = []
+
+    // MARK: - Character Comment Tracking
+
+    /// Question IDs that were answered wrong in previous sessions.
+    let previouslyWrongQuestionIds: Set<String>
+    /// True after the first wrong answer comment has been shown once this session.
+    private var firstWrongCommentShown: Bool = false
+    /// Number of consecutive correct answers since last wrong or last 3-streak trigger.
+    private var consecutiveCorrectCount: Int = 0
 
     let isBeltTest: Bool
     let coachIntro: String?
@@ -59,13 +70,15 @@ final class SessionEngine: ObservableObject {
         isBeltTest: Bool = false,
         coachIntro: String? = nil,
         streak: Int = 0,
-        defaults: UserDefaults = .standard
+        defaults: UserDefaults = .standard,
+        previouslyWrongQuestionIds: Set<String> = []
     ) {
         self.isBeltTest = isBeltTest
         self.coachIntro = coachIntro
         self.streak = streak
         self.defaults = defaults
         self.hearts = isBeltTest ? 3 : UserProfile.maxHearts
+        self.previouslyWrongQuestionIds = previouslyWrongQuestionIds
 
         // Process items: shuffle options for non-trueFalse questions
         self.items = items.map { item in
@@ -121,7 +134,13 @@ final class SessionEngine: ObservableObject {
 
     // MARK: - Convenience Init (questions only — backward compatible)
 
-    init(questions: [Question], isBeltTest: Bool = false, coachIntro: String? = nil, streak: Int = 0) {
+    init(
+        questions: [Question],
+        isBeltTest: Bool = false,
+        coachIntro: String? = nil,
+        streak: Int = 0,
+        previouslyWrongQuestionIds: Set<String> = []
+    ) {
         let ordered = isBeltTest ? questions.shuffled() : questions
         let processedItems: [SessionItem] = ordered.map { q in
             guard q.format != .trueFalse, let opts = q.options else { return .question(q) }
@@ -135,6 +154,7 @@ final class SessionEngine: ObservableObject {
         self.streak = streak
         self.defaults = .standard
         self.hearts = isBeltTest ? 3 : UserProfile.maxHearts
+        self.previouslyWrongQuestionIds = previouslyWrongQuestionIds
         self.items = processedItems
 
         if questions.isEmpty {
@@ -224,8 +244,12 @@ final class SessionEngine: ObservableObject {
         ))
         if lastAnswerWasCorrect {
             correctCount += 1
+            consecutiveCorrectCount += 1
+            characterComment = computeCorrectComment(for: question)
         } else {
             hearts = max(0, hearts - 1)
+            consecutiveCorrectCount = 0
+            characterComment = computeWrongComment()
         }
         if hearts == 0 {
             state = .gameOver
@@ -236,8 +260,31 @@ final class SessionEngine: ObservableObject {
 
     func advance() {
         guard state == .showingFeedback else { return }
+        characterComment = nil
         currentIndex += 1
         advanceToNextItem()
+    }
+
+    // MARK: - Character Comment Helpers
+
+    private func computeCorrectComment(for question: Question) -> String? {
+        // Priority 1: previously-wrong question answered correctly
+        if previouslyWrongQuestionIds.contains(question.id) {
+            consecutiveCorrectCount = 0 // reset streak — context message counts as "special"
+            return L10n.Session.characterCommentPreviouslyWrong
+        }
+        // Priority 2: exactly 3 consecutive correct answers
+        if consecutiveCorrectCount == 3 {
+            consecutiveCorrectCount = 0 // reset after showing
+            return L10n.Session.characterCommentThreeInARow
+        }
+        return nil
+    }
+
+    private func computeWrongComment() -> String? {
+        guard !firstWrongCommentShown else { return nil }
+        firstWrongCommentShown = true
+        return L10n.Session.characterCommentFirstWrong
     }
 
     // MARK: - Private Helpers

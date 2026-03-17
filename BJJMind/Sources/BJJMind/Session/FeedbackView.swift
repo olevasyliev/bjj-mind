@@ -4,6 +4,7 @@ struct FeedbackView: View {
     let isCorrect: Bool
     let explanation: String
     var coachNote: String? = nil
+    var characterComment: String? = nil
     let onContinue: () -> Void
 
     var body: some View {
@@ -87,6 +88,20 @@ struct FeedbackView: View {
                     }
                     .padding(12)
                     .background(Color.brandVeryPale)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                }
+
+                if let comment = characterComment {
+                    HStack(alignment: .top, spacing: 8) {
+                        Text("👻")
+                            .font(.system(size: 16))
+                        Text(comment)
+                            .font(.nunito(13, weight: .semiBold))
+                            .foregroundColor(Color(hex: "#374151"))
+                            .lineSpacing(2)
+                    }
+                    .padding(12)
+                    .background(Color(hex: "#f5f3ff"))
                     .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
             }

@@ -42,3 +42,21 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.aleksei.BJJMindTests
         GENERATE_INFOPLIST_FILE: YES
+
+schemes:
+  BJJMind:
+    build:
+      targets:
+        BJJMind: all
+    test:
+      targets:
+        - BJJMindTests
+  BJJMindIntegration:
+    build:
+      targets:
+        BJJMind: all
+    test:
+      targets:
+        - BJJMindTests
+      environmentVariables:
+        BJJMIND_RUN_INTEGRATION_TESTS: "1"
