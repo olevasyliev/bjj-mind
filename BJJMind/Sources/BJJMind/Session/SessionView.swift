@@ -65,8 +65,15 @@ private struct SessionEngineView: View {
     init(questions: [Question], unit: Unit, isBeltTest: Bool, streak: Int, previouslyWrongIds: Set<String>) {
         self.unit = unit
         self.isBeltTest = isBeltTest
+
+        // For lesson units with embedded theory, prepend a theory card as the first item.
+        var items: [SessionItem] = questions.map { .question($0) }
+        if !isBeltTest, unit.kind == .lesson, let theoryData = unit.miniTheoryData {
+            items.insert(.theoryCard(theoryData, subTopic: unit.id), at: 0)
+        }
+
         _engine = StateObject(wrappedValue: SessionEngine(
-            questions: questions,
+            items: items,
             isBeltTest: isBeltTest,
             coachIntro: isBeltTest ? nil : unit.coachIntro,
             streak: streak,
@@ -86,7 +93,10 @@ private struct SessionEngineView: View {
                 InlineTheoryCardView(
                     data: data,
                     subTopicSlug: subTopic,
-                    onDismiss: { engine.dismissTheoryCard() }
+                    onDismiss: {
+                        UserDefaults.standard.set(true, forKey: "theory_seen_\(subTopic)")
+                        engine.dismissTheoryCard()
+                    }
                 )
 
             case .answering:
