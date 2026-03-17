@@ -3,14 +3,19 @@ import SwiftUI
 struct ProgressView: View {
     @EnvironmentObject var appState: AppState
 
-    // Mock mastery data
-    private let masteryTags: [(icon: String, label: String, pct: Double)] = [
-        ("🛡️", "Frames",       0.38),
-        ("🌀", "Escapes",      0.55),
-        ("✋", "Grip Control", 0.72),
-        ("⏱️", "Timing",       0.60),
-        ("🧠", "Decisions",    0.80),
-    ]
+    private var nextBossFight: Unit? {
+        appState.units.first { $0.kind == .bossFight && !$0.isCompleted }
+    }
+
+    private var stripeHint: String {
+        if appState.user.stripes >= 4 {
+            return "All 4 stripes earned"
+        }
+        if let boss = nextBossFight {
+            return "Stripe \(appState.user.stripes + 1) unlocked after beating \(boss.title)"
+        }
+        return "Complete all boss fights to earn stripes"
+    }
 
     var body: some View {
         NavigationStack {
@@ -25,7 +30,7 @@ struct ProgressView: View {
                                 .foregroundColor(.textPrimary)
 
                             HStack(spacing: 10) {
-                                // XP bar
+                                // Stripe fill bar
                                 GeometryReader { geo in
                                     ZStack(alignment: .leading) {
                                         RoundedRectangle(cornerRadius: 100)
@@ -36,7 +41,7 @@ struct ProgressView: View {
                                             )
                                         RoundedRectangle(cornerRadius: 100)
                                             .fill(Color.brand.opacity(0.7))
-                                            .frame(width: geo.size.width * 0.35)
+                                            .frame(width: geo.size.width * Double(appState.user.stripes) / 4.0)
                                     }
                                 }
                                 .frame(height: 24)
@@ -51,17 +56,17 @@ struct ProgressView: View {
                                 }
                             }
 
-                            Text("240 / 680 XP · Stripe 2 unlocked after Frames & Escapes")
+                            Text(stripeHint)
                                 .font(.nunito(13, weight: .semiBold))
                                 .foregroundColor(.textMuted)
                         }
                     }
 
-                    // MARK: Mastery by Tag
-                    ProgCard(title: "MASTERY BY TAG") {
+                    // MARK: Cycle Sub-topic Strength
+                    if !appState.cycleProgress.isEmpty {
                         VStack(spacing: 12) {
-                            ForEach(masteryTags, id: \.label) { tag in
-                                MasteryRow(icon: tag.icon, label: tag.label, pct: tag.pct)
+                            ForEach(appState.cycleProgress, id: \.cycleNumber) { cycle in
+                                CycleProgressCard(cycle: cycle)
                             }
                         }
                     }

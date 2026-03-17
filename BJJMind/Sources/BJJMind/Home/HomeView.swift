@@ -60,17 +60,6 @@ struct HomeView: View {
                                 .id(appState.language + active.id)
                         }
 
-                        // Sub-topic strength progress bars (per cycle)
-                        if !appState.cycleProgress.isEmpty {
-                            VStack(spacing: 12) {
-                                ForEach(appState.cycleProgress, id: \.cycleNumber) { cycle in
-                                    CycleProgressCard(cycle: cycle)
-                                }
-                            }
-                            .padding(.horizontal, 16)
-                            .padding(.bottom, 16)
-                        }
-
                         // Belt path (boss fights + tournaments + mini-theory)
                         BeltPathView(units: units) { unit in
                             guard !unit.isLocked else { return }
@@ -154,7 +143,7 @@ struct HomeView: View {
 
 // MARK: - Cycle Progress Card
 
-private struct CycleProgressCard: View {
+struct CycleProgressCard: View {
     let cycle: CycleProgress
 
     private var topicLabel: String {
@@ -194,7 +183,7 @@ private struct CycleProgressCard: View {
     }
 }
 
-private struct SubTopicRow: View {
+struct SubTopicRow: View {
     let sub: SubTopicProgress
 
     var body: some View {

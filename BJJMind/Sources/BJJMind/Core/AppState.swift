@@ -519,6 +519,11 @@ final class AppState: ObservableObject {
         addXP(won ? 80 : 20)
         guard won else { return }
         completeUnit(id: unitId)
+        // Each boss fight win earns one stripe (4 bosses = 4 stripes = blue belt path)
+        if units.first(where: { $0.id == unitId })?.kind == .bossFight {
+            user.addStripe()
+            persistUser()
+        }
     }
 
     func completeTournament(unitId: String, tournament: Tournament) {
